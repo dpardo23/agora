@@ -75,7 +75,11 @@ Reglas:
 3. Un commit = un cambio lógico que compila y pasa las pruebas.
 4. El pie cita la HU, el bug o el ítem técnico (`Refs: HU-03.01`).
 5. Un cambio incompatible lleva `!` después del ámbito y `BREAKING CHANGE:` en el pie.
-6. Los commits no mencionan herramientas de generación de código ni coautores automáticos. La autoría es siempre de Juan Diego Pardo Pozo.
+6. Los commits no mencionan herramientas de generación de código ni coautores automáticos. La autoría es siempre de Juan Diego Pardo Pozo. Lo garantizan tres capas:
+   - el entorno de desarrollo no agrega atribución (`attribution` vacío en `.claude/settings.json`);
+   - el hook local `.githooks/commit-msg` rechaza líneas `Co-authored-by` y similares (se activa una vez por clon con `git config core.hooksPath .githooks`);
+   - el CI rechaza cualquier PR con commits de ese tipo.
+   GitHub muestra como *contributor* solo a quien figura como autor o coautor de un commit; con estas capas, ese es únicamente `dpardo23`.
 
 ### Ejemplos
 

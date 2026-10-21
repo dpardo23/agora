@@ -82,6 +82,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           requireScope: true
+      - name: Autoría de los commits (sin coautoría de IA)
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          malos=$(git log --format='%H%n%an <%ae>%n%cn <%ce>%n%B' "$BASE_SHA..$HEAD_SHA" \
+            | grep -Ei 'co-authored-by:|claude-session:|anthropic\.com|claude\.ai/code' || true)
+          if [ -n "$malos" ]; then
+            echo "::error::Hay commits con coautoría o autoría de herramientas de IA (CONTRIBUTING.md, sección 2, regla 6):"
+            echo "$malos"
+            exit 1
+          fi
       - name: Mensajes de commit
         uses: wagoid/commitlint-github-action@v6
         with:
