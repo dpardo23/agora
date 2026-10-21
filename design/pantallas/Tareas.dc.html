@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Tareas · escritorio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.btn{min-height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:var(--on);font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.btn2{min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--tx);font:inherit;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:500;color:#0B0B0B;white-space:nowrap}
+.in{min-height:40px;width:100%;box-sizing:border-box;padding:0 12px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:inherit;outline:none}
+.in:focus{border-color:var(--tx)}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+a{color:inherit}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="min-height: 100vh; display: flex; flex-wrap: wrap">
+
+  <nav aria-label="Principal" style="flex: 1 1 210px; box-sizing: border-box; padding: 20px 12px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px">
+    <div style="display: flex; align-items: center; gap: 8px; padding-right: 4px"><a href="Inicio.dc.html" style="flex: 1; display: flex; align-items: center; gap: 10px; padding: 0 10px; text-decoration: none">
+      <span style="width: 22px; height: 22px; border-radius: 7px; background: var(--lila); display: grid; place-items: center"><span style="width: 8px; height: 8px; border-radius: 50%; background: #0B0B0B"></span></span>
+      <span class="d" style="font-size: 21px">dpardo</span>
+    </a><a href="Avisos.dc.html" aria-label="Avisos, 5 sin leer" style="position: relative; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--tx); text-decoration: none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"></path></svg><span class="m" style="position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px; border-radius: 8px; background: var(--rosa); color: #0B0B0B; font-size: 10px; font-weight: 600; display: grid; place-items: center">5</span></a></div>
+    <div style="display: flex; flex-direction: column; gap: 1px">
+      <sc-for list="{{nav}}" as="n" hint-placeholder-count="8">
+        <a href="{{n.href}}" style="{{n.st}}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.d}}"></path></svg>
+          <span style="flex: 1">{{n.t}}</span>
+          <span class="m" style="font-size: 11px">{{n.b}}</span>
+        </a>
+      </sc-for>
+    </div>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 6px; padding: 0 10px">
+        <div style="display: flex; justify-content: space-between; font-size: 12px"><span class="mu">Cupo 5 h</span><span class="m">38%</span></div>
+        <div style="height: 4px; border-radius: 4px; background: var(--line)"><div style="width: 38%; height: 100%; border-radius: 4px; background: var(--tx)"></div></div>
+      </div>
+      <a href="Configuracion.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; text-decoration: none; border-top: 1px solid var(--line)">
+        <span style="width: 30px; height: 30px; border-radius: 50%; background: var(--rosa); color: #0B0B0B; display: grid; place-items: center; font-size: 12px; font-weight: 600">JD</span>
+        <span style="flex: 1; display: flex; flex-direction: column; line-height: 1.2"><span style="font-weight: 600">dpardo</span><span class="mu" style="font-size: 12px">Configuración</span></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"></path></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; display: flex; flex-wrap: wrap">
+
+    <!-- Listas -->
+    <div style="flex: 1 1 200px; box-sizing: border-box; padding: 28px 16px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 18px">
+      <h1 class="d" style="font-size: 30px; padding: 0 8px">Tareas</h1>
+      <div style="display: flex; flex-direction: column; gap: 1px">
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 36px; align-items: center; padding: 0 8px; border-radius: 8px; background: var(--bg2); font-weight: 600; text-decoration: none"><span>Todas</span><span class="m" style="font-size: 12px">12</span></a>
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 36px; align-items: center; padding: 0 8px; border-radius: 8px; text-decoration: none" class="mu"><span>Hoy</span><span class="m" style="font-size: 12px">3</span></a>
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 36px; align-items: center; padding: 0 8px; border-radius: 8px; text-decoration: none" class="mu"><span>Programadas</span><span class="m" style="font-size: 12px">9</span></a>
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 36px; align-items: center; padding: 0 8px; border-radius: 8px; text-decoration: none" class="mu"><span>Completadas</span><span class="m" style="font-size: 12px">31</span></a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1px">
+        <span class="lbl" style="padding: 0 8px 6px">Por materia</span>
+        <sc-for list="{{listas}}" as="l" hint-placeholder-count="4">
+          <a href="#" style="display: flex; align-items: center; gap: 10px; min-height: 36px; padding: 0 8px; border-radius: 8px; text-decoration: none"><span style="{{l.dot}}"></span><span style="flex: 1; font-size: 13px">{{l.n}}</span><span class="m mu" style="font-size: 12px">{{l.c}}</span></a>
+        </sc-for>
+        <button type="button" style="min-height: 36px; padding: 0 8px; text-align: left; background: none; border: 0; color: var(--tx2); font: inherit; font-size: 13px; cursor: pointer">+ Nueva lista</button>
+      </div>
+      <div class="mu" style="margin-top: auto; padding: 0 8px; font-size: 12px; display: flex; align-items: center; gap: 6px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #3FA36B"></span>Google Tasks · hace 2 min</div>
+    </div>
+
+    <!-- Lista de tareas -->
+    <section aria-label="Lista de tareas" style="flex: 999 1 420px; min-width: 0; box-sizing: border-box; padding: 28px clamp(16px, 2.5vw, 36px); display: flex; flex-direction: column; gap: 6px">
+      <label style="display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 10px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Nueva tarea</span>
+        <input type="text" placeholder="Agregar tarea · escribe «mañana» o «#bd2» para fecha y materia" style="flex: 1; border: 0; outline: 0; background: transparent; color: var(--tx); font: inherit">
+        <kbd class="m mu" style="font-size: 11px; padding: 1px 6px; border: 1px solid var(--line); border-radius: 5px">Enter</kbd>
+      </label>
+      <sc-for list="{{grupos}}" as="g" hint-placeholder-count="3">
+        <div style="display: flex; flex-direction: column">
+          <div style="display: flex; align-items: baseline; gap: 8px; padding: 14px 0 6px">
+            <h2 style="{{g.hSt}}">{{g.t}}</h2><span class="m mu" style="font-size: 12px">{{g.n}}</span>
+          </div>
+          <sc-for list="{{g.items}}" as="t" hint-placeholder-count="3">
+            <div style="{{t.rowSt}}">
+              <button type="button" onClick="{{t.toggle}}" aria-pressed="{{t.hechaA}}" aria-label="Completar {{t.titulo}}" style="{{t.chk}}">
+                <sc-if value="{{t.hecha}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+              </button>
+              <button type="button" onClick="{{t.pick}}" style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; background: none; border: 0; padding: 0; color: var(--tx); font: inherit; text-align: left; cursor: pointer; min-height: 44px">
+                <span style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+                  <span style="{{t.tSt}}">{{t.titulo}}</span>
+                  <sc-if value="{{t.sub}}" hint-placeholder-val="{{false}}"><span class="mu" style="font-size: 12px">{{t.sub}}</span></sc-if>
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px" class="mu"><span style="{{t.dot}}"></span>{{t.materia}}</span>
+                <span style="{{t.fSt}}">{{t.fecha}}</span>
+              </button>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </section>
+
+    <!-- Detalle -->
+    <aside aria-labelledby="det" style="flex: 1 1 320px; min-width: 0; box-sizing: border-box; padding: 28px 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 18px">
+      <div style="display: flex; align-items: center; gap: 8px">
+        <span class="tag" style="{{sel.tagSt}}">{{sel.materia}}</span>
+        <span style="flex: 1"></span>
+        <button type="button" class="btn2" aria-label="Eliminar tarea" style="width: 36px; min-height: 36px; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13"></path></svg></button>
+      </div>
+      <h2 id="det" class="d" style="font-size: 22px; line-height: 1.2">{{sel.titulo}}</h2>
+      <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 10px 12px; font-size: 13px">
+        <span class="mu">Vence</span><span>{{sel.fechaLarga}}</span>
+        <span class="mu">Recordatorio</span><span>1 día antes, 20:00</span>
+        <span class="mu">Repetir</span><span>No</span>
+        <span class="mu">Sincroniza</span><span>Google Tasks · lista «UMSS»</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid var(--line)">
+        <span class="lbl">Subtareas · {{sel.subTxt}}</span>
+        <sc-for list="{{sel.subs}}" as="s" hint-placeholder-count="3">
+          <label style="display: flex; align-items: center; gap: 10px; min-height: 32px; font-size: 13px; cursor: pointer"><input type="checkbox" checked="{{s.h}}" style="width: 16px; height: 16px; margin: 0; accent-color: var(--tx)"><span style="{{s.st}}">{{s.t}}</span></label>
+        </sc-for>
+        <button type="button" style="align-self: flex-start; background: none; border: 0; padding: 4px 0; color: var(--tx2); font: inherit; font-size: 13px; cursor: pointer">+ Subtarea</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 1px solid var(--line)">
+        <label for="notas" class="lbl">Notas</label>
+        <textarea id="notas" class="in" rows="4" style="padding: 10px 12px; resize: vertical">{{sel.notas}}</textarea>
+      </div>
+      <a href="Main.dc.html#encargo" class="btn2" style="justify-content: flex-start">Pedir al bot un documento de apoyo</a>
+    </aside>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"claro"},"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 't1', hechas: { t9: true } };
+  }
+  nav(activo) {
+    const AL = { calendario: 'agenda', horario: 'agenda', malla: 'materias', repaso: 'estudiar', estudio: 'estudiar', consumo: 'bot', oficina: 'bot' };
+    activo = AL[activo] || activo;
+    const I = {
+      inicio: 'M4 11l8-7 8 7v9h-5v-6H9v6H4z',
+      bot: 'M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5',
+      tareas: 'M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5',
+      materias: 'M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4zM5 16a4 4 0 0 1 4-4h10',
+      malla: 'M6 3.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM18 3.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM12 15.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM7.5 8.2l3.4 7.4M16.5 8.2l-3.4 7.4',
+      calendario: 'M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4',
+      repaso: 'M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10',
+      consumo: 'M4 17a8 8 0 1 1 16 0M12 17l4-5'
+    };
+    Object.assign(I, { avisos: 'M4 13l2.5-7h11L20 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 13h4.5l1.5 2.5h4l1.5-2.5H20', horario: 'M12 4a8 8 0 1 1 0 16a8 8 0 1 1 0-16zM12 8v4l3 2', estudio: 'M12 7a7 7 0 1 1 0 14a7 7 0 1 1 0-14zM12 11v3.5M9.5 3h5M12 3v4' });
+    I.agenda = I.calendario; I.estudiar = I.repaso;
+    const items = [['inicio', 'Inicio', 'Inicio.dc.html', ''], ['bot', 'Bot', 'Main.dc.html', '●'], ['tareas', 'Tareas', 'Tareas.dc.html', '3'], ['agenda', 'Agenda', 'Calendario.dc.html', ''], ['materias', 'Materias', 'Materias.dc.html', ''], ['estudiar', 'Estudiar', 'Repaso.dc.html', '24']];
+    return items.map(([id, t, href, b]) => ({
+      t, href, b, d: I[id] || 'M4 20V7l8-4 8 4v13M9 20v-4h6v4M8 10h2M14 10h2M8 14h2M14 14h2',
+      st: 'display: flex; align-items: center; gap: 12px; min-height: 38px; padding: 0 10px; border-radius: 9px; text-decoration: none; ' + (id === activo ? 'background: var(--bg2); color: var(--tx); font-weight: 600;' : 'color: var(--tx2);')
+    }));
+  }
+  renderVals() {
+    const C = { 'Estadística II': 'mant', 'Base de Datos II': 'cielo', 'Ecuaciones Diferenciales': 'lila', 'Seguridad de Sistemas': 'menta' };
+    const T = [
+      { id: 't0', g: 'v', titulo: 'Resumen de índices B+', materia: 'Base de Datos II', fecha: 'Ayer', fl: 'sábado 10 de octubre', subs: [], notas: '' },
+      { id: 't1', g: 'h', titulo: 'Práctica 3: ejercicios de varianza', materia: 'Estadística II', fecha: 'Hoy', fl: 'domingo 11 de octubre, 23:59', subs: [['Ejercicios 1 a 4', true], ['Ejercicios 5 a 8', true], ['Ejercicios 9 a 12', false], ['Pasar a limpio', false], ['Subir al aula virtual', false]], notas: 'Usar la tabla F del apéndice. Revisar el documento del bot «Distribuciones muestrales».' },
+      { id: 't2', g: 'h', titulo: 'Leer capítulo 7: recuperación', materia: 'Base de Datos II', fecha: 'Hoy', fl: 'domingo 11 de octubre', subs: [], notas: '' },
+      { id: 't3', g: 'h', titulo: 'Repasar 24 tarjetas', materia: 'Estadística II', fecha: 'Hoy', fl: 'domingo 11 de octubre', subs: [], notas: '' },
+      { id: 't4', g: 's', titulo: 'Informe de controles ISO/IEC 27001', materia: 'Seguridad de Sistemas', fecha: 'Mar 13', fl: 'martes 13 de octubre, 23:59', subs: [['Elegir 10 controles', true], ['Redactar', false], ['Revisar formato', false], ['Entregar', false]], notas: '' },
+      { id: 't5', g: 's', titulo: 'Práctica de transformada de Laplace', materia: 'Ecuaciones Diferenciales', fecha: 'Mié 14', fl: 'miércoles 14 de octubre', subs: [], notas: '' },
+      { id: 't6', g: 's', titulo: 'Estudiar para el segundo parcial', materia: 'Estadística II', fecha: 'Jue 15', fl: 'jueves 15 de octubre', subs: [], notas: '' },
+      { id: 't7', g: 's', titulo: 'Subir tablero Miro', materia: 'Seguridad de Sistemas', fecha: 'Vie 16', fl: 'viernes 16 de octubre', subs: [], notas: '' },
+      { id: 't8', g: 'l', titulo: 'Laboratorio de procedimientos almacenados', materia: 'Base de Datos II', fecha: 'Lun 19', fl: 'lunes 19 de octubre', subs: [], notas: '' },
+      { id: 't9', g: 'l', titulo: 'Formulario de sistemas de EDO', materia: 'Ecuaciones Diferenciales', fecha: 'Hecha', fl: '', subs: [], notas: '' }
+    ];
+    const H = this.state.hechas;
+    const mk = (t) => {
+      const h = !!H[t.id], sel = this.state.sel === t.id, done = t.subs.filter((s) => s[1]).length;
+      return {
+        ...t, hecha: h, hechaA: h ? 'true' : 'false',
+        sub: t.subs.length ? done + ' de ' + t.subs.length + ' subtareas' : '',
+        toggle: () => this.setState({ hechas: { ...H, [t.id]: !h } }),
+        pick: () => this.setState({ sel: t.id }),
+        rowSt: 'display: flex; align-items: center; gap: 12px; padding: 0 10px; margin: 0 -10px; border-radius: 10px; border-top: 1px solid var(--line); ' + (sel ? 'background: var(--bg2);' : ''),
+        chk: 'width: 22px; height: 22px; flex: 0 0 22px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; padding: 0; ' + (h ? 'background: var(--tx); color: var(--bg); border: 1.5px solid var(--tx);' : 'background: transparent; color: var(--tx); border: 1.5px solid var(--tx2);'),
+        tSt: 'font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ' + (h ? 'text-decoration: line-through; color: var(--tx2);' : ''),
+        dot: 'width: 8px; height: 8px; border-radius: 50%; background: var(--' + C[t.materia] + ')',
+        fSt: 'font-size: 12px; min-width: 56px; text-align: right; ' + (t.g === 'v' && !h ? 'color: var(--warn); font-weight: 600;' : t.g === 'h' ? 'font-weight: 600;' : 'color: var(--tx2);')
+      };
+    };
+    const G = [['v', 'Vencidas'], ['h', 'Hoy'], ['s', 'Esta semana'], ['l', 'Más adelante']];
+    const s = T.find((t) => t.id === this.state.sel) || T[1];
+    const sd = s.subs.filter((x) => x[1]).length;
+    const mats = ['Base de Datos II', 'Estadística II', 'Ecuaciones Diferenciales', 'Seguridad de Sistemas'];
+    return {
+      tema: (this.props.tema ?? 'claro') === 'oscuro' ? 'oscuro' : 'claro',
+      nav: this.nav('tareas'),
+      listas: mats.map((n) => ({ n, c: T.filter((t) => t.materia === n).length, dot: 'width: 8px; height: 8px; border-radius: 50%; background: var(--' + C[n] + ')' })),
+      grupos: G.map(([g, t]) => {
+        const items = T.filter((x) => x.g === g).map(mk);
+        return { t, n: items.length, items, hSt: 'margin: 0; font-size: 13px; font-weight: 600; ' + (g === 'v' ? 'color: var(--warn);' : '') };
+      }),
+      sel: {
+        titulo: s.titulo, materia: s.materia, tagSt: 'background: var(--' + C[s.materia] + ')',
+        fechaLarga: s.fl || 'Sin fecha', notas: s.notas,
+        subTxt: s.subs.length ? sd + ' de ' + s.subs.length : 'ninguna',
+        subs: s.subs.map(([t, h]) => ({ t, h, st: h ? 'text-decoration: line-through; color: var(--tx2)' : '' }))
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Bot · oficina · móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Pixelify+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.px{font-family:'Pixelify Sans','Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+.btn{min-height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:var(--on);font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.btn2{min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--tx);font:inherit;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:500;color:#0B0B0B;white-space:nowrap}
+.in{min-height:42px;width:100%;box-sizing:border-box;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:inherit;outline:none}
+.in:focus{border-color:var(--tx)}
+.scene{position:absolute;left:0;top:0;width:960px;height:720px;transform:scale(.3729);transform-origin:0 0;box-sizing:border-box;border:10px solid #23212B;background-color:#3D3F48;background-image:linear-gradient(45deg,#454751 25%,transparent 25%,transparent 75%,#454751 75%),linear-gradient(45deg,#454751 25%,transparent 25%,transparent 75%,#454751 75%);background-size:48px 48px;background-position:0 0,24px 24px;overflow:hidden}
+.room{position:absolute;box-sizing:border-box;border:6px solid #23212B}
+.face{position:absolute;left:0;top:0;right:0;height:30px;border-bottom:4px solid #23212B}
+.o{position:absolute;box-sizing:border-box}
+.door{position:absolute;background:#3D3F48}
+.pp{position:absolute;width:36px;height:54px;padding:0;border:0;background:none;cursor:pointer;transition:left 1.5s linear,top 1.5s linear}
+.fig{position:absolute;inset:0}
+.sit .fig{animation:type .5s steps(1) infinite}
+.idle .fig{animation:breathe 1.6s steps(1) infinite}
+.fa{animation:fA .36s steps(1) infinite}
+.fb{animation:fB .36s steps(1) infinite}
+.bub{position:absolute;left:50%;bottom:62px;transform:translateX(-50%);white-space:nowrap;font-size:12px;line-height:1.15;padding:4px 7px;background:#FFFFFF;color:#1B1A1F;border:2px solid #1B1A1F;box-shadow:3px 3px 0 #1B1A1F;z-index:2}
+.bub::after{content:'';position:absolute;left:50%;bottom:-6px;margin-left:-4px;width:6px;height:6px;background:#FFFFFF;border-right:2px solid #1B1A1F;border-bottom:2px solid #1B1A1F;transform:rotate(45deg)}
+.lowb{bottom:auto;top:72px}
+.lowb::after{bottom:auto;top:-6px;transform:rotate(225deg)}
+.plate{position:absolute;left:50%;top:55px;transform:translateX(-50%);white-space:nowrap;font-size:10px;padding:0 4px;background:rgba(27,26,31,.82);color:#EEEBE3}
+.arrow{position:absolute;left:12px;top:-14px;width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #F2D14B;filter:drop-shadow(0 2px 0 #1B1A1F);animation:hop .6s steps(2) infinite}
+.sign{position:absolute;padding:1px 6px;font-size:11px;letter-spacing:.06em;background:#1B1A1F;color:#EEEBE3;border:2px solid #EEEBE3;z-index:900}
+.scene .bub,.scene .plate,.scene .sign{display:none}
+.arrow{border-left-width:14px;border-right-width:14px;border-top-width:18px;left:4px;top:-22px}
+a{color:inherit}
+@keyframes type{0%{transform:translateY(0)}50%{transform:translateY(-1px)}}
+@keyframes breathe{0%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes fA{0%{opacity:1}50%{opacity:0}}
+@keyframes fB{0%{opacity:0}50%{opacity:1}}
+@keyframes hop{0%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes steam{0%{transform:translateY(0);opacity:.8}100%{transform:translateY(-10px);opacity:0}}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="width: 390px; height: 844px; position: relative; overflow: hidden">
+  <div style="padding: 52px 16px 100px; display: flex; flex-direction: column; gap: 12px">
+    <header style="display: flex; align-items: center; gap: 10px">
+      <h1 class="d" style="font-size: 28px; flex: 1">Bot</h1>
+      <span class="mu" style="font-size: 12px; display: inline-flex; align-items: center; gap: 6px"><span style="width: 7px; height: 7px; border-radius: 50%; background: #3FA36B; animation: pulse 1.8s infinite"></span>{{cW}} en su puesto · {{cB}} descansan</span>
+      <a href="ConsumoMovil.dc.html" aria-label="Consumo" style="width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0M12 17l4-5"></path></svg></a>
+    </header>
+    <div style="position: relative; width: 358px; height: 268px; overflow: hidden; border-radius: 4px">
+      <div class="scene" role="group" aria-label="Oficina de agentes. Toca a una persona para ver su detalle.">
+
+          <!-- DESPACHO -->
+          <div class="room" style="left: 0; top: 0; width: 440px; height: 256px; background: repeating-linear-gradient(0deg, #8A5A3B 0 14px, #74492F 14px 16px)">
+            <div class="face" style="background: repeating-linear-gradient(90deg, #C99B6D 0 22px, #B78A5E 22px 24px)"></div>
+          </div>
+          <div class="o" style="left: 30px; top: 6px; width: 26px; height: 20px; background: #E2B23F; border: 3px solid #6B4A2E; z-index: 1"></div>
+          <div class="o" style="left: 70px; top: 6px; width: 26px; height: 20px; background: #7FA7D9; border: 3px solid #6B4A2E; z-index: 1"></div>
+          <div class="o" style="left: 150px; top: 3px; width: 120px; height: 26px; background: linear-gradient(180deg, #F5A35C 0 40%, #C76B8C 40% 70%, #3D3360 70% 100%); border: 3px solid #6B4A2E; z-index: 1"></div>
+          <div class="o" style="left: 300px; top: 6px; width: 26px; height: 20px; background: #E2B23F; border: 3px solid #6B4A2E; z-index: 1"></div>
+          <div class="o" style="left: 100px; top: 78px; width: 240px; height: 150px; background: #34405E; border: 6px solid #22293D; outline: 2px dashed #8C9BB8; outline-offset: -14px"></div>
+          <div class="o" style="left: 16px; top: 74px; width: 40px; height: 110px; background: #2A2830; border: 3px solid #141218; box-shadow: inset 6px 0 0 #3A3842"></div>
+          <div class="o" style="left: 372px; top: 40px; width: 54px; height: 96px; background: #6B4A2E; border: 3px solid #3E2A1A; box-shadow: inset 0 0 0 5px #8A6440; z-index: 140"></div>
+          <div class="o" style="left: 380px; top: 50px; width: 38px; height: 34px; background: linear-gradient(135deg, #BFE3F7 0 50%, #A7D3EE 50%); border: 2px solid #3E2A1A; z-index: 141"></div>
+          <div class="o" style="left: 150px; top: 168px; width: 36px; height: 32px; background: #2A2830; border: 3px solid #141218; z-index: 200"></div>
+          <div class="o" style="left: 254px; top: 168px; width: 36px; height: 32px; background: #2A2830; border: 3px solid #141218; z-index: 200"></div>
+          <div class="o" style="left: 196px; top: 176px; width: 48px; height: 24px; background: #8A6440; border: 3px solid #3E2A1A; z-index: 200"></div>
+
+          <!-- SALA DE TRABAJO -->
+          <div class="room" style="left: 454px; top: 0; width: 496px; height: 326px; background-color: #B6BCC3; background-image: linear-gradient(#9FA6AE 2px, transparent 2px), linear-gradient(90deg, #9FA6AE 2px, transparent 2px); background-size: 30px 30px">
+            <div class="face" style="background: #7F8891"></div>
+          </div>
+          <div class="o" style="left: 494px; top: 4px; width: 64px; height: 24px; background: #14161B; border: 3px solid #2A2D35; z-index: 1; background-image: linear-gradient(90deg, #6FC497 0 30%, transparent 30%), linear-gradient(0deg, transparent 50%, #6FA6DE 50%); background-size: 100% 6px, 12px 100%"></div>
+          <div class="o" style="left: 600px; top: 4px; width: 44px; height: 24px; background: #14161B; border: 3px solid #2A2D35; z-index: 1; background-image: radial-gradient(circle at 50% 50%, #E4C14E 0 5px, transparent 6px)"></div>
+          <div class="o" style="left: 770px; top: 4px; width: 80px; height: 24px; background: #14161B; border: 3px solid #2A2D35; z-index: 1; background-image: repeating-linear-gradient(90deg, #6FA6DE 0 4px, transparent 4px 8px); background-size: 100% 40%; background-repeat: no-repeat; background-position: 0 100%"></div>
+          <div class="o" style="left: 476px; top: 300px; width: 450px; height: 3px; background: #5C636B"></div>
+          <div class="o" style="left: 924px; top: 40px; width: 3px; height: 262px; background: #5C636B"></div>
+
+          <!-- BIBLIOTECA -->
+          <div class="room" style="left: 0; top: 262px; width: 284px; height: 158px; background: repeating-linear-gradient(0deg, #C98F5A 0 14px, #B67D4A 14px 16px)">
+            <div class="face" style="background: repeating-linear-gradient(90deg, #D9564E 0 6px, #5B86C9 6px 12px, #E8C25A 12px 18px, #79C27F 18px 24px, #6B4A2E 24px 28px); border-bottom-color: #3E2A1A"></div>
+          </div>
+          <div class="o" style="left: 64px; top: 356px; width: 150px; height: 46px; background: #4A6FA5; border: 4px solid #2E4A77; outline: 2px dashed #A9C0E3; outline-offset: -10px"></div>
+
+          <!-- SALA DE DESCANSO -->
+          <div class="room" style="left: 0; top: 426px; width: 300px; height: 294px; background: repeating-linear-gradient(90deg, #C98F5A 0 18px, #B67D4A 18px 20px)">
+            <div class="face" style="background: #D8C3A0"></div>
+          </div>
+          <div class="o" style="left: 12px; top: 460px; width: 176px; height: 28px; background: #E9E3D6; border: 3px solid #6E6A60; z-index: 488"></div>
+          <div class="o" style="left: 100px; top: 466px; width: 26px; height: 16px; background: #9FB7C9; border: 2px solid #5E6370; z-index: 489"></div>
+          <div class="o" style="left: 216px; top: 444px; width: 48px; height: 66px; background: #F3F3F0; border: 3px solid #6E6A60; box-shadow: inset 0 22px 0 -19px #6E6A60; z-index: 510"></div>
+          <div class="o" style="left: 40px; top: 540px; width: 210px; height: 96px; background: #5E7FA0; border: 4px solid #3E5A78"></div>
+          <div class="o" style="left: 58px; top: 556px; width: 70px; height: 44px; background: #A57A4F; border: 3px solid #5E3F25; z-index: 600"></div>
+          <div class="o" style="left: 160px; top: 556px; width: 70px; height: 44px; background: #A57A4F; border: 3px solid #5E3F25; z-index: 600"></div>
+          <div class="o" style="left: 80px; top: 672px; width: 150px; height: 30px; background: #CBB79A; border: 3px solid #6E5B42; box-shadow: inset 0 -10px 0 #B39F82; z-index: 702"></div>
+
+          <!-- SALA DE REUNIONES -->
+          <div class="room" style="left: 606px; top: 406px; width: 344px; height: 314px; background: repeating-linear-gradient(90deg, #C98F5A 0 18px, #B67D4A 18px 20px)">
+            <div class="face" style="background: repeating-linear-gradient(90deg, #C99B6D 0 22px, #B78A5E 22px 24px)"></div>
+          </div>
+          <div class="o" style="left: 690px; top: 410px; width: 150px; height: 24px; background: #FFFFFF; border: 3px solid #5E6370; z-index: 1; background-image: linear-gradient(90deg, transparent 10px, #5B86C9 10px 60px, transparent 60px 80px, #D9564E 80px 110px, transparent 110px); background-size: 100% 4px; background-repeat: no-repeat; background-position: 0 8px"></div>
+          <div class="o" style="left: 700px; top: 486px; width: 160px; height: 160px; border-radius: 50%; background: #2E3A5C; border: 6px solid #1B2440; z-index: 646; box-shadow: inset 0 0 0 10px #34436A"></div>
+          <div class="o" style="left: 754px; top: 540px; width: 52px; height: 52px; border-radius: 50%; background: #C9D3E8; opacity: .55; z-index: 647"></div>
+
+          <!-- HALL -->
+          <div class="door" style="left: 300px; top: 250px; width: 60px; height: 6px"></div>
+          <div class="door" style="left: 454px; top: 236px; width: 6px; height: 60px"></div>
+          <div class="door" style="left: 278px; top: 304px; width: 6px; height: 56px"></div>
+          <div class="door" style="left: 294px; top: 480px; width: 6px; height: 60px"></div>
+          <div class="door" style="left: 606px; top: 456px; width: 6px; height: 60px"></div>
+          <div class="o" style="left: 404px; top: 696px; width: 92px; height: 14px; background: #4C8F57; border: 2px solid #23212B"></div>
+          <div class="o" style="left: 380px; top: 622px; width: 120px; height: 36px; background: #8A6440; border: 3px solid #3E2A1A; box-shadow: inset 0 6px 0 #A57A4F; z-index: 658"></div>
+          <div class="o" style="left: 330px; top: 320px; width: 3px; height: 70px; background: #9FB7C9; box-shadow: 0 0 0 2px #23212B"></div>
+          <div class="o" style="left: 570px; top: 336px; width: 3px; height: 70px; background: #9FB7C9; box-shadow: 0 0 0 2px #23212B"></div>
+
+          <span class="sign px" style="left: 8px; top: 34px">DESPACHO</span>
+          <span class="sign px" style="left: 462px; top: 34px">SALA DE TRABAJO</span>
+          <span class="sign px" style="left: 8px; top: 296px">BIBLIOTECA</span>
+          <span class="sign px" style="left: 8px; top: 432px">DESCANSO</span>
+          <span class="sign px" style="left: 614px; top: 440px">REUNIONES</span>
+          <span class="sign px" style="left: 392px; top: 600px">RECEPCIÓN</span>
+
+          <!-- sprites de mobiliario -->
+          <sc-for list="{{props}}" as="f" hint-placeholder-count="30">
+            <div class="{{f.cls}}" aria-hidden="true" style="{{f.wrap}}"><div style="{{f.px}}"></div></div>
+          </sc-for>
+          <span aria-hidden="true" style="position: absolute; left: 44px; top: 452px; width: 4px; height: 6px; background: #EEEBE3; animation: steam 1.2s steps(3) infinite; z-index: 500"></span>
+          <span class="px" aria-hidden="true" style="position: absolute; left: 902px; top: 128px; font-size: 10px; color: #EEEBE3; background: #1B1A1F; padding: 0 3px; z-index: 300">VM</span>
+
+          <!-- escritorios (por encima del piso, debajo de las personas sentadas detrás) -->
+          <sc-for list="{{desks}}" as="d" hint-placeholder-count="10">
+            <div aria-hidden="true" style="{{d.st}}"><span style="{{d.m1}}"></span><span style="{{d.m2}}"></span></div>
+          </sc-for>
+
+          <!-- personas -->
+          <sc-for list="{{gente}}" as="a" hint-placeholder-count="10">
+            <button type="button" class="pp {{a.cls}}" onClick="{{a.pick}}" aria-pressed="{{a.selA}}" aria-label="{{a.n}}: {{a.estado}}. Ver detalle" style="{{a.pos}}">
+              <sc-if value="{{a.hasMsg}}" hint-placeholder-val="{{false}}"><span class="{{a.bubCls}}">{{a.msg}}</span></sc-if>
+              <sc-if value="{{a.isSel}}" hint-placeholder-val="{{false}}"><span class="arrow"></span></sc-if>
+              <span class="fig" style="{{a.flip}}">
+                <span class="{{a.c1}}" style="position: absolute; inset: 0"><span style="{{a.s1}}"></span></span>
+                <span class="{{a.c2}}" style="position: absolute; inset: 0"><span style="{{a.s2}}"></span></span>
+              </span>
+              <sc-if value="{{a.carry}}" hint-placeholder-val="{{false}}"><span style="position: absolute; left: 26px; top: 26px; width: 15px; height: 21px"><span style="{{paper}}"></span></span></sc-if>
+              <span class="plate px">{{a.corto}}</span>
+            </button>
+          </sc-for>
+        </div>
+    </div>
+    <div style="display: flex; gap: 6px; overflow-x: auto; margin: 0 -16px; padding: 0 16px">
+      <sc-for list="{{chips}}" as="c" hint-placeholder-count="10">
+        <button type="button" onClick="{{c.pick}}" aria-pressed="{{c.on}}" aria-label="{{c.n}}: {{c.est}}" style="{{c.st}}"><span style="{{c.dot}}"></span><span class="px">{{c.n}}</span></button>
+      </sc-for>
+    </div>
+    <section aria-labelledby="ag" style="display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 14px; border: 2px solid var(--tx)">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="position: relative; width: 46px; height: 58px; flex: 0 0 46px; border: 2px solid #1B1A1F; background: var(--bg2); overflow: hidden"><span style="position: absolute; left: -1px; top: -7px; width: 48px; height: 72px"><span style="{{sel.face}}"></span></span></span>
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+          <span class="px mu" style="font-size: 11px">{{sel.sala}}</span>
+          <h2 id="ag" class="d" style="font-size: 18px; line-height: 1.1">{{sel.n}}</h2>
+          <span style="font-size: 12px; display: inline-flex; align-items: center; gap: 6px"><span style="{{sel.dot}}"></span>{{sel.estado}} · {{sel.motor}}</span>
+        </div>
+      </div>
+      <sc-if value="{{selMsg}}" hint-placeholder-val="{{false}}"><span class="px" style="font-size: 13px; padding: 6px 8px; background: #FFFFFF; color: #1B1A1F; border: 2px solid #1B1A1F; box-shadow: 2px 2px 0 #1B1A1F">«{{selMsg}}»</span></sc-if>
+      <span style="font-size: 13px; font-weight: 600">{{sel.tarea}}</span>
+      <div style="height: 5px; border-radius: 5px; background: var(--line)"><div style="{{sel.prog}}"></div></div>
+      <sc-if value="{{esCtl}}" hint-placeholder-val="{{false}}">
+        <a href="EncargarMovil.dc.html" style="min-height: 46px; border-radius: 12px; background: var(--ink); color: var(--on); font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center">+ Nuevo encargo</a>
+      </sc-if>
+    </section>
+    <section aria-label="Trabajo activo" style="display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-size: 14px; font-weight: 600">#14 Normalización · 4 de 9</span><span class="m mu" style="font-size: 11px">≈ 18 min</span></div>
+      <div style="display: flex; gap: 3px" aria-hidden="true"><sc-for list="{{barra}}" as="b" hint-placeholder-count="9"><span style="{{b}}"></span></sc-for></div>
+    </section>
+  </div>
+  <nav aria-label="Principal" style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; box-sizing: border-box; padding: 6px 10px 24px; background: var(--bg); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; z-index: 5">
+    <a href="InicioMovil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; color: var(--tx2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg>Inicio</a>
+    <a href="TareasMovil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; color: var(--tx2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5"></path></svg>Tareas</a>
+    <a href="BotMovil.dc.html" aria-label="Bot" aria-current="page" style="justify-self: center; width: 54px; height: 54px; border-radius: 18px; background: var(--menta); color: #0B0B0B; display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5"></path></svg></a>
+    <a href="CalendarioMovil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; color: var(--tx2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4"></path></svg>Agenda</a>
+    <a href="RepasoMovil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; color: var(--tx2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10"></path></svg>Estudiar</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"oscuro"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 'red', t: 0, pausa: {}, materia: 'est2', aprob: true, matOpen: false, docTab: 'todos' };
+  }
+  componentDidMount() { this.tk = setInterval(() => this.setState({ t: this.state.t + 1 }), 1600); }
+  componentWillUnmount() { clearInterval(this.tk); }
+  spr(map, pal, S) {
+    const sh = [];
+    map.forEach((row, y) => { for (let x = 0; x < row.length; x++) { const c = pal[row[x]]; if (c) sh.push((x * S) + 'px ' + (y * S) + 'px 0 0 ' + c); } });
+    return 'position: absolute; left: 0; top: 0; width: ' + S + 'px; height: ' + S + 'px; box-shadow: ' + sh.join(', ') + ';';
+  }
+  nav(activo) {
+    const I = {
+      inicio: 'M4 11l8-7 8 7v9h-5v-6H9v6H4z',
+      bot: 'M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5',
+      tareas: 'M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5',
+      agenda: 'M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4',
+      materias: 'M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4zM5 16a4 4 0 0 1 4-4h10',
+      estudiar: 'M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10'
+    };
+    const items = [['inicio', 'Inicio', 'Inicio.dc.html', ''], ['bot', 'Bot', 'Main.dc.html', '●'], ['tareas', 'Tareas', 'Tareas.dc.html', '3'], ['agenda', 'Agenda', 'Calendario.dc.html', ''], ['materias', 'Materias', 'Materias.dc.html', ''], ['estudiar', 'Estudiar', 'Repaso.dc.html', '24']];
+    return items.map(([id, t, href, b]) => ({ t, href, b, d: I[id], st: 'display: flex; align-items: center; gap: 12px; min-height: 40px; padding: 0 10px; border-radius: 9px; text-decoration: none; ' + (id === activo ? 'background: var(--bg2); color: var(--tx); font-weight: 600;' : 'color: var(--tx2);') }));
+  }
+  renderVals() {
+    const s = this.state;
+    const S = 3;
+    const B = { k: '#1B1A1F', d: '#C99B6D', D: '#9A6E47', L: '#E3BE8F', m: '#4A4F5C', s: '#14161B', p: '#79C27F', P: '#4C8F57', o: '#C7704C', O: '#9C5236', r: '#D9564E', b: '#5B86C9', y: '#E8C25A', n: '#8A8F9C', N: '#5E6370', l: '#7DE3A0', a: '#F2A65A', W: '#FFFFFF', w: '#EEEBE3', g: '#BDB8AC' };
+    const PLANT = ['...pp.....', '..pPPp.pp.', '.pPppPpPPp', '.ppPpppPp.', 'pPpppPpPpp', '.pPpPppPp.', '..ppPPpp..', '...pPPp...', '..kkkkkk..', '..kooook..', '..koOook..', '..kooOok..', '..kooook..', '...kkkk...'];
+    const SHELF = ['kkkkkkkkkkkkkkkk', 'kDDDDDDDDDDDDDDk', 'kDrrbbyyPPbbrrDk', 'kDrrbbyyPPbbrrDk', 'kDDDDDDDDDDDDDDk', 'kDbbyyrrbbPPyyDk', 'kDbbyyrrbbPPyyDk', 'kDDDDDDDDDDDDDDk', 'kkkkkkkkkkkkkkkk'];
+    const unit = (led) => ['knnnnnnnnnnk', led, 'kNNNNNNNNNNk'];
+    const RACK = ['kkkkkkkkkkkk'].concat(unit('knlnnnnnnank'), unit('knnlnnnnnnnk'), unit('knlnnnnnnank'), unit('knnnlnnnnnnk'), ['kkkkkkkkkkkk']);
+    const RACK2 = ['kkkkkkkkkkkk'].concat(unit('knannnnnnlnk'), unit('knnnnnnnnlnk'), unit('knannnnnnlnk'), unit('knlnnnnnnnnk'), ['kkkkkkkkkkkk']);
+    const CHAIR = ['.kkkkkk.', 'kNNNNNNk', 'kNnnnnNk', 'kNnnnnNk', 'kNNNNNNk', '.kkkkkk.', '...kk...', '..kkkk..'];
+    const BOSS = ['.kkkkkkkk.', 'ksssssssk.', 'kssssssssk', 'kssssssssk', 'kssssssssk', '.kkkkkkkk.', '..kssssk..', '...kkkk...'].map((r) => r.slice(0, 10));
+    const COFFEE = ['kkkkkkkkkk', 'knnnnnnnnk', 'knNNNNNNnk', 'knnnnnnnnk', 'knnkkkknnk', 'knnkWWknnk', 'kNNNNNNNNk', 'kkkkkkkkkk'];
+    const COOLER = ['..kkkk..', '.kbbbbk.', '.kbWbbk.', '.kbbbbk.', 'kkkkkkkk', 'kWWWWWWk', 'kWWkkWWk', 'kWWWWWWk', 'kWWWWWWk', 'kkkkkkkk'];
+    const MAIL = ['..kkkkkk..', '.kbbbbbbk.', 'kbbbbbbbbk', 'kbkkkkkkbk', 'kbbbbbbbbk', 'kbbbWWbbbk', '.kkkkkkkk.', '....kn....', '...kkkk...'];
+    const LAMP = ['.kkkk.', 'kyyyyk', '.kyyk.', '..kk..', '..kk..', '.kkkk.'];
+    const prop = (map, x, y, cls, z) => ({ cls: cls || '', wrap: 'position: absolute; left: ' + x + 'px; top: ' + y + 'px; width: ' + (map[0].length * S) + 'px; height: ' + (map.length * S) + 'px; z-index: ' + (z != null ? z : (y + map.length * S)) + ';', px: this.spr(map, B, S) });
+    const props = [
+      prop(PLANT, 20, 34, '', 80), prop(PLANT, 396, 200), prop(LAMP, 152, 92, '', 160), prop(BOSS, 196, 50, '', 40),
+      prop(PLANT, 470, 36, '', 80), prop(PLANT, 470, 252), prop(RACK, 894, 44, 'fa', 120), prop(RACK2, 894, 44, 'fb', 120),
+      prop(SHELF, 214, 296, '', 296), prop(PLANT, 246, 368),
+      prop(COFFEE, 30, 452, '', 494), prop(PLANT, 254, 650), prop(PLANT, 14, 660),
+      prop(COOLER, 624, 470), prop(PLANT, 902, 440), prop(PLANT, 902, 660), prop(PLANT, 626, 664),
+      prop(MAIL, 512, 616), prop(PLANT, 316, 660), prop(PLANT, 536, 660)
+    ];
+    [[700, 486], [800, 486], [858, 540], [858, 610], [800, 650], [700, 650], [664, 610], [664, 540]].forEach(([x, y]) => props.push(prop(CHAIR, x - 12, y - 12, '', y + 10)));
+    [[72, 528], [104, 528], [174, 528], [206, 528], [72, 606], [174, 606]].forEach(([x, y]) => props.push(prop(CHAIR, x, y, '', y + 20)));
+
+    const HAIRS = { ctl: '#4A3A2E', inv: '#1F1F24', fic: '#B5651D', red: '#2C2C34', ver: '#6B4423', maq: '#D9A441', ilu: '#C24A6A', tut: '#3B2A55', arc: '#8A8F9C', car: '#5A3A1E' };
+    const SKIN = { ctl: '#E8B58E', inv: '#B97F5A', fic: '#F1C7A5', red: '#D9A47E', ver: '#8D5A3B', maq: '#F1C7A5', ilu: '#D9A47E', tut: '#B97F5A', arc: '#E8B58E', car: '#8D5A3B' };
+    const SHIRT = { lila: ['#A68CE0', '#7F66BF'], cielo: ['#6FA6DE', '#4F84BD'], rosa: ['#E8907C', '#C46C59'], menta: ['#6FC497', '#4E9E75'], mant: ['#E4C14E', '#BF9C33'], navy: ['#3A4870', '#26314F'] };
+    const BODY = ['..kcccccck..', '.kccCccCcck.', '.kfcCccCcfk.', '.kfccccccfk.', '..kcccccck..', '..kppppppk..', '..kppkkppk..'];
+    const HEADF = ['....kkkk....', '...khhhhk...', '..khhhhhhk..', '..khffffhk..', '..kfeffefk..', '..kffffffk..', '...kffffk...'];
+    const HEADB = ['....kkkk....', '...khhhhk...', '..khhhhhhk..', '..khhhhhhk..', '..khhhhhhk..', '..khhhhhhk..', '...khhhhk...'];
+    const LST = ['..kpk..kpk..', '..kpk..kpk..', '..kPk..kPk..', '..kkk..kkk..'];
+    const LA = ['.kpk...kpk..', '.kPk...kpk..', '.kkk...kPk..', '.......kkk..'];
+    const LB = ['..kpk...kpk.', '..kpk...kPk.', '..kPk...kkk.', '..kkk.......'];
+    const person = (id, col, back, legs) => {
+      const pal = { k: '#1B1A1F', h: HAIRS[id], f: SKIN[id], e: '#1B1A1F', c: SHIRT[col][0], C: SHIRT[col][1], p: '#3B3F55', P: '#222228' };
+      return this.spr((back ? HEADB : HEADF).concat(BODY, legs), pal, S);
+    };
+    const MONI = ['kkkkkkkkkk', 'kSSSSSSSSk', 'kSssSsSSSk', 'kSSSSSSSSk', 'kkkkkkkkkk', '...kkkk...'];
+
+    const PT = {
+      ctl: [197, 56], inv: [532, 98], fic: [682, 98], red: [832, 98], ver: [562, 218], maq: [712, 218], ilu: [862, 218], tut: [56, 316], arc: [182, 316], car: [422, 584],
+      A_in: [312, 180], A_out: [312, 268], B_in: [478, 230], B_out: [414, 246], C_in: [230, 318], C_out: [300, 318], D_in: [250, 488], D_out: [322, 488], E_in: [624, 462], E_out: [552, 462], M: [432, 400],
+      K: [40, 494], T1: [84, 560], T2: [186, 560], S1: [110, 630], S2: [170, 630], E1: [700, 520], E2: [790, 470], E3: [860, 560],
+      invfic: [640, 150], ficred: [790, 150], redver: [612, 186], ilumaq: [770, 270], B1: [712, 276], nearctl: [270, 148], tutK: [140, 380]
+    };
+    const SCR = {
+      ctl: [['ctl', 'Plan del #15 listo'], ['ctl'], ['ctl', '#16 → Investigador'], ['ctl'], ['A_in'], ['A_out'], ['M'], ['E_out'], ['E_in'], ['E2', 'Reunión: plan #15'], ['E2', 'Reparto los pasos'], ['E_in'], ['E_out'], ['M'], ['A_out'], ['A_in']],
+      inv: [['inv', 'Fuente 4 de 6'], ['inv'], ['inv', 'DOI encontrado'], ['inv'], ['inv'], ['invfic', 'Te paso 6 fuentes', 1], ['invfic', '', 1], ['inv'], ['inv'], ['inv']],
+      fic: [['fic', 'Espero fuentes #15'], ['fic'], ['fic'], ['fic'], ['fic'], ['fic'], ['fic', '41 pasajes listos'], ['ficred', 'Pasajes para ti', 1], ['ficred', '', 1], ['fic']],
+      red: [['red', 'Redactando 3.3 FNBC'], ['red'], ['red', 'Cito ficha #27'], ['red'], ['red'], ['red'], ['red'], ['redver', 'Sección 3.2 lista', 1], ['redver', '', 1], ['red']],
+      ver: [['ver', 'Espero sección 3.3'], ['ver'], ['ver'], ['ver'], ['ver', '7 de 7 citas OK'], ['ver'], ['ver'], ['ver'], ['ver'], ['ver']],
+      maq: [['maq', 'Turno: #14'], ['maq'], ['B1'], ['B_in'], ['B_out'], ['M'], ['D_out'], ['D_in'], ['K', 'Café mientras espero'], ['K'], ['T1', 'Receta: Overfull hbox'], ['T1'], ['T1'], ['D_in'], ['D_out'], ['M'], ['B_out'], ['B_in'], ['B1']],
+      ilu: [['ilu', 'Diagrama de FD'], ['ilu'], ['ilu', 'Figura 2 de 3'], ['ilu'], ['ilu'], ['ilumaq', 'Figura 1 en SVG', 1], ['ilumaq', '', 1], ['ilu']],
+      tut: [['tut', 'Tarjeta 18 de 22'], ['tut'], ['tut', 'Quiz de 10 preguntas'], ['tut'], ['tut'], ['tut'], ['tut'], ['tut']],
+      arc: [['S1', 'Libre: espero #14'], ['S1'], ['S1'], ['T2'], ['T2'], ['K', 'Un café'], ['K'], ['S2'], ['S2'], ['S1']],
+      car: [['car', 'Revisando FCyT'], ['car'], ['car', '2 correos de docentes'], ['car'], ['M'], ['A_out'], ['A_in'], ['nearctl', 'Aviso: notas publicadas', 1], ['nearctl', '', 1], ['A_in'], ['A_out'], ['M']]
+    };
+    const DESK = { ctl: [140, 100, 150, 44, 'f'], inv: [490, 70, 120, 40], fic: [640, 70, 120, 40], red: [790, 70, 120, 40], ver: [520, 190, 120, 40], maq: [670, 190, 120, 40], ilu: [820, 190, 110, 40], tut: [24, 300, 100, 30], arc: [150, 300, 100, 30], car: [380, 622, 120, 36, 'f'] };
+
+    const A = [
+      { id: 'ctl', n: 'Control maestro', corto: 'Control', sala: 'DESPACHO', col: 'navy', st: 'w', motor: 'Claude', rol: 'Orquesta todo: recibe tus encargos, arma el plan, genera el esquema, reparte cada paso y vigila el cupo de 5 horas.', tarea: 'Planificar #15 · Pruebas de hipótesis', p: 70, cola: ['#16 · Controles ISO/IEC 27001 · espera tu aprobación'], log: ['14:02 asigné 3.3 a Redactor', '13:58 #15 entra a la cola', '13:41 esquema #14 aprobado'], hoy: '12 turnos · 1,20 USD' },
+      { id: 'inv', n: 'Investigador', corto: 'Investigador', sala: 'SALA DE TRABAJO', col: 'cielo', st: 'w', motor: 'Gemini', rol: 'Busca y descarga fuentes con Chromium, arma consultas en español e inglés y limpia la bibliografía por DOI.', tarea: 'Fuentes de #15 · 4 de 6', p: 66, cola: ['#16 · fuentes ISO/IEC 27001', '#14 · bibliografía por DOI'], log: ['14:01 descargado 4/6', '13:59 consulta ES/EN', '13:58 tomé #15'], hoy: 'gratis · 38 solicitudes' },
+      { id: 'fic', n: 'Fichador', corto: 'Fichador', sala: 'SALA DE TRABAJO', col: 'cielo', st: 'e', motor: 'Gemini', rol: 'Extrae pasajes literales de las fuentes y guarda sus embeddings en pgvector.', tarea: 'Esperando fuentes de #15', p: 0, cola: ['#15 · al terminar Investigador'], log: ['13:40 41 pasajes de #14', '13:40 vectores en pgvector'], hoy: 'gratis · 22 solicitudes' },
+      { id: 'red', n: 'Redactor', corto: 'Redactor', sala: 'SALA DE TRABAJO', col: 'rosa', st: 'w', motor: 'Claude', rol: 'Escribe cada sección apoyándose solo en las fichas; toda afirmación lleva cita verificable.', tarea: '#14 · sección 3.3 de 6', p: 55, cola: ['#14 · secciones 4 a 6'], log: ['14:02 inicio 3.3', '14:01 3.2 lista · 2.140 tokens', '13:58 3.1 lista'], hoy: '31 turnos · 4,90 USD' },
+      { id: 'ver', n: 'Verificador', corto: 'Verificador', sala: 'SALA DE TRABAJO', col: 'menta', st: 'e', motor: 'Python', rol: 'Comprueba cada cita literal contra su fuente y aplica la barrera de entrega.', tarea: 'Esperando sección 3.3', p: 0, cola: ['#14 · secciones 3.3 a 6'], log: ['14:01 3.2: 7/7 citas OK', '13:58 3.1: 5/5 citas OK'], hoy: 'local · 0 USD' },
+      { id: 'maq', n: 'Maquetador', corto: 'Maquetador', sala: 'SALA DE TRABAJO', col: 'rosa', st: 'b', motor: 'TeX Live', rol: 'Compila el LaTeX con las recetas de errores; si no hay receta, consulta a Gemini. Mientras espera, descansa.', tarea: 'Esperando texto completo de #14', p: 0, cola: ['#14 · compilar'], log: ['13:20 #13 compilado sin errores'], hoy: 'local · 0 USD' },
+      { id: 'ilu', n: 'Ilustrador', corto: 'Ilustrador', sala: 'SALA DE TRABAJO', col: 'mant', st: 'w', motor: 'Imágenes [por definir]', rol: 'Genera diagramas, figuras y portadas para los documentos.', tarea: '#14 · diagrama de dependencias funcionales', p: 45, cola: ['#14 · figura 3'], log: ['14:00 figura 1 lista', '13:52 pedido del Control maestro'], hoy: '[según modelo]' },
+      { id: 'tut', n: 'Tutor', corto: 'Tutor', sala: 'BIBLIOTECA', col: 'mant', st: 'w', motor: 'Gemini', rol: 'Convierte cada documento entregado en tarjetas de repaso y quizzes.', tarea: '#13 · tarjetas de repaso', p: 80, cola: [], log: ['14:00 tarjeta 18', '13:30 tomé #13'], hoy: 'gratis · 14 solicitudes' },
+      { id: 'arc', n: 'Archivista', corto: 'Archivista', sala: 'BIBLIOTECA', col: 'menta', st: 'b', motor: 'Drive API', rol: 'Entrega los PDF y documentos en las carpetas de Google Drive de cada materia. Sin trabajo, va a la sala de descanso.', tarea: 'Libre', p: 0, cola: ['#14 · subir a Drive'], log: ['08 oct #13 → UMSS/BD II/Bot'], hoy: '0 subidas' },
+      { id: 'car', n: 'Cartero', corto: 'Cartero', sala: 'RECEPCIÓN', col: 'lila', st: 'w', motor: 'n8n', rol: 'Lee Gmail y las páginas de la UMSS y la FCyT; lleva los avisos al Control maestro y a la bandeja.', tarea: 'Revisión de las 14:30', p: 30, cola: [], log: ['14:00 1 aviso nuevo', '13:30 sin novedades'], hoy: '28 ejecuciones' }
+    ];
+    const byId = {}; A.forEach((a) => { byId[a.id] = a; });
+    const P = s.pausa;
+    const txt = { w: 'Trabajando', e: 'Esperando', b: 'En descanso', i: 'En pausa' };
+    const dotC = { w: '#3FA36B', e: '#D9A23A', b: '#86AFD6', i: 'var(--tx2)' };
+    const COLS = { navy: 'var(--lila)', cielo: 'var(--cielo)', rosa: 'var(--rosa)', menta: 'var(--menta)', mant: 'var(--mant)', lila: 'var(--lila)' };
+
+    const gente = A.map((a) => {
+      const sc = P[a.id] ? [[a.id, 'En pausa']] : SCR[a.id];
+      const L = sc.length;
+      const cur = sc[s.t % L], prev = sc[(s.t - 1 + L) % L];
+      const [x, y] = PT[cur[0]], [px0, py0] = PT[prev[0]];
+      const moving = x !== px0 || y !== py0;
+      const seated = cur[0] === a.id;
+      const front = a.id === 'ctl' || a.id === 'car';
+      const back = seated ? !front : (moving ? y < py0 : false);
+      const leftw = moving && x < px0;
+      const isSel = a.id === s.sel;
+      return {
+        n: a.n, corto: a.corto, estado: txt[P[a.id] ? 'i' : a.st], isSel, selA: isSel ? 'true' : 'false',
+        cls: seated ? 'sit' : (moving ? 'walk' : 'idle'),
+        pos: 'left: ' + x + 'px; top: ' + y + 'px; z-index: ' + (y + 54) + ';',
+        flip: leftw ? 'transform: scaleX(-1);' : '',
+        s1: person(a.id, a.col, back, moving ? LA : LST),
+        s2: moving ? person(a.id, a.col, back, LB) : 'display: none;',
+        c1: moving ? 'fa' : '', c2: moving ? 'fb' : '',
+        carry: !!cur[2], msg: cur[1] || '', hasMsg: !!cur[1], bubCls: y < 90 ? 'bub px lowb' : 'bub px',
+        here: seated,
+        pick: () => this.setState({ sel: a.id })
+      };
+    });
+
+    const desks = Object.keys(DESK).map((id) => {
+      const [x, y, w, h, f] = DESK[id];
+      const a = byId[id];
+      const working = !P[id] && (a.st === 'w');
+      const screen = { k: '#1B1A1F', S: working ? SHIRT[a.col][0] : '#3A3F4A', s: working ? '#14161B' : '#2A2D35' };
+      const exec = f === 'f';
+      return {
+        st: 'position: absolute; left: ' + x + 'px; top: ' + y + 'px; width: ' + w + 'px; height: ' + h + 'px; box-sizing: border-box; z-index: ' + (y + h) + '; border: 3px solid #3E2A1A; ' + (exec ? (id === 'ctl' ? 'background: #6B4A2E; box-shadow: inset 0 0 0 6px #6B4A2E, inset 0 0 0 40px #3F6B4A;' : 'background: #8A6440; box-shadow: inset 0 6px 0 #A57A4F;') : 'background: #D8B48A; box-shadow: inset 0 -6px 0 #B8936A;'),
+        m1: exec ? 'display: none' : 'position: absolute; left: ' + (w / 2 - 34) + 'px; top: 2px; width: 30px; height: 18px; ' + this.spr(MONI, screen, 3).replace('position: absolute; left: 0; top: 0;', '').replace(/width: 3px; height: 3px;/, 'width: 3px; height: 3px;'),
+        m2: exec ? 'display: none' : 'position: absolute; left: ' + (w / 2 + 4) + 'px; top: 2px; width: 30px; height: 18px; ' + this.spr(MONI, screen, 3).replace('position: absolute; left: 0; top: 0;', '')
+      };
+    });
+
+    const STEPS = [['Descargar fuentes', 'inv', 'Python', 'h'], ['Fichas de pasajes', 'fic', 'Gemini', 'h'], ['Esquema', 'ctl', 'Claude', 'h'], ['Redacción 3 de 6', 'red', 'Claude', 'a'], ['Citas literales', 'ver', 'Python', 'e'], ['Bibliografía por DOI', 'inv', 'Gemini', 'e'], ['Compilar LaTeX', 'maq', 'TeX Live', 'e'], ['Barrera de entrega', 'ver', 'Python', 'e'], ['Entrega en Drive', 'arc', 'Drive API', 'e']];
+    const segs = [];
+    STEPS.forEach((st, i) => { const a0 = i * 40, b0 = a0 + 38; const col = st[3] === 'h' ? 'var(--tx)' : st[3] === 'a' ? '#3FA36B' : 'var(--line)'; segs.push(col + ' ' + a0 + 'deg ' + b0 + 'deg', 'transparent ' + b0 + 'deg ' + (a0 + 40) + 'deg'); });
+    const lab = { h: 'hecho', a: 'en curso', e: 'espera' };
+    const top = { h: 'var(--tx)', a: '#3FA36B', e: 'var(--line)' };
+    const mot = (m) => m.indexOf('Claude') === 0 ? 'background: var(--rosa)' : m.indexOf('Gemini') === 0 ? 'background: var(--cielo)' : 'background: var(--bg2); color: var(--tx)';
+    const sel = byId[s.sel] || A[0];
+    const se = P[sel.id] ? 'i' : sel.st;
+    const mats = [['est2', 'Estadística II', 'mant', '2008054'], ['bd2', 'Base de Datos II', 'cielo', '2010016'], ['ed', 'Ecuaciones Diferenciales', 'lila', '[código]'], ['seg', 'Seguridad de Sistemas', 'menta', '[código]']];
+    const matC = { 'Estadística II': 'background: var(--mant)', 'Base de Datos II': 'background: var(--cielo)', 'Ecuaciones Diferenciales': 'background: var(--lila)', 'Seguridad de Sistemas': 'background: var(--menta)' };
+    const ms = mats.find((m) => m[0] === s.materia);
+    const on = s.aprob;
+    const DOCS = [
+      { id: '#16', tema: 'Controles del Anexo A de ISO/IEC 27001', materia: 'Seguridad de Sistemas', estado: 'Espera tu aprobación', pags: 14, costo: '', drive: 'UMSS/Seguridad de Sistemas/Bot', aprobar: true, k: 'cola' },
+      { id: '#15', tema: 'Pruebas de hipótesis para dos medias', materia: 'Estadística II', estado: 'Investigador · fuentes 4/6', pags: 10, costo: '', drive: 'UMSS/Estadística II/Bot', k: 'cola' },
+      { id: '#13', tema: 'Transacciones y control de concurrencia', materia: 'Base de Datos II', estado: 'Entregado', pags: 14, costo: '9,40', drive: 'UMSS/Base de Datos II/Bot', pdf: true, k: 'ent' },
+      { id: '#12', tema: 'EDO lineales de segundo orden', materia: 'Ecuaciones Diferenciales', estado: 'Entregado · 1 error resuelto', pags: 11, costo: '6,10', drive: 'UMSS/Ecuaciones Diferenciales/Bot', pdf: true, error: true, k: 'err' },
+      { id: '#11', tema: 'Distribuciones muestrales', materia: 'Estadística II', estado: 'Entregado', pags: 9, costo: '4,80', drive: 'UMSS/Estadística II/Bot', pdf: true, k: 'ent' }
+    ];
+    const TABS = [['todos', 'Todos'], ['cola', 'En cola 2'], ['ent', 'Entregados 18'], ['err', 'Errores 1']];
+    return {
+      tema: (this.props.tema ?? 'oscuro') === 'claro' ? 'claro' : 'oscuro',
+      nav: this.nav('bot'),
+      cW: gente.filter((g) => g.here).length, cB: A.filter((a) => a.st === 'b').length,
+      props, desks, gente,
+      paper: this.spr(['kkkk.', 'kWWkk', 'kWWWk', 'kWbWk', 'kWWWk', 'kWbWk', 'kkkkk'], B, 3),
+      ring: 'conic-gradient(' + segs.join(', ') + ')',
+      pct: Math.round(3.55 / 9 * 100),
+      pasos: STEPS.map(([nombre, ag, motor, st], i) => ({
+        nombre, motor, num: String(i + 1).padStart(2, '0'), estado: lab[st], agente: byId[ag].corto, motorSt: mot(motor),
+        face: person(ag, byId[ag].col, false, LST).replace('width: 3px; height: 3px;', 'width: 1px; height: 1px;').replace(/(-?\d+)px (-?\d+)px 0 0/g, (m0, a1, b1) => (a1 / 3) + 'px ' + (b1 / 3) + 'px 0 0'),
+        pick: () => this.setState({ sel: ag }),
+        st: 'width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 10px 0 0; background: none; border: 0; border-top: 3px solid ' + top[st] + '; color: var(--tx); font: inherit; text-align: left; cursor: pointer; ' + (st === 'e' ? 'opacity: 0.62;' : '') + (ag === s.sel ? ' outline: 2px dashed var(--tx); outline-offset: 4px;' : '')
+      })),
+      log: [
+        { t: '13:58:02', ag: 'Redactor', txt: 'sección 3.1 «Dependencias funcionales» redactada' },
+        { t: '13:58:40', ag: 'Verificador', txt: '5 de 5 citas literales confirmadas' },
+        { t: '14:00:20', ag: 'Maquetador', txt: 'sin trabajo: pasa a la sala de descanso' },
+        { t: '14:01:15', ag: 'Redactor', txt: 'lleva la sección 3.2 al Verificador' },
+        { t: '14:02:11', ag: 'Ilustrador', txt: 'entrega la figura 1 al Maquetador' }
+      ],
+      docTabs: TABS.map(([k, t]) => ({ t, on: s.docTab === k ? 'true' : 'false', pick: () => this.setState({ docTab: k }), st: 'background: none; border: 0; padding: 0 0 10px; font: inherit; cursor: pointer; ' + (s.docTab === k ? 'border-bottom: 2px solid var(--tx); color: var(--tx); font-weight: 600;' : 'border-bottom: 2px solid transparent; color: var(--tx2);') })),
+      docs: DOCS.filter((d) => s.docTab === 'todos' || d.k === s.docTab || (s.docTab === 'ent' && d.k === 'err')).map((d) => ({ ...d, aprobar: !!d.aprobar, pdf: !!d.pdf, error: !!d.error, matSt: matC[d.materia] })),
+      chips: A.map((a) => { const on = a.id === s.sel; return { n: a.corto, on: on ? 'true' : 'false', est: txt[P[a.id] ? 'i' : a.st], dot: 'width: 7px; height: 7px; border-radius: 50%; flex: 0 0 7px; background: ' + dotC[P[a.id] ? 'i' : a.st], pick: () => this.setState({ sel: a.id }), st: 'flex: 0 0 auto; min-height: 38px; padding: 0 10px; border-radius: 8px; font: inherit; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; ' + (on ? 'border: 2px solid var(--tx); background: var(--bg2); color: var(--tx);' : 'border: 1px solid var(--line); background: transparent; color: var(--tx2);') }; }),
+      barra: STEPS.map((x) => 'flex: 1; height: 6px; border-radius: 3px; background: ' + top[x[3]]),
+      selMsg: (gente.find((g) => g.isSel) || {}).msg || '',
+      esCtl: sel.id === 'ctl',
+      irEncargo: () => this.setState({ sel: 'ctl' }),
+      sel: {
+        n: sel.n, sala: sel.sala, rol: sel.rol, motor: sel.motor, motorSt: mot(sel.motor), hoy: sel.hoy,
+        estado: txt[se], dot: 'width: 8px; height: 8px; border-radius: 50%; background: ' + dotC[se],
+        face: person(sel.id, sel.col, false, LST).replace('width: 3px; height: 3px;', 'width: 4px; height: 4px;').replace(/(-?\d+)px (-?\d+)px 0 0/g, (m0, a1, b1) => (a1 / 3 * 4) + 'px ' + (b1 / 3 * 4) + 'px 0 0'),
+        tarea: P[sel.id] ? 'En pausa · ' + sel.tarea : sel.tarea,
+        prog: 'height: 100%; border-radius: 6px; background: var(--tx); transition: width .4s; width: ' + sel.p + '%',
+        pasos: STEPS.filter((x) => x[1] === sel.id).map((x) => ({ n: x[0], e: lab[x[3]], dot: 'width: 8px; height: 8px; border-radius: 2px; background: ' + top[x[3]] })),
+        sinPasos: STEPS.filter((x) => x[1] === sel.id).length === 0,
+        cola: sel.cola, sinCola: sel.cola.length === 0, log: sel.log
+      },
+      pausaTxt: P[sel.id] ? 'Reanudar agente' : 'Pausar agente',
+      pausar: () => this.setState({ pausa: { ...P, [sel.id]: !P[sel.id] } }),
+      matOpen: s.matOpen, matOpenA: s.matOpen ? 'true' : 'false',
+      toggleMat: () => this.setState({ matOpen: !s.matOpen }),
+      materias: mats.map(([id, nombre, c, cod]) => {
+        const sl = s.materia === id;
+        return { nombre, cod, sel: sl ? 'true' : 'false', pick: () => this.setState({ materia: id, matOpen: false }), dot: 'width: 8px; height: 8px; border-radius: 50%; background: var(--' + c + ')', st: 'width: 100%; min-height: 38px; padding: 0 10px; border: 0; border-radius: 8px; font: inherit; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 10px; text-align: left; color: var(--tx); ' + (sl ? 'background: var(--bg2); font-weight: 600;' : 'background: transparent;') };
+      }),
+      matSel: ms[1], matSelDot: 'width: 10px; height: 10px; border-radius: 50%; background: var(--' + ms[2] + ')',
+      aprob: on ? 'true' : 'false',
+      toggleAprob: () => this.setState({ aprob: !on }),
+      swT: 'width: 40px; height: 24px; flex: 0 0 40px; border-radius: 99px; padding: 3px; box-sizing: border-box; display: flex; transition: all .2s; ' + (on ? 'background: var(--tx); justify-content: flex-end;' : 'background: var(--line); justify-content: flex-start;')
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Agregar materia · móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.in{min-height:46px;width:100%;box-sizing:border-box;padding:0 12px;border-radius:11px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:inherit;font-size:15px;outline:none}
+.in:focus{border-color:var(--tx)}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.gt{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--tx2);padding-top:6px}
+a{color:inherit}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; display: flex; flex-direction: column">
+  <header style="display: flex; align-items: center; gap: 10px; padding: 54px 18px 12px; border-bottom: 1px solid var(--line)">
+    <a href="BotMovil.dc.html" style="min-height: 44px; display: inline-flex; align-items: center; text-decoration: none" class="mu">Cancelar</a>
+    <h1 class="d" style="font-size: 18px; flex: 1; text-align: center">Agregar materia</h1>
+    <button type="button" style="min-height: 40px; padding: 0 14px; border-radius: 10px; border: 0; background: var(--ink); color: var(--on); font: inherit; font-weight: 600">Guardar</button>
+  </header>
+
+  <div style="flex: 1; overflow-y: auto; padding: 16px 18px 30px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: center; gap: 14px">
+      <span style="{{chip}}">{{inicial}}</span>
+      <div role="radiogroup" aria-label="Color" style="display: flex; gap: 8px">
+        <sc-for list="{{colores}}" as="c" hint-placeholder-count="5">
+          <button type="button" role="radio" aria-checked="{{c.on}}" aria-label="{{c.n}}" onClick="{{c.pick}}" style="{{c.st}}"></button>
+        </sc-for>
+      </div>
+    </div>
+
+    <span class="gt">Datos generales</span>
+    <div class="f"><label for="n" class="lbl">Nombre *</label><input id="n" class="in" type="text" value="{{nombre}}" onInput="{{onNombre}}"></div>
+    <div style="display: grid; grid-template-columns: 1.3fr 0.7fr 0.7fr; gap: 8px">
+      <div class="f"><label for="c" class="lbl">Código SIS *</label><input id="c" class="in m" type="text" placeholder="[código]"></div>
+      <div class="f"><label for="g" class="lbl">Grupo</label><input id="g" class="in" type="text" value="2"></div>
+      <div class="f"><label for="s" class="lbl">Sem.</label><input id="s" class="in" type="text" value="6"></div>
+    </div>
+    <div role="radiogroup" aria-label="Estado" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 11px; background: var(--bg2)">
+      <sc-for list="{{estados}}" as="e" hint-placeholder-count="3">
+        <button type="button" role="radio" aria-checked="{{e.on}}" onClick="{{e.pick}}" style="{{e.st}}">{{e.t}}</button>
+      </sc-for>
+    </div>
+
+    <span class="gt">Docente</span>
+    <div class="f"><label for="dc" class="lbl">Docente titular</label><input id="dc" class="in" type="text" placeholder="Nombre completo"></div>
+    <div class="f"><label for="ml" class="lbl">Correo</label><input id="ml" class="in" type="email" placeholder="docente@umss.edu"></div>
+
+    <span class="gt">Horario</span>
+    <div style="display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; gap: 10px; min-height: 48px; border-top: 1px solid var(--line)"><span style="flex: 1">Lunes</span><span class="m">09:45 · 11:15</span><span class="mu" style="font-size: 12px">[aula]</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; min-height: 48px; border-top: 1px solid var(--line)"><span style="flex: 1">Miércoles</span><span class="m">09:45 · 11:15</span><span class="mu" style="font-size: 12px">[aula]</span></div>
+      <button type="button" style="min-height: 44px; border: 0; border-top: 1px solid var(--line); background: none; color: var(--tx); font: inherit; font-weight: 500; text-align: left; cursor: pointer">+ Agregar horario</button>
+    </div>
+
+    <span class="gt">Contenido</span>
+    <div class="f"><label for="ds" class="lbl">Descripción</label><textarea id="ds" class="in" rows="3" style="padding: 10px 12px; resize: none" placeholder="Objetivos, enfoque del docente, bibliografía base"></textarea></div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <div class="f"><label for="u" class="lbl">Unidades</label><input id="u" class="in m" value="5"></div>
+      <div class="f"><label for="p" class="lbl">Parciales %</label><input id="p" class="in m" value="60"></div>
+      <div class="f"><label for="pr" class="lbl">Prácticas %</label><input id="pr" class="in m" value="40"></div>
+    </div>
+
+    <span class="gt">Google Drive</span>
+    <div class="m" style="font-size: 12px; line-height: 1.7; padding: 12px; border-radius: 11px; background: var(--bg2)">UMSS / <strong>{{nombre}}</strong> /<br><span class="mu">Bot · Apuntes · Prácticas</span></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"oscuro"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { nombre: 'Taller de Base de Datos', estado: 'c', color: 'cielo' };
+  }
+  renderVals() {
+    const est = [['c', 'Cursando'], ['p', 'Por cursar'], ['a', 'Aprobada']];
+    const cols = [['cielo', 'Cielo'], ['mant', 'Mantequilla'], ['lila', 'Lila'], ['menta', 'Menta'], ['rosa', 'Durazno']];
+    const nombre = this.state.nombre || 'Nueva materia';
+    return {
+      tema: (this.props.tema ?? 'oscuro') === 'claro' ? 'claro' : 'oscuro',
+      nombre, inicial: nombre.split(' ').filter((w) => w.length > 2).map((w) => w[0]).slice(0, 2).join('').toUpperCase(),
+      onNombre: (e) => this.setState({ nombre: e.target.value }),
+      chip: 'width: 52px; height: 52px; flex: 0 0 52px; border-radius: 14px; display: grid; place-items: center; font-family: \'Bricolage Grotesque\', sans-serif; font-weight: 700; font-size: 18px; color: #0B0B0B; background: var(--' + this.state.color + ')',
+      colores: cols.map(([id, n]) => {
+        const on = this.state.color === id;
+        return { n, on: on ? 'true' : 'false', pick: () => this.setState({ color: id }), st: 'width: 32px; height: 32px; border-radius: 50%; border: 0; cursor: pointer; background: var(--' + id + '); ' + (on ? 'outline: 2px solid var(--tx); outline-offset: 3px;' : '') };
+      }),
+      estados: est.map(([id, t]) => {
+        const on = this.state.estado === id;
+        return { t, on: on ? 'true' : 'false', pick: () => this.setState({ estado: id }), st: 'min-height: 38px; border: 0; border-radius: 8px; font: inherit; font-size: 13px; cursor: pointer; ' + (on ? 'background: var(--bg); color: var(--tx); font-weight: 600;' : 'background: transparent; color: var(--tx2);') };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

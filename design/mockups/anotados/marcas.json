@@ -1,0 +1,3257 @@
+[
+ {
+  "hu": "HU-01.01",
+  "pngs": [
+   "inicio-dashboard-escritorio",
+   "inicio-dashboard-movil",
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "dpardo"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Inicio",
+     "Olimpo",
+     "Tareas",
+     "Agenda",
+     "Materias",
+     "Estudiar",
+     "bot",
+     "Bot"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "24"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "JD",
+     "Configuración"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Oficina"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Inicio · Tareas · Olimpo · Agenda · Estudiar",
+     "Inicio · Tareas · bot · Agenda · Estudiar",
+     "Inicio · Tareas · Bot · Agenda · Estudiar"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Esta página no existe",
+     "Ir al inicio"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-01.02",
+  "pngs": [
+   "configuracion-escritorio",
+   "configuracion-movil",
+   "iniciar-sesion-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Apariencia"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Claro sobre blanco puro. Oscuro sobre negro OLED, que apaga los píxeles en pantallas AMOLED."
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Claro · Oscuro · Sistema"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": []
+   },
+   {
+    "n": "5",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-01.03",
+  "pngs": [
+   "inicio-dashboard-escritorio",
+   "inicio-dashboard-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": [
+     "JD"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-02.01",
+  "pngs": [
+   "controles-y-estados-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Encargar al Olimpo",
+     "Encargar al bot",
+     "Encargar al Bot"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Encargar al Olimpo",
+     "Encargar al bot",
+     "Encargar al Bot"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Encargar al Olimpo",
+     "Encargar al bot",
+     "Encargar al Bot"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Encargar al Olimpo",
+     "Encargar al bot",
+     "Encargar al Bot"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Ver esquema",
+     "Cancelar",
+     "Eliminar materia"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": []
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Exportar PDF ▾"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Chico",
+     "Medio",
+     "Grande"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-02.02",
+  "pngs": [
+   "controles-y-estados-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Vacío",
+     "Tema del documento",
+     "Texto de ayuda"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Con foco",
+     "Pruebas de hipótesis"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Error",
+     "2010",
+     "El código SIS debe tener 7 dígitos."
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Válido",
+     "2010016 ✓"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Deshabilitado",
+     "dpardo"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Búsqueda",
+     "Buscar"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Área de texto · interactivo",
+     "41 / 280"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Número con pasos · interactivo",
+     "− 12 +"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-02.03",
+  "pngs": [
+   "controles-y-estados-escritorio",
+   "hojas-inferiores-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Select · materia",
+     "Base de Datos II ✓"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Combobox · docente",
+     "ra",
+     "Sin coincidencias",
+     "ra"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Multiselección · prerrequisitos",
+     "Base de Datos I ×",
+     "Matemática Discreta ×",
+     "Agregar…",
+     "+ Ingeniería de Software",
+     "+ Programación"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Menú contextual",
+     "Abrir PDF",
+     "Eliminar documento"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Elegir materia",
+     "Buscar materia",
+     "+ Agregar materia"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-02.04",
+  "pngs": [
+   "controles-y-estados-escritorio",
+   "hojas-inferiores-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Fecha · interactivo",
+     "jueves 15 de octubre de 2026"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "‹ Octubre 2026 ›"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Hora",
+     "09:00 … 09:45 ✓ … 10:15"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Rango rápido",
+     "Hoy",
+     "Mañana",
+     "Antes del parcial · jue 15",
+     "Sin fecha"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Fecha de entrega"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-02.05",
+  "pngs": [
+   "controles-y-estados-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Encargo #17 enviado al Control maestro",
+     "Deshacer"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Error",
+     "No se pudo compilar el LaTeX del #12",
+     "Ver"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Info",
+     "La sesión de Claude Code vence pronto"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Pausa al agente sin perder la cola",
+     "Pausar agente"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Claude",
+     "Gemini",
+     "Python"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Progreso lineal · Determinado e indeterminado",
+     "Spinner"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Carga · esqueleto"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Sin documentos todavía",
+     "El primer encargo aparece aquí.",
+     "Nuevo encargo"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-02.06",
+  "pngs": [
+   "dialogos-trabajo-diario",
+   "dialogos-ajustes-y-cuenta",
+   "hojas-inferiores-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Nueva tarea",
+     "Cancelar",
+     "Crear tarea"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Elegir materia"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "¿Pausar al Redactor?",
+     "Pausar",
+     "Cancelar"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Eliminar Taller de Base de Datos",
+     "Escribe el nombre para confirmar",
+     "Eliminar materia"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "¿Descartar cambios?"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-02.07",
+  "pngs": [
+   "controles-y-estados-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Subir fuentes",
+     "PDF, enlaces o DOI. Las fuentes van a Supabase Storage."
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Reposo",
+     "Arrastra PDF aquí",
+     "o pega un enlace o DOI",
+     "Elegir archivos"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Arrastrando",
+     "Suelta para adjuntar 2 archivos"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Subiendo",
+     "PDF",
+     "Walpole cap 10 · pruebas.pdf",
+     "64%"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "DOI",
+     "10.1000/[doi] · verificado"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-03.01",
+  "pngs": [
+   "iniciar-sesion-escritorio",
+   "iniciar-sesion-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "dpardo",
+     "Tu semestre, en orden.",
+     "Agentes de estudio, tareas, horario y malla en un solo lugar."
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Iniciar sesión",
+     "Ingresa tu usuario y contraseña"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Usuario",
+     "dpardo"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Contraseña",
+     "Mostrar"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Recordar este dispositivo"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "¿Olvidaste la contraseña?"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Entrar →"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": []
+   },
+   {
+    "n": "9",
+    "lits": [
+     "Acceso personal · sesión cifrada"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-03.02",
+  "pngs": [
+   "iniciar-sesion-escritorio",
+   "iniciar-sesion-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Revisa tu Gmail"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Enviamos un código de 6 dígitos a jdiego•••@gmail.com porque es un dispositivo nuevo."
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Dígito 1…6"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Verificar y entrar"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "‹ Volver"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Reenviar en 0:58"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-03.03",
+  "pngs": [
+   "iniciar-sesion-escritorio",
+   "configuracion-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Recordar este dispositivo"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Recordar este dispositivo 30 días"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-03.04",
+  "pngs": [
+   "dialogos-ajustes-y-cuenta"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Recuperar acceso"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Usuario",
+     "Enviaremos un código a jdiego•••@gmail.com."
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Código de 6 dígitos enviado a jdiego•••@gmail.com"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Nueva contraseña",
+     "Contraseña segura · 4 de 4 reglas"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Atrás"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-03.05",
+  "pngs": [
+   "dialogos-ajustes-y-cuenta",
+   "configuracion-escritorio",
+   "configuracion-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Cerrar sesión"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "¿Cerrar sesión en este PC?"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Cerrar también en los demás dispositivos"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Cancelar",
+     "Cerrar sesión"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-04.01",
+  "pngs": [
+   "configuracion-escritorio",
+   "configuracion-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Apariencia"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Reintentar"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-04.02",
+  "pngs": [
+   "configuracion-escritorio",
+   "configuracion-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Cambiar contraseña",
+     "Al confirmar te enviamos un código a tu Gmail. El cambio solo se aplica después de verificarlo."
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "01 Nueva contraseña · 02 Código de Gmail · 03 Listo"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Contraseña actual"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Nueva contraseña",
+     "n/4"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Confirmar contraseña",
+     "Las contraseñas coinciden",
+     "No coinciden todavía"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Enviar código a Gmail"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Revisa tu Gmail",
+     "Verificar y cambiar",
+     "Volver",
+     "Reenviar en 0:45"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Contraseña actualizada",
+     "Se cerró la sesión en tus otros dispositivos.",
+     "Cerrar"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-04.03",
+  "pngs": [
+   "configuracion-escritorio",
+   "configuracion-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Cuenta",
+     "Inicias sesión con usuario y contraseña.",
+     "Usuario",
+     "Correo para verificación"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Verificación en dos pasos",
+     "Código por Gmail en cada inicio de sesión desde un dispositivo nuevo.",
+     "Pedir código por Gmail"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Recordar este dispositivo 30 días"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Sesiones activas",
+     "Este PC · Android (PWA)",
+     "Cerrar las demás"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Verificación en dos pasos · Gmail · activa"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-04.04",
+  "pngs": [
+   "configuracion-escritorio",
+   "configuracion-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Google",
+     "Drive para las entregas del Olimpo; Calendar y Tasks opcionales vía n8n.",
+     "Drive para las entregas del bot; Calendar y Tasks opcionales vía n8n.",
+     "Drive para las entregas del Bot; Calendar y Tasks opcionales vía n8n."
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Carpeta raíz en Drive",
+     "Cambiar"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Sincronizar Google Calendar"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Sincronizar Google Tasks"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Reconectar Google"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-05.01",
+  "pngs": [
+   "olimpo-oficina-escritorio",
+   "olimpo-oficina-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Olimpo",
+     "Oficina",
+     "bot",
+     "Bot"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "● En línea · Oracle VM · 6 en su puesto · 2 en descanso"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "+ Nuevo encargo"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": []
+   },
+   {
+    "n": "5",
+    "lits": []
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Fuente 4 de 6",
+     "Espero sección 3.3"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": []
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Sin conexión con el Olimpo · reintentando…",
+     "Sin conexión con el bot · reintentando…",
+     "Sin conexión con el Bot · reintentando…"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-05.02",
+  "pngs": [
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": []
+   },
+   {
+    "n": "5",
+    "lits": []
+   },
+   {
+    "n": "6",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-05.03",
+  "pngs": [
+   "olimpo-oficina-escritorio",
+   "olimpo-oficina-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "DESPACHO",
+     "Control maestro",
+     "Zeus · Control maestro"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "● Trabajando · Claude"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Orquesta todo: recibe tus encargos, arma el plan…"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Tarea actual",
+     "Planificar #15 · Pruebas de hipótesis"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Pasos del pipeline a su cargo",
+     "Esquema · hecho"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Cola",
+     "#16 · Controles ISO/IEC 27001 · espera tu aprobación"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Registro del agente",
+     "14:02 asigné 3.3 a Redactor"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Hoy",
+     "12 turnos · 1,20 USD"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "Pausar agente",
+     "Configurar agente"
+    ]
+   },
+   {
+    "n": "10",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-05.04",
+  "pngs": [
+   "olimpo-oficina-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Olimpo",
+     "Consumo",
+     "bot",
+     "Bot"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": []
+   },
+   {
+    "n": "5",
+    "lits": [
+     "+ Nuevo encargo"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "#14 Normalización · 4 de 9",
+     "≈ 18 min"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-05.05",
+  "pngs": [
+   "olimpo-oficina-escritorio",
+   "hojas-inferiores-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Pausar agente",
+     "Reanudar agente"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "¿Pausar al Redactor?",
+     "¿Pausar a Apolo?",
+     "Pausar",
+     "Cancelar"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Pausa al agente sin perder la cola"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-05.06",
+  "pngs": [
+   "dialogos-ajustes-y-cuenta"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "RE",
+     "Configurar Redactor",
+     "Configurar Apolo · Redactor"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Nombre visible"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Motor"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Máximo de turnos por sección"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Prioridad en la cola",
+     "Normal"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Instrucciones permanentes",
+     "Cada afirmación lleva cita de una ficha…"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Restablecer",
+     "Cancelar",
+     "Guardar"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-05.07",
+  "pngs": [],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": [
+     "P2"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-05.08",
+  "pngs": [
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Dios titular"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Nuevo dios"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Retirar dios"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-06.01",
+  "pngs": [
+   "olimpo-oficina-escritorio",
+   "encargar-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Nuevo encargo",
+     "BUZÓN DEL CONTROL MAESTRO"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Materia",
+     "● Estadística II ▾",
+     "+ Agregar materia"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Tema",
+     "Pruebas de hipótesis para dos medias"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Páginas",
+     "12",
+     "− 12 +"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Fuentes",
+     "Adjuntar"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Indicaciones",
+     "Enfoque, ejercicios resueltos, figuras que necesitas"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Aprobar esquema antes de redactar",
+     "El Control maestro te avisa cuando esté listo"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Entrega en Drive",
+     "UMSS / Estadística II / Olimpo",
+     "UMSS / Estadística II / bot",
+     "UMSS / Estadística II / Bot"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "Encargar al Olimpo",
+     "Encargar al bot",
+     "Encargar al Bot"
+    ]
+   },
+   {
+    "n": "10",
+    "lits": [
+     "Estimado 3 a 15 USD de cupo según páginas y fuentes."
+    ]
+   },
+   {
+    "n": "11",
+    "lits": [
+     "Claude redacta · Gemini prepara fichas y bibliografía"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-06.02",
+  "pngs": [
+   "olimpo-oficina-escritorio",
+   "olimpo-oficina-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "39%",
+     "4 / 9"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "#14",
+     "Base de Datos II",
+     "Redactando"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Normalización: de 1FN a FNBC con dependencias funcionales"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "12 páginas · esquema aprobado 13:41 · ≈ 18 min restantes · Drive: UMSS / Base de Datos II / Olimpo",
+     "12 páginas · esquema aprobado 13:41 · ≈ 18 min restantes · Drive: UMSS / Base de Datos II / bot",
+     "12 páginas · esquema aprobado 13:41 · ≈ 18 min restantes · Drive: UMSS / Base de Datos II / Bot"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Ver esquema",
+     "Pausar trabajo",
+     "Abrir carpeta en Drive ↗"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "01 · hecho Descargar fuentes · Investigador · Python",
+     "09 · espera Entrega en Drive · Archivista · Drive API"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Sin trabajos en curso"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-06.03",
+  "pngs": [
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Registro en vivo"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Dependencias funcionales"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "14:00:20 Maquetador sin trabajo: pasa a la sala de descanso"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-06.04",
+  "pngs": [
+   "dialogos-trabajo-diario",
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Esquema propuesto",
+     "Controles del Anexo A de ISO/IEC 27001 · Seguridad de Sistemas"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "6 secciones",
+     "14 páginas",
+     "9 fuentes · 52 fichas"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Generado por Control maestro · Claude"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "⋮⋮"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "+ Agregar sección"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Pedir cambios al Control maestro",
+     "Ej.: une 4 y 5; agrega un caso de estudio de la UMSS"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Al aprobar, el Redactor empieza en ≈ 1 min."
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Pedir cambios",
+     "Aprobar y redactar"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "#16 … Espera tu aprobación … Revisar esquema"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-06.05",
+  "pngs": [
+   "olimpo-oficina-escritorio",
+   "hojas-inferiores-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Documentos",
+     "Todos",
+     "En cola 2",
+     "Entregados 18",
+     "Errores 1"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "# · Tema · Materia · Estado · Págs. · USD · Carpeta en Drive"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "#16 · Controles del Anexo A de ISO/IEC 27001 · Seguridad de Sistemas · Espera tu aprobación · 14 · UMSS/Seguridad de Sistemas/Olimpo · Revisar esquema",
+     "#16 · Controles del Anexo A de ISO/IEC 27001 · Seguridad de Sistemas · Espera tu aprobación · 14 · UMSS/Seguridad de Sistemas/bot · Revisar esquema",
+     "#16 · Controles del Anexo A de ISO/IEC 27001 · Seguridad de Sistemas · Espera tu aprobación · 14 · UMSS/Seguridad de Sistemas/Bot · Revisar esquema"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "PDF",
+     "Ver error"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "#13 Transacciones y concurrencia"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Sin documentos todavía"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-06.06",
+  "pngs": [
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Pausar trabajo",
+     "Reanudar trabajo"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Redactando",
+     "Pausado"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Atender el siguiente"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-07.01",
+  "pngs": [
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Documentos"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-07.02",
+  "pngs": [
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Registro en vivo"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-07.03",
+  "pngs": [
+   "olimpo-oficina-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Entregado",
+     "PDF"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Carpeta en Drive"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Copia en Drive pendiente"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-07.04",
+  "pngs": [
+   "consumo-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Equivalente a precio de lista · 30 días"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-08.01",
+  "pngs": [
+   "consumo-escritorio",
+   "consumo-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Cupo de 5 horas",
+     "38 %",
+     "Se reinicia en 2 h 14 min"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Cupo semanal",
+     "21 %",
+     "Se reinicia el lunes 00:00"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Equivalente a precio de lista · 30 días"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Gemini nivel gratuito · hoy",
+     "0 USD",
+     "[N] de [cuota] solicitudes diarias según AI Studio"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Gasto diario del Olimpo, USD a precio de lista",
+     "Ver como tabla",
+     "Gasto diario del bot, USD a precio de lista",
+     "Gasto diario del Bot, USD a precio de lista"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-08.02",
+  "pngs": [
+   "consumo-escritorio",
+   "consumo-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Servidor e infraestructura",
+     "Oracle VM · Ampere ARM · Ubuntu · en línea hace 12 d 4 h",
+     "actualizado 14:02"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Disco"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Memoria 5,1 de 12 GB",
+     "CPU · 2 OCPU 8 % ahora"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Riesgo de reclamo",
+     "Bajo",
+     "CPU p95 en 7 días: 31 % · umbral de inactividad: 20 %"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Servicio · Estado · Detalle"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": []
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Trabajador · n8n · respaldo activos",
+     "Sesión de Claude Code renovar pronto",
+     "Supabase · Drive 142 MB · 6,2 GB"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-08.03",
+  "pngs": [
+   "consumo-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Por paso del pipeline"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Los pasos de Gemini y Python no consumen cupo de Claude."
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Por documento",
+     "Documento · Págs. · Turnos · USD · USD/pág."
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-08.04",
+  "pngs": [
+   "consumo-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Limpiar caché de fuentes"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-09.01",
+  "pngs": [
+   "agregar-materia-escritorio",
+   "agregar-materia-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Agregar materia",
+     "El Olimpo la usará para encargos, Drive, calendario y malla.",
+     "El bot la usará para encargos, Drive, calendario y malla.",
+     "El Bot la usará para encargos, Drive, calendario y malla."
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Datos generales",
+     "Como figuran en tu plan de estudios."
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Nombre *",
+     "Código SIS *",
+     "[código]"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Grupo",
+     "Semestre del plan",
+     "Gestión",
+     "Estado"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Docente",
+     "Docente titular",
+     "Correo",
+     "docente@umss.edu",
+     "Auxiliar",
+     "Consultas"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Horario",
+     "Se crea en el calendario.",
+     "Día · Inicio · Fin · Aula",
+     "Lunes ×",
+     "+ Agregar horario"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Contenido",
+     "Contexto para el Olimpo.",
+     "Descripción",
+     "Unidades",
+     "Contexto para el bot.",
+     "Contexto para el Bot."
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Parcial 1 %",
+     "Parcial 2 %",
+     "Prácticas %"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "Prerrequisitos",
+     "Base de Datos II ×",
+     "+ Agregar"
+    ]
+   },
+   {
+    "n": "10",
+    "lits": [
+     "Color"
+    ]
+   },
+   {
+    "n": "11",
+    "lits": [
+     "Google Drive",
+     "Donde el Olimpo entrega.",
+     "Crear carpetas automáticamente",
+     "Donde el bot entrega.",
+     "Donde el Bot entrega."
+    ]
+   },
+   {
+    "n": "12",
+    "lits": [
+     "* Obligatorio",
+     "Cancelar",
+     "Guardar materia",
+     "Cancelar · Agregar materia · Guardar"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-09.02",
+  "pngs": [
+   "materias-escritorio",
+   "materias-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Materias",
+     "Gestión II/2026 · cursando 4"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Aprobadas",
+     "14 materias en la malla →"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "2010016 · Grupo [N] · Semestre 4",
+     "Base de Datos II",
+     "[Docente titular] · Auxiliar [nombre] · Lun y Mié [horario] · [aula]"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Editar",
+     "Encargar documento"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Unidades · 3 de 5"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Documentos del Olimpo",
+     "Carpeta en Drive ↗",
+     "PDF",
+     "Documentos del bot",
+     "Documentos del Bot"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Descripción",
+     "Prerrequisito de",
+     "Taller de Base de Datos"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "Materias",
+     "Gestión II/2026 · 4 cursando",
+     "+ Agregar",
+     "14 aprobadas · ver en la malla ›"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-09.03",
+  "pngs": [
+   "materias-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Notas",
+     "Evaluación · Peso · Nota · Aporte"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Primer parcial · 30% · [nota] · [ ]"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Segundo parcial · 30% · pendiente · ·"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Acumulado [ ] / 100"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Necesitas [N] en el segundo parcial para aprobar con 51."
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-09.04",
+  "pngs": [
+   "agregar-materia-escritorio",
+   "materias-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Editar"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Editar materia"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Código SIS *"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-09.05",
+  "pngs": [
+   "dialogos-ajustes-y-cuenta"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Eliminar Taller de Base de Datos"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Se borran sus horarios, notas y tareas.",
+     "Los documentos en Drive no se tocan.",
+     "Esta acción no se puede deshacer."
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Escribe el nombre para confirmar",
+     "Taller de Base de Datos"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Cancelar",
+     "Eliminar materia"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-10.01",
+  "pngs": [
+   "malla-escritorio",
+   "malla-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Ingeniería de Sistemas · plan de ejemplo"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": []
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Importar plan oficial"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-10.02",
+  "pngs": [
+   "malla-escritorio",
+   "malla-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Puedes inscribirla"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Prerrequisitos",
+     "Ninguno"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Desbloquea",
+     "Ninguna en este tramo"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Requiere:"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-10.03",
+  "pngs": [
+   "dialogos-ajustes-y-cuenta"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Importar plan de estudios"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "1 Fuente · 2 Revisión · 3 Estados"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "PDF del plan",
+     "plan_sistemas.pdf · 4 págs.",
+     "Página de la UMSS",
+     "pegar enlace del plan"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Detectadas [N] materias en [N] semestres. Revisa antes de importar."
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Incluir · Código · Materia · Sem. · Prerrequisitos"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Atrás",
+     "Continuar: marcar aprobadas"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-11.01",
+  "pngs": [
+   "calendario-escritorio",
+   "calendario-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Octubre 2026",
+     "‹ Hoy ›"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Mes · Semana · Agenda"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "+ Evento"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Parcial · Entrega · Clase · Olimpo",
+     "Parcial · Entrega · Clase · bot",
+     "Parcial · Entrega · Clase · Bot"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Google Calendar · sincronizado"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": []
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Jueves 15 · octubre · en 4 días",
+     "[hora] Segundo parcial · Estadística II · [aula]",
+     "Temas: unidades 2 y 3"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "Preparación sugerida",
+     "Repasar mazo Estadística II · 38 tarjetas",
+     "Documento #15 del Olimpo · en cola",
+     "Documento #15 del bot · en cola",
+     "Documento #15 del Bot · en cola"
+    ]
+   },
+   {
+    "n": "10",
+    "lits": [
+     "Recordatorios",
+     "3 días antes y 1 día antes, por correo y en la PWA"
+    ]
+   },
+   {
+    "n": "11",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-11.02",
+  "pngs": [
+   "dialogos-trabajo-diario"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Nuevo evento"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Título"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Fecha",
+     "jueves 22 oct",
+     "Inicio",
+     "09:45",
+     "Fin",
+     "11:15"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Materia",
+     "Base de Datos II",
+     "Aula",
+     "[aula]"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Recordatorios",
+     "3 días antes ×",
+     "1 día antes ×",
+     "2 h antes ×",
+     "+ Agregar"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Crear plan de repaso desde hoy hasta el parcial"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Encargar al Olimpo un resumen de las unidades evaluadas",
+     "Encargar al bot un resumen de las unidades evaluadas",
+     "Encargar al Bot un resumen de las unidades evaluadas"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Se copia a Google Calendar",
+     "Cancelar",
+     "Guardar evento"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-11.03",
+  "pngs": [
+   "horario-escritorio",
+   "horario-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Horario",
+     "Gestión II/2026 · semana del 12 al 17 de octubre"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Editar",
+     "Exportar a Google Calendar"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Siguiente clase · mañana",
+     "07:45",
+     "Base de Datos II",
+     "Teoría · [aula] · [docente]"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": []
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Tipos",
+     "Teoría, relleno",
+     "Laboratorio, rayado",
+     "Auxiliatura, borde"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Horario",
+     "Sin clases este día"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-11.04",
+  "pngs": [
+   "dialogos-ajustes-y-cuenta"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Exportar horario y eventos"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Calendario destino",
+     "UMSS (nuevo)"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Rango",
+     "Toda la gestión II/2026"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Incluir",
+     "Clases (horario semanal)",
+     "Parciales",
+     "Entregas",
+     "Sesiones de estudio"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Se crearán [N] eventos y se mantendrán sincronizados.",
+     "vía n8n"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Descargar .ics",
+     "Cancelar",
+     "Exportar"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-12.01",
+  "pngs": [
+   "tareas-escritorio",
+   "tareas-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Nueva tarea",
+     "Enter"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "mañana",
+     "#bd2"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Nueva tarea"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-12.02",
+  "pngs": [
+   "tareas-escritorio",
+   "tareas-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Todas 12 · Hoy 3 · Programadas 9 · Completadas 31"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Por materia"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "+ Nueva lista"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Google Tasks · hace 2 min"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": []
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Tareas",
+     "Google Tasks · al día",
+     "Todas 12 · Hoy 3 · Estadística II · BD II"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Nada para hoy"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-12.03",
+  "pngs": [
+   "tareas-escritorio",
+   "dialogos-trabajo-diario"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Nueva tarea",
+     "Título de la tarea"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Materia",
+     "Estadística II",
+     "Lista",
+     "UMSS · Google Tasks"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Vence",
+     "martes 20 oct · 23:59",
+     "Recordatorio",
+     "1 día antes · 20:00",
+     "Repetir",
+     "No se repite"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Prioridad",
+     "Baja · Media · Alta"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Subtareas",
+     "Tabla ANOVA de un factor",
+     "Prueba de Tukey",
+     "+ Subtarea, Enter para agregar"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Se sincroniza con Google Tasks",
+     "Cancelar",
+     "Crear tarea"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Vence",
+     "Recordatorio 1 día antes, 20:00",
+     "Repetir No",
+     "UMSS",
+     "Notas"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Eliminar tarea"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-12.04",
+  "pngs": [
+   "tareas-escritorio",
+   "dialogos-trabajo-diario"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Pedir al Olimpo un documento de apoyo",
+     "Pedir al bot un documento de apoyo",
+     "Pedir al Bot un documento de apoyo"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Pedir al Olimpo un documento de apoyo cuando falten 3 días",
+     "Pedir al bot un documento de apoyo cuando falten 3 días",
+     "Pedir al Bot un documento de apoyo cuando falten 3 días"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-12.05",
+  "pngs": [
+   "tareas-escritorio",
+   "tareas-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Google Tasks · hace 2 min",
+     "Google Tasks · al día"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "UMSS"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Google Tasks · error",
+     "Reconectar Google"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-13.01",
+  "pngs": [
+   "avisos-escritorio",
+   "avisos-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Avisos",
+     "Fuente"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Estado",
+     "No leídos 5 · Destacados 2 · Archivados 48"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Reglas de filtro",
+     "Gmail: remitentes @umss.edu, @fcyt.umss.edu.bo y docentes de tus materias",
+     "Web: noticias de umss.edu.bo y fcyt.umss.edu.bo, revisadas cada 30 min por n8n",
+     "Editar reglas"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Buscar en avisos",
+     "Marcar todo como leído"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": []
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Destacar",
+     "Archivar"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Crear tarea",
+     "Abrir original ↗"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "‹ Inicio",
+     "Avisos",
+     "5 sin leer"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "Estás al día"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-13.02",
+  "pngs": [
+   "avisos-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Detectado automáticamente"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Crear tarea"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-13.03",
+  "pngs": [
+   "dialogos-ajustes-y-cuenta"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Reglas de la bandeja",
+     "El Cartero aplica estas reglas cada 30 minutos."
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Nueva regla",
+     "Gmail ▾",
+     "Condición",
+     "Crear tarea ▾"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Gmail se lee con permiso de solo lectura"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Probar con el último correo",
+     "Guardar reglas"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-14.01",
+  "pngs": [
+   "repaso-escritorio",
+   "repaso-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": [
+     "24 para hoy",
+     "12 días seguidos",
+     "87% retención"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Mazo · Venc. · Hoy · Nuevas"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Las tarjetas se generan de cada documento del Olimpo. Repetición espaciada con FSRS.",
+     "Las tarjetas se generan de cada documento del bot. Repetición espaciada con FSRS.",
+     "Las tarjetas se generan de cada documento del Bot. Repetición espaciada con FSRS."
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Estadística II · sesión"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Mostrar respuesta",
+     "Espacio"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Otra vez < 10 min",
+     "Difícil 1 d",
+     "Bien 3 d",
+     "Fácil 8 d"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Repaso"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "No hay tarjetas para hoy"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-14.02",
+  "pngs": [
+   "controles-y-estados-escritorio",
+   "hojas-inferiores-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Generar tarjetas de repaso"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "¿Generar más sin repetir?"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-14.03",
+  "pngs": [
+   "estudio-escritorio",
+   "estudio-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": [
+     "Reiniciar",
+     "Saltar bloque"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Materia",
+     "Tarea vinculada",
+     "Práctica 3: ejercicios de varianza"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Hoy",
+     "09:10 25 min · Estadística II"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Estudio",
+     "Hoy 1 h 40"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-14.04",
+  "pngs": [
+   "estudio-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Hoy",
+     "1 h 40",
+     "4 bloques de enfoque"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Semana",
+     "9 h 15",
+     "meta 12 h"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Horas de enfoque por materia · semana"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-15.01",
+  "pngs": [
+   "inicio-dashboard-escritorio",
+   "inicio-dashboard-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Miércoles 14 de octubre · semana 9 de la gestión",
+     "Buenas noches, Juan Diego"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Buscar o ejecutar… Ctrl K"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "+ Tarea",
+     "Iniciar pomodoro",
+     "Encargar al Olimpo",
+     "Encargar al bot",
+     "Encargar al Bot"
+    ]
+   },
+   {
+    "n": "4",
+    "lits": [
+     "39% Olimpo #14 Normalización · 7 en su puesto · 2 descansan",
+     "39% bot #14 Normalización · 7 en su puesto · 2 descansan",
+     "39% Bot #14 Normalización · 7 en su puesto · 2 descansan"
+    ]
+   },
+   {
+    "n": "5",
+    "lits": [
+     "Cupo de Claude · 5 horas 38% · Semanal 21%"
+    ]
+   },
+   {
+    "n": "6",
+    "lits": [
+     "Próximo parcial · 1 día · Estadística II · jueves 15"
+    ]
+   },
+   {
+    "n": "7",
+    "lits": [
+     "Tareas de hoy · 3 · 1 vencida · 31 de 43 de la semana"
+    ]
+   },
+   {
+    "n": "8",
+    "lits": [
+     "Repaso · 24 tarjetas · Racha de 12 días · retención 87%"
+    ]
+   },
+   {
+    "n": "9",
+    "lits": [
+     "Avance de carrera · 54% · 13 de 24 materias del plan de ejemplo"
+    ]
+   },
+   {
+    "n": "10",
+    "lits": [
+     "Horas de estudio · últimos 14 días",
+     "meta 12 h por semana",
+     "Hoy: 1 h 40 en 4 pomodoros",
+     "Más estudiada: Estadística II"
+    ]
+   },
+   {
+    "n": "11",
+    "lits": [
+     "Oficina de agentes · Abrir →",
+     "Agenda · Calendario →",
+     "Tareas próximas · Todas →",
+     "Avisos · Bandeja →"
+    ]
+   },
+   {
+    "n": "12",
+    "lits": [
+     "Materias en curso · Ver →",
+     "Materia · Avance · Próxima evaluación · Docs · Estudio"
+    ]
+   },
+   {
+    "n": "13",
+    "lits": [
+     "Gasto del Olimpo · 14 días",
+     "Disco VM 41,8 / 100 GB",
+     "Supabase 142 MB",
+     "Gasto del bot · 14 días",
+     "Gasto del Bot · 14 días"
+    ]
+   },
+   {
+    "n": "14",
+    "lits": [
+     "Mié 14 oct · semana 9",
+     "Hola, Juan Diego",
+     "Estudio · 14 días 25,7 h",
+     "Oficina · Abrir",
+     "Agenda · Todo"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-15.02",
+  "pngs": [
+   "dialogos-trabajo-diario"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Buscar o ejecutar",
+     "Esc"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": []
+   },
+   {
+    "n": "4",
+    "lits": [
+     "↑ ↓ moverse · Enter abrir · Ctrl K desde cualquier pantalla"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-16.01",
+  "pngs": [
+   "inicio-dashboard-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   },
+   {
+    "n": "2",
+    "lits": [
+     "Instalar app"
+    ]
+   },
+   {
+    "n": "3",
+    "lits": [
+     "Hay una versión nueva",
+     "Actualizar"
+    ]
+   }
+  ]
+ },
+ {
+  "hu": "HU-16.02",
+  "pngs": [
+   "inicio-dashboard-movil"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Sin conexión · mostrando lo último guardado"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-16.03",
+  "pngs": [
+   "configuracion-escritorio"
+  ],
+  "marks": [
+   {
+    "n": "1",
+    "lits": [
+     "Notificaciones"
+    ]
+   },
+   {
+    "n": "2",
+    "lits": []
+   },
+   {
+    "n": "3",
+    "lits": []
+   }
+  ]
+ },
+ {
+  "hu": "HU-16.04",
+  "pngs": [],
+  "marks": [
+   {
+    "n": "1",
+    "lits": []
+   }
+  ]
+ }
+]

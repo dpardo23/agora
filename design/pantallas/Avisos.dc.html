@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Avisos · escritorio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.btn{min-height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:var(--on);font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.btn2{min-height:38px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--tx);font:inherit;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:1px 7px;border-radius:5px;font-size:11px;font-weight:600;color:#0B0B0B;white-space:nowrap}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+a{color:inherit}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="min-height: 100vh; display: flex; flex-wrap: wrap">
+
+  <nav aria-label="Principal" style="flex: 1 1 210px; box-sizing: border-box; padding: 20px 12px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px">
+    <div style="display: flex; align-items: center; gap: 8px; padding-right: 4px"><a href="Inicio.dc.html" style="flex: 1; display: flex; align-items: center; gap: 10px; padding: 0 10px; text-decoration: none">
+      <span style="width: 22px; height: 22px; border-radius: 7px; background: var(--lila); display: grid; place-items: center"><span style="width: 8px; height: 8px; border-radius: 50%; background: #0B0B0B"></span></span>
+      <span class="d" style="font-size: 21px">dpardo</span>
+    </a><a href="Avisos.dc.html" aria-label="Avisos, 5 sin leer" style="position: relative; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--tx); text-decoration: none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"></path></svg><span class="m" style="position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px; border-radius: 8px; background: var(--rosa); color: #0B0B0B; font-size: 10px; font-weight: 600; display: grid; place-items: center">5</span></a></div>
+    <div style="display: flex; flex-direction: column; gap: 1px">
+      <sc-for list="{{nav}}" as="n" hint-placeholder-count="11">
+        <a href="{{n.href}}" style="{{n.st}}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.d}}"></path></svg>
+          <span style="flex: 1">{{n.t}}</span>
+          <span class="m" style="font-size: 11px">{{n.b}}</span>
+        </a>
+      </sc-for>
+    </div>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 14px">
+      <a href="Configuracion.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; text-decoration: none; border-top: 1px solid var(--line)">
+        <span style="width: 30px; height: 30px; border-radius: 50%; background: var(--rosa); color: #0B0B0B; display: grid; place-items: center; font-size: 12px; font-weight: 600">JD</span>
+        <span style="flex: 1; display: flex; flex-direction: column; line-height: 1.2"><span style="font-weight: 600">dpardo</span><span class="mu" style="font-size: 12px">Configuración</span></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"></path></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; display: flex; flex-wrap: wrap">
+
+    <!-- Filtros -->
+    <div style="flex: 1 1 220px; box-sizing: border-box; padding: 28px 14px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 18px">
+      <h1 class="d" style="font-size: 30px; padding: 0 8px">Avisos</h1>
+      <div style="display: flex; flex-direction: column; gap: 1px">
+        <span class="lbl" style="padding: 0 8px 6px">Fuente</span>
+        <sc-for list="{{fuentes}}" as="f" hint-placeholder-count="6">
+          <button type="button" onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="{{f.st}}"><span style="{{f.dot}}"></span><span style="flex: 1; text-align: left">{{f.n}}</span><span class="m" style="font-size: 12px">{{f.c}}</span></button>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1px">
+        <span class="lbl" style="padding: 0 8px 6px">Estado</span>
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 34px; align-items: center; padding: 0 8px; border-radius: 8px; text-decoration: none; font-size: 13px"><span>No leídos</span><span class="m mu">5</span></a>
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 34px; align-items: center; padding: 0 8px; border-radius: 8px; text-decoration: none; font-size: 13px"><span>Destacados</span><span class="m mu">2</span></a>
+        <a href="#" style="display: flex; justify-content: space-between; min-height: 34px; align-items: center; padding: 0 8px; border-radius: 8px; text-decoration: none; font-size: 13px"><span>Archivados</span><span class="m mu">48</span></a>
+      </div>
+      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px; padding: 12px 8px 0; border-top: 1px solid var(--line); font-size: 12px">
+        <span style="font-weight: 600">Reglas de filtro</span>
+        <span class="mu">Gmail: remitentes <span class="m">@umss.edu</span>, <span class="m">@fcyt.umss.edu.bo</span> y docentes de tus materias</span>
+        <span class="mu">Web: noticias de umss.edu.bo y fcyt.umss.edu.bo, revisadas cada 30 min por n8n</span>
+        <a href="#" style="font-weight: 500">Editar reglas</a>
+      </div>
+    </div>
+
+    <!-- Lista -->
+    <section aria-label="Lista de avisos" style="flex: 2 1 380px; min-width: 0; box-sizing: border-box; border-right: 1px solid var(--line); display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 26px 20px 12px">
+        <label style="flex: 1; display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M11 4.5a6.5 6.5 0 1 1 0 13a6.5 6.5 0 1 1 0-13zM20 20l-4-4"></path></svg>
+          <input type="search" placeholder="Buscar en avisos" aria-label="Buscar en avisos" style="flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--tx); font: inherit">
+        </label>
+        <button type="button" class="btn2" aria-label="Marcar todo como leído" style="width: 40px; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12.5l4 4L15 8M11 16.5l1 1L21 8"></path></svg></button>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <sc-for list="{{lista}}" as="a" hint-placeholder-count="8">
+          <button type="button" onClick="{{a.pick}}" style="{{a.st}}">
+            <span style="{{a.unread}}"></span>
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+              <span style="display: flex; align-items: center; gap: 8px"><span class="tag" style="{{a.tagSt}}">{{a.fuente}}</span><span class="mu" style="font-size: 12px; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{a.de}}</span><span class="m mu" style="font-size: 11px">{{a.t}}</span></span>
+              <span style="{{a.titSt}}">{{a.tit}}</span>
+              <span class="mu" style="font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{a.snip}}</span>
+            </span>
+          </button>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- Lectura -->
+    <article aria-labelledby="lec" style="flex: 2 1 380px; min-width: 0; box-sizing: border-box; padding: 28px clamp(16px, 2.5vw, 36px); display: flex; flex-direction: column; gap: 16px">
+      <div style="display: flex; align-items: center; gap: 8px">
+        <span class="tag" style="{{sel.tagSt}}">{{sel.fuente}}</span>
+        <span class="mu" style="font-size: 12px">{{sel.fecha}}</span>
+        <span style="flex: 1"></span>
+        <button type="button" class="btn2" aria-label="Destacar" style="width: 38px; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.2 7 19l1.2-5.6L4 9.6 9.6 9z"></path></svg></button>
+        <button type="button" class="btn2" aria-label="Archivar" style="width: 38px; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v4H4zM5 9v10h14V9M10 13h4"></path></svg></button>
+      </div>
+      <h2 id="lec" class="d" style="font-size: 26px; line-height: 1.15; text-wrap: balance">{{sel.tit}}</h2>
+      <span class="mu" style="font-size: 13px">De: {{sel.de}}</span>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; text-wrap: pretty; padding-top: 14px; border-top: 1px solid var(--line)">{{sel.cuerpo}}</p>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
+        <span class="lbl">Detectado automáticamente</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px">
+          <sc-for list="{{sel.det}}" as="x" hint-placeholder-count="2"><span style="font-size: 12px; padding: 3px 9px; border-radius: 6px; background: var(--bg2)">{{x}}</span></sc-for>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <button type="button" class="btn">{{sel.accion}}</button>
+        <button type="button" class="btn2">Crear tarea</button>
+        <a href="#" class="btn2">Abrir original ↗</a>
+      </div>
+    </article>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"claro"},"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { fuente: 'todas', sel: 'a1' };
+  }
+  nav(activo) {
+    const AL = { calendario: 'agenda', horario: 'agenda', malla: 'materias', repaso: 'estudiar', estudio: 'estudiar', consumo: 'bot', oficina: 'bot' };
+    activo = AL[activo] || activo;
+    const I = {
+      inicio: 'M4 11l8-7 8 7v9h-5v-6H9v6H4z',
+      avisos: 'M4 13l2.5-7h11L20 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 13h4.5l1.5 2.5h4l1.5-2.5H20',
+      bot: 'M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5',
+      tareas: 'M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5',
+      materias: 'M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4zM5 16a4 4 0 0 1 4-4h10',
+      horario: 'M12 4a8 8 0 1 1 0 16a8 8 0 1 1 0-16zM12 8v4l3 2',
+      calendario: 'M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4',
+      malla: 'M6 3.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM18 3.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM12 15.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM7.5 8.2l3.4 7.4M16.5 8.2l-3.4 7.4',
+      repaso: 'M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10',
+      estudio: 'M12 7a7 7 0 1 1 0 14a7 7 0 1 1 0-14zM12 11v3.5M9.5 3h5M12 3v4',
+      consumo: 'M4 17a8 8 0 1 1 16 0M12 17l4-5'
+    };
+    I.agenda = I.calendario; I.estudiar = I.repaso;
+    const items = [['inicio', 'Inicio', 'Inicio.dc.html', ''], ['bot', 'Bot', 'Main.dc.html', '●'], ['tareas', 'Tareas', 'Tareas.dc.html', '3'], ['agenda', 'Agenda', 'Calendario.dc.html', ''], ['materias', 'Materias', 'Materias.dc.html', ''], ['estudiar', 'Estudiar', 'Repaso.dc.html', '24']];
+    return items.map(([id, t, href, b]) => ({
+      t, href, b, d: I[id] || 'M4 20V7l8-4 8 4v13M9 20v-4h6v4M8 10h2M14 10h2M8 14h2M14 14h2',
+      st: 'display: flex; align-items: center; gap: 12px; min-height: 38px; padding: 0 10px; border-radius: 9px; text-decoration: none; ' + (id === activo ? 'background: var(--bg2); color: var(--tx); font-weight: 600;' : 'color: var(--tx2);')
+    }));
+  }
+  renderVals() {
+    const F = { gmail: ['Gmail', 'var(--rosa)'], umss: ['UMSS', 'var(--cielo)'], fcyt: ['FCyT', 'var(--lila)'], bot: ['Bot', 'var(--menta)'], rec: ['Recordatorio', 'var(--mant)'] };
+    const A = [
+      { id: 'a1', f: 'fcyt', de: 'fcyt.umss.edu.bo · Noticias', t: '10:15', tit: 'Publicación de notas del primer parcial', snip: 'Las calificaciones de Estadística II ya están disponibles en el sistema académico.', u: true, fecha: 'Hoy, 10:15', cuerpo: '[Texto del aviso tal como aparece en la página de la Facultad.] El resumen lo genera Gemini y el enlace lleva a la publicación original.', det: ['Materia: Estadística II', 'Tipo: notas'], acc: 'Registrar nota en Materias' },
+      { id: 'a2', f: 'bot', de: 'Bot', t: '13:45', tit: '#16 espera tu aprobación del esquema', snip: 'Controles del Anexo A de ISO/IEC 27001 · 6 secciones', u: true, fecha: 'Hoy, 13:45', cuerpo: 'El esquema del documento #16 está listo. Tiene 6 secciones y 14 páginas previstas. La redacción no empieza hasta que lo apruebes.', det: ['Materia: Seguridad de Sistemas'], acc: 'Revisar esquema' },
+      { id: 'a3', f: 'gmail', de: '[Docente] · Base de Datos II', t: 'Ayer', tit: 'Cambio de aula para el laboratorio', snip: 'A partir del lunes el laboratorio será en [aula].', u: true, fecha: 'Sábado 10, 18:02', cuerpo: '[Cuerpo del correo del docente.] Filtrado porque el remitente es docente de una materia registrada.', det: ['Materia: Base de Datos II', 'Cambio de aula', 'Lunes 12'], acc: 'Actualizar horario' },
+      { id: 'a4', f: 'rec', de: 'Recordatorio', t: 'Ayer', tit: 'El informe de ISO/IEC 27001 vence el martes', snip: 'Quedan 3 de 4 subtareas pendientes.', u: false, fecha: 'Sábado 10, 20:00', cuerpo: 'Recordatorio automático 3 días antes de la entrega. Quedan 3 de 4 subtareas.', det: ['Tarea vinculada'], acc: 'Abrir tarea' },
+      { id: 'a5', f: 'umss', de: 'umss.edu.bo · Comunicados', t: 'Vie', tit: 'Cronograma de inscripciones de la próxima gestión', snip: '[Fechas publicadas por la universidad]', u: true, fecha: 'Viernes 9', cuerpo: '[Comunicado oficial.] Las fechas detectadas se pueden pasar al calendario con un clic.', det: ['Fechas: [rango]', 'Tipo: inscripciones'], acc: 'Agregar al calendario' },
+      { id: 'a6', f: 'gmail', de: 'Aula virtual · Ecuaciones Diferenciales', t: 'Jue', tit: 'Nueva práctica publicada: transformada de Laplace', snip: 'Entrega hasta el miércoles 14.', u: false, fecha: 'Jueves 8', cuerpo: '[Notificación del aula virtual reenviada a Gmail.]', det: ['Materia: Ecuaciones Diferenciales', 'Fecha límite: 14 oct'], acc: 'Crear tarea con fecha' },
+      { id: 'a7', f: 'bot', de: 'Bot', t: '8 oct', tit: '#13 entregado en Drive', snip: 'UMSS / Base de Datos II / Bot · 14 págs.', u: false, fecha: 'Miércoles 8', cuerpo: 'Documento entregado en Drive con su ficha de repaso. Se generaron 22 tarjetas nuevas.', det: ['22 tarjetas nuevas'], acc: 'Abrir en Drive' },
+      { id: 'a8', f: 'fcyt', de: 'fcyt.umss.edu.bo · Convocatorias', t: '7 oct', tit: 'Convocatoria a auxiliatura de docencia', snip: '[Requisitos y plazos publicados por la Facultad]', u: true, fecha: 'Martes 7', cuerpo: '[Convocatoria oficial.]', det: ['Plazo: [fecha]'], acc: 'Agregar al calendario' }
+    ];
+    const fsel = this.state.fuente;
+    const lista = A.filter((a) => fsel === 'todas' || a.f === fsel);
+    const s = A.find((a) => a.id === this.state.sel) || A[0];
+    const cnt = (k) => A.filter((a) => a.f === k).length;
+    const fuentes = [['todas', 'Todas', 'var(--tx)', A.length]].concat(Object.keys(F).map((k) => [k, F[k][0], F[k][1], cnt(k)]));
+    return {
+      tema: (this.props.tema ?? 'claro') === 'oscuro' ? 'oscuro' : 'claro',
+      nav: this.nav('avisos'),
+      fuentes: fuentes.map(([k, n, c, num]) => {
+        const on = fsel === k;
+        return { n, c: num, on: on ? 'true' : 'false', pick: () => this.setState({ fuente: k }), dot: 'width: 10px; height: 10px; border-radius: 3px; background: ' + c, st: 'display: flex; align-items: center; gap: 10px; min-height: 36px; padding: 0 8px; border: 0; border-radius: 8px; font: inherit; font-size: 13px; cursor: pointer; ' + (on ? 'background: var(--bg2); color: var(--tx); font-weight: 600;' : 'background: transparent; color: var(--tx);') };
+      }),
+      lista: lista.map((a) => ({
+        ...a, fuente: F[a.f][0], tagSt: 'background: ' + F[a.f][1],
+        pick: () => this.setState({ sel: a.id }),
+        unread: 'width: 7px; height: 7px; flex: 0 0 7px; margin-top: 7px; border-radius: 50%; background: ' + (a.u ? 'var(--tx)' : 'transparent'),
+        titSt: 'font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ' + (a.u ? 'font-weight: 600;' : 'font-weight: 400;'),
+        st: 'display: flex; align-items: flex-start; gap: 10px; padding: 12px 20px; border: 0; border-top: 1px solid var(--line); font: inherit; color: var(--tx); text-align: left; cursor: pointer; ' + (a.id === s.id ? 'background: var(--bg2);' : 'background: transparent;')
+      })),
+      sel: { ...s, fuente: F[s.f][0], tagSt: 'background: ' + F[s.f][1], accion: s.acc }
+    };
+  }
+}
+</script>
+</body>
+</html>

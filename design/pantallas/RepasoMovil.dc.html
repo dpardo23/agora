@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Repaso · móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+.rate{min-height:58px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;cursor:pointer}
+a{color:inherit}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="width: 390px; height: 844px; position: relative; overflow: hidden">
+  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 84px; padding: 54px 18px 18px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+    <header style="display: flex; align-items: baseline; gap: 10px">
+      <h1 class="d" style="font-size: 30px; flex: 1; line-height: 1">Repaso</h1>
+      <span class="m" style="font-size: 12px">{{pos}} / 24</span>
+    </header>
+    <div style="display: flex; gap: 6px; overflow-x: auto; margin: 0 -18px; padding: 0 18px">
+      <span style="flex: 0 0 auto; min-height: 32px; padding: 0 12px; border-radius: 99px; background: var(--mant); color: #0B0B0B; display: inline-flex; align-items: center; font-size: 12px; font-weight: 600">Estadística II · 24</span>
+      <span style="flex: 0 0 auto; min-height: 32px; padding: 0 12px; border-radius: 99px; border: 1px solid var(--line); display: inline-flex; align-items: center; font-size: 12px" class="mu">BD II · 14</span>
+      <span style="flex: 0 0 auto; min-height: 32px; padding: 0 12px; border-radius: 99px; border: 1px solid var(--line); display: inline-flex; align-items: center; font-size: 12px" class="mu">Ec. Dif. · 3</span>
+    </div>
+    <div style="height: 4px; border-radius: 4px; background: var(--line)"><div style="{{prog}}"></div></div>
+
+    <article style="flex: 1; border-radius: 20px; border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column">
+      <div style="height: 8px; background: var(--mant)"></div>
+      <div style="flex: 1; padding: 22px 20px; display: flex; flex-direction: column; gap: 14px; overflow: hidden">
+        <div style="display: flex; justify-content: space-between" class="lbl"><span>{{card.tipo}}</span><span class="m">{{card.origen}}</span></div>
+        <h2 class="d" style="font-size: 23px; line-height: 1.22">{{card.q}}</h2>
+        <sc-if value="{{rev}}" hint-placeholder-val="{{false}}">
+          <div style="padding-top: 14px; border-top: 1px dashed var(--line); display: flex; flex-direction: column; gap: 6px">
+            <span class="lbl">Respuesta</span>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55">{{card.a}}</p>
+          </div>
+        </sc-if>
+      </div>
+    </article>
+
+    <sc-if value="{{noRev}}" hint-placeholder-val="{{true}}">
+      <button type="button" onClick="{{mostrar}}" style="min-height: 56px; border-radius: 14px; border: 0; background: var(--ink); color: var(--on); font: inherit; font-weight: 600; font-size: 15px; cursor: pointer">Mostrar respuesta</button>
+    </sc-if>
+    <sc-if value="{{rev}}" hint-placeholder-val="{{false}}">
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+        <button type="button" class="rate" onClick="{{sig}}" style="border-color: var(--rosa)"><span style="font-weight: 600; font-size: 13px">Otra vez</span><span class="m mu" style="font-size: 10px">&lt;10 min</span></button>
+        <button type="button" class="rate" onClick="{{sig}}"><span style="font-weight: 600; font-size: 13px">Difícil</span><span class="m mu" style="font-size: 10px">1 d</span></button>
+        <button type="button" class="rate" onClick="{{sig}}" style="background: var(--menta); color: #0B0B0B; border-color: var(--menta)"><span style="font-weight: 600; font-size: 13px">Bien</span><span class="m" style="font-size: 10px">3 d</span></button>
+        <button type="button" class="rate" onClick="{{sig}}"><span style="font-weight: 600; font-size: 13px">Fácil</span><span class="m mu" style="font-size: 10px">8 d</span></button>
+      </div>
+    </sc-if>
+  </div>
+
+  <nav aria-label="Principal" style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; box-sizing: border-box; padding: 6px 10px 24px; background: var(--bg); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center">
+    <a href="InicioMovil.dc.html" style="{{nv.inicio}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg>Inicio</a>
+    <a href="TareasMovil.dc.html" style="{{nv.tareas}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5"></path></svg>Tareas</a>
+    <a href="BotMovil.dc.html" aria-label="Bot" style="justify-self: center; width: 54px; height: 54px; border-radius: 18px; background: var(--ink); color: var(--on); display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5"></path></svg></a>
+    <a href="CalendarioMovil.dc.html" style="{{nv.cal}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4"></path></svg>Agenda</a>
+    <a href="RepasoMovil.dc.html" style="{{nv.repaso}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10"></path></svg>Estudiar</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"oscuro"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { i: 0, rev: true };
+  }
+  mnav(a) {
+    const s = (id) => 'display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; ' + (id === a ? 'color: var(--tx); font-weight: 600;' : 'color: var(--tx2);');
+    return { inicio: s('inicio'), tareas: s('tareas'), cal: s('cal'), repaso: s('repaso') };
+  }
+  renderVals() {
+    const cards = [
+      { tipo: 'Concepto', origen: '#11 · p. 4', q: '¿Qué distribución sigue (n − 1)S²/σ² si la población es normal?', a: 'Chi cuadrado con n − 1 grados de libertad. Base de los intervalos y pruebas sobre σ².' },
+      { tipo: 'Fórmula', origen: '#11 · p. 7', q: 'Estadístico F para comparar dos varianzas', a: 'F = S₁² / S₂² con n₁ − 1 y n₂ − 1 grados de libertad, bajo H₀: σ₁² = σ₂².' },
+      { tipo: 'Pregunta', origen: '#15', q: '¿Cuándo usar t de Welch?', a: 'Cuando no se asume igualdad de varianzas; los grados de libertad se aproximan con Welch y Satterthwaite.' }
+    ];
+    const pos = 12 + this.state.i;
+    return {
+      tema: (this.props.tema ?? 'oscuro') === 'claro' ? 'claro' : 'oscuro',
+      nv: this.mnav('repaso'),
+      card: cards[this.state.i % cards.length], pos,
+      prog: 'width: ' + (pos / 24 * 100) + '%; height: 100%; border-radius: 4px; background: var(--tx); transition: width .3s',
+      rev: this.state.rev, noRev: !this.state.rev,
+      mostrar: () => this.setState({ rev: true }),
+      sig: () => this.setState({ rev: false, i: this.state.i + 1 })
+    };
+  }
+}
+</script>
+</body>
+</html>

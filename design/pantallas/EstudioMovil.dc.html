@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Estudio · móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+a{color:inherit}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.04);opacity:.9}}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="width: 390px; height: 844px; position: relative; overflow: hidden">
+  <div style="padding: 54px 18px 100px; display: flex; flex-direction: column; align-items: center; gap: 20px">
+    <div style="align-self: stretch; display: flex; flex-direction: column; gap: 8px">
+      <a href="InicioMovil.dc.html" class="mu" style="font-size: 13px; text-decoration: none; min-height: 24px">‹ Inicio</a>
+      <header style="display: flex; align-items: baseline; gap: 10px"><h1 class="d" style="font-size: 30px; flex: 1; line-height: 1">Estudio</h1><span class="mu" style="font-size: 12px">Hoy 1 h 40</span></header>
+    </div>
+
+    <div role="tablist" aria-label="Tipo de bloque" style="align-self: stretch; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 4px; border-radius: 12px; background: var(--bg2); gap: 2px">
+      <sc-for list="{{modos}}" as="mo" hint-placeholder-count="3">
+        <button type="button" role="tab" aria-selected="{{mo.on}}" onClick="{{mo.pick}}" style="{{mo.st}}">{{mo.n}}</button>
+      </sc-for>
+    </div>
+
+    <div style="position: relative; width: 280px; height: 280px; margin-top: 8px">
+      <sc-if value="{{run}}" hint-placeholder-val="{{false}}"><div aria-hidden="true" style="{{halo}}"></div></sc-if>
+      <div aria-hidden="true" style="{{ring}}"></div>
+      <div style="position: absolute; inset: 12px; border-radius: 50%; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
+        <span class="lbl">{{modoTxt}} · ciclo {{ciclo}}/4</span>
+        <span class="m" role="timer" style="font-size: 62px; font-weight: 500; letter-spacing: -0.04em; line-height: 1">{{reloj}}</span>
+        <span class="mu" style="font-size: 12px">Estadística II</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; align-items: center">
+      <button type="button" onClick="{{reiniciar}}" aria-label="Reiniciar" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line); background: none; color: var(--tx); display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4"></path></svg></button>
+      <button type="button" onClick="{{toggle}}" style="min-width: 150px; min-height: 60px; border-radius: 30px; border: 0; background: var(--ink); color: var(--on); font: inherit; font-weight: 600; font-size: 17px">{{accion}}</button>
+      <button type="button" onClick="{{saltar}}" aria-label="Saltar bloque" style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line); background: none; color: var(--tx); display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5l9 7-9 7zM18 5v14"></path></svg></button>
+    </div>
+
+    <div style="align-self: stretch; display: flex; align-items: center; gap: 10px; min-height: 52px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 13px">
+      <span class="lbl">Tarea</span><span style="flex: 1">Práctica 3: ejercicios de varianza</span><span class="mu">›</span>
+    </div>
+  </div>
+
+  <nav aria-label="Principal" style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; box-sizing: border-box; padding: 6px 10px 24px; background: var(--bg); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center">
+    <a href="InicioMovil.dc.html" style="{{nv.inicio}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg>Inicio</a>
+    <a href="TareasMovil.dc.html" style="{{nv.tareas}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5"></path></svg>Tareas</a>
+    <a href="BotMovil.dc.html" aria-label="Bot" style="justify-self: center; width: 54px; height: 54px; border-radius: 18px; background: var(--ink); color: var(--on); display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5"></path></svg></a>
+    <a href="CalendarioMovil.dc.html" style="{{nv.cal}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4"></path></svg>Agenda</a>
+    <a href="RepasoMovil.dc.html" style="{{nv.repaso}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10"></path></svg>Estudiar</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"oscuro"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { modo: 'enf', rest: 1122, run: false, ciclo: 3 };
+  }
+  componentDidMount() {
+    this.tk = setInterval(() => {
+      if (!this.state.run) return;
+      if (this.state.rest > 0) this.setState({ rest: this.state.rest - 1 });
+      else this.siguiente();
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this.tk); }
+  dur(m) { return { enf: 1500, corta: 300, larga: 900 }[m]; }
+  siguiente() {
+    const s = this.state;
+    if (s.modo === 'enf') { const l = s.ciclo % 4 === 0; this.setState({ modo: l ? 'larga' : 'corta', rest: this.dur(l ? 'larga' : 'corta'), run: false }); }
+    else this.setState({ modo: 'enf', rest: this.dur('enf'), ciclo: s.ciclo % 4 + 1, run: false });
+  }
+  mnav(a) {
+    const s = (id) => 'display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; ' + (id === a ? 'color: var(--tx); font-weight: 600;' : 'color: var(--tx2);');
+    return { inicio: s('inicio'), tareas: s('tareas'), cal: s('cal'), repaso: s('repaso') };
+  }
+  renderVals() {
+    const s = this.state;
+    const col = { enf: 'var(--rosa)', corta: 'var(--menta)', larga: 'var(--cielo)' }[s.modo];
+    const pct = (1 - s.rest / this.dur(s.modo)) * 100;
+    return {
+      tema: (this.props.tema ?? 'oscuro') === 'claro' ? 'claro' : 'oscuro',
+      nv: this.mnav(''),
+      run: s.run, ciclo: s.ciclo,
+      modoTxt: { enf: 'Enfoque', corta: 'Pausa corta', larga: 'Pausa larga' }[s.modo],
+      reloj: String(Math.floor(s.rest / 60)).padStart(2, '0') + ':' + String(s.rest % 60).padStart(2, '0'),
+      ring: 'position: absolute; inset: 0; border-radius: 50%; transition: background .5s; background: conic-gradient(' + col + ' 0 ' + pct + '%, var(--line) ' + pct + '% 100%)',
+      halo: 'position: absolute; inset: -16px; border-radius: 50%; background: radial-gradient(circle, transparent 58%, ' + col + ' 60%, transparent 72%); animation: breathe 4s ease-in-out infinite',
+      accion: s.run ? 'Pausar' : (s.rest === this.dur(s.modo) ? 'Iniciar' : 'Continuar'),
+      toggle: () => this.setState({ run: !s.run }),
+      reiniciar: () => this.setState({ rest: this.dur(s.modo), run: false }),
+      saltar: () => this.siguiente(),
+      modos: [['enf', 'Enfoque 25'], ['corta', 'Pausa 5'], ['larga', 'Larga 15']].map(([k, n]) => {
+        const on = s.modo === k;
+        return { n, on: on ? 'true' : 'false', pick: () => this.setState({ modo: k, rest: this.dur(k), run: false }), st: 'min-height: 40px; border: 0; border-radius: 9px; font: inherit; font-size: 13px; cursor: pointer; ' + (on ? 'background: var(--bg); color: var(--tx); font-weight: 600;' : 'background: transparent; color: var(--tx2);') };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

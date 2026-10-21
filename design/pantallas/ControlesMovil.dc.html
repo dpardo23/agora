@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Controles · hojas inferiores · móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C;--veil:rgba(11,11,11,0.35)}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F;--veil:rgba(80,80,80,0.45)}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.row{width:100%;min-height:52px;display:flex;align-items:center;gap:12px;padding:0 4px;border:0;border-top:1px solid var(--line);background:none;color:var(--tx);font:inherit;font-size:15px;text-align:left;cursor:pointer}
+a{color:inherit}
+@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="width: 390px; height: 844px; position: relative; overflow: hidden">
+  <div style="padding: 52px 16px 0; display: flex; flex-direction: column; gap: 12px">
+    <h1 class="d" style="font-size: 24px">Hojas inferiores</h1>
+    <div role="tablist" aria-label="Tipo de hoja" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; padding: 3px; border-radius: 10px; background: var(--bg2)">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="{{t.st}}">{{t.n}}</button></sc-for>
+    </div>
+    <span class="mu" style="font-size: 13px">En el teléfono, los desplegables, menús y diálogos se abren como hojas desde abajo; se cierran deslizando hacia abajo.</span>
+    <div style="display: flex; flex-direction: column; gap: 8px; opacity: .5" aria-hidden="true">
+      <div style="height: 54px; border-radius: 12px; background: var(--bg2)"></div><div style="height: 54px; border-radius: 12px; background: var(--bg2)"></div><div style="height: 54px; border-radius: 12px; background: var(--bg2)"></div>
+    </div>
+  </div>
+
+  <div aria-hidden="true" style="position: absolute; inset: 0; top: 330px; background: var(--veil)"></div>
+  <sc-if value="{{toast}}" hint-placeholder-val="{{false}}">
+    <div role="status" style="position: absolute; left: 16px; right: 16px; top: 270px; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--tx); color: var(--bg); box-shadow: 0 12px 30px rgba(0,0,0,0.3)"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--menta)"></span><span style="flex: 1; font-size: 13px">Materia: {{selN}}</span><button type="button" style="border: 0; background: none; color: inherit; font: inherit; font-weight: 600; text-decoration: underline">Deshacer</button></div>
+  </sc-if>
+
+  <section role="dialog" aria-modal="true" aria-labelledby="sh" style="position: absolute; left: 0; right: 0; bottom: 0; max-height: 500px; border-radius: 24px 24px 0 0; background: var(--bg); border-top: 1px solid var(--line); padding: 10px 18px 30px; display: flex; flex-direction: column; gap: 10px; animation: up .3s ease both">
+    <span aria-hidden="true" style="align-self: center; width: 40px; height: 4px; border-radius: 4px; background: var(--line)"></span>
+
+    <sc-if value="{{tSel}}" hint-placeholder-val="{{true}}">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <h2 id="sh" class="d" style="font-size: 19px">Elegir materia</h2>
+        <input aria-label="Buscar materia" placeholder="Buscar" style="min-height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg2); color: var(--tx); font: inherit; outline: none">
+        <div role="listbox">
+          <sc-for list="{{opts}}" as="o" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{o.on}}" class="row" onClick="{{o.pick}}"><span style="{{o.dot}}"></span><span style="flex: 1">{{o.n}}</span><sc-if value="{{o.sel}}" hint-placeholder-val="{{false}}"><span style="font-weight: 700">✓</span></sc-if></button></sc-for>
+          <a href="AgregarMateriaMovil.dc.html" class="row" style="text-decoration: none; font-weight: 600">+ Agregar materia</a>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{tFecha}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <h2 class="d" style="font-size: 19px">Fecha de entrega</h2>
+        <div style="display: flex; gap: 6px; overflow-x: auto"><span style="flex: 0 0 auto; padding: 8px 12px; border-radius: 99px; border: 1px solid var(--line); font-size: 13px">Hoy</span><span style="flex: 0 0 auto; padding: 8px 12px; border-radius: 99px; border: 1px solid var(--line); font-size: 13px">Mañana</span><span style="flex: 0 0 auto; padding: 8px 12px; border-radius: 99px; background: var(--tx); color: var(--bg); font-size: 13px; font-weight: 600">Jue 15</span><span style="flex: 0 0 auto; padding: 8px 12px; border-radius: 99px; border: 1px solid var(--line); font-size: 13px">Próx. semana</span></div>
+        <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; text-align: center; font-size: 12px" class="mu"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px">
+          <sc-for list="{{dias}}" as="d" hint-placeholder-count="35"><button type="button" onClick="{{d.pick}}" style="{{d.st}}">{{d.n}}</button></sc-for>
+        </div>
+        <button type="button" style="min-height: 52px; border-radius: 14px; border: 0; background: var(--ink); color: var(--on); font: inherit; font-weight: 600">Listo · {{dia}} de octubre</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{tAcc}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-direction: column">
+        <h2 class="d" style="font-size: 19px; padding-bottom: 8px">#13 Transacciones y concurrencia</h2>
+        <button type="button" class="row">Abrir PDF</button>
+        <button type="button" class="row">Abrir carpeta en Drive</button>
+        <button type="button" class="row">Generar tarjetas de repaso</button>
+        <button type="button" class="row">Compartir enlace</button>
+        <button type="button" class="row" style="color: var(--warn); font-weight: 600">Eliminar documento</button>
+        <button type="button" style="margin-top: 10px; min-height: 52px; border-radius: 14px; border: 0; background: var(--bg2); color: var(--tx); font: inherit; font-weight: 600">Cancelar</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{tConf}}" hint-placeholder-val="{{false}}">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <h2 class="d" style="font-size: 19px">¿Pausar al Redactor?</h2>
+        <span class="mu" style="font-size: 14px">Termina la frase actual y guarda el avance. El #14 queda en espera hasta que lo reanudes.</span>
+        <button type="button" style="min-height: 52px; border-radius: 14px; border: 0; background: var(--ink); color: var(--on); font: inherit; font-weight: 600">Pausar</button>
+        <button type="button" style="min-height: 52px; border-radius: 14px; border: 1px solid var(--line); background: transparent; color: var(--tx); font: inherit; font-weight: 500">Cancelar</button>
+      </div>
+    </sc-if>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"oscuro"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'sel', sel: 'est', dia: 15, toast: false };
+  }
+  renderVals() {
+    const s = this.state;
+    const M = [['est', 'Estadística II', 'mant'], ['bd', 'Base de Datos II', 'cielo'], ['ed', 'Ecuaciones Diferenciales', 'lila'], ['seg', 'Seguridad de Sistemas', 'menta']];
+    const T = [['sel', 'Selección'], ['fecha', 'Fecha'], ['acc', 'Acciones'], ['conf', 'Confirmar']];
+    const dias = [];
+    for (let i = 0; i < 35; i++) {
+      const d = i - 2, inM = d >= 1 && d <= 31, n = inM ? d : '';
+      const sel = d === s.dia, hoy = d === 14;
+      dias.push({ n, pick: () => inM && this.setState({ dia: d }), st: 'height: 40px; border: 0; border-radius: 10px; font: inherit; font-size: 14px; ' + (sel ? 'background: var(--tx); color: var(--bg); font-weight: 700;' : hoy ? 'background: transparent; color: var(--tx); box-shadow: inset 0 0 0 1.5px var(--tx);' : 'background: transparent; color: var(--tx);') });
+    }
+    return {
+      tema: (this.props.tema ?? 'oscuro') === 'claro' ? 'claro' : 'oscuro',
+      tabs: T.map(([k, n]) => ({ n, on: s.tab === k ? 'true' : 'false', pick: () => this.setState({ tab: k, toast: false }), st: 'min-height: 36px; border: 0; border-radius: 8px; font: inherit; font-size: 12px; cursor: pointer; ' + (s.tab === k ? 'background: var(--bg); color: var(--tx); font-weight: 600;' : 'background: transparent; color: var(--tx2);') })),
+      tSel: s.tab === 'sel', tFecha: s.tab === 'fecha', tAcc: s.tab === 'acc', tConf: s.tab === 'conf',
+      opts: M.map(([k, n, c]) => ({ n, sel: s.sel === k, on: s.sel === k ? 'true' : 'false', dot: 'width: 10px; height: 10px; border-radius: 50%; background: var(--' + c + ')', pick: () => this.setState({ sel: k, toast: true }) })),
+      selN: M.find((m) => m[0] === s.sel)[1], toast: s.toast,
+      dias, dia: s.dia
+    };
+  }
+}
+</script>
+</body>
+</html>

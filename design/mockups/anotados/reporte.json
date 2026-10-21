@@ -1,0 +1,838 @@
+{
+ "HU-01.01": {
+  "total": 8,
+  "ubicadas": [
+   "1",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "imagenes": [
+   "HU-01.01__inicio-dashboard-escritorio.png",
+   "HU-01.01__inicio-dashboard-movil.png",
+   "HU-01.01__olimpo-oficina-escritorio.png"
+  ]
+ },
+ "HU-01.02": {
+  "total": 5,
+  "ubicadas": [
+   "1",
+   "2"
+  ],
+  "imagenes": [
+   "HU-01.02__configuracion-escritorio.png",
+   "HU-01.02__configuracion-movil.png"
+  ]
+ },
+ "HU-01.03": {
+  "total": 4,
+  "ubicadas": [
+   "3"
+  ],
+  "imagenes": [
+   "HU-01.03__inicio-dashboard-escritorio.png",
+   "HU-01.03__inicio-dashboard-movil.png"
+  ]
+ },
+ "HU-02.01": {
+  "total": 8,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "8"
+  ],
+  "imagenes": [
+   "HU-02.01__controles-y-estados-escritorio.png"
+  ]
+ },
+ "HU-02.02": {
+  "total": 8,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "imagenes": [
+   "HU-02.02__controles-y-estados-escritorio.png"
+  ]
+ },
+ "HU-02.03": {
+  "total": 5,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "imagenes": [
+   "HU-02.03__controles-y-estados-escritorio.png",
+   "HU-02.03__hojas-inferiores-movil.png"
+  ]
+ },
+ "HU-02.04": {
+  "total": 6,
+  "ubicadas": [
+   "1",
+   "4",
+   "5"
+  ],
+  "imagenes": [
+   "HU-02.04__controles-y-estados-escritorio.png"
+  ]
+ },
+ "HU-02.05": {
+  "total": 8,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "imagenes": [
+   "HU-02.05__controles-y-estados-escritorio.png"
+  ]
+ },
+ "HU-02.06": {
+  "total": 5,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "imagenes": [
+   "HU-02.06__dialogos-trabajo-diario.png",
+   "HU-02.06__dialogos-ajustes-y-cuenta.png",
+   "HU-02.06__hojas-inferiores-movil.png"
+  ]
+ },
+ "HU-02.07": {
+  "total": 6,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "imagenes": [
+   "HU-02.07__controles-y-estados-escritorio.png"
+  ]
+ },
+ "HU-03.01": {
+  "total": 9,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "9"
+  ],
+  "imagenes": [
+   "HU-03.01__iniciar-sesion-escritorio.png",
+   "HU-03.01__iniciar-sesion-movil.png"
+  ]
+ },
+ "HU-03.02": {
+  "total": 7,
+  "ubicadas": [],
+  "imagenes": []
+ },
+ "HU-03.03": {
+  "total": 2,
+  "ubicadas": [
+   "1",
+   "2"
+  ],
+  "imagenes": [
+   "HU-03.03__iniciar-sesion-escritorio.png",
+   "HU-03.03__configuracion-escritorio.png"
+  ]
+ },
+ "HU-03.04": {
+  "total": 6,
+  "ubicadas": [
+   "1",
+   "3",
+   "5",
+   "6"
+  ],
+  "imagenes": [
+   "HU-03.04__dialogos-ajustes-y-cuenta.png"
+  ]
+ },
+ "HU-03.05": {
+  "total": 4,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "imagenes": [
+   "HU-03.05__dialogos-ajustes-y-cuenta.png",
+   "HU-03.05__configuracion-escritorio.png",
+   "HU-03.05__configuracion-movil.png"
+  ]
+ },
+ "HU-04.01": {
+  "total": 2,
+  "ubicadas": [
+   "1"
+  ],
+  "imagenes": [
+   "HU-04.01__configuracion-escritorio.png",
+   "HU-04.01__configuracion-movil.png"
+  ]
+ },
+ "HU-04.02": {
+  "total": 8,
+  "ubicadas": [
+   "1",
+   "3",
+   "4",
+   "5",
+   "6",
+   "8"
+  ],
+  "imagenes": [
+   "HU-04.02__configuracion-escritorio.png",
+   "HU-04.02__configuracion-movil.png"
+  ]
+ },
+ "HU-04.03": {
+  "total": 5,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "imagenes": [
+   "HU-04.03__configuracion-escritorio.png",
+   "HU-04.03__configuracion-movil.png"
+  ]
+ },
+ "HU-04.04": {
+  "total": 5,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "imagenes": [
+   "HU-04.04__configuracion-escritorio.png",
+   "HU-04.04__configuracion-movil.png"
+  ]
+ },
+ "HU-05.01": {
+  "total": 8,
+  "ubicadas": [
+   "1",
+   "6"
+  ],
+  "imagenes": [
+   "HU-05.01__olimpo-oficina-escritorio.png",
+   "HU-05.01__olimpo-oficina-movil.png"
+  ]
+ },
+ "HU-05.02": {
+  "total": 6,
+  "ubicadas": [],
+  "imagenes": []
+ },
+ "HU-05.03": {
+  "total": 10,
+  "ubicadas": [
+   "1",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "imagenes": [
+   "HU-05.03__olimpo-oficina-escritorio.png",
+   "HU-05.03__olimpo-oficina-movil.png"
+  ]
+ },
+ "HU-05.04": {
+  "total": 6,
+  "ubicadas": [
+   "1",
+   "6"
+  ],
+  "imagenes": [
+   "HU-05.04__olimpo-oficina-movil.png"
+  ]
+ },
+ "HU-05.05": {
+  "total": 4,
+  "ubicadas": [
+   "1",
+   "2"
+  ],
+  "imagenes": [
+   "HU-05.05__olimpo-oficina-escritorio.png"
+  ]
+ },
+ "HU-05.06": {
+  "total": 7,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "imagenes": [
+   "HU-05.06__dialogos-ajustes-y-cuenta.png"
+  ]
+ },
+ "HU-05.07": {
+  "total": 3,
+  "ubicadas": [],
+  "imagenes": []
+ },
+ "HU-05.08": {
+  "total": 4,
+  "ubicadas": [],
+  "imagenes": []
+ },
+ "HU-06.01": {
+  "total": 11,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11"
+  ],
+  "imagenes": [
+   "HU-06.01__olimpo-oficina-escritorio.png",
+   "HU-06.01__encargar-movil.png"
+  ]
+ },
+ "HU-06.02": {
+  "total": 7,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "imagenes": [
+   "HU-06.02__olimpo-oficina-escritorio.png",
+   "HU-06.02__olimpo-oficina-movil.png"
+  ]
+ },
+ "HU-06.03": {
+  "total": 4,
+  "ubicadas": [
+   "1",
+   "2"
+  ],
+  "imagenes": [
+   "HU-06.03__olimpo-oficina-escritorio.png"
+  ]
+ },
+ "HU-06.04": {
+  "total": 9,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "imagenes": [
+   "HU-06.04__dialogos-trabajo-diario.png"
+  ]
+ },
+ "HU-06.05": {
+  "total": 6,
+  "ubicadas": [
+   "1",
+   "4"
+  ],
+  "imagenes": [
+   "HU-06.05__olimpo-oficina-escritorio.png"
+  ]
+ },
+ "HU-06.06": {
+  "total": 3,
+  "ubicadas": [
+   "1",
+   "2"
+  ],
+  "imagenes": [
+   "HU-06.06__olimpo-oficina-escritorio.png"
+  ]
+ },
+ "HU-07.01": {
+  "total": 2,
+  "ubicadas": [
+   "1"
+  ],
+  "imagenes": [
+   "HU-07.01__olimpo-oficina-escritorio.png"
+  ]
+ },
+ "HU-07.02": {
+  "total": 2,
+  "ubicadas": [
+   "2"
+  ],
+  "imagenes": [
+   "HU-07.02__olimpo-oficina-escritorio.png"
+  ]
+ },
+ "HU-07.03": {
+  "total": 3,
+  "ubicadas": [
+   "1",
+   "2"
+  ],
+  "imagenes": [
+   "HU-07.03__olimpo-oficina-escritorio.png"
+  ]
+ },
+ "HU-07.04": {
+  "total": 1,
+  "ubicadas": [
+   "1"
+  ],
+  "imagenes": [
+   "HU-07.04__consumo-escritorio.png"
+  ]
+ },
+ "HU-08.01": {
+  "total": 6,
+  "ubicadas": [
+   "2",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "imagenes": [
+   "HU-08.01__consumo-escritorio.png"
+  ]
+ },
+ "HU-08.02": {
+  "total": 7,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "imagenes": [
+   "HU-08.02__consumo-escritorio.png",
+   "HU-08.02__consumo-movil.png"
+  ]
+ },
+ "HU-08.03": {
+  "total": 3,
+  "ubicadas": [
+   "1",
+   "2",
+   "3"
+  ],
+  "imagenes": [
+   "HU-08.03__consumo-escritorio.png"
+  ]
+ },
+ "HU-08.04": {
+  "total": 2,
+  "ubicadas": [
+   "1"
+  ],
+  "imagenes": [
+   "HU-08.04__consumo-escritorio.png"
+  ]
+ },
+ "HU-09.01": {
+  "total": 12,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "imagenes": [
+   "HU-09.01__agregar-materia-escritorio.png",
+   "HU-09.01__agregar-materia-movil.png"
+  ]
+ },
+ "HU-09.02": {
+  "total": 9,
+  "ubicadas": [
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "imagenes": [
+   "HU-09.02__materias-escritorio.png",
+   "HU-09.02__materias-movil.png"
+  ]
+ },
+ "HU-09.03": {
+  "total": 5,
+  "ubicadas": [
+   "1",
+   "5"
+  ],
+  "imagenes": [
+   "HU-09.03__materias-escritorio.png"
+  ]
+ },
+ "HU-09.04": {
+  "total": 3,
+  "ubicadas": [
+   "1",
+   "3"
+  ],
+  "imagenes": [
+   "HU-09.04__agregar-materia-escritorio.png",
+   "HU-09.04__materias-escritorio.png"
+  ]
+ },
+ "HU-09.05": {
+  "total": 4,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "imagenes": [
+   "HU-09.05__dialogos-ajustes-y-cuenta.png"
+  ]
+ },
+ "HU-10.01": {
+  "total": 6,
+  "ubicadas": [
+   "2",
+   "5"
+  ],
+  "imagenes": [
+   "HU-10.01__malla-escritorio.png"
+  ]
+ },
+ "HU-10.02": {
+  "total": 6,
+  "ubicadas": [
+   "4",
+   "5",
+   "6"
+  ],
+  "imagenes": [
+   "HU-10.02__malla-escritorio.png",
+   "HU-10.02__malla-movil.png"
+  ]
+ },
+ "HU-10.03": {
+  "total": 7,
+  "ubicadas": [
+   "1",
+   "3",
+   "4",
+   "6"
+  ],
+  "imagenes": [
+   "HU-10.03__dialogos-ajustes-y-cuenta.png"
+  ]
+ },
+ "HU-11.01": {
+  "total": 11,
+  "ubicadas": [
+   "2",
+   "4",
+   "6",
+   "8",
+   "9",
+   "10"
+  ],
+  "imagenes": [
+   "HU-11.01__calendario-escritorio.png"
+  ]
+ },
+ "HU-11.02": {
+  "total": 8,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "imagenes": [
+   "HU-11.02__dialogos-trabajo-diario.png"
+  ]
+ },
+ "HU-11.03": {
+  "total": 7,
+  "ubicadas": [
+   "1",
+   "2",
+   "4",
+   "6",
+   "7"
+  ],
+  "imagenes": [
+   "HU-11.03__horario-escritorio.png",
+   "HU-11.03__horario-movil.png"
+  ]
+ },
+ "HU-11.04": {
+  "total": 6,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "imagenes": [
+   "HU-11.04__dialogos-ajustes-y-cuenta.png"
+  ]
+ },
+ "HU-12.01": {
+  "total": 4,
+  "ubicadas": [
+   "1",
+   "4"
+  ],
+  "imagenes": [
+   "HU-12.01__tareas-escritorio.png",
+   "HU-12.01__tareas-movil.png"
+  ]
+ },
+ "HU-12.02": {
+  "total": 7,
+  "ubicadas": [
+   "2",
+   "3",
+   "4",
+   "6"
+  ],
+  "imagenes": [
+   "HU-12.02__tareas-escritorio.png",
+   "HU-12.02__tareas-movil.png"
+  ]
+ },
+ "HU-12.03": {
+  "total": 8,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "imagenes": [
+   "HU-12.03__tareas-escritorio.png",
+   "HU-12.03__dialogos-trabajo-diario.png"
+  ]
+ },
+ "HU-12.04": {
+  "total": 3,
+  "ubicadas": [
+   "1",
+   "2"
+  ],
+  "imagenes": [
+   "HU-12.04__tareas-escritorio.png",
+   "HU-12.04__dialogos-trabajo-diario.png"
+  ]
+ },
+ "HU-12.05": {
+  "total": 3,
+  "ubicadas": [
+   "1"
+  ],
+  "imagenes": [
+   "HU-12.05__tareas-escritorio.png",
+   "HU-12.05__tareas-movil.png"
+  ]
+ },
+ "HU-13.01": {
+  "total": 9,
+  "ubicadas": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "6",
+   "7",
+   "8"
+  ],
+  "imagenes": [
+   "HU-13.01__avisos-escritorio.png",
+   "HU-13.01__avisos-movil.png"
+  ]
+ },
+ "HU-13.02": {
+  "total": 4,
+  "ubicadas": [
+   "1",
+   "3"
+  ],
+  "imagenes": [
+   "HU-13.02__avisos-escritorio.png"
+  ]
+ },
+ "HU-13.03": {
+  "total": 5,
+  "ubicadas": [
+   "1",
+   "3",
+   "4",
+   "5"
+  ],
+  "imagenes": [
+   "HU-13.03__dialogos-ajustes-y-cuenta.png"
+  ]
+ },
+ "HU-14.01": {
+  "total": 9,
+  "ubicadas": [
+   "4",
+   "5",
+   "6",
+   "8"
+  ],
+  "imagenes": [
+   "HU-14.01__repaso-escritorio.png",
+   "HU-14.01__repaso-movil.png"
+  ]
+ },
+ "HU-14.02": {
+  "total": 3,
+  "ubicadas": [
+   "1"
+  ],
+  "imagenes": [
+   "HU-14.02__controles-y-estados-escritorio.png"
+  ]
+ },
+ "HU-14.03": {
+  "total": 7,
+  "ubicadas": [
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "imagenes": [
+   "HU-14.03__estudio-escritorio.png",
+   "HU-14.03__estudio-movil.png"
+  ]
+ },
+ "HU-14.04": {
+  "total": 3,
+  "ubicadas": [
+   "1",
+   "2",
+   "3"
+  ],
+  "imagenes": [
+   "HU-14.04__estudio-escritorio.png"
+  ]
+ },
+ "HU-15.01": {
+  "total": 14,
+  "ubicadas": [
+   "1",
+   "3",
+   "10",
+   "13",
+   "14"
+  ],
+  "imagenes": [
+   "HU-15.01__inicio-dashboard-escritorio.png",
+   "HU-15.01__inicio-dashboard-movil.png"
+  ]
+ },
+ "HU-15.02": {
+  "total": 4,
+  "ubicadas": [
+   "1"
+  ],
+  "imagenes": [
+   "HU-15.02__dialogos-trabajo-diario.png"
+  ]
+ },
+ "HU-16.01": {
+  "total": 3,
+  "ubicadas": [],
+  "imagenes": []
+ },
+ "HU-16.02": {
+  "total": 2,
+  "ubicadas": [],
+  "imagenes": []
+ },
+ "HU-16.03": {
+  "total": 3,
+  "ubicadas": [],
+  "imagenes": []
+ },
+ "HU-16.04": {
+  "total": 1,
+  "ubicadas": [],
+  "imagenes": []
+ }
+}

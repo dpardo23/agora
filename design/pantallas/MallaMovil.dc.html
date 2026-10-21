@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Malla · móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+a{color:inherit}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="width: 390px; height: 844px; position: relative; overflow: hidden">
+  <div style="padding: 54px 18px 0; display: flex; flex-direction: column; gap: 14px">
+    <a href="InicioMovil.dc.html" class="mu" style="font-size: 13px; text-decoration: none; min-height: 24px">‹ Inicio</a>
+    <header style="display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; align-items: baseline; justify-content: space-between"><h1 class="d" style="font-size: 30px; line-height: 1">Malla</h1><span class="m" style="font-size: 12px">{{cA}}/{{total}} · {{pct}}%</span></div>
+      <div style="display: flex; gap: 2px; height: 6px"><span style="{{barA}}"></span><span style="{{barC}}"></span><span style="flex: 1; background: var(--line); border-radius: 0 4px 4px 0"></span></div>
+      <div style="display: flex; gap: 12px; font-size: 11px" class="mu">
+        <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 9px; height: 9px; border-radius: 3px; background: var(--bg2); border: 1px solid var(--line)"></span>Aprobada</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 9px; height: 9px; border-radius: 3px; background: var(--menta)"></span>Cursando</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 9px; height: 9px; border-radius: 3px; border: 1.5px solid var(--tx); box-sizing: border-box"></span>Disponible</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 9px; height: 9px; border-radius: 3px; border: 1.5px dashed var(--tx2); box-sizing: border-box"></span>Bloqueada</span>
+      </div>
+    </header>
+
+    <div style="display: flex; flex-direction: column">
+      <sc-for list="{{semestres}}" as="s" hint-placeholder-count="6">
+        <div style="display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; padding: 8px 0; border-top: 1px solid var(--line)">
+          <span class="m mu" style="font-size: 11px; padding-top: 10px">S{{s.n}}</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 5px">
+            <sc-for list="{{s.materias}}" as="m" hint-placeholder-count="4">
+              <button type="button" onClick="{{m.pick}}" aria-pressed="{{m.selA}}" aria-label="{{m.nombre}}" style="{{m.style}}">{{m.corto}}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <section aria-labelledby="det" style="position: absolute; left: 10px; right: 10px; bottom: 94px; padding: 14px 16px; border-radius: 18px; background: var(--bg2); display: flex; flex-direction: column; gap: 6px">
+    <div style="display: flex; justify-content: space-between" class="lbl"><span>Semestre {{sel.sem}}</span><span>{{sel.estadoTxt}}</span></div>
+    <h2 id="det" class="d" style="font-size: 18px; line-height: 1.15">{{sel.nombre}}</h2>
+    <span style="font-size: 12px"><span class="mu">Requiere:</span> {{sel.preTxt}}</span>
+    <sc-if value="{{sel.falta}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; font-weight: 600; color: var(--warn)">Te falta {{sel.faltaTxt}}</span></sc-if>
+  </section>
+
+  <nav aria-label="Principal" style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; box-sizing: border-box; padding: 6px 10px 24px; background: var(--bg); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center">
+    <a href="InicioMovil.dc.html" style="{{nv.inicio}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg>Inicio</a>
+    <a href="TareasMovil.dc.html" style="{{nv.tareas}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5"></path></svg>Tareas</a>
+    <a href="BotMovil.dc.html" aria-label="Bot" style="justify-self: center; width: 54px; height: 54px; border-radius: 18px; background: var(--ink); color: var(--on); display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5"></path></svg></a>
+    <a href="CalendarioMovil.dc.html" style="{{nv.cal}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4"></path></svg>Agenda</a>
+    <a href="RepasoMovil.dc.html" style="{{nv.repaso}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10"></path></svg>Estudiar</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"oscuro"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 'bd3' };
+  }
+  mnav(a) {
+    const s = (id) => 'display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; ' + (id === a ? 'color: var(--tx); font-weight: 600;' : 'color: var(--tx2);');
+    return { inicio: s('inicio'), tareas: s('tareas'), cal: s('cal'), repaso: s('repaso') };
+  }
+  renderVals() {
+    const M = [
+      ['c1', 1, 'Cálculo I', 'Cálculo I', 'A', []], ['a1', 1, 'Álgebra I', 'Álgebra I', 'A', []], ['p1', 1, 'Introducción a la Programación', 'Intro. Prog.', 'A', []], ['f1', 1, 'Física General', 'Física', 'A', []],
+      ['c2', 2, 'Cálculo II', 'Cálculo II', 'A', ['c1']], ['a2', 2, 'Álgebra II', 'Álgebra II', 'A', ['a1']], ['p2', 2, 'Elementos de Programación y Estructura de Datos', 'Estructuras', 'A', ['p1']], ['md', 2, 'Matemática Discreta', 'Discreta', 'A', ['a1']],
+      ['ed', 3, 'Ecuaciones Diferenciales', 'Ec. Dif.', 'C', ['c2']], ['e1', 3, 'Estadística I', 'Estadística I', 'A', ['c2']], ['p3', 3, 'Métodos y Técnicas de Programación', 'Métodos Prog.', 'A', ['p2']], ['bd1', 3, 'Base de Datos I', 'BD I', 'A', ['p2', 'md']],
+      ['e2', 4, 'Estadística II', 'Estadística II', 'C', ['e1']], ['bd2', 4, 'Base de Datos II', 'BD II', 'C', ['bd1']], ['si1', 4, 'Sistemas de Información I', 'SI I', 'D', ['bd1']], ['ac', 4, 'Arquitectura de Computadoras', 'Arquitectura', 'D', ['f1', 'md']],
+      ['seg', 5, 'Seguridad de Sistemas', 'Seguridad', 'C', ['p3']], ['so', 5, 'Sistemas Operativos', 'SO', 'B', ['ac']], ['is', 5, 'Ingeniería de Software', 'Ing. Software', 'B', ['si1', 'p3']], ['io', 5, 'Investigación Operativa', 'Inv. Operativa', 'B', ['e2', 'ed']],
+      ['bd3', 6, 'Taller de Base de Datos', 'Taller BD', 'B', ['bd2', 'is']], ['red', 6, 'Redes de Computadoras', 'Redes', 'B', ['so']], ['si2', 6, 'Sistemas de Información II', 'SI II', 'B', ['si1', 'is']], ['sim', 6, 'Simulación de Sistemas', 'Simulación', 'B', ['io', 'e2']]
+    ];
+    const by = {};
+    M.forEach(([id, sem, nombre, corto, st, pre]) => { by[id] = { id, sem, nombre, corto, st, pre }; });
+    const txt = { A: 'Aprobada', C: 'Cursando', D: 'Disponible', B: 'Bloqueada' };
+    const sel = by[this.state.sel] || by.bd3;
+    const chain = new Set();
+    const walk = (id) => by[id].pre.forEach((p) => { chain.add(p); walk(p); });
+    walk(sel.id);
+    const base = { A: 'background: var(--bg2); color: var(--tx2); border: 1px solid transparent;', C: 'background: var(--menta); color: #0B0B0B; border: 1px solid transparent;', D: 'background: transparent; color: var(--tx); border: 1.5px solid var(--tx);', B: 'background: transparent; color: var(--tx2); border: 1.5px dashed var(--tx2);' };
+    const count = (st) => M.filter((m) => m[4] === st).length;
+    const cA = count('A'), cC = count('C');
+    const faltan = sel.pre.filter((p) => by[p].st !== 'A').map((p) => by[p].corto);
+    return {
+      tema: (this.props.tema ?? 'oscuro') === 'claro' ? 'claro' : 'oscuro',
+      nv: this.mnav(''),
+      semestres: [1, 2, 3, 4, 5, 6].map((n) => ({
+        n,
+        materias: M.filter((m) => m[1] === n).map(([id]) => {
+          const m = by[id], isSel = id === sel.id;
+          let s = 'min-height: 36px; padding: 0 10px; border-radius: 9px; font: inherit; font-size: 12px; font-weight: 500; cursor: pointer; ' + base[m.st];
+          if (isSel) s += ' box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--tx);';
+          else if (chain.has(id)) s += ' box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px #E39A84;';
+          return { ...m, style: s, selA: isSel ? 'true' : 'false', pick: () => this.setState({ sel: id }) };
+        })
+      })),
+      total: M.length, cA, pct: Math.round(cA / M.length * 100),
+      barA: 'width: ' + (cA / M.length * 100) + '%; background: var(--tx); border-radius: 4px 0 0 4px',
+      barC: 'width: ' + (cC / M.length * 100) + '%; background: var(--menta)',
+      sel: { nombre: sel.nombre, sem: sel.sem, estadoTxt: txt[sel.st], preTxt: sel.pre.length ? sel.pre.map((p) => by[p].corto).join(', ') : 'ninguno', falta: faltan.length > 0 && sel.st === 'B', faltaTxt: faltan.join(' y ') }
+    };
+  }
+}
+</script>
+</body>
+</html>
