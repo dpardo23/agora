@@ -1,0 +1,79 @@
+# Entrega continua de Ágora.
+# - La web la despliega Vercel con su integración de Git: una preview por PR, staging desde develop y producción desde main.
+# - Este workflow aplica las migraciones de Supabase y publica la release.
+#   Producción requiere aprobación manual (environment «produccion» con revisor obligatorio).
+name: CD
+
+on:
+  push:
+    branches: [develop]
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  detectar:
+    name: Detectar componentes
+    runs-on: ubuntu-latest
+    outputs:
+      hay_db: ${{ steps.existe.outputs.db }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: existe
+        run: echo "db=$([ -f supabase/config.toml ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+  migraciones-staging:
+    name: Migraciones en staging
+    needs: detectar
+    if: github.ref == 'refs/heads/develop' && needs.detectar.outputs.hay_db == 'true'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
+        env:
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      - run: supabase db push
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+
+  migraciones-produccion:
+    name: Migraciones en producción
+    needs: detectar
+    if: startsWith(github.ref, 'refs/tags/v') && needs.detectar.outputs.hay_db == 'true'
+    runs-on: ubuntu-latest
+    environment: produccion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
+        env:
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      - run: supabase db push
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+
+  release:
+    name: Publicar release
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Crear la release con notas generadas desde los commits
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes --verify-tag

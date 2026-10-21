@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Horario · escritorio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.btn{min-height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:var(--on);font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.btn2{min-height:38px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--tx);font:inherit;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+a{color:inherit}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="min-height: 100vh; display: flex; flex-wrap: wrap">
+
+  <nav aria-label="Principal" style="flex: 1 1 210px; box-sizing: border-box; padding: 20px 12px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px">
+    <div style="display: flex; align-items: center; gap: 8px; padding-right: 4px"><a href="Inicio.dc.html" style="flex: 1; display: flex; align-items: center; gap: 10px; padding: 0 10px; text-decoration: none">
+      <span style="width: 22px; height: 22px; border-radius: 7px; background: var(--lila); display: grid; place-items: center"><span style="width: 8px; height: 8px; border-radius: 50%; background: #0B0B0B"></span></span>
+      <span class="d" style="font-size: 21px">dpardo</span>
+    </a><a href="Avisos.dc.html" aria-label="Avisos, 5 sin leer" style="position: relative; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--tx); text-decoration: none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"></path></svg><span class="m" style="position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px; border-radius: 8px; background: var(--rosa); color: #0B0B0B; font-size: 10px; font-weight: 600; display: grid; place-items: center">5</span></a></div>
+    <div style="display: flex; flex-direction: column; gap: 1px">
+      <sc-for list="{{nav}}" as="n" hint-placeholder-count="11">
+        <a href="{{n.href}}" style="{{n.st}}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.d}}"></path></svg>
+          <span style="flex: 1">{{n.t}}</span>
+          <span class="m" style="font-size: 11px">{{n.b}}</span>
+        </a>
+      </sc-for>
+    </div>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 14px">
+      <a href="Configuracion.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; text-decoration: none; border-top: 1px solid var(--line)">
+        <span style="width: 30px; height: 30px; border-radius: 50%; background: var(--rosa); color: #0B0B0B; display: grid; place-items: center; font-size: 12px; font-weight: 600">JD</span>
+        <span style="flex: 1; display: flex; flex-direction: column; line-height: 1.2"><span style="font-weight: 600">dpardo</span><span class="mu" style="font-size: 12px">Configuración</span></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"></path></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; display: flex; flex-wrap: wrap">
+    <section aria-labelledby="h" style="flex: 999 1 640px; min-width: 0; box-sizing: border-box; padding: 28px clamp(16px, 2.5vw, 36px) 32px; display: flex; flex-direction: column; gap: 16px">
+      <div role="tablist" aria-label="Agenda" style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--bg2); width: fit-content"><a role="tab" aria-selected="false" href="Calendario.dc.html" style="min-height: 34px; padding: 0 14px; border-radius: 9px; display: inline-flex; align-items: center; text-decoration: none; font-size: 13px; color: var(--tx2)">Calendario</a><a role="tab" aria-selected="true" href="Horario.dc.html" style="min-height: 34px; padding: 0 14px; border-radius: 9px; display: inline-flex; align-items: center; text-decoration: none; font-size: 13px; background: var(--bg); color: var(--tx); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.12)">Horario semanal</a></div>
+      <header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+          <h1 id="h" class="d" style="font-size: 32px; line-height: 1">Horario</h1>
+          <span class="mu" style="font-size: 13px">Gestión II/2026 · semana del 12 al 17 de octubre</span>
+        </div>
+        <button type="button" class="btn2">Editar</button>
+        <button type="button" class="btn">Exportar a Google Calendar</button>
+      </header>
+
+      <div style="overflow-x: auto">
+        <div style="min-width: 720px; display: grid; grid-template-columns: 52px repeat(6, minmax(0, 1fr)); column-gap: 6px">
+          <span></span>
+          <sc-for list="{{dias}}" as="d" hint-placeholder-count="6">
+            <span class="lbl" style="padding: 0 4px 8px; border-bottom: 1px solid var(--line)">{{d}}</span>
+          </sc-for>
+        </div>
+        <div style="min-width: 720px; position: relative; display: grid; grid-template-columns: 52px repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(56, 11px); column-gap: 6px; background-image: repeating-linear-gradient(to bottom, var(--line) 0 1px, transparent 1px 44px); background-position: 0 0">
+          <sc-for list="{{horas}}" as="h" hint-placeholder-count="14">
+            <span class="m mu" style="{{h.st}}">{{h.t}}</span>
+          </sc-for>
+          <sc-for list="{{bloques}}" as="b" hint-placeholder-count="10">
+            <div style="{{b.st}}">
+              <span style="font-weight: 600; font-size: 12px; line-height: 1.2">{{b.n}}</span>
+              <span class="m" style="font-size: 10px">{{b.h}}</span>
+              <span style="font-size: 10px; opacity: 0.8">{{b.tipo}} · [aula]</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <aside aria-label="Resumen de la semana" style="flex: 1 1 280px; min-width: 0; box-sizing: border-box; padding: 28px 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <span class="lbl">Siguiente clase · mañana</span>
+        <span class="d" style="font-size: 30px; line-height: 1">07:45</span>
+        <span style="font-weight: 600">Base de Datos II</span>
+        <span class="mu" style="font-size: 13px">Teoría · [aula] · [docente]</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--line)">
+        <span class="lbl">Horas por semana · {{total}} h</span>
+        <sc-for list="{{resumen}}" as="r" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 10px; align-items: center; font-size: 13px">
+            <span style="{{r.dot}}"></span><span>{{r.n}}</span><span class="m">{{r.h}} h</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--line)">
+        <span class="lbl">Tipos</span>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px">
+          <span style="display: flex; align-items: center; gap: 8px"><span style="width: 18px; height: 12px; border-radius: 3px; background: var(--cielo)"></span>Teoría, relleno</span>
+          <span style="display: flex; align-items: center; gap: 8px"><span style="width: 18px; height: 12px; border-radius: 3px; background: repeating-linear-gradient(135deg, var(--cielo) 0 4px, rgba(255,255,255,0.55) 4px 7px)"></span>Laboratorio, rayado</span>
+          <span style="display: flex; align-items: center; gap: 8px"><span style="width: 18px; height: 12px; border-radius: 3px; border: 1.5px dashed var(--tx2); box-sizing: border-box"></span>Auxiliatura, borde</span>
+        </div>
+      </div>
+      <p class="mu" style="margin: 0; font-size: 12px">Los cambios de aula detectados en Avisos se aplican aquí con un clic.</p>
+    </aside>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"claro"},"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  nav(activo) {
+    const AL = { calendario: 'agenda', horario: 'agenda', malla: 'materias', repaso: 'estudiar', estudio: 'estudiar', consumo: 'bot', oficina: 'bot' };
+    activo = AL[activo] || activo;
+    const I = {
+      inicio: 'M4 11l8-7 8 7v9h-5v-6H9v6H4z',
+      avisos: 'M4 13l2.5-7h11L20 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 13h4.5l1.5 2.5h4l1.5-2.5H20',
+      bot: 'M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5',
+      tareas: 'M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5',
+      materias: 'M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4zM5 16a4 4 0 0 1 4-4h10',
+      horario: 'M12 4a8 8 0 1 1 0 16a8 8 0 1 1 0-16zM12 8v4l3 2',
+      calendario: 'M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4',
+      malla: 'M6 3.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM18 3.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM12 15.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM7.5 8.2l3.4 7.4M16.5 8.2l-3.4 7.4',
+      repaso: 'M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10',
+      estudio: 'M12 7a7 7 0 1 1 0 14a7 7 0 1 1 0-14zM12 11v3.5M9.5 3h5M12 3v4',
+      consumo: 'M4 17a8 8 0 1 1 16 0M12 17l4-5'
+    };
+    I.agenda = I.calendario; I.estudiar = I.repaso;
+    const items = [['inicio', 'Inicio', 'Inicio.dc.html', ''], ['bot', 'Bot', 'Main.dc.html', '●'], ['tareas', 'Tareas', 'Tareas.dc.html', '3'], ['agenda', 'Agenda', 'Calendario.dc.html', ''], ['materias', 'Materias', 'Materias.dc.html', ''], ['estudiar', 'Estudiar', 'Repaso.dc.html', '24']];
+    return items.map(([id, t, href, b]) => ({
+      t, href, b, d: I[id] || 'M4 20V7l8-4 8 4v13M9 20v-4h6v4M8 10h2M14 10h2M8 14h2M14 14h2',
+      st: 'display: flex; align-items: center; gap: 12px; min-height: 38px; padding: 0 10px; border-radius: 9px; text-decoration: none; ' + (id === activo ? 'background: var(--bg2); color: var(--tx); font-weight: 600;' : 'color: var(--tx2);')
+    }));
+  }
+  renderVals() {
+    const C = { bd: ['Base de Datos II', 'cielo'], est: ['Estadística II', 'mant'], ed: ['Ecuaciones Diferenciales', 'lila'], seg: ['Seguridad de Sistemas', 'menta'] };
+    const B = [
+      ['bd', 0, '07:45', '09:15', 'T'], ['bd', 2, '07:45', '09:15', 'T'], ['bd', 4, '14:15', '15:45', 'L'],
+      ['est', 1, '09:45', '11:15', 'T'], ['est', 3, '09:45', '11:15', 'T'], ['est', 5, '08:15', '09:45', 'A'],
+      ['ed', 0, '09:45', '11:15', 'T'], ['ed', 4, '09:45', '11:15', 'T'],
+      ['seg', 2, '14:15', '15:45', 'T'], ['seg', 4, '17:15', '18:45', 'T']
+    ];
+    const mins = (h) => { const [a, b] = h.split(':').map(Number); return a * 60 + b; };
+    const tipo = { T: 'Teoría', L: 'Laboratorio', A: 'Auxiliatura' };
+    const horasM = {};
+    const bloques = B.map(([k, d, i, f, t]) => {
+      const r0 = (mins(i) - 420) / 15 + 1, span = (mins(f) - mins(i)) / 15;
+      horasM[k] = (horasM[k] || 0) + (mins(f) - mins(i)) / 60;
+      const c = 'var(--' + C[k][1] + ')';
+      const fill = t === 'T' ? 'background: ' + c + '; color: #0B0B0B;' : t === 'L' ? 'background: repeating-linear-gradient(135deg, ' + c + ' 0 6px, rgba(255,255,255,0.5) 6px 10px); color: #0B0B0B;' : 'background: transparent; color: var(--tx); border: 1.5px dashed var(--tx2);';
+      return { n: C[k][0], h: i + ' a ' + f, tipo: tipo[t], st: 'grid-column: ' + (d + 2) + '; grid-row: ' + r0 + ' / span ' + span + '; border-radius: 8px; padding: 6px 8px; margin: 1px 0; box-sizing: border-box; display: flex; flex-direction: column; gap: 1px; overflow: hidden; ' + fill };
+    });
+    const horas = [];
+    for (let h = 7; h < 21; h++) horas.push({ t: String(h).padStart(2, '0') + ':00', st: 'grid-column: 1; grid-row: ' + ((h - 7) * 4 + 1) + ' / span 4; font-size: 10px; padding-top: 3px' });
+    const total = Object.values(horasM).reduce((a, b) => a + b, 0);
+    const fmt = (x) => String(x).replace('.', ',');
+    return {
+      tema: (this.props.tema ?? 'claro') === 'oscuro' ? 'oscuro' : 'claro',
+      nav: this.nav('horario'),
+      dias: ['Lun 12', 'Mar 13', 'Mié 14', 'Jue 15', 'Vie 16', 'Sáb 17'],
+      horas, bloques, total: fmt(total),
+      resumen: Object.keys(C).map((k) => ({ n: C[k][0], h: fmt(horasM[k]), dot: 'width: 10px; height: 10px; border-radius: 3px; background: var(--' + C[k][1] + ')' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

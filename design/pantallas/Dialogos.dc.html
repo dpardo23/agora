@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Diálogos · trabajo diario</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C;--veil:#E9E8E3}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F;--veil:#1A1A1A}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--veil);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+.cap{font-family:'Geist Mono',ui-monospace,monospace;font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em}
+.btn{min-height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--ink);background:var(--ink);color:var(--on);font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-sizing:border-box;text-decoration:none}
+.btn2{min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--tx);font:inherit;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-sizing:border-box;text-decoration:none}
+.in{min-height:40px;width:100%;box-sizing:border-box;padding:0 12px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:inherit;outline:none}
+.sel{display:flex;align-items:center;gap:8px;justify-content:space-between;cursor:pointer;text-align:left}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+.dlg{border-radius:18px;background:var(--bg);border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,0.22);display:flex;flex-direction:column;overflow:hidden}
+.dh{display:flex;align-items:center;gap:12px;padding:20px 24px 14px}
+.db{padding:0 24px 18px;display:flex;flex-direction:column;gap:14px}
+.df{display:flex;align-items:center;gap:10px;padding:14px 24px;border-top:1px solid var(--line);background:var(--bg)}
+.x{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--tx);cursor:pointer;font-size:16px}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:500;color:#0B0B0B;white-space:nowrap}
+a{color:inherit}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="width: 1440px; box-sizing: border-box; padding: 40px 56px 56px; display: flex; flex-direction: column; gap: 28px">
+  <header style="display: flex; flex-direction: column; gap: 4px">
+    <span class="cap">dpardo · diálogos</span>
+    <h1 class="d" style="font-size: 36px">Diálogos del trabajo diario</h1>
+    <span class="mu">Qué se abre al tocar «Ver esquema», «Revisar esquema», «+ Tarea», «+ Evento» y la búsqueda con Ctrl K.</span>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start">
+
+    <!-- Revisar esquema -->
+    <section class="dlg" role="dialog" aria-labelledby="d1">
+      <div class="dh">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span class="cap">Bot · #16 · desde «Revisar esquema»</span><h2 id="d1" class="d" style="font-size: 22px">Esquema propuesto</h2><span class="mu" style="font-size: 13px">Controles del Anexo A de ISO/IEC 27001 · Seguridad de Sistemas</span></div>
+        <button type="button" class="x" aria-label="Cerrar">×</button>
+      </div>
+      <div class="db">
+        <div style="display: flex; gap: 16px; font-size: 12px" class="mu"><span><strong style="color: var(--tx)">6</strong> secciones</span><span><strong style="color: var(--tx)">14</strong> páginas</span><span><strong style="color: var(--tx)">9</strong> fuentes · 52 fichas</span><span>Generado por Control maestro · Claude</span></div>
+        <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--line)">
+          <sc-for list="{{secs}}" as="x" hint-placeholder-count="6">
+            <li style="display: grid; grid-template-columns: 18px 26px minmax(0, 1fr) 70px 30px; gap: 8px; align-items: center; min-height: 46px; border-bottom: 1px solid var(--line)">
+              <span class="mu" aria-hidden="true" style="cursor: grab">⋮⋮</span>
+              <span class="m mu" style="font-size: 12px">{{x.n}}</span>
+              <input aria-label="Título de la sección {{x.n}}" value="{{x.t}}" style="border: 0; background: transparent; color: var(--tx); font: inherit; font-weight: 500; outline: none; min-width: 0">
+              <span class="m mu" style="font-size: 12px; text-align: right">{{x.p}} págs.</span>
+              <button type="button" aria-label="Quitar sección" style="border: 0; background: none; color: var(--tx2); cursor: pointer">×</button>
+            </li>
+          </sc-for>
+        </ol>
+        <button type="button" class="btn2" style="align-self: flex-start; min-height: 32px; font-size: 13px; border-style: dashed">+ Agregar sección</button>
+        <div class="f"><label for="cm" class="lbl">Pedir cambios al Control maestro</label><textarea id="cm" class="in" rows="2" style="padding: 10px 12px; resize: vertical" placeholder="Ej.: une 4 y 5; agrega un caso de estudio de la UMSS"></textarea></div>
+      </div>
+      <div class="df"><span class="mu" style="flex: 1; font-size: 12px">Al aprobar, el Redactor empieza en ≈ 1 min.</span><button type="button" class="btn2">Pedir cambios</button><button type="button" class="btn">Aprobar y redactar</button></div>
+    </section>
+
+    <!-- Paleta de comandos -->
+    <section class="dlg" role="dialog" aria-labelledby="d4">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M11 4.5a6.5 6.5 0 1 1 0 13a6.5 6.5 0 1 1 0-13zM20 20l-4-4"></path></svg>
+        <input id="d4" aria-label="Buscar o ejecutar" value="{{q}}" onInput="{{onQ}}" style="flex: 1; border: 0; outline: 0; background: transparent; color: var(--tx); font: inherit; font-size: 16px">
+        <kbd class="m mu" style="font-size: 11px; padding: 1px 6px; border: 1px solid var(--line); border-radius: 5px">Esc</kbd>
+      </div>
+      <div style="padding: 8px; display: flex; flex-direction: column; gap: 2px; min-height: 380px">
+        <sc-for list="{{grupos}}" as="g" hint-placeholder-count="3">
+          <div style="display: flex; flex-direction: column; gap: 2px; padding-bottom: 6px">
+            <span class="cap" style="padding: 8px 10px 4px">{{g.t}}</span>
+            <sc-for list="{{g.items}}" as="i" hint-placeholder-count="3">
+              <a href="{{i.href}}" style="{{i.st}}"><span style="flex: 1">{{i.t}}</span><span class="mu" style="font-size: 12px">{{i.s}}</span></a>
+            </sc-for>
+          </div>
+        </sc-for>
+        <sc-if value="{{vacio}}" hint-placeholder-val="{{false}}"><span class="mu" style="padding: 24px; text-align: center">Sin resultados. Enter para encargar «{{q}}» al bot.</span></sc-if>
+      </div>
+      <div style="display: flex; gap: 16px; padding: 10px 18px; border-top: 1px solid var(--line); font-size: 12px" class="mu"><span><kbd class="m">↑ ↓</kbd> moverse</span><span><kbd class="m">Enter</kbd> abrir</span><span><kbd class="m">Ctrl K</kbd> desde cualquier pantalla</span></div>
+    </section>
+
+    <!-- Nueva tarea -->
+    <section class="dlg" role="dialog" aria-labelledby="d2">
+      <div class="dh">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span class="cap">Tareas · desde «+ Tarea»</span><h2 id="d2" class="d" style="font-size: 22px">Nueva tarea</h2></div>
+        <button type="button" class="x" aria-label="Cerrar">×</button>
+      </div>
+      <div class="db">
+        <input aria-label="Título de la tarea" class="in" value="Práctica 4: análisis de varianza" style="min-height: 48px; font-size: 16px; font-weight: 500; border-color: var(--tx)">
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div class="f"><span class="lbl">Materia</span><button type="button" class="in sel"><span style="display: flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--mant)"></span>Estadística II</span>▾</button></div>
+          <div class="f"><span class="lbl">Lista</span><button type="button" class="in sel"><span>UMSS · Google Tasks</span>▾</button></div>
+          <div class="f"><span class="lbl">Vence</span><button type="button" class="in sel"><span>martes 20 oct · 23:59</span>▾</button></div>
+          <div class="f"><span class="lbl">Recordatorio</span><button type="button" class="in sel"><span>1 día antes · 20:00</span>▾</button></div>
+          <div class="f"><span class="lbl">Repetir</span><button type="button" class="in sel"><span>No se repite</span>▾</button></div>
+          <div class="f"><span class="lbl">Prioridad</span><div role="radiogroup" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; padding: 3px; border-radius: 9px; background: var(--bg2)"><span class="mu" style="text-align: center; padding: 7px 0; font-size: 13px">Baja</span><span style="text-align: center; padding: 7px 0; font-size: 13px; background: var(--bg); border-radius: 7px; font-weight: 600">Media</span><span class="mu" style="text-align: center; padding: 7px 0; font-size: 13px">Alta</span></div></div>
+        </div>
+        <div class="f"><span class="lbl">Subtareas</span>
+          <label style="display: flex; gap: 10px; align-items: center; font-size: 13px"><input type="checkbox" style="width: 16px; height: 16px; margin: 0; accent-color: var(--tx)">Tabla ANOVA de un factor</label>
+          <label style="display: flex; gap: 10px; align-items: center; font-size: 13px"><input type="checkbox" style="width: 16px; height: 16px; margin: 0; accent-color: var(--tx)">Prueba de Tukey</label>
+          <input aria-label="Nueva subtarea" class="in" placeholder="+ Subtarea, Enter para agregar" style="min-height: 34px; border-style: dashed">
+        </div>
+        <label style="display: flex; gap: 10px; align-items: center; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px; margin: 0; accent-color: var(--tx)">Pedir al bot un documento de apoyo cuando falten 3 días</label>
+      </div>
+      <div class="df"><span class="mu" style="flex: 1; font-size: 12px">Se sincroniza con Google Tasks</span><button type="button" class="btn2">Cancelar</button><button type="button" class="btn">Crear tarea</button></div>
+    </section>
+
+    <!-- Nuevo evento -->
+    <section class="dlg" role="dialog" aria-labelledby="d3">
+      <div class="dh">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span class="cap">Agenda · desde «+ Evento»</span><h2 id="d3" class="d" style="font-size: 22px">Nuevo evento</h2></div>
+        <button type="button" class="x" aria-label="Cerrar">×</button>
+      </div>
+      <div class="db">
+        <div role="radiogroup" aria-label="Tipo" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+          <sc-for list="{{tipos}}" as="t" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{t.on}}" onClick="{{t.pick}}" style="{{t.st}}"><span style="{{t.dot}}"></span>{{t.n}}</button></sc-for>
+        </div>
+        <div class="f"><label for="et" class="lbl">Título</label><input id="et" class="in" value="{{titulo}}"></div>
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 12px">
+          <div class="f"><span class="lbl">Fecha</span><button type="button" class="in sel"><span>jueves 22 oct</span>▾</button></div>
+          <div class="f"><span class="lbl">Inicio</span><button type="button" class="in sel m"><span>09:45</span>▾</button></div>
+          <div class="f"><span class="lbl">Fin</span><button type="button" class="in sel m"><span>11:15</span>▾</button></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div class="f"><span class="lbl">Materia</span><button type="button" class="in sel"><span style="display: flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--cielo)"></span>Base de Datos II</span>▾</button></div>
+          <div class="f"><label for="au" class="lbl">Aula</label><input id="au" class="in" placeholder="[aula]"></div>
+        </div>
+        <div class="f"><span class="lbl">Recordatorios</span><div style="display: flex; flex-wrap: wrap; gap: 6px"><span class="tag" style="background: var(--bg2); color: var(--tx)">3 días antes ×</span><span class="tag" style="background: var(--bg2); color: var(--tx)">1 día antes ×</span><span class="tag" style="background: var(--bg2); color: var(--tx)">2 h antes ×</span><button type="button" class="btn2" style="min-height: 26px; padding: 0 8px; font-size: 12px; border-style: dashed">+ Agregar</button></div></div>
+        <sc-if value="{{esParcial}}" hint-placeholder-val="{{true}}">
+          <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 12px; background: var(--bg2)">
+            <label style="display: flex; gap: 10px; align-items: center; font-size: 13px"><input type="checkbox" checked style="width: 16px; height: 16px; margin: 0; accent-color: var(--tx)">Crear plan de repaso desde hoy hasta el parcial</label>
+            <label style="display: flex; gap: 10px; align-items: center; font-size: 13px"><input type="checkbox" style="width: 16px; height: 16px; margin: 0; accent-color: var(--tx)">Encargar al bot un resumen de las unidades evaluadas</label>
+          </div>
+        </sc-if>
+      </div>
+      <div class="df"><span class="mu" style="flex: 1; font-size: 12px">Se copia a Google Calendar</span><button type="button" class="btn2">Cancelar</button><button type="button" class="btn">Guardar evento</button></div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"claro"},"$preview":{"width":1440,"height":1460}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { q: 'bd', tipo: 'par' };
+  }
+  renderVals() {
+    const s = this.state;
+    const ALL = [
+      ['Ir a', [['Base de Datos II', 'Materias', 'Materias.dc.html'], ['Bot · oficina de agentes', 'Bot', 'Main.dc.html'], ['Malla curricular', 'Materias', 'Malla.dc.html'], ['Horario semanal', 'Agenda', 'Horario.dc.html']]],
+      ['Documentos', [['#13 Transacciones y concurrencia', 'BD II · PDF', '#'], ['#14 Normalización de 1FN a FNBC', 'BD II · en curso', 'Main.dc.html'], ['#11 Distribuciones muestrales', 'Est. II · PDF', '#']]],
+      ['Acciones', [['Encargar documento de BD II', 'Control maestro', 'Main.dc.html'], ['Nueva tarea en BD II', 'Tareas', '#'], ['Repasar mazo de BD II', 'Estudiar', 'Repaso.dc.html'], ['Iniciar pomodoro', 'Estudiar', 'Estudio.dc.html']]]
+    ];
+    const q = (s.q || '').toLowerCase().trim();
+    const al = { bd: 'base de datos', est: 'estadística', ed: 'ecuaciones' };
+    const qq = al[q] || q;
+    let first = true;
+    const grupos = ALL.map(([t, items]) => ({ t, items: items.filter((i) => !qq || (i[0] + ' ' + i[1]).toLowerCase().includes(qq) || (qq === 'base de datos' && /bd ii/i.test(i[1] + i[0]))).map(([n, sub, href]) => { const st = 'display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 10px; border-radius: 8px; text-decoration: none; font-size: 14px; ' + (first ? 'background: var(--bg2); font-weight: 600;' : ''); first = false; return { t: n, s: sub, href, st }; }) })).filter((g) => g.items.length);
+    const T = [['cla', 'Clase', 'lila'], ['par', 'Parcial', 'rosa'], ['ent', 'Entrega', 'cielo'], ['otr', 'Otro', 'mant']];
+    const tit = { cla: 'Base de Datos II · teoría', par: 'Segundo parcial de Base de Datos II', ent: 'Entrega de laboratorio', otr: 'Reunión con el auxiliar' };
+    return {
+      tema: (this.props.tema ?? 'claro') === 'oscuro' ? 'oscuro' : 'claro',
+      secs: [['1', 'Introducción a ISO/IEC 27001 y el Anexo A', 2], ['2', 'Controles organizacionales', 3], ['3', 'Controles de personas', 2], ['4', 'Controles físicos', 2], ['5', 'Controles tecnológicos', 3], ['6', 'Aplicación a un caso universitario', 2]].map(([n, t, p]) => ({ n, t, p })),
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }), grupos, vacio: grupos.length === 0,
+      tipos: T.map(([k, n, c]) => ({ n, on: s.tipo === k ? 'true' : 'false', pick: () => this.setState({ tipo: k }), dot: 'width: 8px; height: 8px; border-radius: 50%; background: var(--' + c + ')', st: 'min-height: 38px; border-radius: 9px; font: inherit; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; ' + (s.tipo === k ? 'border: 1.5px solid var(--tx); background: var(--bg2); color: var(--tx); font-weight: 600;' : 'border: 1px solid var(--line); background: transparent; color: var(--tx2);') })),
+      titulo: tit[s.tipo], esParcial: s.tipo === 'par'
+    };
+  }
+}
+</script>
+</body>
+</html>

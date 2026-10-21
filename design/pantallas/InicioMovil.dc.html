@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Inicio · dashboard · móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Pixelify+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--bg3:#FAFAF8;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C}
+.t-oscuro{--bg:#000000;--bg2:#121212;--bg3:#0A0A0A;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.px{font-family:'Pixelify Sans','Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.lbl{font-size:11px;font-weight:500;color:var(--tx2)}
+.w{border-radius:14px;background:var(--bg3);border:1px solid var(--line);padding:12px;box-sizing:border-box;display:flex;flex-direction:column;gap:4px;min-width:0;text-decoration:none}
+.kpi{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:26px;line-height:1}
+a{color:inherit}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="width: 390px; height: 844px; position: relative; overflow: hidden">
+  <div style="padding: 52px 16px 100px; display: flex; flex-direction: column; gap: 12px">
+    <header style="display: flex; align-items: center; gap: 8px">
+      <div style="flex: 1; display: flex; flex-direction: column">
+        <span class="m mu" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em">Mié 14 oct · semana 9</span>
+        <h1 class="d" style="font-size: 24px; line-height: 1.1">Hola, Juan Diego</h1>
+      </div>
+      <a href="AvisosMovil.dc.html" aria-label="Avisos, 5 sin leer" style="position: relative; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"></path></svg><span class="m" style="position: absolute; top: -2px; right: -2px; min-width: 18px; height: 18px; border-radius: 9px; background: var(--rosa); color: #0B0B0B; font-size: 10px; font-weight: 600; display: grid; place-items: center">5</span></a>
+      <a href="ConfigMovil.dc.html" aria-label="Configuración" style="width: 44px; height: 44px; border-radius: 50%; background: var(--rosa); color: #0B0B0B; display: grid; place-items: center; font-weight: 600; font-size: 13px; text-decoration: none">JD</a>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+      <a href="BotMovil.dc.html" class="w" style="flex-direction: row; align-items: center; gap: 10px">
+        <span style="position: relative; width: 44px; height: 44px; flex: 0 0 44px; border-radius: 50%; background: conic-gradient(var(--tx) 0 39%, var(--line) 39% 100%)"><span class="m" style="position: absolute; inset: 5px; border-radius: 50%; background: var(--bg3); display: grid; place-items: center; font-size: 10px; font-weight: 600">39%</span></span>
+        <span style="display: flex; flex-direction: column; min-width: 0"><span class="lbl" style="display: flex; align-items: center; gap: 5px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #3FA36B; animation: pulse 1.6s infinite"></span>Bot</span><span style="font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">#14 Normalización</span></span>
+      </a>
+      <a href="CalendarioMovil.dc.html" class="w"><span class="lbl">Parcial</span><span><span class="kpi">1</span> día</span><span class="mu" style="font-size: 11px">Estadística II · jue</span></a>
+      <a href="TareasMovil.dc.html" class="w"><span class="lbl">Tareas hoy</span><span><span class="kpi">3</span> <span style="font-size: 11px; color: var(--warn); font-weight: 600">1 vencida</span></span><span style="display: flex; gap: 2px; height: 4px; margin-top: 4px"><span style="flex: 31; background: var(--tx); border-radius: 4px 0 0 4px"></span><span style="flex: 12; background: var(--line); border-radius: 0 4px 4px 0"></span></span></a>
+      <a href="RepasoMovil.dc.html" class="w"><span class="lbl">Repaso</span><span><span class="kpi">24</span> tarjetas</span><span class="mu" style="font-size: 11px">racha 12 días</span></a>
+      <a href="ConsumoMovil.dc.html" class="w"><span class="lbl">Cupo 5 h</span><span><span class="kpi">38</span>%</span><span style="height: 4px; border-radius: 4px; background: var(--line); margin-top: 4px"><span style="display: block; width: 38%; height: 100%; border-radius: 4px; background: var(--tx)"></span></span></a>
+      <a href="MallaMovil.dc.html" class="w"><span class="lbl">Carrera</span><span><span class="kpi">54</span>%</span><span class="mu" style="font-size: 11px">13 de 24 materias</span></a>
+    </div>
+
+    <section class="w" aria-labelledby="hs" style="gap: 8px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 id="hs" style="margin: 0; font-size: 13px; font-weight: 600">Estudio · 14 días</h2><span class="m" style="font-size: 11px">25,7 h</span></div>
+      <div role="img" aria-label="Barras de horas de estudio por día" style="height: 64px; display: flex; align-items: flex-end; gap: 4px; border-bottom: 1px solid var(--tx2)">
+        <sc-for list="{{horas}}" as="h" hint-placeholder-count="14"><span style="{{h}}"></span></sc-for>
+      </div>
+    </section>
+
+    <section aria-labelledby="of" style="display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 id="of" style="margin: 0; font-size: 13px; font-weight: 600">Oficina</h2><a href="BotMovil.dc.html" class="mu" style="font-size: 12px">Abrir</a></div>
+      <div style="display: flex; gap: 6px; overflow-x: auto; margin: 0 -16px; padding: 0 16px">
+        <sc-for list="{{agentes}}" as="a" hint-placeholder-count="7">
+          <span style="flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line); font-size: 12px"><span style="{{a.dot}}"></span><span class="px">{{a.n}}</span></span>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-labelledby="ag" style="display: flex; flex-direction: column">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 4px"><h2 id="ag" style="margin: 0; font-size: 13px; font-weight: 600">Agenda</h2><a href="CalendarioMovil.dc.html" class="mu" style="font-size: 12px">Todo</a></div>
+      <sc-for list="{{agenda}}" as="e" hint-placeholder-count="3">
+        <div style="display: grid; grid-template-columns: 62px 4px minmax(0, 1fr); gap: 10px; align-items: center; padding: 7px 0; border-top: 1px solid var(--line)">
+          <span class="m mu" style="font-size: 10px">{{e.c}}</span><span style="{{e.bar}}"></span>
+          <span style="display: flex; flex-direction: column; min-width: 0"><span style="font-weight: 500; font-size: 13px">{{e.t}}</span><span class="mu" style="font-size: 11px">{{e.s}}</span></span>
+        </div>
+      </sc-for>
+    </section>
+  </div>
+
+  <nav aria-label="Principal" style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; box-sizing: border-box; padding: 6px 10px 24px; background: var(--bg); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center">
+    <a href="InicioMovil.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; color: var(--tx); font-weight: 600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg>Inicio</a>
+    <a href="TareasMovil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; color: var(--tx2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5"></path></svg>Tareas</a>
+    <a href="BotMovil.dc.html" aria-label="Bot" style="justify-self: center; width: 54px; height: 54px; border-radius: 18px; background: var(--ink); color: var(--on); display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5"></path></svg></a>
+    <a href="CalendarioMovil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; color: var(--tx2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4"></path></svg>Agenda</a>
+    <a href="RepasoMovil.dc.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; min-height: 48px; justify-content: center; font-size: 10px; text-decoration: none; color: var(--tx2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10"></path></svg>Estudiar</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"oscuro"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const H = [1.5, 2, 0.5, 3, 2.5, 1, 0, 2, 3.5, 1.5, 2, 2.5, 1, 1.7];
+    const T = { Clase: 'var(--lila)', Entrega: 'var(--cielo)', Parcial: 'var(--rosa)', Bot: 'var(--menta)' };
+    return {
+      tema: (this.props.tema ?? 'oscuro') === 'claro' ? 'claro' : 'oscuro',
+      horas: H.map((h, i) => 'flex: 1; border-radius: 3px 3px 0 0; ' + (h > 0 ? 'height: ' + (h / 4 * 100) + '%; background: ' + (i === H.length - 1 ? 'var(--tx)' : 'var(--tx2)') + ';' : 'height: 2px; background: var(--line);')),
+      agentes: [['Control', 'w'], ['Redactor', 'w'], ['Investigador', 'w'], ['Ilustrador', 'w'], ['Verificador', 'e'], ['Maquetador', 'b'], ['Archivista', 'b']].map(([n, e]) => ({ n, dot: 'width: 7px; height: 7px; border-radius: 50%; background: ' + (e === 'w' ? '#3FA36B' : e === 'e' ? '#D9A23A' : '#86AFD6') })),
+      agenda: [
+        { c: 'Hoy 14:20', t: 'Fin estimado del #14', s: 'Bot · Base de Datos II', k: 'Bot' },
+        { c: 'Jue [hora]', t: 'Segundo parcial', s: 'Estadística II · [aula]', k: 'Parcial' },
+        { c: 'Vie 23:59', t: 'Tablero Miro', s: 'Entrega · Seguridad', k: 'Entrega' }
+      ].map((e) => ({ ...e, bar: 'width: 4px; height: 28px; border-radius: 4px; background: ' + T[e.k] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

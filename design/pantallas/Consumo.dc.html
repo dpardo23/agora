@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Consumo · escritorio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.t-claro{--bg:#FFFFFF;--bg2:#F3F3F0;--line:#E5E5E1;--tx:#0B0B0B;--tx2:#5A5A53;--ink:#0B0B0B;--on:#FFFFFF;--warn:#B23C0C}
+.t-oscuro{--bg:#000000;--bg2:#121212;--line:#242424;--tx:#F4F4EF;--tx2:#A3A39B;--ink:#F4F4EF;--on:#000000;--warn:#F4A27F}
+.app{--rosa:#F6C4B8;--mant:#F1DF97;--lila:#D2C5F3;--menta:#B9E3CA;--cielo:#B7D5F0;background:var(--bg);color:var(--tx);font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:14px;line-height:1.45}
+.d{font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;margin:0}
+.m{font-family:'Geist Mono',ui-monospace,monospace}
+.mu{color:var(--tx2)}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:1px 7px;border-radius:5px;font-size:11px;font-weight:500;color:#0B0B0B;white-space:nowrap}
+.lbl{font-size:12px;font-weight:500;color:var(--tx2)}
+.h2{margin:0;font-size:15px;font-weight:600}
+a{color:inherit}
+</style>
+</helmet>
+<div class="app t-{{tema}}" style="min-height: 100vh; display: flex; flex-wrap: wrap">
+
+  <nav aria-label="Principal" style="flex: 1 1 210px; box-sizing: border-box; padding: 20px 12px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px">
+    <div style="display: flex; align-items: center; gap: 8px; padding-right: 4px"><a href="Inicio.dc.html" style="flex: 1; display: flex; align-items: center; gap: 10px; padding: 0 10px; text-decoration: none">
+      <span style="width: 22px; height: 22px; border-radius: 7px; background: var(--lila); display: grid; place-items: center"><span style="width: 8px; height: 8px; border-radius: 50%; background: #0B0B0B"></span></span>
+      <span class="d" style="font-size: 21px">dpardo</span>
+    </a><a href="Avisos.dc.html" aria-label="Avisos, 5 sin leer" style="position: relative; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--tx); text-decoration: none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"></path></svg><span class="m" style="position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px; border-radius: 8px; background: var(--rosa); color: #0B0B0B; font-size: 10px; font-weight: 600; display: grid; place-items: center">5</span></a></div>
+    <div style="display: flex; flex-direction: column; gap: 1px">
+      <sc-for list="{{nav}}" as="n" hint-placeholder-count="8">
+        <a href="{{n.href}}" style="{{n.st}}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{n.d}}"></path></svg>
+          <span style="flex: 1">{{n.t}}</span>
+          <span class="m" style="font-size: 11px">{{n.b}}</span>
+        </a>
+      </sc-for>
+    </div>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 14px">
+      <a href="Configuracion.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; text-decoration: none; border-top: 1px solid var(--line)">
+        <span style="width: 30px; height: 30px; border-radius: 50%; background: var(--rosa); color: #0B0B0B; display: grid; place-items: center; font-size: 12px; font-weight: 600">JD</span>
+        <span style="flex: 1; display: flex; flex-direction: column; line-height: 1.2"><span style="font-weight: 600">dpardo</span><span class="mu" style="font-size: 12px">Configuración</span></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4"></path></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 28px clamp(16px, 3vw, 40px) 48px">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+      <div role="tablist" aria-label="Vistas del bot" style="display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--bg2); width: fit-content"><a role="tab" aria-selected="false" href="Main.dc.html" style="min-height: 34px; padding: 0 14px; border-radius: 9px; display: inline-flex; align-items: center; text-decoration: none; font-size: 13px; color: var(--tx2)">Oficina</a><a role="tab" aria-selected="true" href="Consumo.dc.html" style="min-height: 34px; padding: 0 14px; border-radius: 9px; display: inline-flex; align-items: center; text-decoration: none; font-size: 13px; background: var(--bg); color: var(--tx); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.12)">Consumo</a></div>
+      <header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+        <h1 class="d" style="font-size: 32px; line-height: 1; flex: 1">Consumo</h1>
+        <div role="tablist" aria-label="Periodo" style="display: flex; padding: 3px; border-radius: 10px; background: var(--bg2); gap: 2px">
+          <button type="button" role="tab" aria-selected="false" style="min-height: 32px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; color: var(--tx2); font: inherit; cursor: pointer">7 días</button>
+          <button type="button" role="tab" aria-selected="true" style="min-height: 32px; padding: 0 12px; border: 0; border-radius: 8px; background: var(--bg); color: var(--tx); font: inherit; font-weight: 600; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.1)">30 días</button>
+          <button type="button" role="tab" aria-selected="false" style="min-height: 32px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; color: var(--tx2); font: inherit; cursor: pointer">Gestión</button>
+        </div>
+      </header>
+
+      <!-- Cupos -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 24px 40px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="lbl">Cupo de 5 horas</span>
+          <span class="d" style="font-size: 44px; line-height: 1">38<span class="mu" style="font-size: 22px">%</span></span>
+          <div style="height: 6px; border-radius: 6px; background: var(--line)"><div style="width: 38%; height: 100%; border-radius: 6px; background: var(--tx)"></div></div>
+          <span class="mu" style="font-size: 12px">Se reinicia en 2 h 14 min</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="lbl">Cupo semanal</span>
+          <span class="d" style="font-size: 44px; line-height: 1">21<span class="mu" style="font-size: 22px">%</span></span>
+          <div style="height: 6px; border-radius: 6px; background: var(--line)"><div style="width: 21%; height: 100%; border-radius: 6px; background: var(--tx)"></div></div>
+          <span class="mu" style="font-size: 12px">Se reinicia el lunes 00:00</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="lbl">Equivalente a precio de lista · 30 días</span>
+          <span class="d" style="font-size: 44px; line-height: 1">{{total}}<span class="mu" style="font-size: 22px"> USD</span></span>
+          <span class="mu" style="font-size: 12px">Bot {{totalBot}} · sesiones interactivas aparte</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="lbl">Gemini nivel gratuito · hoy</span>
+          <span class="d" style="font-size: 44px; line-height: 1">0<span class="mu" style="font-size: 22px"> USD</span></span>
+          <span class="mu" style="font-size: 12px">[N] de [cuota] solicitudes diarias según AI Studio</span>
+        </div>
+      </div>
+
+      <!-- Infraestructura -->
+      <section aria-labelledby="vm" style="display: flex; flex-direction: column; gap: 18px; padding-top: 22px; border-top: 1px solid var(--line)">
+        <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px">
+          <h2 id="vm" class="h2">Servidor e infraestructura</h2>
+          <span class="mu" style="font-size: 12px; display: inline-flex; align-items: center; gap: 6px"><span style="width: 7px; height: 7px; border-radius: 50%; background: #3FA36B"></span>Oracle VM · Ampere ARM · Ubuntu · en línea hace 12 d 4 h</span>
+          <span style="flex: 1"></span>
+          <span class="m mu" style="font-size: 11px">actualizado 14:02</span>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 28px 48px">
+          <div style="flex: 3 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div style="display: flex; justify-content: space-between; align-items: baseline"><span class="lbl">Disco</span><span><span class="d" style="font-size: 26px">{{discoUso}}</span> <span class="mu">de {{discoTotal}} GB · {{discoLibre}} GB libres</span></span></div>
+              <div role="img" aria-label="Uso de disco por categoría" style="display: flex; gap: 2px; height: 14px">
+                <sc-for list="{{disco}}" as="k" hint-placeholder-count="5"><span title="{{k.n}}: {{k.v}} GB" style="{{k.bar}}"></span></sc-for>
+                <span style="flex: 1; background: var(--line); border-radius: 0 4px 4px 0"></span>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px">
+                <sc-for list="{{disco}}" as="k" hint-placeholder-count="5"><span style="display: inline-flex; align-items: center; gap: 6px"><span style="{{k.dot}}"></span>{{k.n}} <span class="m mu">{{k.v}}</span></span></sc-for>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); gap: 16px 28px">
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <span class="lbl">Memoria</span>
+                <span><span class="d" style="font-size: 22px">5,1</span> <span class="mu" style="font-size: 12px">de 12 GB</span></span>
+                <div style="height: 5px; border-radius: 5px; background: var(--line)"><div style="width: 42.5%; height: 100%; border-radius: 5px; background: var(--tx)"></div></div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <span class="lbl">CPU · 2 OCPU</span>
+                <span><span class="d" style="font-size: 22px">8%</span> <span class="mu" style="font-size: 12px">ahora</span></span>
+                <div style="height: 5px; border-radius: 5px; background: var(--line)"><div style="width: 8%; height: 100%; border-radius: 5px; background: var(--tx)"></div></div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <span class="lbl">Riesgo de reclamo</span>
+                <span><span class="d" style="font-size: 22px">Bajo</span></span>
+                <span class="mu" style="font-size: 12px">CPU p95 en 7 días: 31% · umbral de inactividad: 20%</span>
+              </div>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px">
+              <thead><tr class="lbl" style="text-align: left"><th style="font-weight: 500; padding: 6px 0">Servicio</th><th style="font-weight: 500">Estado</th><th style="font-weight: 500">Detalle</th></tr></thead>
+              <tbody>
+                <sc-for list="{{servicios}}" as="sv" hint-placeholder-count="6">
+                  <tr style="border-top: 1px solid var(--line)">
+                    <td style="padding: 9px 0; font-weight: 500">{{sv.n}}</td>
+                    <td><span style="display: inline-flex; align-items: center; gap: 6px"><span style="{{sv.dot}}"></span>{{sv.e}}</span></td>
+                    <td class="mu">{{sv.d}}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="flex: 2 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+            <sc-for list="{{cuotas}}" as="q" hint-placeholder-count="3">
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-weight: 500">{{q.n}}</span><span class="m" style="font-size: 12px">{{q.v}}</span></div>
+                <div style="height: 6px; border-radius: 6px; background: var(--line)"><div style="{{q.bar}}"></div></div>
+                <span class="mu" style="font-size: 12px">{{q.d}}</span>
+              </div>
+            </sc-for>
+            <button type="button" style="align-self: flex-start; min-height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: var(--tx); font: inherit; font-size: 13px; cursor: pointer">Limpiar caché de fuentes</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gráfico diario -->
+      <section aria-labelledby="g1" style="display: flex; flex-direction: column; gap: 12px; padding-top: 22px; border-top: 1px solid var(--line)">
+        <div style="display: flex; justify-content: space-between; align-items: baseline">
+          <h2 id="g1" class="h2">Gasto diario del bot, USD a precio de lista</h2>
+          <a href="#" class="mu" style="font-size: 12px">Ver como tabla</a>
+        </div>
+        <div role="img" aria-label="Barras del gasto diario del bot en los últimos 30 días; máximo 17,8 USD el 2 de octubre" style="display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 8px">
+          <div class="m mu" style="display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; font-size: 11px; height: 200px; margin-top: -6px"><span>20</span><span>15</span><span>10</span><span>5</span><span>0</span></div>
+          <div style="position: relative; height: 200px">
+            <div aria-hidden="true" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between">
+              <span style="border-top: 1px solid var(--line)"></span><span style="border-top: 1px solid var(--line)"></span><span style="border-top: 1px solid var(--line)"></span><span style="border-top: 1px solid var(--line)"></span><span style="border-top: 1px solid var(--tx2)"></span>
+            </div>
+            <div style="position: absolute; inset: 0; display: flex; align-items: flex-end; gap: 2px">
+              <sc-for list="{{dias}}" as="b" hint-placeholder-count="30">
+                <span title="{{b.tip}}" style="{{b.st}}"></span>
+              </sc-for>
+            </div>
+          </div>
+          <span></span>
+          <div class="m mu" style="display: flex; justify-content: space-between; font-size: 11px"><span>12 sep</span><span>19 sep</span><span>26 sep</span><span>3 oct</span><span>11 oct</span></div>
+        </div>
+      </section>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 28px 48px; padding-top: 22px; border-top: 1px solid var(--line)">
+
+        <section aria-labelledby="g2" style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+          <h2 id="g2" class="h2">Por paso del pipeline</h2>
+          <sc-for list="{{pasos}}" as="p" hint-placeholder-count="7">
+            <div style="display: grid; grid-template-columns: 150px minmax(0, 1fr) 56px; gap: 12px; align-items: center">
+              <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; min-width: 0"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{p.n}}</span></span>
+              <span style="display: flex; align-items: center; gap: 8px"><span style="{{p.bar}}"></span><span class="tag" style="{{p.tagSt}}">{{p.motor}}</span></span>
+              <span class="m" style="font-size: 12px; text-align: right">{{p.usd}}</span>
+            </div>
+          </sc-for>
+          <p class="mu" style="margin: 0; font-size: 12px">Los pasos de Gemini y Python no consumen cupo de Claude.</p>
+        </section>
+
+        <section aria-labelledby="g3" style="flex: 1.4 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+          <h2 id="g3" class="h2">Por documento</h2>
+          <div style="overflow-x: auto">
+            <table style="width: 100%; min-width: 480px; border-collapse: collapse; font-size: 13px">
+              <thead><tr class="lbl" style="text-align: left"><th style="font-weight: 500; padding: 6px 0">Documento</th><th style="font-weight: 500; text-align: right">Págs.</th><th style="font-weight: 500; text-align: right">Turnos</th><th style="font-weight: 500; text-align: right">USD</th><th style="font-weight: 500; text-align: right">USD/pág.</th></tr></thead>
+              <tbody>
+                <sc-for list="{{docs}}" as="r" hint-placeholder-count="5">
+                  <tr style="border-top: 1px solid var(--line)">
+                    <td style="padding: 10px 0"><span class="m mu" style="font-size: 12px">{{r.id}}</span> {{r.t}}</td>
+                    <td class="m" style="text-align: right">{{r.p}}</td>
+                    <td class="m" style="text-align: right">{{r.tu}}</td>
+                    <td class="m" style="text-align: right; font-weight: 600">{{r.u}}</td>
+                    <td class="m mu" style="text-align: right">{{r.up}}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tema":{"editor":"enum","options":["claro","oscuro"],"default":"claro"},"$preview":{"width":1440,"height":1540}}'>
+class Component extends DCLogic {
+  nav(activo) {
+    const AL = { calendario: 'agenda', horario: 'agenda', malla: 'materias', repaso: 'estudiar', estudio: 'estudiar', consumo: 'bot', oficina: 'bot' };
+    activo = AL[activo] || activo;
+    const I = {
+      inicio: 'M4 11l8-7 8 7v9h-5v-6H9v6H4z',
+      bot: 'M8 7h8a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4a4 4 0 0 1 4-4zM12 3v4M9.5 12v1.5M14.5 12v1.5',
+      tareas: 'M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4zM8.5 12l2.5 2.5 4.5-5',
+      materias: 'M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 1-4-4zM5 16a4 4 0 0 1 4-4h10',
+      malla: 'M6 3.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM18 3.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM12 15.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM7.5 8.2l3.4 7.4M16.5 8.2l-3.4 7.4',
+      calendario: 'M7 5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zM4 10h16M9 3v4M15 3v4',
+      repaso: 'M6 7h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3zM8 4h10a3 3 0 0 1 3 3v10',
+      consumo: 'M4 17a8 8 0 1 1 16 0M12 17l4-5'
+    };
+    Object.assign(I, { avisos: 'M4 13l2.5-7h11L20 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 13h4.5l1.5 2.5h4l1.5-2.5H20', horario: 'M12 4a8 8 0 1 1 0 16a8 8 0 1 1 0-16zM12 8v4l3 2', estudio: 'M12 7a7 7 0 1 1 0 14a7 7 0 1 1 0-14zM12 11v3.5M9.5 3h5M12 3v4' });
+    I.agenda = I.calendario; I.estudiar = I.repaso;
+    const items = [['inicio', 'Inicio', 'Inicio.dc.html', ''], ['bot', 'Bot', 'Main.dc.html', '●'], ['tareas', 'Tareas', 'Tareas.dc.html', '3'], ['agenda', 'Agenda', 'Calendario.dc.html', ''], ['materias', 'Materias', 'Materias.dc.html', ''], ['estudiar', 'Estudiar', 'Repaso.dc.html', '24']];
+    return items.map(([id, t, href, b]) => ({
+      t, href, b, d: I[id] || 'M4 20V7l8-4 8 4v13M9 20v-4h6v4M8 10h2M14 10h2M8 14h2M14 14h2',
+      st: 'display: flex; align-items: center; gap: 12px; min-height: 38px; padding: 0 10px; border-radius: 9px; text-decoration: none; ' + (id === activo ? 'background: var(--bg2); color: var(--tx); font-weight: 600;' : 'color: var(--tx2);')
+    }));
+  }
+  renderVals() {
+    const v = [0, 4.2, 0, 6.8, 0, 0, 5.1, 9.6, 0, 3.4, 0, 0, 7.2, 0, 4.8, 0, 0, 6.1, 0, 0, 17.8, 8.7, 0, 0, 4.8, 0, 9.4, 0, 6.1, 5.2];
+    const sum = v.reduce((a, b) => a + b, 0);
+    const fmt = (x) => x.toFixed(2).replace('.', ',');
+    const P = [['Redacción de secciones', 'Claude', 41.2], ['Esquema', 'Claude', 12.6], ['Revisión final', 'Claude', 9.8], ['Errores LaTeX sin receta', 'Gemini', 0], ['Fichas de pasajes', 'Gemini', 0], ['Bibliografía por DOI', 'Gemini', 0], ['Verificaciones', 'Python', 0]];
+    const mx = 41.2;
+    const tagC = { Claude: 'background: var(--rosa)', Gemini: 'background: var(--cielo)', Python: 'background: var(--bg2); color: var(--tx)' };
+    const DK = [['Sistema', 14.2, 'cielo'], ['TeX Live', 7.9, 'mant'], ['Fuentes y PDF', 12.4, 'lila'], ['n8n y contenedores', 3.1, 'menta'], ['Respaldos y logs', 4.2, 'rosa']];
+    const DT = 100;
+    const used = DK.reduce((a, k) => a + k[1], 0);
+    const f1 = (x) => x.toFixed(1).replace('.', ',');
+    const ok = (e) => 'width: 7px; height: 7px; border-radius: 50%; background: ' + (e === 'ok' ? '#3FA36B' : e === 'warn' ? '#D9A23A' : 'var(--tx2)');
+    return {
+      discoUso: f1(used), discoTotal: DT, discoLibre: f1(DT - used),
+      disco: DK.map(([n, v, c], i) => ({ n, v: f1(v), dot: 'width: 10px; height: 10px; border-radius: 3px; background: var(--' + c + ')', bar: 'width: ' + (v / DT * 100) + '%; background: var(--' + c + '); ' + (i === 0 ? 'border-radius: 4px 0 0 4px;' : '') })),
+      servicios: [
+        ['Trabajador umss', 'ok', 'Activo', 'systemd · último trabajo 14:02'],
+        ['n8n', 'ok', 'Activo', '6 flujos · próxima revisión de avisos 14:30'],
+        ['Sesión de Claude Code', 'warn', 'Vence pronto', 'token de larga duración · renovar antes del [fecha]'],
+        ['TeX Live y Chromium', 'ok', 'Listo', 'última compilación 13:20'],
+        ['Respaldo', 'ok', 'Hecho', 'hoy 03:00 → Drive / UMSS / _respaldos'],
+        ['Ping a Supabase', 'ok', 'Hecho', 'diario 08:00 · evita la pausa por inactividad']
+      ].map(([n, e, es, d]) => ({ n, e: es, d, dot: ok(e) })),
+      cuotas: [
+        ['Supabase · base de datos', 142, 500, 'MB', 'cola, tareas, fichas y vectores'],
+        ['Supabase · archivos', 610, 1000, 'MB', 'PDF y fuentes; los PDF viejos pasan a Drive'],
+        ['Google Drive', 6.2, 15, 'GB', 'cuota compartida con Gmail y Fotos']
+      ].map(([n, v, t, u, d]) => ({ n, d, v: String(v).replace('.', ',') + ' de ' + t + ' ' + u, bar: 'height: 100%; border-radius: 6px; background: var(--tx); width: ' + (v / t * 100) + '%' })),
+      tema: (this.props.tema ?? 'claro') === 'oscuro' ? 'oscuro' : 'claro',
+      nav: this.nav('consumo'),
+      total: fmt(sum + 22.4), totalBot: fmt(sum),
+      dias: v.map((x, i) => ({
+        tip: 'Día ' + (i + 1) + ': ' + fmt(x) + ' USD',
+        st: 'flex: 1; min-width: 0; border-radius: 4px 4px 0 0; ' + (x > 0 ? 'height: ' + (x / 20 * 100) + '%; background: ' + (i >= 20 && i <= 21 ? 'var(--tx)' : 'var(--tx2)') + ';' : 'height: 2px; background: var(--line);')
+      })),
+      pasos: P.map(([n, motor, u]) => ({
+        n, motor, usd: fmt(u), tagSt: tagC[motor],
+        bar: 'height: 10px; border-radius: 0 4px 4px 0; background: var(--tx); width: ' + (u > 0 ? Math.max(2, u / mx * 100) * 0.8 : 0.6) + '%; min-width: 2px;'
+      })),
+      docs: [
+        { id: '#14', t: 'Normalización (en curso)', p: 12, tu: 31, u: '4,90', up: '0,41' },
+        { id: '#13', t: 'Transacciones y concurrencia', p: 14, tu: 58, u: '9,40', up: '0,67' },
+        { id: '#12', t: 'EDO lineales de segundo orden', p: 11, tu: 44, u: '6,10', up: '0,55' },
+        { id: '#11', t: 'Distribuciones muestrales', p: 9, tu: 29, u: '4,80', up: '0,53' },
+        { id: '#10', t: 'Álgebra relacional y SQL', p: 12, tu: 92, u: '17,80', up: '1,48' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# Cómo contribuir a Olympus
+# Cómo contribuir a Ágora
 
 Autor y responsable: Juan Diego Pardo Pozo (`dpardo23`, jdiegopardo23@gmail.com).
 
@@ -75,7 +75,11 @@ Reglas:
 3. Un commit = un cambio lógico que compila y pasa las pruebas.
 4. El pie cita la HU, el bug o el ítem técnico (`Refs: HU-03.01`).
 5. Un cambio incompatible lleva `!` después del ámbito y `BREAKING CHANGE:` en el pie.
-6. Los commits no mencionan herramientas de generación de código ni coautores automáticos. La autoría es siempre de Juan Diego Pardo Pozo.
+6. Los commits no mencionan herramientas de generación de código ni coautores automáticos. La autoría es siempre de Juan Diego Pardo Pozo. Lo garantizan tres capas:
+   - el entorno de desarrollo no agrega atribución (`attribution` vacío en `.claude/settings.json`);
+   - el hook local `.githooks/commit-msg` rechaza líneas `Co-authored-by` y similares (se activa una vez por clon con `git config core.hooksPath .githooks`);
+   - el CI rechaza cualquier PR con commits de ese tipo.
+   GitHub muestra como *contributor* solo a quien figura como autor o coautor de un commit; con estas capas, ese es únicamente `dpardo23`.
 
 ### Ejemplos
 
@@ -110,31 +114,18 @@ Reglas:
   5. merge de vuelta a `develop`.
 - **Hotfix:** `hotfix/vX.Y.Z-slug` desde `main`, sube PATCH, PR a `main` y luego a `develop`.
 
-## 5. Configuración del repositorio en GitHub (una sola vez)
+## 5. Configuración del repositorio en GitHub
 
-1. Crear el repositorio privado `dpardo23/olympus`, agregarlo como `origin` y subir `main` y `develop`.
-2. **Proteger `main`:**
-   - PR obligatorio;
-   - check obligatorio `ci-ok`;
-   - rama actualizada antes de fusionar;
-   - solo *merge commit*;
-   - sin *force push* ni borrado;
-   - etiquetas `v*` protegidas.
-3. **Proteger `develop`:**
-   - PR obligatorio;
-   - check obligatorio `ci-ok`;
-   - rama actualizada antes de fusionar;
-   - solo *squash merge*, con el título del PR como mensaje;
-   - sin *force push*.
-4. Activar la opción de borrar las ramas automáticamente después del merge.
-5. **Environments:**
-   - `staging` (rama `develop`);
-   - `produccion` (etiquetas `v*`), con revisor obligatorio: Juan Diego Pardo Pozo.
-6. **Secretos por environment:** `SUPABASE_PROJECT_REF`, `SUPABASE_ACCESS_TOKEN` y `SUPABASE_DB_PASSWORD`.
-7. **Vercel:** conectar el repositorio, con producción en `main`, el alias de staging en `develop` y previews en los PR. Cargar las variables de entorno de cada entorno.
-8. Activar Dependabot, *secret scanning* y *push protection*.
+La guía completa, paso a paso, está en [`docs/configuracion-github.md`](docs/configuracion-github.md): cuenta, General, rulesets de `main` y `develop` con `ci-ok` obligatorio, Actions, environments `staging` y `produccion`, seguridad, integraciones, issues, milestones, Projects y releases.
 
-## 6. Documentación y autoría
+## 6. Licencia y contribuciones externas
+
+- El proyecto es propietario, con código visible: «Todos los derechos reservados» (`LICENSE`).
+- No se aceptan contribuciones externas sin un acuerdo escrito previo con el titular que ceda los derechos de lo aportado. Los PR de terceros sin ese acuerdo se cierran sin fusionar.
+- Toda dependencia nueva debe tener una licencia compatible con el uso propietario (MIT, Apache-2.0, BSD, ISC, OFL o similares). El CI solo admite licencias permisivas (lista `allow-licenses` en `ci.yml`). Cualquier otra, en especial las copyleft fuertes (GPL, AGPL), requiere una revisión y un ADR antes de incorporarse.
+- `THIRD_PARTY_NOTICES.md` se actualiza en cada release.
+
+## 7. Documentación y autoría
 
 - Todo documento del repositorio indica como autor o responsable solo a **Juan Diego Pardo Pozo** (`dpardo23`, jdiegopardo23@gmail.com).
 - Ningún documento, commit, PR ni comentario menciona herramientas de IA, asistentes ni generadores de código como autores o colaboradores. El CI lo verifica (`scripts/verificar-docs.py`).
