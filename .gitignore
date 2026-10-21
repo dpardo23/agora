@@ -1,0 +1,76 @@
+# --- Sistema y editores ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# --- Secretos y entorno ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+service-account*.json
+credentials*.json
+token*.json
+
+# --- Node / Nuxt (apps/web) ---
+node_modules/
+.pnpm-store/
+.nuxt/
+.output/
+.nitro/
+.cache/
+.data/
+dist/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# --- Pruebas ---
+playwright-report/
+test-results/
+blob-report/
+/playwright/.cache/
+.vitest/
+
+# --- Python (worker) ---
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# --- LaTeX (salidas del worker en local) ---
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# --- Supabase CLI ---
+supabase/.branches/
+supabase/.temp/
+supabase/.env
+
+# --- n8n ---
+n8n/.n8n/
+
+# --- Configuración personal del entorno ---
+CLAUDE.local.md
+.claude/settings.local.json
+
+# --- Diseño: export del lienzo (11 MB), solo en local ---
+design/fuente/
+olympus.html
+design/**/*.bundle.html
