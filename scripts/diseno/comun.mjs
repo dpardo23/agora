@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-export const FUENTE = path.join(RAIZ, 'design/fuente/olympus.html');
+export const FUENTE = path.join(RAIZ, 'design/fuente/agora.html');
 export const MOCKUPS = path.join(RAIZ, 'design/mockups');
 export const CHROMIUM = process.env.CHROMIUM_PATH || '/usr/bin/chromium';
 

@@ -1,6 +1,6 @@
 ---
 name: escribir-hu
-description: Redacta o edita una historia de usuario de Olympus con el formato de la materia Gestión de Calidad de Software (ficha de Jaldín, descripción en 6 partes, CA-FE en Gherkin en español, CA-NF como Verificar/Condición/Resultado, mockup anotado). Úsala cuando haya que crear, dividir, revisar o actualizar una HU en docs/producto/historias/.
+description: Redacta o edita una historia de usuario de Ágora con el formato de la materia Gestión de Calidad de Software (ficha de Jaldín, descripción en 6 partes, CA-FE en Gherkin en español, CA-NF como Verificar/Condición/Resultado, mockup anotado). Úsala cuando haya que crear, dividir, revisar o actualizar una HU en docs/producto/historias/.
 ---
 
 # Escribir una historia de usuario

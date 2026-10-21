@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verifica la documentación de Olympus. Lo ejecuta el CI (job «documentación»).
+"""Verifica la documentación de Ágora. Lo ejecuta el CI (job «documentación»).
 
 Comprueba:
 1. Enlaces Markdown relativos rotos: [texto](ruta).

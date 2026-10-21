@@ -1,6 +1,6 @@
 ---
 name: escribir-tc
-description: Deriva y redacta los test cases de una HU de Olympus con la guía de redacción de la materia (estilo Qase, atómicos, título con «Verificar» ≤ 80 caracteres, 10 a 20 pasos en infinitivo). Úsala al iniciar un sprint para crear docs/qa/test-cases/TC-HU-XX.YY.md, o para revisar o ampliar test cases existentes.
+description: Deriva y redacta los test cases de una HU de Ágora con la guía de redacción de la materia (estilo Qase, atómicos, título con «Verificar» ≤ 80 caracteres, 10 a 20 pasos en infinitivo). Úsala al iniciar un sprint para crear docs/qa/test-cases/TC-HU-XX.YY.md, o para revisar o ampliar test cases existentes.
 ---
 
 # Escribir test cases

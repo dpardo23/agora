@@ -1,4 +1,4 @@
-# Accesibilidad · Olympus
+# Accesibilidad · Ágora
 
 Versión 1.0 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
 
@@ -11,7 +11,7 @@ Versión 1.0 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Die
 
 ## 2. Principios y criterios aplicables (A y AA)
 
-| Criterio | Nivel | Cómo se cumple en Olympus | Dónde se verifica |
+| Criterio | Nivel | Cómo se cumple en Ágora | Dónde se verifica |
 |---|---|---|---|
 | 1.1.1 Contenido no textual | A | Iconos con `aria-label` o `aria-hidden`; canvas de la oficina con `role="img"` + lista equivalente de dioses | HU-05.04, HU-02.01 |
 | 1.2.x Multimedia | A/AA | No hay audio ni video; el sonido del pomodoro va acompañado de una notificación visual | HU-14.03 |

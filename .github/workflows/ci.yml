@@ -1,4 +1,4 @@
-# Integración continua de Olympus.
+# Integración continua de Ágora.
 # Corre en cada PR hacia develop o main y en cada push a esas ramas.
 # El job «ci-ok» es el único check obligatorio en la protección de ramas: resume a todos los demás.
 name: CI

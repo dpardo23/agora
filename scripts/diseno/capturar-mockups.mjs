@@ -1,5 +1,5 @@
 // Captura cada pantalla del lienzo de diseño en design/mockups/<pantalla>.png.
-// Uso: node scripts/diseno/capturar-mockups.mjs   (requiere playwright-core y design/fuente/olympus.html)
+// Uso: node scripts/diseno/capturar-mockups.mjs   (requiere playwright-core y design/fuente/agora.html)
 import { chromium } from 'playwright-core';
 import path from 'node:path';
 import { abrirLienzo, MOCKUPS } from './comun.mjs';

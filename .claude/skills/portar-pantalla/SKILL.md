@@ -1,6 +1,6 @@
 ---
 name: portar-pantalla
-description: Convierte una pantalla del diseño (design/pantallas/*.dc.html) en páginas y componentes Next.js 16 / React 19 de Olympus, respetando docs/design.md, docs/accesibilidad.md y los CA de su HU. Úsala cuando se implemente la interfaz de una HU a partir de su mockup.
+description: Convierte una pantalla del diseño (design/pantallas/*.dc.html) en páginas y componentes Next.js 16 / React 19 de Ágora, respetando docs/design.md, docs/accesibilidad.md y los CA de su HU. Úsala cuando se implemente la interfaz de una HU a partir de su mockup.
 ---
 
 # Portar una pantalla del diseño a Next.js

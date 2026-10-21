@@ -1,6 +1,6 @@
 ---
 name: reportar-bug
-description: Redacta un bug report de Olympus con la guía de la materia (un defecto por reporte, reproducible, severidad y prioridad separadas, actual frente a esperado, evidencia, trazado a HU, CA y TC). Úsala cuando un test case falla o se observa un defecto, para crear docs/qa/bugs/BUG-NNN-slug.md.
+description: Redacta un bug report de Ágora con la guía de la materia (un defecto por reporte, reproducible, severidad y prioridad separadas, actual frente a esperado, evidencia, trazado a HU, CA y TC). Úsala cuando un test case falla o se observa un defecto, para crear docs/qa/bugs/BUG-NNN-slug.md.
 ---
 
 # Reportar un bug

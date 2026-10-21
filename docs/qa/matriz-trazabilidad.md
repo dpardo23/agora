@@ -1,4 +1,4 @@
-# Matriz de trazabilidad · Olympus
+# Matriz de trazabilidad · Ágora
 
 Versión 1.1 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
 

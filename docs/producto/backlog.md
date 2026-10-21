@@ -1,4 +1,4 @@
-# Product backlog · Olympus
+# Product backlog · Ágora
 
 Versión 1.0 · creado el 2026-10-20 · editado el 2026-10-20
 

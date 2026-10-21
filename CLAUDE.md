@@ -1,6 +1,6 @@
-# Olympus · dpardo, plataforma universitaria personal
+# Ágora · plataforma universitaria personal
 
-PWA de un solo usuario: Juan Diego Pardo Pozo (`dpardo23`), Ingeniería de Sistemas, UMSS, FCyT. Su centro es **el Olimpo**: un sistema de agentes que genera documentos de estudio en PDF y se muestra como una oficina donde cada agente es un dios griego que siempre está en movimiento. Alrededor están tareas, materias, malla, agenda, repaso, pomodoro y avisos. La marca visible es «dpardo»; el repositorio y el código usan «olympus».
+PWA de un solo usuario: Juan Diego Pardo Pozo (`dpardo23`), Ingeniería de Sistemas, UMSS, FCyT. Su centro es **el Olimpo**: un sistema de agentes que genera documentos de estudio en PDF y se muestra como una oficina donde cada agente es un dios griego que siempre está en movimiento. Alrededor están tareas, materias, malla, agenda, repaso, pomodoro y avisos. La marca visible es **Ágora** (con tilde; en mayúsculas, ÁGORA). El repositorio, la carpeta y los identificadores de código usan `agora` (sin tilde).
 
 ## Forma de trabajo
 - Scrum sin fechas: épicas → HU → backlog → sprint. En cada sprint: **test cases → código → bug reports**, y cada sprint entrega algo funcional.
@@ -34,7 +34,7 @@ PWA de un solo usuario: Juan Diego Pardo Pozo (`dpardo23`), Ingeniería de Siste
 
 ## Mapa del repositorio
 - `apps/web/src/` web (`app/`, `features/<dominio>/`, `components/ui/`, `shared/`, `server/`) · `worker/` motor de agentes · `supabase/` · `n8n/` · `infra/` · `scripts/`
-- `design/pantallas/*.dc.html` diseño fuente · `design/mockups/*.png` capturas · `design/mockups/anotados/` mockups con marcas por HU · `design/referencias/oficina-olimpo.png` ambientación · `design/fuente/olympus.html` export local (no versionado)
+- `design/pantallas/*.dc.html` diseño fuente · `design/mockups/*.png` capturas · `design/mockups/anotados/` mockups con marcas por HU · `design/referencias/oficina-olimpo.png` ambientación · `design/fuente/agora.html` export local (no versionado)
 
 ## Documentación (se lee cuando hace falta)
 - Arquitectura: `docs/arquitectura.md` · decisiones: `docs/adr/` · rutas y API: `docs/api.md` · accesibilidad: `docs/accesibilidad.md` (WCAG 2.2 AA)

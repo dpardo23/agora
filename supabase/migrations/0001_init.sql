@@ -1,4 +1,4 @@
--- dpardo · esquema inicial (borrador para revisar antes de aplicar)
+-- Ágora · esquema inicial (borrador para revisar antes de aplicar)
 -- Un solo usuario, pero todo con user_id y RLS.
 
 create extension if not exists vector with schema extensions;
@@ -40,7 +40,7 @@ create table perfil (
 create table dispositivos_confiables (
   id          uuid primary key default gen_random_uuid(),
   user_id     uuid not null references auth.users on delete cascade,
-  token_hash  text not null unique,           -- sha256 del token de la cookie dpardo_device
+  token_hash  text not null unique,           -- sha256 del token de la cookie agora_device
   nombre      text not null,                  -- "Este PC", "Android (PWA)"
   user_agent  text,
   ultimo_uso  timestamptz not null default now(),

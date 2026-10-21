@@ -1,4 +1,4 @@
-# Sistema de diseño · dpardo / Olympus
+# Sistema de diseño · Ágora
 
 Versión 2.0 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
 
@@ -119,7 +119,7 @@ Regla de maquetación: el contenido usa columnas flex que envuelven (`flex-wrap`
 |---|---|---|
 | < 768 px | Móvil | Barra inferior: `Inicio · Tareas · Olimpo (central, destacado) · Agenda · Estudiar`. Materias, Avisos y Configuración se abren desde la cabecera (campana y avatar «JD») |
 | 768 a 1199 px | Tablet | Sidebar colapsada a iconos, con tooltip |
-| ≥ 1200 px | Escritorio | Sidebar fija de unos 232 px con logo «dpardo», campana con contador, 6 secciones con contador, y Configuración abajo |
+| ≥ 1200 px | Escritorio | Sidebar fija de unos 232 px con logo «ÁGORA», campana con contador, 6 secciones con contador, y Configuración abajo |
 
 ### 5.2 Sidebar (escritorio)
 
@@ -279,7 +279,7 @@ El Olimpo es **escalable** (ADR-005): un **dios** es la persona visible y un **r
 | Aula de Mnemósine · Tutoría | trabajo | 1 a 3 | Pizarra verde, pupitres |
 | Biblioteca del Olimpo · Archivo | trabajo | 1 a 2 | Estanterías altas, mesa de lectura |
 | Recepción | trabajo (Hermes) | 1 a 2 | Fuente de agua en el hall, macetas de laurel |
-| Ágora · Reuniones | estado: `reunion` | 8 asientos | Mesa redonda de mármol (sala nueva respecto de la imagen) |
+| Sala del Consejo · Reuniones | estado: `reunion` | 8 asientos | Mesa redonda de mármol (sala nueva respecto de la imagen) |
 | Taller de errores de Ares | estado: `error` | sin límite | Banco de trabajo, papeles rotos, burbuja roja |
 | Salón de Dioniso · Descanso | estado: `libre` / `esperando` | sin límite | Sofás púrpura, ánforas, dispensadores de agua, parras |
 | Nexo de servidores | estado de la VM (futuro Argos) | 1 | Racks con cables cian brillantes |
@@ -318,7 +318,7 @@ La escena tiene paleta propia y **no cambia con el tema** de la interfaz; solo e
 | `libre` | Salón de Dioniso | **Deambula** entre los puntos de descanso (sofá, dispensador, ánfora, ventana) con pausas de 3 a 8 s; respira en pausa (2 cuadros, 1,6 s) |
 | `esperando` | Salón de Dioniso | Igual que `libre`, con la burbuja «Espero …» |
 | `entregando` (`traspaso`) | Escritorio del dios destino | Camina con un papiro, se lo entrega (0,6 s), el destino muestra el papiro sobre su escritorio, y el emisor vuelve |
-| `reunion` (`planificacion`) | Ágora | Se sienta. Cada 4 a 6 s gesticula (brazo arriba) |
+| `reunion` (`planificacion`) | Sala del Consejo | Se sienta. Cada 4 a 6 s gesticula (brazo arriba) |
 | `error` (`paso_fallido`) | Taller de errores de Ares | Camina hasta el banco, de pie, con una burbuja roja que dice el error resumido; golpea el banco (2 cuadros) |
 | `pausado` | Su escritorio | Atenuado al 50 %; solo respira, sin teclear ni gestos |
 
@@ -387,6 +387,7 @@ Toda pantalla con datos define estos cuatro estados: **carga** (esqueleto con la
 | 4 | La escena del diseño es una oficina genérica | Se reemplaza por la Oficina del Olimpo (ADR-003). La interfaz alrededor se mantiene |
 | 5 | Las pestañas internas de las pantallas móviles de Agenda, Materias y Estudiar no están dibujadas | Se usa el control segmentado de `ControlesMovil`, bajo la cabecera |
 | 6 | La mayoría de las pantallas no dibuja estados vacío y de error | Se aplica sección 12 |
-| 7 | Las salas Ágora y Tribunal de Temis no están en la imagen de referencia | Se agregan con la misma ambientación (mármol y oro); aprobado el 2026-10-20 |
+| 7 | La Sala del Consejo y el Tribunal de Temis no están en la imagen de referencia | Se agregan con la misma ambientación (mármol y oro); aprobado el 2026-10-20. La sala de reuniones se llamaba «Ágora» y pasó a «Sala del Consejo» para no confundirse con el nombre del producto |
+| 10 | El logo y los títulos del diseño dicen «dpardo» | La marca del producto es **Ágora** (ÁGORA en el logo). «dpardo» queda solo como nombre de usuario de inicio de sesión |
 | 8 | Los diseños y sus capturas llaman «Bot» a la sección, y usan textos como «Encargar al bot» o «Documentos del bot» | La sección se llama **Olimpo** (ADR-003). Todo texto «bot» de la interfaz se lee como «Olimpo». La carpeta de Drive `UMSS / {materia} / Olimpo` **conserva su nombre**, porque ya existe y el motor de agentes entrega ahí. Los nombres de archivo de origen (`Main.dc.html`, `BotMovil.dc.html`) no cambian |
 | 9 | El lema del login dice «Bot de estudio, tareas, horario y malla en un solo lugar.» | Pasa a «Agentes de estudio, tareas, horario y malla en un solo lugar.» |

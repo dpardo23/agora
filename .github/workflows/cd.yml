@@ -1,4 +1,4 @@
-# Entrega continua de Olympus.
+# Entrega continua de Ágora.
 # - La web la despliega Vercel con su integración de Git: una preview por PR, staging desde develop y producción desde main.
 # - Este workflow aplica las migraciones de Supabase y publica la release.
 #   Producción requiere aprobación manual (environment «produccion» con revisor obligatorio).

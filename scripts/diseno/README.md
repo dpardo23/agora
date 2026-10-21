@@ -1,6 +1,6 @@
 # Scripts de diseño
 
-Generan las capturas de `design/mockups/` y las imágenes anotadas por HU de `design/mockups/anotados/` a partir del export del lienzo (`design/fuente/olympus.html`, que se guarda solo en local).
+Generan las capturas de `design/mockups/` y las imágenes anotadas por HU de `design/mockups/anotados/` a partir del export del lienzo (`design/fuente/agora.html`, que se guarda solo en local).
 
 | Script | Qué hace |
 |---|---|

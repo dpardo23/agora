@@ -11,7 +11,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Proyecto Olympus: el modo caveman (skill caveman, nivel full) está siempre activo en las respuestas del chat, en español. No se aplica a lo que se persiste: código, comentarios, docs/, HU, TC, bug reports, commits y memoria van en prosa completa. Se desactiva solo si el usuario dice \"stop caveman\" o \"normal mode\".'"
+            "command": "echo 'Proyecto Ágora: el modo caveman (skill caveman, nivel full) está siempre activo en las respuestas del chat, en español. No se aplica a lo que se persiste: código, comentarios, docs/, HU, TC, bug reports, commits y memoria van en prosa completa. Se desactiva solo si el usuario dice \"stop caveman\" o \"normal mode\".'"
           }
         ]
       }

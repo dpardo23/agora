@@ -1,4 +1,4 @@
--- dpardo · semilla de la oficina (distribución actual de Main.dc.html, escena 960×720, planta 1)
+-- Ágora · semilla de la oficina (distribución actual de Main.dc.html, escena 960×720, planta 1)
 -- Las salas del diseño objetivo de 2 plantas (docs/CONTEXTO.md §7.2) se agregan en una migración posterior.
 
 insert into oficina_salas (id, nombre, planta, tipo, x, y, w, h, capacidad) values

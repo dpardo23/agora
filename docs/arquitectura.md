@@ -1,4 +1,4 @@
-# Arquitectura · Olympus
+# Arquitectura · Ágora
 
 Versión 2.0 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
 
@@ -76,7 +76,7 @@ design/    pantallas (.dc.html), mockups (PNG), referencias, fuente (export loca
 ## 5. Seguridad
 
 - Supabase Auth (correo + contraseña) por debajo; en la interfaz se entra con **usuario**. `POST /api/v1/auth/sesion` resuelve usuario → correo en el servidor y nunca expone el correo.
-- 2FA por Gmail en dispositivos nuevos: código de 6 dígitos guardado como hash (10 min, 5 intentos), cookie firmada `dpardo_device` y middleware que bloquea `(app)` hasta verificar.
+- 2FA por Gmail en dispositivos nuevos: código de 6 dígitos guardado como hash (10 min, 5 intentos), cookie firmada `agora_device` y middleware que bloquea `(app)` hasta verificar.
 - Política de contraseña en cliente, servidor y Supabase Auth.
 - RLS en todas las tablas. Bucket `documentos` privado con URLs firmadas de 5 minutos. Registro público desactivado.
 - Escrituras: verificación de origen (`Origin`), cookies `SameSite=Lax`, límites de frecuencia en autenticación y webhooks firmados con HMAC.

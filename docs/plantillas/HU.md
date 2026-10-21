@@ -118,4 +118,4 @@ Estados obligatorios en el mockup: **normal, carga, vacío y error**. Si alguno 
 
 | Versión | Fecha | Autor | Cambio |
 |---|---|---|---|
-| 1.0 | AAAA-MM-DD | dpardo | Creación |
+| 1.0 | AAAA-MM-DD | Juan Diego Pardo Pozo | Creación |

@@ -1,4 +1,4 @@
-# Visión de producto · dpardo (repo Olympus)
+# Visión de producto · Ágora
 
 Versión 1.1 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
 
@@ -6,7 +6,7 @@ Versión 1.1 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Die
 
 **Para** Juan Diego, estudiante de Ingeniería de Sistemas en la UMSS (FCyT),
 **que** necesita encargar y seguir documentos de estudio generados por su sistema de agentes y organizar su vida universitaria en un solo lugar,
-**dpardo** es una PWA personal
+**Ágora** es una PWA personal
 **que** saca el Olimpo de la laptop, lo muestra como una oficina de dioses griegos trabajando en tiempo real y lo rodea de tareas, materias, malla, agenda, repaso, pomodoro y avisos.
 **A diferencia de** usar el sistema de agentes por consola desde la laptop y tener tareas, horarios y notas repartidos en varias apps,
 **nuestro producto** une el encargo, el seguimiento y la entrega del documento con la planificación del semestre, desde el PC o el teléfono.

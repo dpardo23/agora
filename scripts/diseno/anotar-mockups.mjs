@@ -1,6 +1,6 @@
 // Dibuja las marcas numeradas de cada HU sobre su pantalla y guarda design/mockups/anotados/HU-XX.YY__<pantalla>.png.
 // Paso previo: python scripts/diseno/extraer-marcas.py
-// Uso: node scripts/diseno/anotar-mockups.mjs   (requiere playwright-core y design/fuente/olympus.html)
+// Uso: node scripts/diseno/anotar-mockups.mjs   (requiere playwright-core y design/fuente/agora.html)
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';

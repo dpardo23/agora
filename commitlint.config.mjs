@@ -1,4 +1,4 @@
-// Reglas de commits de Olympus (CONTRIBUTING.md, sección 2).
+// Reglas de commits de Ágora (CONTRIBUTING.md, sección 2).
 export default {
   extends: ['@commitlint/config-conventional'],
   rules: {

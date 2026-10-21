@@ -1,4 +1,4 @@
-# Cómo contribuir a Olympus
+# Cómo contribuir a Ágora
 
 Autor y responsable: Juan Diego Pardo Pozo (`dpardo23`, jdiegopardo23@gmail.com).
 
@@ -116,7 +116,7 @@ Reglas:
 
 ## 5. Configuración del repositorio en GitHub (una sola vez)
 
-1. Crear el repositorio privado `dpardo23/olympus`, agregarlo como `origin` y subir `main` y `develop`.
+1. Crear el repositorio privado `dpardo23/agora`, agregarlo como `origin` y subir `main` y `develop`.
 2. **Proteger `main`:**
    - PR obligatorio;
    - check obligatorio `ci-ok`;
