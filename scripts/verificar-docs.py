@@ -14,6 +14,7 @@ Uso: python scripts/verificar-docs.py   (sale con código 1 si encuentra problem
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -39,6 +40,11 @@ def archivos_md() -> list[Path]:
             continue
         salida.append(ruta)
     return salida
+
+
+def ignorada_por_git(ruta: str) -> bool:
+    """Las rutas en .gitignore (p. ej. design/fuente/) existen solo en local: no se exigen."""
+    return subprocess.run(["git", "check-ignore", "-q", ruta], cwd=RAIZ).returncode == 0
 
 
 def es_verificable(ruta: str) -> bool:
@@ -69,7 +75,7 @@ def main() -> int:
                 candidatas.append(item.group(1))
             for ruta in candidatas:
                 ruta = ruta.split("#")[0].rstrip(".,;:)")
-                if es_verificable(ruta) and not (RAIZ / ruta).exists():
+                if es_verificable(ruta) and not (RAIZ / ruta).exists() and not ignorada_por_git(ruta):
                     problemas.append(f"{rel}:{n}: ruta inexistente → {ruta}")
             # 3. Autoría
             for patron in AUTORIA_PROHIBIDA:
