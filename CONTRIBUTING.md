@@ -122,7 +122,7 @@ La guía completa, paso a paso, está en [`docs/configuracion-github.md`](docs/c
 
 - El proyecto es propietario, con código visible: «Todos los derechos reservados» (`LICENSE`).
 - No se aceptan contribuciones externas sin un acuerdo escrito previo con el titular que ceda los derechos de lo aportado. Los PR de terceros sin ese acuerdo se cierran sin fusionar.
-- Toda dependencia nueva debe tener una licencia compatible con el uso propietario (MIT, Apache-2.0, BSD, ISC, OFL o similares). Las licencias copyleft fuertes (GPL, AGPL) requieren una revisión y un ADR antes de incorporarse.
+- Toda dependencia nueva debe tener una licencia compatible con el uso propietario (MIT, Apache-2.0, BSD, ISC, OFL o similares). El CI solo admite licencias permisivas (lista `allow-licenses` en `ci.yml`). Cualquier otra, en especial las copyleft fuertes (GPL, AGPL), requiere una revisión y un ADR antes de incorporarse.
 - `THIRD_PARTY_NOTICES.md` se actualiza en cada release.
 
 ## 7. Documentación y autoría

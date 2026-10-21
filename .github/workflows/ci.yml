@@ -6,6 +6,8 @@ name: CI
 on:
   pull_request:
     branches: [develop, main]
+    # «edited» vuelve a validar el título cuando se corrige en el PR.
+    types: [opened, synchronize, reopened, edited]
   push:
     branches: [develop, main]
   workflow_dispatch:
@@ -115,8 +117,8 @@ jobs:
         uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
-          # Proyecto propietario: se bloquean licencias copyleft fuertes (CONTRIBUTING.md, sección 6).
-          deny-licenses: GPL-2.0-only, GPL-2.0-or-later, GPL-3.0-only, GPL-3.0-or-later, AGPL-3.0-only, AGPL-3.0-or-later
+          # Proyecto propietario: solo licencias permisivas (CONTRIBUTING.md, sección 6).
+          allow-licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD, Unlicense, CC0-1.0, CC-BY-4.0, OFL-1.1, Python-2.0, MPL-2.0, BlueOak-1.0.0
 
   documentacion:
     name: Documentación (enlaces, autoría y formato)
