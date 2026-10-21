@@ -1,0 +1,26 @@
+name: Ítem técnico
+description: Historia técnica, spike o chore (T-NN) del product backlog.
+title: "T-NN · "
+labels: ["tipo:tecnico"]
+body:
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options: [Historia técnica, Spike, Chore]
+    validations:
+      required: true
+  - type: textarea
+    id: alcance
+    attributes:
+      label: Qué incluye
+      description: Copia la fila del ítem en docs/producto/backlog.md (sección 3).
+    validations:
+      required: true
+  - type: textarea
+    id: cierre
+    attributes:
+      label: Criterio de cierre
+      description: Condición verificable que da el ítem por terminado.
+    validations:
+      required: true

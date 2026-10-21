@@ -1,0 +1,15 @@
+# Categorías de las notas de release generadas automáticamente.
+changelog:
+  exclude:
+    labels: [ignorar-en-release]
+  categories:
+    - title: Funcionalidades
+      labels: [tipo:historia]
+    - title: Correcciones
+      labels: [tipo:bug]
+    - title: Técnico y mantenimiento
+      labels: [tipo:tecnico]
+    - title: Dependencias
+      labels: [dependencias]
+    - title: Otros cambios
+      labels: ["*"]

@@ -1,0 +1,35 @@
+name: Historia de usuario
+description: Seguimiento de una HU del product backlog.
+title: "HU-XX.YY · "
+labels: ["tipo:historia"]
+body:
+  - type: input
+    id: archivo
+    attributes:
+      label: Archivo de la HU
+      description: Ruta del documento, fuente de verdad de la historia.
+      placeholder: docs/producto/historias/EP-03-acceso-y-seguridad/HU-03.01-iniciar-sesion-con-usuario.md
+    validations:
+      required: true
+  - type: dropdown
+    id: moscow
+    attributes:
+      label: Prioridad (MoSCoW)
+      options: [Must, Should, Could, "Won't"]
+    validations:
+      required: true
+  - type: dropdown
+    id: puntos
+    attributes:
+      label: Puntos
+      options: ["1", "2", "3", "5", "8", "13"]
+    validations:
+      required: true
+  - type: checkboxes
+    id: dor
+    attributes:
+      label: Definition of Ready
+      options:
+        - label: Descripción en 6 partes, CA-FE y CA-NF completos.
+        - label: Mockup anotado con estados de carga, vacío y error.
+        - label: Dependencias resueltas o planificadas.

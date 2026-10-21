@@ -1,0 +1,39 @@
+name: Bug
+description: Defecto encontrado al ejecutar un test case (docs/plantillas/BUG.md).
+title: "BUG-NNN · [qué falla] [dónde] [bajo qué condición]"
+labels: ["tipo:bug"]
+body:
+  - type: input
+    id: archivo
+    attributes:
+      label: Archivo del bug report
+      placeholder: docs/qa/bugs/BUG-001-slug.md
+    validations:
+      required: true
+  - type: input
+    id: trazas
+    attributes:
+      label: HU, CA violado y TC de origen
+      placeholder: HU-03.01 · CA-FE-02 · TC-HU-03.01-02
+    validations:
+      required: true
+  - type: dropdown
+    id: severidad
+    attributes:
+      label: Severidad
+      options: [Crítica, Alta, Media, Baja]
+    validations:
+      required: true
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: Prioridad
+      options: [Urgente, Alta, Media, Baja]
+    validations:
+      required: true
+  - type: textarea
+    id: resultado
+    attributes:
+      label: Resultado actual frente al esperado
+    validations:
+      required: true

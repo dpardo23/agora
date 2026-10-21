@@ -114,29 +114,9 @@ Reglas:
   5. merge de vuelta a `develop`.
 - **Hotfix:** `hotfix/vX.Y.Z-slug` desde `main`, sube PATCH, PR a `main` y luego a `develop`.
 
-## 5. Configuración del repositorio en GitHub (una sola vez)
+## 5. Configuración del repositorio en GitHub
 
-1. Crear el repositorio privado `dpardo23/agora`, agregarlo como `origin` y subir `main` y `develop`.
-2. **Proteger `main`:**
-   - PR obligatorio;
-   - check obligatorio `ci-ok`;
-   - rama actualizada antes de fusionar;
-   - solo *merge commit*;
-   - sin *force push* ni borrado;
-   - etiquetas `v*` protegidas.
-3. **Proteger `develop`:**
-   - PR obligatorio;
-   - check obligatorio `ci-ok`;
-   - rama actualizada antes de fusionar;
-   - solo *squash merge*, con el título del PR como mensaje;
-   - sin *force push*.
-4. Activar la opción de borrar las ramas automáticamente después del merge.
-5. **Environments:**
-   - `staging` (rama `develop`);
-   - `produccion` (etiquetas `v*`), con revisor obligatorio: Juan Diego Pardo Pozo.
-6. **Secretos por environment:** `SUPABASE_PROJECT_REF`, `SUPABASE_ACCESS_TOKEN` y `SUPABASE_DB_PASSWORD`.
-7. **Vercel:** conectar el repositorio, con producción en `main`, el alias de staging en `develop` y previews en los PR. Cargar las variables de entorno de cada entorno.
-8. Activar Dependabot, *secret scanning* y *push protection*.
+La guía completa, paso a paso, está en [`docs/configuracion-github.md`](docs/configuracion-github.md): cuenta, General, rulesets de `main` y `develop` con `ci-ok` obligatorio, Actions, environments `staging` y `produccion`, seguridad, integraciones, issues, milestones, Projects y releases.
 
 ## 6. Licencia y contribuciones externas
 
