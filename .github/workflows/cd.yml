@@ -31,7 +31,7 @@ jobs:
     environment: staging
     steps:
       - uses: actions/checkout@v4
-      - uses: supabase/setup-cli@v1
+      - uses: supabase/setup-cli@v3
         with:
           version: latest
       - run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
@@ -52,7 +52,7 @@ jobs:
     environment: produccion
     steps:
       - uses: actions/checkout@v4
-      - uses: supabase/setup-cli@v1
+      - uses: supabase/setup-cli@v3
         with:
           version: latest
       - run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
