@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Proyecto Olympus: el modo caveman (skill caveman, nivel full) está siempre activo en las respuestas del chat, en español. No se aplica a lo que se persiste: código, comentarios, docs/, HU, TC, bug reports, commits y memoria van en prosa completa. Se desactiva solo si el usuario dice \"stop caveman\" o \"normal mode\".'"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(pnpm:*)",
+      "Bash(npx vitest:*)",
+      "Bash(npx playwright:*)",
+      "Bash(uv:*)",
+      "Bash(supabase status)",
+      "Bash(supabase db diff:*)",
+      "Bash(supabase gen types:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(npx next:*)",
+      "Bash(pnpm dlx shadcn@latest:*)",
+      "Bash(supabase test db)",
+      "Bash(python scripts/verificar-docs.py)",
+      "Bash(git branch:*)",
+      "Bash(git switch:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/service-account*.json)",
+      "Bash(supabase db reset --linked:*)",
+      "Bash(supabase db push:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ]
+  }
+}
