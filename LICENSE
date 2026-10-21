@@ -1,0 +1,43 @@
+Ágora · Licencia propietaria (código visible)
+
+Copyright (c) 2026 Juan Diego Pardo Pozo (GitHub: dpardo23 · jdiegopardo23@gmail.com)
+Todos los derechos reservados.
+
+1. Titularidad. El código fuente, la documentación, los diseños, las imágenes,
+   los textos y demás materiales de este repositorio (en conjunto, «el Software»)
+   son obra de Juan Diego Pardo Pozo y están protegidos por las leyes de derecho
+   de autor de Bolivia (Ley N.º 1322 de Derecho de Autor) y por los tratados
+   internacionales aplicables, incluido el Convenio de Berna.
+
+2. Lo que se permite. Este repositorio es público solo para que se pueda ver.
+   Se permite ver y leer el Software en GitHub, y hacer fork dentro de GitHub
+   únicamente en la medida en que lo exigen los Términos de Servicio de GitHub.
+
+3. Lo que no se permite sin autorización previa y por escrito del autor:
+   a) usar, ejecutar, instalar o desplegar el Software, total o parcialmente;
+   b) copiar, reproducir, modificar, traducir, adaptar o crear obras derivadas;
+   c) distribuir, sublicenciar, vender, alquilar o publicar el Software;
+   d) ofrecer el Software, o una obra derivada, como servicio en línea;
+   e) usar el Software o su contenido para entrenar modelos de inteligencia
+      artificial, o incluirlo en conjuntos de datos;
+   f) quitar o alterar este aviso de derechos de autor.
+
+4. Terceros. Los componentes de terceros incluidos en el repositorio mantienen
+   sus propias licencias, que prevalecen sobre esta en lo que a ellos se refiere.
+   La lista está en THIRD_PARTY_NOTICES.md.
+
+5. Sin garantía. El Software se ofrece «tal cual», sin garantía de ningún tipo,
+   expresa ni implícita. En ningún caso el autor será responsable por daños
+   derivados del Software o de su uso.
+
+6. Permisos. Para solicitar una autorización: jdiegopardo23@gmail.com.
+
+---------------------------------------------------------------------------------
+English summary (the Spanish text above prevails)
+
+Copyright (c) 2026 Juan Diego Pardo Pozo. All rights reserved.
+This repository is public for viewing only. No license is granted to use, copy,
+modify, distribute, offer as a service, or use for AI training any part of this
+software without the author's prior written permission. Third-party components
+keep their own licenses (see THIRD_PARTY_NOTICES.md). Provided "as is", without
+warranty of any kind.

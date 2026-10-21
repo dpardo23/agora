@@ -138,7 +138,14 @@ Reglas:
 7. **Vercel:** conectar el repositorio, con producción en `main`, el alias de staging en `develop` y previews en los PR. Cargar las variables de entorno de cada entorno.
 8. Activar Dependabot, *secret scanning* y *push protection*.
 
-## 6. Documentación y autoría
+## 6. Licencia y contribuciones externas
+
+- El proyecto es propietario, con código visible: «Todos los derechos reservados» (`LICENSE`).
+- No se aceptan contribuciones externas sin un acuerdo escrito previo con el titular que ceda los derechos de lo aportado. Los PR de terceros sin ese acuerdo se cierran sin fusionar.
+- Toda dependencia nueva debe tener una licencia compatible con el uso propietario (MIT, Apache-2.0, BSD, ISC, OFL o similares). Las licencias copyleft fuertes (GPL, AGPL) requieren una revisión y un ADR antes de incorporarse.
+- `THIRD_PARTY_NOTICES.md` se actualiza en cada release.
+
+## 7. Documentación y autoría
 
 - Todo documento del repositorio indica como autor o responsable solo a **Juan Diego Pardo Pozo** (`dpardo23`, jdiegopardo23@gmail.com).
 - Ningún documento, commit, PR ni comentario menciona herramientas de IA, asistentes ni generadores de código como autores o colaboradores. El CI lo verifica (`scripts/verificar-docs.py`).
