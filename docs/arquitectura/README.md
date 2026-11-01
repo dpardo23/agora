@@ -1,6 +1,6 @@
 # Arquitectura · Ágora
 
-Versión 3.0 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 3.1 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado), ADR-007 (licencia LGPL de sharp-libvips). Rutas y API: `docs/arquitectura/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
 
@@ -28,7 +28,7 @@ Esta es la descripción de la arquitectura de Ágora. Sigue la estructura de la 
 | Interfaz de programación | ¿Qué rutas expone la API y con qué contrato? | Inventario de rutas; OpenAPI generado desde Zod | [`api.md`](api.md) |
 | Decisiones | ¿Por qué el sistema es así y qué alternativas se descartaron? | Registros de decisiones (ADR) | [`adr/`](adr/ADR-001-stack-web-nextjs.md) |
 
-Todos los diagramas se escriben en Mermaid dentro del Markdown, así que GitHub los dibuja sin herramientas adicionales y se revisan en el mismo PR que el código. Cada vista indica de qué archivos o ADR sale; la sección 11 dice cuándo se actualiza.
+Todos los diagramas se escriben en Mermaid dentro del Markdown, así que GitHub los dibuja sin herramientas adicionales y se revisan en el mismo PR que el código. Los diagramas C4 usan diagramas de flujo con la notación y los colores de C4 (persona, sistema, contenedor, componente y sistema externo), porque los diagramas C4 nativos de Mermaid superponen las etiquetas. Antes de fusionar un cambio en un diagrama, se valida con `npx @mermaid-js/mermaid-cli`. Cada vista indica de qué archivos o ADR sale; la sección 11 dice cuándo se actualiza.
 
 ## 3. Vista general
 
@@ -54,20 +54,23 @@ Oracle VM (ARM, Ubuntu)           n8n (misma VM)
 Quién usa Ágora y con qué sistemas externos se comunica. Los diagramas siguen el modelo C4 de Simon Brown y se escriben en Mermaid, que GitHub dibuja sin herramientas adicionales.
 
 ```mermaid
-C4Context
-  title Ágora · contexto
-  Person(titular, "Titular", "Estudiante de Ingeniería de Sistemas, UMSS. Único usuario")
-  System(agora, "Ágora", "PWA universitaria personal con el Olimpo, que genera documentos de estudio en PDF")
-  System_Ext(claude, "Claude", "Modelo de lenguaje de los roles del Olimpo")
-  System_Ext(gemini, "Gemini", "Modelo de lenguaje de los roles del Olimpo")
-  System_Ext(google, "Google", "Gmail, Drive, Calendar y Tasks")
-  System_Ext(umss, "Webs de la UMSS y la FCyT", "Avisos y planes de estudio")
-  Rel(titular, agora, "Usa", "HTTPS")
-  Rel(agora, claude, "Genera contenido", "CLI con token")
-  Rel(agora, gemini, "Genera y extrae contenido", "API")
-  Rel(agora, google, "Envía códigos, entrega PDF, sincroniza", "OAuth 2.0")
-  Rel(agora, umss, "Lee avisos", "HTTPS")
-  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+flowchart TB
+  titular(["<b>Titular</b><br/>[Persona]<br/>Estudiante de Ingeniería de Sistemas, UMSS. Único usuario"]):::persona
+  agora["<b>Ágora</b><br/>[Sistema de software]<br/>PWA universitaria personal con el Olimpo, que genera documentos de estudio en PDF"]:::sistema
+  claude["<b>Claude</b><br/>[Sistema externo]<br/>Modelo de lenguaje de los roles del Olimpo"]:::externo
+  gemini["<b>Gemini</b><br/>[Sistema externo]<br/>Modelo de lenguaje de los roles del Olimpo"]:::externo
+  google["<b>Google</b><br/>[Sistema externo]<br/>Gmail, Drive, Calendar y Tasks"]:::externo
+  umss["<b>Webs de la UMSS y la FCyT</b><br/>[Sistema externo]<br/>Avisos y planes de estudio"]:::externo
+  titular -- "Usa<br/>[HTTPS]" --> agora
+  agora -- "Genera contenido<br/>[CLI con token]" --> claude
+  agora -- "Genera y extrae contenido<br/>[API]" --> gemini
+  agora -- "Envía códigos, entrega PDF, sincroniza<br/>[OAuth 2.0]" --> google
+  agora -- "Lee avisos<br/>[HTTPS]" --> umss
+  classDef persona fill:#08427b,stroke:#052e56,color:#ffffff
+  classDef sistema fill:#1168bd,stroke:#0b4884,color:#ffffff
+  classDef contenedor fill:#438dd5,stroke:#2e6295,color:#ffffff
+  classDef componente fill:#85bbf0,stroke:#5d82a8,color:#0b0b0b
+  classDef externo fill:#8a8a8a,stroke:#6b6b6b,color:#ffffff
 ```
 
 ### 3.2. Contenedores (modelo C4, nivel 2)
@@ -75,25 +78,30 @@ C4Context
 Las piezas que se despliegan por separado y cómo se comunican. La web y el motor de agentes nunca se llaman entre sí: se coordinan por la cola de trabajos en Postgres y por Realtime.
 
 ```mermaid
-C4Container
-  title Ágora · contenedores
-  Person(titular, "Titular")
-  System_Boundary(agora, "Ágora") {
-    Container(web, "Web y API", "Next.js 16 en Vercel", "Páginas, PWA y API REST /api/v1")
-    ContainerDb(db, "Base de datos", "Supabase: Postgres, Auth, Storage, Realtime", "Fuente de verdad con RLS y cola de trabajos")
-    Container(worker, "Motor de agentes", "Python 3.14 (umss) en la Oracle VM", "Toma trabajos, ejecuta los roles y compila LaTeX")
-    Container(n8n, "Automatizaciones", "n8n en la Oracle VM", "Integraciones con Google y las webs de la UMSS")
-  }
-  System_Ext(modelos, "Claude y Gemini")
-  System_Ext(google, "Google")
-  Rel(titular, web, "Usa", "HTTPS")
-  Rel(web, db, "Lee con RLS, escribe por /api/v1, escucha", "supabase-js, Realtime")
-  Rel(worker, db, "Toma trabajos y registra eventos", "service role")
-  Rel(worker, modelos, "Genera contenido")
-  Rel(worker, google, "Entrega PDF en Drive", "OAuth 2.0")
-  Rel(n8n, google, "Lee correo y calendario", "OAuth 2.0")
-  Rel(n8n, db, "Escribe avisos", "webhooks firmados")
-  UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
+flowchart TB
+  titular(["<b>Titular</b><br/>[Persona]"]):::persona
+  subgraph agora["Ágora · sistema de software"]
+    web["<b>Web y API</b><br/>[Contenedor: Next.js 16 en Vercel]<br/>Páginas, PWA y API REST /api/v1"]:::contenedor
+    db[("<b>Base de datos</b><br/>[Contenedor: Supabase]<br/>Postgres, Auth, Storage y Realtime. Fuente de verdad con RLS y cola de trabajos")]:::contenedor
+    worker["<b>Motor de agentes</b><br/>[Contenedor: Python 3.14 en la Oracle VM]<br/>Toma trabajos, ejecuta los roles y compila LaTeX"]:::contenedor
+    n8n["<b>Automatizaciones</b><br/>[Contenedor: n8n en la Oracle VM]<br/>Integraciones con Google y las webs de la UMSS"]:::contenedor
+  end
+  modelos["<b>Claude y Gemini</b><br/>[Sistemas externos]<br/>Modelos de lenguaje"]:::externo
+  google["<b>Google</b><br/>[Sistema externo]<br/>Gmail, Drive, Calendar y Tasks"]:::externo
+  umss["<b>Webs de la UMSS y la FCyT</b><br/>[Sistema externo]<br/>Avisos"]:::externo
+  titular -- "Usa<br/>[HTTPS]" --> web
+  web -- "Lee con RLS, escribe por /api/v1 y escucha<br/>[supabase-js, Realtime]" --> db
+  worker -- "Toma trabajos y registra eventos<br/>[service role]" --> db
+  n8n -- "Entrega avisos<br/>[webhook firmado]" --> web
+  worker -- "Genera contenido" --> modelos
+  worker -- "Entrega PDF en Drive<br/>[OAuth 2.0]" --> google
+  n8n -- "Lee correo y calendario<br/>[OAuth 2.0]" --> google
+  n8n -- "Lee noticias<br/>[HTTPS]" --> umss
+  classDef persona fill:#08427b,stroke:#052e56,color:#ffffff
+  classDef sistema fill:#1168bd,stroke:#0b4884,color:#ffffff
+  classDef contenedor fill:#438dd5,stroke:#2e6295,color:#ffffff
+  classDef componente fill:#85bbf0,stroke:#5d82a8,color:#0b0b0b
+  classDef externo fill:#8a8a8a,stroke:#6b6b6b,color:#ffffff
 ```
 
 ## 4. Estilo arquitectónico de cada pieza
