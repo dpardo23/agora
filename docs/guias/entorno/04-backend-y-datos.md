@@ -1,6 +1,6 @@
 # Guía 4 · Backend y datos
 
-Versión 1.1 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.2 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
 Cómo se levantan en local Supabase, n8n y el worker, y cómo se trabaja con la base de datos. Corresponde al ítem T-12 del SPRINT-00. La API `/api/v1` no es un servicio aparte: vive dentro de Next.js (guía 3).
 
@@ -64,8 +64,15 @@ Solo cuando haga falta comparar o desplegar a mano (el CD lo hace solo):
 
 ```sh
 supabase login
-supabase link --project-ref <ref de agora-dev>
 ```
+
+`supabase link` pide la contraseña de la base. Se toma del gestor solo para ese comando, sin mostrarla ni guardarla en un archivo (con la sesión de Bitwarden abierta, guía 2, sección 1.1):
+
+```sh
+SUPABASE_DB_PASSWORD="$(bw get password 'Supabase · agora-dev')" supabase link --project-ref <ref de agora-dev>
+```
+
+El ref está en el campo `project_id` de la misma entrada. Estas credenciales no van al `.env.local` de la raíz (guía 2, sección 10).
 
 La configuración local del proyecto no aplica `supabase db push` ni `db reset --linked`: los cambios a la nube pasan siempre por el CD. Nunca se edita una migración ya aplicada; se crea otra.
 
