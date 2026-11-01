@@ -1,6 +1,6 @@
 # Guía 5 · Comprobación y solución de problemas
 
-Versión 1.5 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.6 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Cómo comprobar que el entorno está completo y qué hacer ante los errores más comunes.
 
@@ -49,6 +49,17 @@ docker ps --format '{{.Names}}\t{{.Status}}'
 |---|---|
 | `port is already allocated` o `address already in use` | `ss -ltnp \| grep <puerto>` muestra qué proceso lo usa. Si es de otro proyecto, detenlo; si es un contenedor viejo de Ágora, `mise run abajo` |
 | Supabase arranca en 54321 en vez de 55321 | Falta la configuración de `supabase/config.toml` (guía 4, sección 2.1) |
+| `address already in use` en un puerto de Ágora, pero `ss -ltnp` no muestra a nadie escuchando | Una conexión saliente tomó ese puerto: el bloque de Ágora cae en el rango de puertos efímeros de Linux (32768 a 60999). Vuelve a intentar en unos segundos y, para que no se repita, reserva los puertos (abajo) |
+
+**Reservar los puertos de Ágora (opcional, una sola vez).** Linux asigna a las conexiones salientes un puerto libre entre 32768 y 60999, y el bloque de Ágora (55320 a 55329 y 55678) está dentro de ese rango. Es raro, pero si una conexión toma uno de esos puertos justo antes de `mise run arriba`, el servicio no arranca. Reservarlos hace que Linux no los use para conexiones salientes; los servicios de Ágora pueden seguir usándolos. En tu terminal (pide la contraseña de `sudo`):
+
+```sh
+echo 'net.ipv4.ip_local_reserved_ports = 55320-55329,55678' | sudo tee /etc/sysctl.d/90-agora-puertos.conf
+sudo sysctl --system
+cat /proc/sys/net/ipv4/ip_local_reserved_ports
+```
+
+La última orden debe mostrar `55320-55329,55678`. El CI hace lo mismo en cada job que levanta Supabase (`.github/workflows/ci.yml`).
 
 ### mise
 

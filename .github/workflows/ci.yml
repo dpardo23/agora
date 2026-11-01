@@ -284,6 +284,11 @@ jobs:
       - uses: supabase/setup-cli@45a513f8c64c0bc8e0e3dfe572b5c95be85f6359 # v3.0.1
         with:
           version: ${{ needs.versiones.outputs.supabase }}
+      - name: Reservar los puertos de Supabase local
+        # El bloque 55320 a 55329 cae en el rango de puertos efímeros de Linux (32768 a 60999): sin
+        # reservarlo, una conexión saliente del runner puede ocupar uno y supabase start falla con
+        # «address already in use» (guía 5, sección de puertos).
+        run: sudo sysctl -w net.ipv4.ip_local_reserved_ports=55320-55329
       - run: supabase start
         working-directory: .
       - run: pnpm install --frozen-lockfile
@@ -348,6 +353,11 @@ jobs:
       - uses: supabase/setup-cli@45a513f8c64c0bc8e0e3dfe572b5c95be85f6359 # v3.0.1
         with:
           version: ${{ needs.versiones.outputs.supabase }}
+      - name: Reservar los puertos de Supabase local
+        # El bloque 55320 a 55329 cae en el rango de puertos efímeros de Linux (32768 a 60999): sin
+        # reservarlo, una conexión saliente del runner puede ocupar uno y supabase start falla con
+        # «address already in use» (guía 5, sección de puertos).
+        run: sudo sysctl -w net.ipv4.ip_local_reserved_ports=55320-55329
       - run: supabase start
       - name: Aplicar migraciones desde cero
         run: supabase db reset
