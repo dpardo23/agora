@@ -20,12 +20,34 @@ permissions:
   contents: read
   pull-requests: read
 
-env:
-  NODE_VERSION: '24'
-  PNPM_VERSION: '12'
-  PYTHON_VERSION: '3.14'
-
 jobs:
+  # Las versiones de las herramientas se leen de mise.toml, la misma fuente que usa el entorno local
+  # (ADR-006). Así el CI y el equipo del titular nunca divergen: para subir una versión basta con
+  # editar mise.toml.
+  versiones:
+    name: Versiones (mise.toml)
+    runs-on: ubuntu-latest
+    outputs:
+      node: ${{ steps.leer.outputs.node }}
+      pnpm: ${{ steps.leer.outputs.pnpm }}
+      python: ${{ steps.leer.outputs.python }}
+      uv: ${{ steps.leer.outputs.uv }}
+      supabase: ${{ steps.leer.outputs.supabase }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - id: leer
+        run: |
+          python3 - <<'PY'
+          import os, tomllib
+          with open("mise.toml", "rb") as archivo:
+              herramientas = tomllib.load(archivo)["tools"]
+          with open(os.environ["GITHUB_OUTPUT"], "a") as salida:
+              for nombre in ("node", "pnpm", "python", "uv", "supabase"):
+                  version = herramientas[nombre]
+                  print(f"{nombre}: {version}")
+                  salida.write(f"{nombre}={version}\n")
+          PY
+
   cambios:
     name: Detectar cambios
     runs-on: ubuntu-latest
@@ -36,10 +58,12 @@ jobs:
       hay_web: ${{ steps.existe.outputs.web }}
       hay_db: ${{ steps.existe.outputs.db }}
       hay_worker: ${{ steps.existe.outputs.worker }}
+      hay_e2e: ${{ steps.existe.outputs.e2e }}
+      hay_lighthouse: ${{ steps.existe.outputs.lighthouse }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - id: filtro
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@v4.0.3
         with:
           filters: |
             web:
@@ -52,25 +76,39 @@ jobs:
               - 'worker/**'
       - id: existe
         run: |
-          echo "web=$([ -f apps/web/package.json ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
-          echo "db=$([ -f supabase/config.toml ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
-          echo "worker=$([ -f worker/pyproject.toml ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          existe() { if [ -f "$1" ]; then echo true; else echo false; fi; }
+          {
+            echo "web=$(existe apps/web/package.json)"
+            echo "db=$(existe supabase/config.toml)"
+            echo "worker=$(existe worker/pyproject.toml)"
+            # E2E necesita la configuración de Playwright y Supabase local (las pruebas usan la base).
+            if [ "$(existe apps/web/playwright.config.ts)" = true ] && [ "$(existe supabase/config.toml)" = true ]; then
+              echo "e2e=true"
+            else
+              echo "e2e=false"
+            fi
+            echo "lighthouse=$(existe apps/web/lighthouserc.json)"
+          } >> "$GITHUB_OUTPUT"
 
   convenciones:
     name: Convenciones (rama, PR y commits)
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - name: Nombre de la rama
         env:
           RAMA: ${{ github.head_ref }}
           BASE: ${{ github.base_ref }}
+          AUTOR: ${{ github.event.pull_request.user.login }}
         run: |
           if [ "$BASE" = "main" ]; then
             patron='^(release/sprint-[0-9]{2}|hotfix/v[0-9]+\.[0-9]+\.[0-9]+-[a-z0-9-]+)$'
+          elif [ "$AUTOR" = "dependabot[bot]" ]; then
+            # Dependabot nombra sus ramas solo (dependabot/<ecosistema>/<rama>/<paquete>).
+            patron='^dependabot/[A-Za-z0-9_./@-]+$'
           else
             patron='^(feature/HU-[0-9]{2}\.[0-9]{2}-[a-z0-9-]+|tech/T-[0-9]{2}-[a-z0-9-]+|fix/BUG-[0-9]{3}-[a-z0-9-]+|(docs|ci|chore)/[a-z0-9-]+|hotfix/v[0-9]+\.[0-9]+\.[0-9]+-[a-z0-9-]+|release/sprint-[0-9]{2})$'
           fi
@@ -79,7 +117,7 @@ jobs:
             exit 1
           fi
       - name: Título del PR (Conventional Commits)
-        uses: amannn/action-semantic-pull-request@v5
+        uses: amannn/action-semantic-pull-request@v6.1.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -96,8 +134,11 @@ jobs:
             echo "$malos"
             exit 1
           fi
+      # Dependabot genera el cuerpo de sus commits (notas de versión con líneas largas) y no se
+      # puede ajustar a commitlint; su título sí se valida en el paso anterior.
       - name: Mensajes de commit
-        uses: wagoid/commitlint-github-action@v6
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
+        uses: wagoid/commitlint-github-action@v6.2.1
         with:
           configFile: commitlint.config.mjs
 
@@ -105,7 +146,7 @@ jobs:
     name: Seguridad (secretos y dependencias)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - name: Rutas privadas (nada que coincida con .gitignore)
@@ -117,12 +158,12 @@ jobs:
             exit 1
           fi
       - name: Buscar secretos
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Revisión de dependencias nuevas
         if: github.event_name == 'pull_request'
-        uses: actions/dependency-review-action@v4
+        uses: actions/dependency-review-action@v5.0.0
         with:
           fail-on-severity: high
           # Proyecto propietario: solo licencias permisivas (CONTRIBUTING.md, sección 6).
@@ -130,66 +171,69 @@ jobs:
 
   documentacion:
     name: Documentación (enlaces, autoría y formato)
+    needs: versiones
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: ${{ needs.versiones.outputs.python }}
       - run: python scripts/verificar-docs.py
 
   web:
     name: Web (lint, tipos, pruebas, build)
-    needs: cambios
+    needs: [versiones, cambios]
     if: needs.cambios.outputs.hay_web == 'true' && (needs.cambios.outputs.web == 'true' || github.event_name == 'push')
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: apps/web
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: pnpm/action-setup@v6.1.0
         with:
-          version: ${{ env.PNPM_VERSION }}
-      - uses: actions/setup-node@v4
+          version: ${{ needs.versiones.outputs.pnpm }}
+      - uses: actions/setup-node@v7.1.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ needs.versiones.outputs.node }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test:unit --coverage
       - run: pnpm build
+      # El contrato OpenAPI llega con la primera ruta de /api/v1; hasta entonces el script no existe.
       - name: Contrato OpenAPI sin cambios sin documentar
-        run: pnpm openapi:check
+        run: pnpm run --if-present openapi:check
 
   e2e:
     name: E2E y accesibilidad (Playwright + axe)
-    needs: [cambios, web]
-    if: needs.cambios.outputs.hay_web == 'true' && (needs.cambios.outputs.web == 'true' || github.event_name == 'push')
+    needs: [versiones, cambios, web]
+    # !cancelled(): corre también si «web» se saltó porque el cambio solo toca supabase/.
+    if: "!cancelled() && needs.web.result != 'failure' && needs.cambios.outputs.hay_e2e == 'true' && (needs.cambios.outputs.web == 'true' || needs.cambios.outputs.db == 'true' || github.event_name == 'push')"
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: apps/web
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: pnpm/action-setup@v6.1.0
         with:
-          version: ${{ env.PNPM_VERSION }}
-      - uses: actions/setup-node@v4
+          version: ${{ needs.versiones.outputs.pnpm }}
+      - uses: actions/setup-node@v7.1.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ needs.versiones.outputs.node }}
           cache: pnpm
-      - uses: supabase/setup-cli@v1
+      - uses: supabase/setup-cli@v3.0.1
         with:
-          version: latest
+          version: ${{ needs.versiones.outputs.supabase }}
       - run: supabase start
         working-directory: .
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
       - run: pnpm build
       - run: pnpm test:e2e
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: failure()
         with:
           name: playwright-report
@@ -198,35 +242,35 @@ jobs:
 
   lighthouse:
     name: Lighthouse (rendimiento, accesibilidad, PWA)
-    needs: [cambios, web]
-    if: github.event_name == 'pull_request' && github.base_ref == 'main' && needs.cambios.outputs.hay_web == 'true'
+    needs: [versiones, cambios, web]
+    if: github.event_name == 'pull_request' && github.base_ref == 'main' && needs.cambios.outputs.hay_lighthouse == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: pnpm/action-setup@v6.1.0
         with:
-          version: ${{ env.PNPM_VERSION }}
-      - uses: actions/setup-node@v4
+          version: ${{ needs.versiones.outputs.pnpm }}
+      - uses: actions/setup-node@v7.1.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ needs.versiones.outputs.node }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile && pnpm build
         working-directory: apps/web
-      - uses: treosh/lighthouse-ci-action@v12
+      - uses: treosh/lighthouse-ci-action@12.6.2
         with:
           configPath: apps/web/lighthouserc.json
           uploadArtifacts: true
 
   base-de-datos:
     name: Base de datos (migraciones, RLS, advisors)
-    needs: cambios
+    needs: [versiones, cambios]
     if: needs.cambios.outputs.hay_db == 'true' && (needs.cambios.outputs.db == 'true' || github.event_name == 'push')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: supabase/setup-cli@v1
+      - uses: actions/checkout@v7.0.1
+      - uses: supabase/setup-cli@v3.0.1
         with:
-          version: latest
+          version: ${{ needs.versiones.outputs.supabase }}
       - run: supabase start
       - name: Aplicar migraciones desde cero
         run: supabase db reset
@@ -237,15 +281,18 @@ jobs:
 
   worker:
     name: Motor de agentes (ruff, mypy, pytest)
-    needs: cambios
+    needs: [versiones, cambios]
     if: needs.cambios.outputs.hay_worker == 'true' && (needs.cambios.outputs.worker == 'true' || github.event_name == 'push')
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: worker
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          version: ${{ needs.versiones.outputs.uv }}
+          python-version: ${{ needs.versiones.outputs.python }}
       - run: uv sync --frozen
       - run: uv run ruff check .
       - run: uv run ruff format --check .
@@ -255,7 +302,7 @@ jobs:
   ci-ok:
     name: ci-ok
     if: always()
-    needs: [cambios, convenciones, seguridad, documentacion, web, e2e, lighthouse, base-de-datos, worker]
+    needs: [versiones, cambios, convenciones, seguridad, documentacion, web, e2e, lighthouse, base-de-datos, worker]
     runs-on: ubuntu-latest
     steps:
       - name: Resumen

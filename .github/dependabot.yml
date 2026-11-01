@@ -1,5 +1,10 @@
+# Actualizaciones semanales de dependencias, siempre hacia develop (CONTRIBUTING.md, sección 6).
+# Los títulos siguen Conventional Commits: «ci(deps): …» para acciones y «build(deps): …» para el resto.
+# Las versiones de las herramientas (Node, pnpm, Python, uv, CLI de Supabase) no las sube Dependabot:
+# se cambian a mano en mise.toml, que leen el entorno local y el CI (ADR-006).
 version: 2
 updates:
+  # Acciones de .github/workflows: un solo PR semanal con todas las subidas.
   - package-ecosystem: github-actions
     directory: /
     target-branch: develop
@@ -9,8 +14,13 @@ updates:
     commit-message:
       prefix: ci
       include: scope
+    groups:
+      acciones:
+        patterns: ['*']
+
+  # Workspace de pnpm: el lockfile vive en la raíz y cubre apps/web.
   - package-ecosystem: npm
-    directory: /apps/web
+    directory: /
     target-branch: develop
     labels: [dependencias]
     schedule:
@@ -19,8 +29,39 @@ updates:
     commit-message:
       prefix: build
       include: scope
+    groups:
+      # Las subidas menores y de parche van juntas; las mayores, cada una en su PR.
+      menores:
+        update-types: [minor, patch]
+
+  # Motor de agentes (worker/pyproject.toml y uv.lock).
   - package-ecosystem: uv
     directory: /worker
+    target-branch: develop
+    labels: [dependencias]
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: build
+      include: scope
+    groups:
+      menores:
+        update-types: [minor, patch]
+
+  # Imagen base del worker (worker/Dockerfile).
+  - package-ecosystem: docker
+    directory: /worker
+    target-branch: develop
+    labels: [dependencias]
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: build
+      include: scope
+
+  # Imágenes del entorno local (infra/local/compose.yaml: n8n y el worker).
+  - package-ecosystem: docker-compose
+    directory: /infra/local
     target-branch: develop
     labels: [dependencias]
     schedule:

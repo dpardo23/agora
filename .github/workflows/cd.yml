@@ -18,10 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       hay_db: ${{ steps.existe.outputs.db }}
+      supabase: ${{ steps.existe.outputs.supabase }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - id: existe
-        run: echo "db=$([ -f supabase/config.toml ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "db=$([ -f supabase/config.toml ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          # Misma versión de la CLI que el entorno local (mise.toml, ADR-006).
+          python3 -c 'import tomllib; print("supabase=" + tomllib.load(open("mise.toml", "rb"))["tools"]["supabase"])' >> "$GITHUB_OUTPUT"
 
   migraciones-staging:
     name: Migraciones en staging
@@ -30,10 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - uses: actions/checkout@v4
-      - uses: supabase/setup-cli@v1
+      - uses: actions/checkout@v7.0.1
+      - uses: supabase/setup-cli@v3.0.1
         with:
-          version: latest
+          version: ${{ needs.detectar.outputs.supabase }}
       - run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
         env:
           SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
@@ -51,10 +55,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: produccion
     steps:
-      - uses: actions/checkout@v4
-      - uses: supabase/setup-cli@v1
+      - uses: actions/checkout@v7.0.1
+      - uses: supabase/setup-cli@v3.0.1
         with:
-          version: latest
+          version: ${{ needs.detectar.outputs.supabase }}
       - run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
         env:
           SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
@@ -70,7 +74,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - name: Crear la release con notas generadas desde los commits
