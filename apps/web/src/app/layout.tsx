@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono, Pixelify_Sans } from "next/font/google";
 import "./globals.css";
 
-// Fuentes de docs/design.md, sección 3. Bricolage se carga como fuente variable para poder usar
+// Fuentes de docs/diseno/sistema-de-diseno.md, sección 3. Bricolage se carga como fuente variable para poder usar
 // el eje óptico «opsz» (next/font no admite ejes junto con pesos fijos).
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",

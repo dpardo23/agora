@@ -70,4 +70,4 @@ Los hooks del proyecto viven en `.githooks/` (`core.hooksPath`). No se usa Husky
 ## Consecuencias
 - Positivas: un clon limpio se prepara con `mise install` y un comando; borrar el proyecto es borrar la carpeta y sus contenedores; local, CI, Vercel y VM usan las mismas versiones.
 - Negativas o costos: cada actualización de versión toca `mise.toml`, `package.json`, el CI y la guía 0 a la vez. La matriz se revisa al iniciar cada sprint.
-- Cambios: nuevo SPRINT-00 «Organización y entorno» (T-11 a T-14, más T-01 y T-02), con los sprints siguientes renumerados en uno; guías en `docs/guias/entorno/`; sección 6 de `docs/arquitectura.md` actualizada; el CI usa Node 24, pnpm 12 y Python 3.14.
+- Cambios: nuevo SPRINT-00 «Organización y entorno» (T-11 a T-14, más T-01 y T-02), con los sprints siguientes renumerados en uno; guías en `docs/guias/entorno/`; sección 6 de `docs/arquitectura/README.md` actualizada; el CI usa Node 24, pnpm 12 y Python 3.14.

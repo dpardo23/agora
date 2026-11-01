@@ -4,8 +4,8 @@ titulo: Consumo e infraestructura
 sprints: [SPRINT-08]
 puntos_hu: 15
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -27,6 +27,6 @@ Que el dueño del Olimpo vea cuánto cupo y dinero equivalente consume el Olimpo
 La pestaña Consumo muestra datos reales de `uso_modelo`, `metricas_vm` y `servicios_estado`.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

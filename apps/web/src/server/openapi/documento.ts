@@ -1,4 +1,4 @@
-// Contrato OpenAPI de /api/v1, generado desde los esquemas Zod (docs/api.md).
+// Contrato OpenAPI de /api/v1, generado desde los esquemas Zod (docs/arquitectura/api.md).
 // Cada ruta nueva registra aquí su método, parámetros y respuestas; «pnpm openapi:check» falla si el
 // contrato cambia y apps/web/openapi.json no se actualizó con «pnpm openapi:generar».
 import { OpenAPIRegistry, OpenApiGeneratorV31 } from "@asteasolutions/zod-to-openapi";

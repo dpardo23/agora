@@ -1,6 +1,6 @@
 # Sistema de diseño · Ágora
 
-Versión 2.0 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
+Versión 2.1 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Este documento es la fuente de verdad visual para implementar la web. Se construyó a partir de:
 
@@ -133,7 +133,7 @@ Título `h1` y, a su derecha, las **pestañas de sección** (control segmentado:
 
 ### 5.4 Rutas
 
-La lista única de rutas, con su sección activa y sus HU, está en `docs/api.md` (sección 2). Son 17 rutas de producto, más `/dev/kit`, que solo existe en desarrollo.
+La lista única de rutas, con su sección activa y sus HU, está en `docs/arquitectura/api.md` (sección 2). Son 17 rutas de producto, más `/dev/kit`, que solo existe en desarrollo.
 
 ---
 
@@ -371,7 +371,7 @@ Lucide (`lucide-react`) a 16 y 18 px, con trazo de 1,75. **Sin emoji** en la int
 
 ## 11. Accesibilidad
 
-La norma, el nivel y los criterios aplicables están en `docs/accesibilidad.md` (WCAG 2.2, nivel AA, más criterios AAA adoptados). Este documento solo fija los valores visuales que la cumplen: contraste de los tokens (sección 2), foco (sección 6.1), objetivos de 44×44 px en móvil (sección 4) y movimiento (secciones 7 y 8.4).
+La norma, el nivel y los criterios aplicables están en `docs/diseno/accesibilidad.md` (WCAG 2.2, nivel AA, más criterios AAA adoptados). Este documento solo fija los valores visuales que la cumplen: contraste de los tokens (sección 2), foco (sección 6.1), objetivos de 44×44 px en móvil (sección 4) y movimiento (secciones 7 y 8.4).
 
 ## 12. Estados obligatorios por pantalla
 

@@ -1,6 +1,6 @@
 # Guía 2 · Cuentas y secretos
 
-Versión 1.9 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.10 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué cuentas crear, en qué orden, qué opción elegir en cada pantalla y dónde guardar cada clave. Corresponde al ítem T-13 del SPRINT-00 y lo hace el titular a mano.
 
@@ -803,7 +803,7 @@ bw lock
 gh secret list --env staging
 ```
 
-El environment `produccion` ya existe, con tu aprobación obligatoria y limitado a las etiquetas `v*` (`docs/configuracion-github.md`, sección 5). Sus tres secretos se suben igual, con `--env produccion` y los valores del proyecto de producción, cuando ese proyecto exista. Al vencer el token `agora-cli` (90 días), se genera otro (sección 4, paso 11) y se repiten los pasos 3, 4, 6 y 8. El resto de la configuración del repositorio está en `docs/configuracion-github.md`.
+El environment `produccion` ya existe, con tu aprobación obligatoria y limitado a las etiquetas `v*` (`docs/guias/repositorio/configuracion-github.md`, sección 5). Sus tres secretos se suben igual, con `--env produccion` y los valores del proyecto de producción, cuando ese proyecto exista. Al vencer el token `agora-cli` (90 días), se genera otro (sección 4, paso 11) y se repiten los pasos 3, 4, 6 y 8. El resto de la configuración del repositorio está en `docs/guias/repositorio/configuracion-github.md`.
 
 ## 9. Vercel (después de T-01)
 

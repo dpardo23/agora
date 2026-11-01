@@ -4,8 +4,8 @@ Plataforma universitaria personal (marca **Ágora**): el Olimpo se presenta como
 
 - Visión: [`docs/producto/vision.md`](docs/producto/vision.md)
 - Backlog y sprints: [`docs/producto/backlog.md`](docs/producto/backlog.md)
-- Sistema de diseño: [`docs/design.md`](docs/design.md)
-- Arquitectura: [`docs/arquitectura.md`](docs/arquitectura.md)
+- Sistema de diseño: [`docs/diseno/sistema-de-diseno.md`](docs/diseno/sistema-de-diseno.md)
+- Arquitectura: [`docs/arquitectura/README.md`](docs/arquitectura/README.md)
 - Preparar el entorno de desarrollo: [`docs/guias/entorno/`](docs/guias/entorno/README.md)
 
 Estado: planificación terminada; **SPRINT-00 (organización y entorno) en curso**.

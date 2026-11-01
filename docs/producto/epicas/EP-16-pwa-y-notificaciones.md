@@ -4,8 +4,8 @@ titulo: PWA y notificaciones
 sprints: [SPRINT-13, SPRINT-14]
 puntos_hu: 18
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -27,6 +27,6 @@ Instalar la plataforma, usarla sin conexión donde tiene sentido, recibir notifi
 Lighthouse PWA aprobado, sin errores de axe y push entregados.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

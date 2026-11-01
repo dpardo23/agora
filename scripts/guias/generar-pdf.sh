@@ -1,13 +1,15 @@
 #!/bin/sh
 # Genera los PDF de las guías de docs/guias/entorno/ (uno por guía y uno combinado).
 # Requisitos: uv y Chromium. No instala nada global: markdown se usa en un entorno temporal de uv.
-# Los PDF quedan junto a las guías y están en .gitignore.
+# Los PDF quedan en docs/guias/entorno/pdf/, que está en .gitignore.
 set -eu
 
 raiz=$(cd "$(dirname "$0")/../.." && pwd)
 guias="$raiz/docs/guias/entorno"
+salida="$guias/pdf"
 temporal=$(mktemp -d)
 trap 'rm -rf "$temporal"' EXIT
+mkdir -p "$salida"
 
 navegador=""
 for candidato in chromium chromium-browser google-chrome-stable google-chrome; do
@@ -23,6 +25,6 @@ uv run --quiet --no-project --with 'markdown==3.*' python -I "$raiz/scripts/guia
 for html in "$temporal"/*.html; do
   nombre=$(basename "$html" .html)
   "$navegador" --headless=new --disable-gpu --no-pdf-header-footer \
-    --print-to-pdf="$guias/$nombre.pdf" "file://$html" >/dev/null 2>&1
-  echo "  $guias/$nombre.pdf"
+    --print-to-pdf="$salida/$nombre.pdf" "file://$html" >/dev/null 2>&1
+  echo "  $salida/$nombre.pdf"
 done

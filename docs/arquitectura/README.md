@@ -1,8 +1,8 @@
 # Arquitectura · Ágora
 
-Versión 2.2 · creado el 2026-10-20 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 2.3 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
-Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado), ADR-007 (licencia LGPL de sharp-libvips). Rutas y API: `docs/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
+Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado), ADR-007 (licencia LGPL de sharp-libvips). Rutas y API: `docs/arquitectura/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
 
 ## 1. Vista general
 
@@ -23,15 +23,64 @@ Oracle VM (ARM, Ubuntu)           n8n (misma VM)
         └─► Google Drive (entregas por materia)
 ```
 
+### 1.1. Contexto (modelo C4, nivel 1)
+
+Quién usa Ágora y con qué sistemas externos se comunica. Los diagramas siguen el modelo C4 de Simon Brown y se escriben en Mermaid, que GitHub dibuja sin herramientas adicionales.
+
+```mermaid
+C4Context
+  title Ágora · contexto
+  Person(titular, "Titular", "Estudiante de Ingeniería de Sistemas, UMSS. Único usuario")
+  System(agora, "Ágora", "PWA universitaria personal con el Olimpo, que genera documentos de estudio en PDF")
+  System_Ext(claude, "Claude", "Modelo de lenguaje de los roles del Olimpo")
+  System_Ext(gemini, "Gemini", "Modelo de lenguaje de los roles del Olimpo")
+  System_Ext(google, "Google", "Gmail, Drive, Calendar y Tasks")
+  System_Ext(umss, "Webs de la UMSS y la FCyT", "Avisos y planes de estudio")
+  Rel(titular, agora, "Usa", "HTTPS")
+  Rel(agora, claude, "Genera contenido", "CLI con token")
+  Rel(agora, gemini, "Genera y extrae contenido", "API")
+  Rel(agora, google, "Envía códigos, entrega PDF, sincroniza", "OAuth 2.0")
+  Rel(agora, umss, "Lee avisos", "HTTPS")
+  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+```
+
+### 1.2. Contenedores (modelo C4, nivel 2)
+
+Las piezas que se despliegan por separado y cómo se comunican. La web y el motor de agentes nunca se llaman entre sí: se coordinan por la cola de trabajos en Postgres y por Realtime.
+
+```mermaid
+C4Container
+  title Ágora · contenedores
+  Person(titular, "Titular")
+  System_Boundary(agora, "Ágora") {
+    Container(web, "Web y API", "Next.js 16 en Vercel", "Páginas, PWA y API REST /api/v1")
+    ContainerDb(db, "Base de datos", "Supabase: Postgres, Auth, Storage, Realtime", "Fuente de verdad con RLS y cola de trabajos")
+    Container(worker, "Motor de agentes", "Python 3.14 (umss) en la Oracle VM", "Toma trabajos, ejecuta los roles y compila LaTeX")
+    Container(n8n, "Automatizaciones", "n8n en la Oracle VM", "Integraciones con Google y las webs de la UMSS")
+  }
+  System_Ext(modelos, "Claude y Gemini")
+  System_Ext(google, "Google")
+  Rel(titular, web, "Usa", "HTTPS")
+  Rel(web, db, "Lee con RLS, escribe por /api/v1, escucha", "supabase-js, Realtime")
+  Rel(worker, db, "Toma trabajos y registra eventos", "service role")
+  Rel(worker, modelos, "Genera contenido")
+  Rel(worker, google, "Entrega PDF en Drive", "OAuth 2.0")
+  Rel(n8n, google, "Lee correo y calendario", "OAuth 2.0")
+  Rel(n8n, db, "Escribe avisos", "webhooks firmados")
+  UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
+```
+
 ## 2. Qué arquitectura usa cada pieza
 
 | Pieza | Arquitectura | Detalle |
 |---|---|---|
 | Web (Vercel) | **Monolito modular por dominio** | `src/features/<dominio>/{ui,application,domain,infra}` con API pública en `index.ts` (ADR-002) |
-| API (Vercel, dentro de Next) | **REST versionada** `/api/v1` | Handlers delgados: validar (Zod) → autorizar → caso de uso → respuesta (`docs/api.md`) |
+| API (Vercel, dentro de Next) | **REST versionada** `/api/v1` | Handlers delgados: validar (Zod) → autorizar → caso de uso → respuesta (`docs/arquitectura/api.md`) |
 | Datos (Supabase) | Postgres como fuente de verdad, con RLS | Migraciones versionadas; nunca se edita una migración aplicada |
 | Motor de agentes (VM) | **Hexagonal** + registro de roles | Puertos `Cola`, `ModeloLLM`, `Almacen`, `Compilador`, `Notificador`, `RegistroEventos` |
 | n8n (VM) | Flujos de integración | Solo como pegamento; escribe en Supabase o llama a webhooks firmados |
+
+En conjunto, Ágora es un **monorepo** con un **monolito modular** (la web y su API) y un **motor de agentes asíncrono** que se comunica con ella por una cola de trabajos en Postgres. No usa microservicios: para un solo usuario agregarían despliegues y fallas de red sin ningún beneficio.
 
 La arquitectura hexagonal se aplica **solo al motor de agentes**, que corre en la VM. El servidor web no la usa.
 
@@ -45,21 +94,22 @@ apps/web/                         Next.js 16
       (app)/                      layout con sidebar y barra inferior; requiere sesión
         page.tsx                  Inicio
         olimpo/  tareas/  agenda/  materias/  estudiar/  avisos/  configuracion/
-      api/v1/<recurso>/route.ts   API REST (docs/api.md)
-      globals.css                 tokens (docs/design.md, sección 2)
+      api/v1/<recurso>/route.ts   API REST (docs/arquitectura/api.md)
+      globals.css                 tokens (docs/diseno/sistema-de-diseno.md, sección 2)
     features/<dominio>/           olimpo, encargos, consumo, materias, malla, agenda, tareas, avisos, estudio, inicio, cuenta
     components/ui/                kit shadcn/ui adaptado al diseño
     shared/                       config (navegación), lib, tipos generados (database.types.ts)
     server/                       clientes de servidor (service role), correo, firmas, errores HTTP
     proxy.ts                      sesión + dispositivo verificado (en Next 16, «middleware» se llama «proxy»)
-  tests/  unit/  e2e/
+  tests/  e2e/ (Playwright y axe)  api/ (Bruno)
+                                  las pruebas unitarias van junto al código que prueban (*.test.ts, *.test.tsx)
 worker/                           motor de agentes (Python 3.14 + uv)
   umss/dominio/  umss/puertos/  umss/adaptadores/  umss/roles/  tests/
 supabase/  config.toml  migrations/  tests/ (pgTAP)  borradores/ (esquema inicial y semilla hasta T-03)
 n8n/       flujos exportados (JSON, sin credenciales)
 infra/     systemd, scripts de la VM, respaldos
 scripts/   utilidades (diseño, verificación de docs)
-docs/      producto, QA, diseño, API, accesibilidad, ADR, plantillas, referencia
+docs/      índice en docs/README.md: producto, qa, arquitectura (api, adr), diseno, guias, plantillas, referencia
 design/    pantallas (.dc.html), mockups (PNG), referencias, fuente (export local, no versionado)
 .github/   workflows de CI/CD, plantillas de PR
 ```

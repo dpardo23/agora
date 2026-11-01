@@ -4,8 +4,8 @@ titulo: Motor de agentes
 sprints: [SPRINT-07]
 puntos_hu: 21
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -28,6 +28,6 @@ Conectar el worker `umss` de la VM a Supabase sin tocar sus verificaciones, para
 El trabajo 13 se regenera desde la web y pasa las mismas verificaciones que en la laptop.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

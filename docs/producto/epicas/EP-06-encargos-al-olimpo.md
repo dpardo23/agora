@@ -4,8 +4,8 @@ titulo: Encargos al Olimpo
 sprints: [SPRINT-06]
 puntos_hu: 25
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -29,6 +29,6 @@ Encargar documentos desde cualquier dispositivo, aprobar su esquema y seguirlos 
 Un trabajo (simulado en S5, real en S6) se encarga, se aprueba, avanza en vivo y su PDF se abre desde Documentos.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

@@ -1,6 +1,6 @@
 # Guía 0 · Mapa del entorno y orden de pasos
 
-Versión 1.7 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.8 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Explica qué piezas tiene el entorno de Ágora, en qué orden se preparan, qué versiones se usan y qué puertos ocupa cada servicio. Las decisiones de fondo están en el ADR-006.
 
@@ -154,7 +154,7 @@ Elegidos fuera de los valores por defecto para no chocar con otros proyectos.
 | `infra/local/datos/` | Volúmenes locales | **No** |
 | `docs/referencia/`, `design/` | Material privado y diseño fuente | **No** |
 | `docs/guias/entorno/*.md` | Estas guías | Sí |
-| `docs/guias/entorno/*.pdf` | Las guías en PDF | **No** (se generan) |
+| `docs/guias/entorno/pdf/` | Las guías en PDF | **No** (se generan) |
 
 ## 7. Generar los PDF de las guías
 
@@ -162,4 +162,4 @@ Elegidos fuera de los valores por defecto para no chocar con otros proyectos.
 scripts/guias/generar-pdf.sh
 ```
 
-Crea un PDF por guía y uno combinado (`agora-guias-entorno.pdf`) en `docs/guias/entorno/`. Usa Python con `uv` y el Chromium del sistema; no instala nada global.
+Crea un PDF por guía y uno combinado (`agora-guias-entorno.pdf`) en `docs/guias/entorno/pdf/`. Usa Python con `uv` y el Chromium del sistema; no instala nada global.

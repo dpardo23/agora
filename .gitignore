@@ -75,7 +75,8 @@ docs/referencia/**
 design/
 design/**
 agora.html
-# Guías de configuración en PDF: se generan con scripts/guias/generar-pdf.sh.
+# Guías de configuración en PDF: se generan con scripts/guias/generar-pdf.sh en docs/guias/entorno/pdf/.
+docs/guias/**/pdf/
 docs/guias/**/*.pdf
 
 # =============================================================================

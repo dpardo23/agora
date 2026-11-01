@@ -4,8 +4,8 @@ titulo: Malla curricular
 sprints: [SPRINT-10]
 puntos_hu: 16
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -26,6 +26,6 @@ Ver el avance de la carrera y qué materias se pueden inscribir según los prerr
 La malla refleja el estado real de cada materia y explica qué falta para desbloquear cada una.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

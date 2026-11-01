@@ -1,4 +1,4 @@
-// Errores de la API en formato application/problem+json (RFC 9457), según docs/api.md, sección 1.
+// Errores de la API en formato application/problem+json (RFC 9457), según docs/arquitectura/api.md, sección 1.
 // Zod extendido con .openapi(): los esquemas de la API forman parte del contrato.
 import { z } from "@/server/openapi/zod";
 

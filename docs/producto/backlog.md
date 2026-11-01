@@ -1,6 +1,6 @@
 # Product backlog · Ágora
 
-Versión 1.4 · creado el 2026-10-20 · editado el 2026-11-01
+Versión 1.5 · creado el 2026-10-20 · editado el 2026-11-01
 
 Fuente de verdad del orden de trabajo. Cada fila es un **PBI** (product backlog item): una historia de usuario (HU) o un ítem técnico (T: historia técnica, spike o chore). Los sprints no tienen fechas: un sprint se cierra cuando cumple su objetivo y la DoD.
 
@@ -212,7 +212,7 @@ Objetivo: Lighthouse PWA aprobado, sin errores de axe y con notificaciones push.
 
 | PBI | Qué incluye | Criterio de cierre |
 |---|---|---|
-| T-01 | `create-next-app` en `apps/web` (App Router, `src/`, TypeScript `strict`); Tailwind v4 con tokens en `globals.css` según `design.md`, sección 2; `next/font`; `shadcn init`; ESLint con `eslint-plugin-boundaries`; Prettier; Vitest + Testing Library; Playwright; commitlint llamado desde `.githooks/commit-msg` (sin Husky, que cambiaría `core.hooksPath`); pnpm workspace; `GET /api/v1/salud` | Existen y pasan los scripts que usa el CI: `lint`, `typecheck`, `test:unit`, `test:e2e`, `build` y `openapi:check`, además de `apps/web/lighthouserc.json`; `GET /api/v1/salud` responde 200; `git config core.hooksPath` sigue siendo `.githooks` |
+| T-01 | `create-next-app` en `apps/web` (App Router, `src/`, TypeScript `strict`); Tailwind v4 con tokens en `globals.css` según `sistema-de-diseno.md`, sección 2; `next/font`; `shadcn init`; ESLint con `eslint-plugin-boundaries`; Prettier; Vitest + Testing Library; Playwright; commitlint llamado desde `.githooks/commit-msg` (sin Husky, que cambiaría `core.hooksPath`); pnpm workspace; `GET /api/v1/salud` | Existen y pasan los scripts que usa el CI: `lint`, `typecheck`, `test:unit`, `test:e2e`, `build` y `openapi:check`, además de `apps/web/lighthouserc.json`; `GET /api/v1/salud` responde 200; `git config core.hooksPath` sigue siendo `.githooks` |
 | T-02 | Workflow `ci.yml` (lint, typecheck, unit, e2e, migraciones); proyecto en Vercel con previews; protección de `main` | Un PR de prueba muestra todos los checks y una URL de preview |
 | T-03 | Revisar `supabase/borradores/0001_init.sql`, dividirlo en migraciones de `supabase/migrations/` y reactivar `[db.seed]` con la semilla (defaults `auth.uid()` en `perfil` y `avisos`, Realtime; reemplazar `agentes` por `dioses`, `roles`, `asignaciones_rol` y `pipeline_pasos` según ADR-005; `eventos_agente` con `dios_id` y `rol_id`); `GRANT` explícitos por tabla, porque `agora-dev` no expone tablas nuevas automáticamente; quitar a `public`, `anon` y `authenticated` el permiso de ejecutar `public.rls_auto_enable()` solo si existe (la crea la opción «Enable automatic RLS» en la nube y no existe en local); aplicar; generar tipos; pruebas pgTAP de RLS | `supabase db reset` limpio; advisors sin errores en local y sin errores ni avisos en `agora-dev` |
 | T-04 | `seed.sql` con las 4 materias de ejemplo, agentes, salas del Olimpo, trabajos #13 a #16 y avisos, siempre con datos marcados como de ejemplo | QA puede ejecutar los TC sin preparar datos a mano |

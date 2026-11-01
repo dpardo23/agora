@@ -1,6 +1,6 @@
 /*
  * Estilos globales de Ágora.
- * Los tokens salen de docs/design.md (secciones 2 a 4 y 7). Los nombres de shadcn/ui (--background,
+ * Los tokens salen de docs/diseno/sistema-de-diseno.md (secciones 2 a 4 y 7). Los nombres de shadcn/ui (--background,
  * --primary, …) no tienen valores propios: apuntan a los tokens de Ágora, así hay una sola paleta.
  *
  * Tema: por defecto el del sistema operativo. El atributo data-tema="claro" | "oscuro" en <html>
@@ -22,7 +22,7 @@
   }
 }
 
-/* ---------- Tokens de Ágora: tema claro (design.md, sección 2.1) ---------- */
+/* ---------- Tokens de Ágora: tema claro (sistema-de-diseno.md, sección 2.1) ---------- */
 :root {
   color-scheme: light;
 

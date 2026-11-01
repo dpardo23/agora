@@ -4,8 +4,8 @@ titulo: Base y navegación
 sprints: [SPRINT-00, SPRINT-01]
 puntos_hu: 11
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.1"
+fecha_edicion: 2026-11-01
+version: "1.2"
 estado: Abierta
 ---
 
@@ -32,6 +32,6 @@ Tener el entorno de desarrollo y el esqueleto de la PWA (proyecto, tokens, temas
 Las 17 rutas navegan en ambos temas a 390, 834 y 1440 px, sin parpadeo de tema y con el ítem activo correcto.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

@@ -21,7 +21,7 @@ for archivo in sorted(RAIZ.glob('docs/producto/historias/*/HU-*.md')):
         if not m:
             continue
         literales = [l for l in re.findall(r'«([^«»]+)»', m.group(2)) if '{' not in l and len(l) >= 2]
-        # El diseño todavía dice «bot» donde la interfaz dice «Olimpo» (docs/design.md, sección 13).
+        # El diseño todavía dice «bot» donde la interfaz dice «Olimpo» (docs/diseno/sistema-de-diseno.md, sección 13).
         variantes = [l.replace('Olimpo', 'bot') for l in literales if 'Olimpo' in l]
         variantes += [l.replace('Olimpo', 'Bot') for l in literales if 'Olimpo' in l]
         marcas.append({'n': m.group(1).split(',')[0].strip(), 'lits': literales + variantes})

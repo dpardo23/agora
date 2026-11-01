@@ -4,8 +4,8 @@ titulo: Acceso y seguridad
 sprints: [SPRINT-03, SPRINT-04]
 puntos_hu: 24
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -31,6 +31,6 @@ Que solo el titular entre a la plataforma: usuario y contraseña, segundo factor
 Flujo completo (login, 2FA, recordar dispositivo, recuperar, cerrar sesión) automatizado en Playwright y en verde; advisors de Supabase sin errores.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`
