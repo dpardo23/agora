@@ -1,28 +1,31 @@
 ---
 id: SPRINT-12
-nombre: "Inicio e instalación (H8 + H9)"
-hito: H8 + H9
+nombre: "Avisos y estudio (H8, parte 2)"
+hito: H8
 estado: Por iniciar
-puntos_comprometidos: 21
+puntos_comprometidos: 32
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-12 · Inicio e instalación (H8 + H9)
+# SPRINT-12 · Avisos y estudio (H8, parte 2)
 
 ## Objetivo del sprint
-El dashboard muestra datos reales y la plataforma se instala como app.
+La bandeja recibe avisos filtrados y el estudiante repasa con FSRS y estudia con pomodoro.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| [HU-15.01](../historias/EP-15-inicio/HU-15.01-consultar-resumen-del-dia.md) | Historia | Consultar el resumen del día en el inicio | EP-15 | Must | 8 | Borrador |
-| [HU-15.02](../historias/EP-15-inicio/HU-15.02-buscar-y-ejecutar-con-ctrl-k.md) | Historia | Buscar y ejecutar acciones con Ctrl K | EP-15 | Should | 5 | Borrador |
-| [HU-16.01](../historias/EP-16-pwa-y-notificaciones/HU-16.01-instalar-como-aplicacion.md) | Historia | Instalar la plataforma como aplicación | EP-16 | Must | 3 | Borrador |
-| [HU-16.02](../historias/EP-16-pwa-y-notificaciones/HU-16.02-usar-sin-conexion.md) | Historia | Abrir pantallas y documentos sin conexión | EP-16 | Should | 5 | Borrador |
+| [HU-13.01](../historias/EP-13-avisos/HU-13.01-consultar-bandeja-de-avisos.md) | Historia | Consultar la bandeja de avisos con filtros | EP-13 | Must | 5 | Borrador |
+| [HU-13.02](../historias/EP-13-avisos/HU-13.02-convertir-aviso-en-accion.md) | Historia | Convertir un aviso en tarea o aplicar el dato detectado | EP-13 | Must | 3 | Borrador |
+| [HU-13.03](../historias/EP-13-avisos/HU-13.03-editar-reglas-de-bandeja.md) | Historia | Editar las reglas de la bandeja | EP-13 | Should | 3 | Borrador |
+| [HU-14.01](../historias/EP-14-estudiar/HU-14.01-repasar-tarjetas.md) | Historia | Repasar tarjetas con repetición espaciada | EP-14 | Must | 8 | Borrador |
+| [HU-14.02](../historias/EP-14-estudiar/HU-14.02-generar-tarjetas-de-documento.md) | Historia | Generar tarjetas de repaso a partir de un documento | EP-14 | Must | 5 | Borrador |
+| [HU-14.03](../historias/EP-14-estudiar/HU-14.03-estudiar-con-pomodoro.md) | Historia | Estudiar con el temporizador pomodoro | EP-14 | Must | 5 | Borrador |
+| [HU-14.04](../historias/EP-14-estudiar/HU-14.04-consultar-estadisticas-de-estudio.md) | Historia | Consultar mis estadísticas de estudio | EP-14 | Should | 3 | Borrador |
 
-**Total comprometido:** 21 puntos.
+**Total comprometido:** 32 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -40,10 +43,13 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-15.01 | `docs/qa/test-cases/TC-HU-15.01.md` (por redactar) | | | | |
-| HU-15.02 | `docs/qa/test-cases/TC-HU-15.02.md` (por redactar) | | | | |
-| HU-16.01 | `docs/qa/test-cases/TC-HU-16.01.md` (por redactar) | | | | |
-| HU-16.02 | `docs/qa/test-cases/TC-HU-16.02.md` (por redactar) | | | | |
+| HU-13.01 | `docs/qa/test-cases/TC-HU-13.01.md` (por redactar) | | | | |
+| HU-13.02 | `docs/qa/test-cases/TC-HU-13.02.md` (por redactar) | | | | |
+| HU-13.03 | `docs/qa/test-cases/TC-HU-13.03.md` (por redactar) | | | | |
+| HU-14.01 | `docs/qa/test-cases/TC-HU-14.01.md` (por redactar) | | | | |
+| HU-14.02 | `docs/qa/test-cases/TC-HU-14.02.md` (por redactar) | | | | |
+| HU-14.03 | `docs/qa/test-cases/TC-HU-14.03.md` (por redactar) | | | | |
+| HU-14.04 | `docs/qa/test-cases/TC-HU-14.04.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

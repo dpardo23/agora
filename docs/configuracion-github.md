@@ -1,6 +1,6 @@
 # Configuración de GitHub · Ágora
 
-Versión 1.0 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
+Versión 1.1 · creado el 2026-10-20 · editado el 2026-10-21 · autor: Juan Diego Pardo Pozo
 
 Guía paso a paso para dejar el repositorio `dpardo23/agora` configurado de forma profesional. Cada sección dice **dónde** está la opción, **qué** elegir y, en una línea, **para qué** sirve. Los nombres de los menús son los de la interfaz de GitHub en inglés.
 
@@ -222,7 +222,7 @@ for ep in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16; do gh label create "E
 ```
 
 ### Milestones (Issues → Milestones)
-Crea un milestone por sprint, de `SPRINT-00` a `SPRINT-13`, **sin fecha** (Scrum sin fechas). Cada issue va al milestone de su sprint; el porcentaje de issues cerrados muestra el avance.
+Crea un milestone por sprint, de `SPRINT-00` a `SPRINT-14`, **sin fecha** (Scrum sin fechas). Cada issue va al milestone de su sprint; el porcentaje de issues cerrados muestra el avance.
 
 ---
 
@@ -234,7 +234,7 @@ Se crea desde tu perfil → **Projects → New project → Table**, con el nombr
 | Campo | Tipo | Valores |
 |---|---|---|
 | Status | Single select | Borrador · Lista (DoR) · En curso · En QA · Hecha |
-| Sprint | Single select | SPRINT-00 … SPRINT-13. No uses el tipo *Iteration*: exige fechas |
+| Sprint | Single select | SPRINT-00 … SPRINT-14. No uses el tipo *Iteration*: exige fechas |
 | Épica | Single select | EP-01 … EP-16 |
 | MoSCoW | Single select | Must · Should · Could · Won't |
 | Puntos | Number | 1, 2, 3, 5, 8, 13 |

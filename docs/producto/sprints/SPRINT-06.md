@@ -1,29 +1,31 @@
 ---
 id: SPRINT-06
-nombre: "El Olimpo trabaja de verdad (H5)"
-hito: H5
+nombre: "Encargar y seguir (H4, parte 2)"
+hito: H4
 estado: Por iniciar
-puntos_comprometidos: 26
+puntos_comprometidos: 28
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-06 · El Olimpo trabaja de verdad (H5)
+# SPRINT-06 · Encargar y seguir (H4, parte 2)
 
 ## Objetivo del sprint
-El trabajo 13 se regenera desde la web con el worker real, con las mismas verificaciones.
+Un trabajo simulado se encarga desde la web, pide aprobación del esquema, recorre los 9 pasos en vivo y aparece en Documentos.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| T-07 | Chore | Preparar la VM de Oracle (systemd, TeX Live, credenciales, respaldos) | EP-07 | Must | 5 | Borrador |
-| [HU-07.01](../historias/EP-07-motor-de-agentes/HU-07.01-procesar-encargos-desde-la-cola.md) | Historia | Procesar encargos desde la cola de Supabase | EP-07 | Must | 8 | Borrador |
-| [HU-07.02](../historias/EP-07-motor-de-agentes/HU-07.02-publicar-eventos-de-agentes.md) | Historia | Publicar el avance del pipeline como eventos de los agentes | EP-07 | Must | 5 | Borrador |
-| [HU-07.03](../historias/EP-07-motor-de-agentes/HU-07.03-entregar-pdf.md) | Historia | Entregar el PDF en Storage y en Google Drive | EP-07 | Must | 5 | Borrador |
-| [HU-07.04](../historias/EP-07-motor-de-agentes/HU-07.04-registrar-uso-de-modelos.md) | Historia | Registrar el uso de modelos en cada llamada | EP-07 | Must | 3 | Borrador |
+| [HU-06.01](../historias/EP-06-encargos-al-olimpo/HU-06.01-encargar-documento.md) | Historia | Encargar un documento al Olimpo | EP-06 | Must | 5 | Borrador |
+| [HU-06.02](../historias/EP-06-encargos-al-olimpo/HU-06.02-seguir-avance-del-pipeline.md) | Historia | Seguir el avance de un trabajo por los 9 pasos del pipeline | EP-06 | Must | 5 | Borrador |
+| [HU-06.03](../historias/EP-06-encargos-al-olimpo/HU-06.03-consultar-registro-en-vivo.md) | Historia | Consultar el registro en vivo del Olimpo | EP-06 | Must | 3 | Borrador |
+| [HU-06.04](../historias/EP-06-encargos-al-olimpo/HU-06.04-aprobar-esquema.md) | Historia | Aprobar el esquema de un documento o pedir cambios | EP-06 | Must | 5 | Borrador |
+| [HU-06.05](../historias/EP-06-encargos-al-olimpo/HU-06.05-consultar-documentos-generados.md) | Historia | Consultar y abrir los documentos generados | EP-06 | Must | 5 | Borrador |
+| [HU-06.06](../historias/EP-06-encargos-al-olimpo/HU-06.06-pausar-trabajo.md) | Historia | Pausar y reanudar un trabajo en curso | EP-06 | Should | 2 | Borrador |
+| [HU-05.05](../historias/EP-05-oficina-del-olimpo/HU-05.05-pausar-agente.md) | Historia | Pausar y reanudar a un dios | EP-05 | Should | 3 | Borrador |
 
-**Total comprometido:** 26 puntos.
+**Total comprometido:** 28 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -41,10 +43,13 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-07.01 | `docs/qa/test-cases/TC-HU-07.01.md` (por redactar) | | | | |
-| HU-07.02 | `docs/qa/test-cases/TC-HU-07.02.md` (por redactar) | | | | |
-| HU-07.03 | `docs/qa/test-cases/TC-HU-07.03.md` (por redactar) | | | | |
-| HU-07.04 | `docs/qa/test-cases/TC-HU-07.04.md` (por redactar) | | | | |
+| HU-06.01 | `docs/qa/test-cases/TC-HU-06.01.md` (por redactar) | | | | |
+| HU-06.02 | `docs/qa/test-cases/TC-HU-06.02.md` (por redactar) | | | | |
+| HU-06.03 | `docs/qa/test-cases/TC-HU-06.03.md` (por redactar) | | | | |
+| HU-06.04 | `docs/qa/test-cases/TC-HU-06.04.md` (por redactar) | | | | |
+| HU-06.05 | `docs/qa/test-cases/TC-HU-06.05.md` (por redactar) | | | | |
+| HU-06.06 | `docs/qa/test-cases/TC-HU-06.06.md` (por redactar) | | | | |
+| HU-05.05 | `docs/qa/test-cases/TC-HU-05.05.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

@@ -1,76 +1,205 @@
-# --- Sistema y editores ---
-.DS_Store
-Thumbs.db
-*.swp
-*~
-.idea/
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
+# .gitignore de Ágora
+#
+# Regla general: al repositorio público solo sube la obra del proyecto (código, migraciones,
+# documentación de producto y QA, CI). Nunca suben secretos, datos personales, material de
+# terceros ni la configuración local de herramientas. Lo que se ignora aquí vive solo en el
+# equipo del titular; el respaldo y la restauración se explican en docs/guias/entorno/.
+#
+# Dos capas impiden que algo de esta lista llegue a GitHub aunque se fuerce con «git add -f»:
+# el hook .githooks/pre-commit y el paso «Rutas privadas» del CI.
+# Para comprobar por qué se ignora un archivo: git check-ignore -v <ruta>
+#
+# Las carpetas privadas se declaran dos veces («dir/» y «dir/**»): la segunda forma también
+# reconoce rutas que no existen en el clon, como las que citan los documentos en el CI.
 
-# --- Secretos y entorno ---
+# =============================================================================
+# 1. Secretos y credenciales (en cualquier carpeta)
+# =============================================================================
 .env
 .env.*
 !.env.example
+*.env.local
+.envrc
+.direnv/
 *.pem
 *.key
+*.crt
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.kdbx
+id_rsa*
+id_ed25519*
+id_ecdsa*
 service-account*.json
 credentials*.json
+client_secret*.json
+oauth*.json
 token*.json
+*.secret
+secrets/
+.secrets/
+.npmrc
+.netrc
+.pgpass
 
-# --- Node / Nuxt (apps/web) ---
+# =============================================================================
+# 2. Herramientas de asistencia y configuración personal del entorno
+# =============================================================================
+.claude/
+.claude/**
+CLAUDE.md
+CLAUDE.local.md
+.mcp.json
+skills-lock.json
+.agents/
+.codex/
+.cursor/
+.cursorrules
+.windsurf/
+.gemini/
+GEMINI.md
+.aider*
+.continue/
+.copilot/
+
+# =============================================================================
+# 3. Material privado o de terceros (solo en local)
+# =============================================================================
+# Guías de la materia (autoría del docente) y especificación original.
+docs/referencia/
+docs/referencia/**
+# Diseño fuente, capturas, mockups anotados y ambientación.
+design/
+design/**
+agora.html
+# Guías de configuración en PDF: se generan con scripts/guias/generar-pdf.sh.
+docs/guias/**/*.pdf
+
+# =============================================================================
+# 4. Versiones de herramientas (mise): lo personal no sube
+# =============================================================================
+mise.local.toml
+.mise.local.toml
+mise.*.local.toml
+.tool-versions.local
+
+# =============================================================================
+# 5. Node, Next.js y pnpm (apps/web)
+# =============================================================================
 node_modules/
 .pnpm-store/
-.nuxt/
-.output/
-.nitro/
-.cache/
-.data/
+.pnpm-debug.log*
+.next/
+out/
+build/
 dist/
-coverage/
+next-env.d.ts
 *.tsbuildinfo
+.turbo/
+.vercel/
+.cache/
+.eslintcache
+.stylelintcache
 npm-debug.log*
 pnpm-debug.log*
+yarn-debug.log*
 yarn-error.log*
+# Service worker generado por Serwist.
+apps/web/public/sw.js
+apps/web/public/sw.js.map
+apps/web/public/swe-worker-*.js
+apps/web/public/workbox-*.js
 
-# --- Pruebas ---
+# =============================================================================
+# 6. Pruebas y reportes
+# =============================================================================
+coverage/
+.nyc_output/
 playwright-report/
 test-results/
 blob-report/
 /playwright/.cache/
 .vitest/
+.lighthouseci/
+lhci_reports/
 
-# --- Python (worker) ---
+# =============================================================================
+# 7. Python (worker)
+# =============================================================================
 __pycache__/
 *.py[cod]
 .venv/
+venv/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
 *.egg-info/
+.eggs/
+wheels/
 
-# --- LaTeX (salidas del worker en local) ---
+# =============================================================================
+# 8. LaTeX (salidas del worker en local)
+# =============================================================================
 *.aux
-*.log
-*.out
-*.toc
-*.synctex.gz
+*.bbl
+*.bcf
+*.blg
 *.fdb_latexmk
 *.fls
+*.lof
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+worker/salidas/
 
-# --- Supabase CLI ---
+# =============================================================================
+# 9. Servicios locales (Supabase CLI, Docker, n8n)
+# =============================================================================
 supabase/.branches/
 supabase/.temp/
 supabase/.env
-
-# --- n8n ---
+supabase/functions/.env
+compose.override.yaml
+docker-compose.override.yml
+infra/local/datos/
 n8n/.n8n/
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.backup
 
-# --- Configuración personal del entorno ---
-CLAUDE.local.md
-.claude/settings.local.json
-
-# --- Diseño: export del lienzo (11 MB), solo en local ---
-design/fuente/
-agora.html
-design/**/*.bundle.html
+# =============================================================================
+# 10. Sistema operativo, editores y temporales
+# =============================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+.directory
+*.swp
+*.swo
+*~
+.idea/
+.fleet/
+.zed/
+*.code-workspace
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.log
+*.bak
+*.orig
+*.tmp
+tmp/
+.tmp/

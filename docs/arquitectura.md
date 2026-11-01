@@ -1,8 +1,8 @@
 # Arquitectura · Ágora
 
-Versión 2.0 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
+Versión 2.1 · creado el 2026-10-20 · editado el 2026-10-21 · autor: Juan Diego Pardo Pozo
 
-Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles). Rutas y API: `docs/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
+Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado). Rutas y API: `docs/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
 
 ## 1. Vista general
 
@@ -85,9 +85,11 @@ design/    pantallas (.dc.html), mockups (PNG), referencias, fuente (export loca
 
 | Entorno | Rama | Web | Datos |
 |---|---|---|---|
-| Local | cualquiera | `pnpm dev` | Supabase CLI + Docker |
+| Local | cualquiera | `pnpm dev` (nativo, puerto 3100) | Supabase CLI + Docker (puertos 55320 a 55329); n8n y worker en Docker |
 | Preview | PR hacia `develop` o `main` | Vercel (preview por PR) | Proyecto Supabase de desarrollo |
 | Staging | `develop` | Vercel (alias de staging) | Proyecto Supabase de desarrollo |
 | Producción | `main` (con etiqueta de versión) | Vercel producción | Proyecto Supabase de producción (con aprobación manual) |
+
+El entorno local está aislado del resto del equipo (ADR-006): mise fija las versiones de Node, pnpm, Python, uv y la CLI de Supabase solo dentro de la carpeta del proyecto, y los servicios corren en contenedores descartables con un bloque de puertos propio. La preparación paso a paso está en `docs/guias/entorno/`.
 
 El flujo de ramas, los commits y el pipeline están en `CONTRIBUTING.md` y `.github/workflows/`.

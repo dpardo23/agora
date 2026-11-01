@@ -1,32 +1,29 @@
 ---
 id: SPRINT-07
-nombre: "Consumo bajo control (H6)"
-hito: H6
+nombre: "El Olimpo trabaja de verdad (H5)"
+hito: H5
 estado: Por iniciar
-puntos_comprometidos: 36
+puntos_comprometidos: 26
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-07 · Consumo bajo control (H6)
+# SPRINT-07 · El Olimpo trabaja de verdad (H5)
 
 ## Objetivo del sprint
-La pestaña Consumo muestra datos reales de cupo, gasto y VM; los dioses se pueden configurar.
+El trabajo 13 se regenera desde la web con el worker real, con las mismas verificaciones.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| [HU-08.01](../historias/EP-08-consumo-e-infraestructura/HU-08.01-consultar-cupo-y-gasto.md) | Historia | Consultar el cupo de Claude y el gasto del Olimpo | EP-08 | Must | 5 | Borrador |
-| [HU-08.02](../historias/EP-08-consumo-e-infraestructura/HU-08.02-vigilar-la-vm.md) | Historia | Vigilar el estado de la VM y el riesgo de reclamo | EP-08 | Must | 5 | Borrador |
-| [HU-08.03](../historias/EP-08-consumo-e-infraestructura/HU-08.03-consultar-gasto-por-paso-y-documento.md) | Historia | Consultar el gasto por paso y por documento | EP-08 | Should | 3 | Borrador |
-| [HU-08.04](../historias/EP-08-consumo-e-infraestructura/HU-08.04-limpiar-cache-de-fuentes.md) | Historia | Limpiar la caché de fuentes de la VM | EP-08 | Should | 2 | Borrador |
-| [HU-05.06](../historias/EP-05-oficina-del-olimpo/HU-05.06-configurar-un-dios.md) | Historia | Configurar el motor, los límites y las instrucciones de un rol | EP-05 | Should | 5 | Borrador |
-| [HU-05.07](../historias/EP-05-oficina-del-olimpo/HU-05.07-recorrer-dos-plantas.md) | Historia | Recorrer las dos plantas del Olimpo cuando hay más agentes | EP-05 | Could | 8 | Borrador |
-| [HU-05.08](../historias/EP-05-oficina-del-olimpo/HU-05.08-gestionar-dioses-y-roles.md) | Historia | Gestionar los dioses del Olimpo y asignarles roles | EP-05 | Should | 5 | Borrador |
-| T-09 | Spike | Elegir el motor de imágenes del Ilustrador (Iris) | EP-05 | Could | 3 | Borrador |
+| T-07 | Chore | Preparar la VM de Oracle (systemd, TeX Live, credenciales, respaldos) | EP-07 | Must | 5 | Borrador |
+| [HU-07.01](../historias/EP-07-motor-de-agentes/HU-07.01-procesar-encargos-desde-la-cola.md) | Historia | Procesar encargos desde la cola de Supabase | EP-07 | Must | 8 | Borrador |
+| [HU-07.02](../historias/EP-07-motor-de-agentes/HU-07.02-publicar-eventos-de-agentes.md) | Historia | Publicar el avance del pipeline como eventos de los agentes | EP-07 | Must | 5 | Borrador |
+| [HU-07.03](../historias/EP-07-motor-de-agentes/HU-07.03-entregar-pdf.md) | Historia | Entregar el PDF en Storage y en Google Drive | EP-07 | Must | 5 | Borrador |
+| [HU-07.04](../historias/EP-07-motor-de-agentes/HU-07.04-registrar-uso-de-modelos.md) | Historia | Registrar el uso de modelos en cada llamada | EP-07 | Must | 3 | Borrador |
 
-**Total comprometido:** 36 puntos.
+**Total comprometido:** 26 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -44,13 +41,10 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-08.01 | `docs/qa/test-cases/TC-HU-08.01.md` (por redactar) | | | | |
-| HU-08.02 | `docs/qa/test-cases/TC-HU-08.02.md` (por redactar) | | | | |
-| HU-08.03 | `docs/qa/test-cases/TC-HU-08.03.md` (por redactar) | | | | |
-| HU-08.04 | `docs/qa/test-cases/TC-HU-08.04.md` (por redactar) | | | | |
-| HU-05.06 | `docs/qa/test-cases/TC-HU-05.06.md` (por redactar) | | | | |
-| HU-05.07 | `docs/qa/test-cases/TC-HU-05.07.md` (por redactar) | | | | |
-| HU-05.08 | `docs/qa/test-cases/TC-HU-05.08.md` (por redactar) | | | | |
+| HU-07.01 | `docs/qa/test-cases/TC-HU-07.01.md` (por redactar) | | | | |
+| HU-07.02 | `docs/qa/test-cases/TC-HU-07.02.md` (por redactar) | | | | |
+| HU-07.03 | `docs/qa/test-cases/TC-HU-07.03.md` (por redactar) | | | | |
+| HU-07.04 | `docs/qa/test-cases/TC-HU-07.04.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

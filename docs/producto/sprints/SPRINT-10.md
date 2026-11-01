@@ -1,31 +1,31 @@
 ---
 id: SPRINT-10
-nombre: "Tareas (H8, parte 1)"
-hito: H8
+nombre: "Malla y agenda (H7, parte 2)"
+hito: H7
 estado: Por iniciar
-puntos_comprometidos: 27
+puntos_comprometidos: 39
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-10 · Tareas (H8, parte 1)
+# SPRINT-10 · Malla y agenda (H7, parte 2)
 
 ## Objetivo del sprint
-Tareas al estilo Google Tasks, sincronizadas, con la opción de pedir apoyo al Olimpo.
+La materia creada aparece en el horario, el calendario y la malla.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| T-08 | Chore | Instalar n8n en la VM y versionar sus flujos | EP-12 | Must | 3 | Borrador |
-| [HU-12.01](../historias/EP-12-tareas/HU-12.01-crear-tarea-rapida.md) | Historia | Crear una tarea rápida con Enter | EP-12 | Must | 3 | Borrador |
-| [HU-12.02](../historias/EP-12-tareas/HU-12.02-organizar-tareas-en-listas.md) | Historia | Organizar las tareas en listas y filtros | EP-12 | Must | 5 | Borrador |
-| [HU-12.03](../historias/EP-12-tareas/HU-12.03-detallar-tarea.md) | Historia | Detallar una tarea con vencimiento, recordatorio, repetición y subtareas | EP-12 | Must | 5 | Borrador |
-| [HU-12.04](../historias/EP-12-tareas/HU-12.04-pedir-documento-de-apoyo.md) | Historia | Pedir al Olimpo un documento de apoyo desde una tarea | EP-12 | Should | 3 | Borrador |
-| [HU-12.05](../historias/EP-12-tareas/HU-12.05-sincronizar-google-tasks.md) | Historia | Sincronizar las tareas con Google Tasks | EP-12 | Should | 5 | Borrador |
-| [HU-04.04](../historias/EP-04-configuracion/HU-04.04-configurar-integraciones-google.md) | Historia | Configurar la carpeta de Drive y la sincronización con Google | EP-04 | Should | 3 | Borrador |
+| [HU-10.01](../historias/EP-10-malla-curricular/HU-10.01-consultar-malla.md) | Historia | Consultar la malla curricular con el estado de cada materia | EP-10 | Must | 5 | Borrador |
+| [HU-10.02](../historias/EP-10-malla-curricular/HU-10.02-ver-prerrequisitos-y-desbloqueos.md) | Historia | Ver los prerrequisitos y lo que desbloquea una materia | EP-10 | Must | 3 | Borrador |
+| [HU-10.03](../historias/EP-10-malla-curricular/HU-10.03-importar-plan-oficial.md) | Historia | Importar el plan de estudios oficial | EP-10 | Should | 8 | Borrador |
+| [HU-11.01](../historias/EP-11-agenda/HU-11.01-consultar-calendario.md) | Historia | Consultar el calendario por mes, semana y agenda | EP-11 | Must | 8 | Borrador |
+| [HU-11.02](../historias/EP-11-agenda/HU-11.02-crear-evento.md) | Historia | Crear un evento con recordatorios | EP-11 | Must | 5 | Borrador |
+| [HU-11.03](../historias/EP-11-agenda/HU-11.03-consultar-horario-semanal.md) | Historia | Consultar el horario semanal de clases | EP-11 | Must | 5 | Borrador |
+| [HU-11.04](../historias/EP-11-agenda/HU-11.04-exportar-a-google-calendar.md) | Historia | Exportar el horario y los eventos a Google Calendar | EP-11 | Should | 5 | Borrador |
 
-**Total comprometido:** 27 puntos.
+**Total comprometido:** 39 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -43,12 +43,13 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-12.01 | `docs/qa/test-cases/TC-HU-12.01.md` (por redactar) | | | | |
-| HU-12.02 | `docs/qa/test-cases/TC-HU-12.02.md` (por redactar) | | | | |
-| HU-12.03 | `docs/qa/test-cases/TC-HU-12.03.md` (por redactar) | | | | |
-| HU-12.04 | `docs/qa/test-cases/TC-HU-12.04.md` (por redactar) | | | | |
-| HU-12.05 | `docs/qa/test-cases/TC-HU-12.05.md` (por redactar) | | | | |
-| HU-04.04 | `docs/qa/test-cases/TC-HU-04.04.md` (por redactar) | | | | |
+| HU-10.01 | `docs/qa/test-cases/TC-HU-10.01.md` (por redactar) | | | | |
+| HU-10.02 | `docs/qa/test-cases/TC-HU-10.02.md` (por redactar) | | | | |
+| HU-10.03 | `docs/qa/test-cases/TC-HU-10.03.md` (por redactar) | | | | |
+| HU-11.01 | `docs/qa/test-cases/TC-HU-11.01.md` (por redactar) | | | | |
+| HU-11.02 | `docs/qa/test-cases/TC-HU-11.02.md` (por redactar) | | | | |
+| HU-11.03 | `docs/qa/test-cases/TC-HU-11.03.md` (por redactar) | | | | |
+| HU-11.04 | `docs/qa/test-cases/TC-HU-11.04.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

@@ -1,26 +1,28 @@
 ---
 id: SPRINT-13
-nombre: "Notificaciones y calidad final (H9)"
-hito: H9
+nombre: "Inicio e instalación (H8 + H9)"
+hito: H8 + H9
 estado: Por iniciar
-puntos_comprometidos: 10
+puntos_comprometidos: 21
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-13 · Notificaciones y calidad final (H9)
+# SPRINT-13 · Inicio e instalación (H8 + H9)
 
 ## Objetivo del sprint
-Lighthouse PWA aprobado, sin errores de axe y con notificaciones push.
+El dashboard muestra datos reales y la plataforma se instala como app.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| [HU-16.03](../historias/EP-16-pwa-y-notificaciones/HU-16.03-recibir-notificaciones-push.md) | Historia | Recibir notificaciones push | EP-16 | Should | 5 | Borrador |
-| [HU-16.04](../historias/EP-16-pwa-y-notificaciones/HU-16.04-cumplir-accesibilidad-y-rendimiento.md) | Historia no funcional | Cumplir los umbrales de accesibilidad y rendimiento en toda la plataforma | EP-16 | Must | 5 | Borrador |
+| [HU-15.01](../historias/EP-15-inicio/HU-15.01-consultar-resumen-del-dia.md) | Historia | Consultar el resumen del día en el inicio | EP-15 | Must | 8 | Borrador |
+| [HU-15.02](../historias/EP-15-inicio/HU-15.02-buscar-y-ejecutar-con-ctrl-k.md) | Historia | Buscar y ejecutar acciones con Ctrl K | EP-15 | Should | 5 | Borrador |
+| [HU-16.01](../historias/EP-16-pwa-y-notificaciones/HU-16.01-instalar-como-aplicacion.md) | Historia | Instalar la plataforma como aplicación | EP-16 | Must | 3 | Borrador |
+| [HU-16.02](../historias/EP-16-pwa-y-notificaciones/HU-16.02-usar-sin-conexion.md) | Historia | Abrir pantallas y documentos sin conexión | EP-16 | Should | 5 | Borrador |
 
-**Total comprometido:** 10 puntos.
+**Total comprometido:** 21 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -38,8 +40,10 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-16.03 | `docs/qa/test-cases/TC-HU-16.03.md` (por redactar) | | | | |
-| HU-16.04 | `docs/qa/test-cases/TC-HU-16.04.md` (por redactar) | | | | |
+| HU-15.01 | `docs/qa/test-cases/TC-HU-15.01.md` (por redactar) | | | | |
+| HU-15.02 | `docs/qa/test-cases/TC-HU-15.02.md` (por redactar) | | | | |
+| HU-16.01 | `docs/qa/test-cases/TC-HU-16.01.md` (por redactar) | | | | |
+| HU-16.02 | `docs/qa/test-cases/TC-HU-16.02.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

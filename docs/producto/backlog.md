@@ -1,6 +1,6 @@
 # Product backlog · Ágora
 
-Versión 1.0 · creado el 2026-10-20 · editado el 2026-10-20
+Versión 1.2 · creado el 2026-10-20 · editado el 2026-10-31
 
 Fuente de verdad del orden de trabajo. Cada fila es un **PBI** (product backlog item): una historia de usuario (HU) o un ítem técnico (T: historia técnica, spike o chore). Los sprints no tienen fechas: un sprint se cierra cuando cumple su objetivo y la DoD.
 
@@ -12,38 +12,48 @@ Fuente de verdad del orden de trabajo. Cada fila es un **PBI** (product backlog 
 
 | Épica | Nombre | Hito | Sprints | HU | Pts |
 |---|---|---|---|---|---|
-| [EP-01](epicas/EP-01-base-y-navegacion.md) | Base y navegación | H0 | S0 | 3 | 11 |
-| [EP-02](epicas/EP-02-kit-de-interfaz.md) | Kit de interfaz | H1 | S1 | 7 | 34 |
-| [EP-03](epicas/EP-03-acceso-y-seguridad.md) | Acceso y seguridad | H3 | S2, S3 | 5 | 24 |
-| [EP-04](epicas/EP-04-configuracion.md) | Configuración de la cuenta | H3, H8 | S3, S10 | 4 | 13 |
-| [EP-05](epicas/EP-05-oficina-del-olimpo.md) | Oficina del Olimpo | H4, H6 | S4, S5, S7 | 8 | 50 |
-| [EP-06](epicas/EP-06-encargos-al-olimpo.md) | Encargos al Olimpo | H4 | S5 | 6 | 25 |
-| [EP-07](epicas/EP-07-motor-de-agentes.md) | Motor de agentes | H5 | S6 | 4 | 21 |
-| [EP-08](epicas/EP-08-consumo-e-infraestructura.md) | Consumo e infraestructura | H6 | S7 | 4 | 15 |
-| [EP-09](epicas/EP-09-materias.md) | Materias | H7 | S8 | 5 | 21 |
-| [EP-10](epicas/EP-10-malla-curricular.md) | Malla curricular | H7 | S9 | 3 | 16 |
-| [EP-11](epicas/EP-11-agenda.md) | Agenda | H7 | S9 | 4 | 23 |
-| [EP-12](epicas/EP-12-tareas.md) | Tareas | H8 | S10 | 5 | 21 |
-| [EP-13](epicas/EP-13-avisos.md) | Avisos | H8 | S11 | 3 | 11 |
-| [EP-14](epicas/EP-14-estudiar.md) | Estudiar | H8 | S11 | 4 | 21 |
-| [EP-15](epicas/EP-15-inicio.md) | Inicio | H8 | S12 | 2 | 13 |
-| [EP-16](epicas/EP-16-pwa-y-notificaciones.md) | PWA y notificaciones | H9 | S12, S13 | 4 | 18 |
+| [EP-01](epicas/EP-01-base-y-navegacion.md) | Base y navegación | H0 | S0, S1 | 3 | 11 |
+| [EP-02](epicas/EP-02-kit-de-interfaz.md) | Kit de interfaz | H1 | S2 | 7 | 34 |
+| [EP-03](epicas/EP-03-acceso-y-seguridad.md) | Acceso y seguridad | H3 | S3, S4 | 5 | 24 |
+| [EP-04](epicas/EP-04-configuracion.md) | Configuración de la cuenta | H3, H8 | S4, S11 | 4 | 13 |
+| [EP-05](epicas/EP-05-oficina-del-olimpo.md) | Oficina del Olimpo | H4, H6 | S5, S6, S8 | 8 | 50 |
+| [EP-06](epicas/EP-06-encargos-al-olimpo.md) | Encargos al Olimpo | H4 | S6 | 6 | 25 |
+| [EP-07](epicas/EP-07-motor-de-agentes.md) | Motor de agentes | H5 | S7 | 4 | 21 |
+| [EP-08](epicas/EP-08-consumo-e-infraestructura.md) | Consumo e infraestructura | H6 | S8 | 4 | 15 |
+| [EP-09](epicas/EP-09-materias.md) | Materias | H7 | S9 | 5 | 21 |
+| [EP-10](epicas/EP-10-malla-curricular.md) | Malla curricular | H7 | S10 | 3 | 16 |
+| [EP-11](epicas/EP-11-agenda.md) | Agenda | H7 | S10 | 4 | 23 |
+| [EP-12](epicas/EP-12-tareas.md) | Tareas | H8 | S11 | 5 | 21 |
+| [EP-13](epicas/EP-13-avisos.md) | Avisos | H8 | S12 | 3 | 11 |
+| [EP-14](epicas/EP-14-estudiar.md) | Estudiar | H8 | S12 | 4 | 21 |
+| [EP-15](epicas/EP-15-inicio.md) | Inicio | H8 | S13 | 2 | 13 |
+| [EP-16](epicas/EP-16-pwa-y-notificaciones.md) | PWA y notificaciones | H9 | S13, S14 | 4 | 18 |
 | | **Total** | | | **71** | **337** |
 
 ## 2. Backlog ordenado por sprint
 
-### SPRINT-00 · Cimientos navegables (H0)
+### SPRINT-00 · Organización y entorno (H0, parte 1)
+Objetivo: desde un clon limpio, un solo comando levanta la web, Supabase, n8n y el worker en local, aislados del resto del equipo; el CI pasa en verde, existe una preview en Vercel y las cuentas y secretos de los servicios externos están creados.
+
+| PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
+|---|---|---|---|---|---|---|
+| T-14 | Chore | Redactar las guías de configuración del entorno y generarlas en PDF | EP-01 | Must | 2 | En curso |
+| T-13 | Chore | Crear las cuentas y los secretos de los servicios externos | EP-01 | Must | 3 | Borrador |
+| T-11 | Historia técnica | Preparar el entorno local aislado con mise y el script de verificación | EP-01 | Must | 3 | Borrador |
+| T-01 | Historia técnica | Crear el proyecto Next.js 16 con TypeScript estricto, Tailwind v4, tokens y fuentes | EP-01 | Must | 5 | Borrador |
+| T-12 | Historia técnica | Levantar los servicios locales en Docker: Supabase, n8n y la imagen del worker | EP-01 | Must | 5 | Borrador |
+| T-02 | Chore | Configurar CI en GitHub Actions y previews en Vercel | EP-01 | Must | 3 | Borrador |
+
+### SPRINT-01 · Cimientos navegables (H0, parte 2)
 Objetivo: abrir la web, navegar por las 17 rutas vacías en ambos temas y en tres anchos.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| T-01 | Historia técnica | Crear el proyecto Next.js 16 con TypeScript estricto, Tailwind v4, tokens y fuentes | EP-01 | Must | 5 | Borrador |
-| T-02 | Chore | Configurar CI en GitHub Actions y previews en Vercel | EP-01 | Must | 3 | Borrador |
 | [HU-01.01](historias/EP-01-base-y-navegacion/HU-01.01-navegar-entre-secciones.md) | Historia | Navegar entre las secciones de la plataforma | EP-01 | Must | 5 | Borrador |
 | [HU-01.02](historias/EP-01-base-y-navegacion/HU-01.02-alternar-tema-claro-oscuro.md) | Historia | Alternar entre el tema claro y el oscuro sin parpadeo | EP-01 | Must | 3 | Borrador |
 | [HU-01.03](historias/EP-01-base-y-navegacion/HU-01.03-adaptar-interfaz-al-dispositivo.md) | Historia | Usar la plataforma en móvil, tablet y escritorio | EP-01 | Must | 3 | Borrador |
 
-### SPRINT-01 · Kit de interfaz (H1)
+### SPRINT-02 · Kit de interfaz (H1)
 Objetivo: todos los estados de `Controles` y `ControlesMovil` reproducidos y documentados en una página de muestras (`/dev/kit`, solo en desarrollo).
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -56,7 +66,7 @@ Objetivo: todos los estados de `Controles` y `ControlesMovil` reproducidos y doc
 | [HU-02.06](historias/EP-02-kit-de-interfaz/HU-02.06-abrir-dialogos-adaptables.md) | Historia | Abrir diálogos como modal o como hoja inferior según el dispositivo | EP-02 | Must | 5 | Borrador |
 | [HU-02.07](historias/EP-02-kit-de-interfaz/HU-02.07-adjuntar-archivos-arrastrando.md) | Historia | Adjuntar archivos arrastrándolos o pegando un enlace o DOI | EP-02 | Should | 3 | Borrador |
 
-### SPRINT-02 · Datos y acceso (H2 + H3)
+### SPRINT-03 · Datos y acceso (H2 + H3)
 Objetivo: la base está aplicada con RLS y el usuario entra con usuario, contraseña y código de Gmail en un dispositivo nuevo.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -68,7 +78,7 @@ Objetivo: la base está aplicada con RLS y el usuario entra con usuario, contras
 | [HU-03.02](historias/EP-03-acceso-y-seguridad/HU-03.02-verificar-dispositivo-nuevo.md) | Historia | Verificar un dispositivo nuevo con un código enviado a Gmail | EP-03 | Must | 8 | Borrador |
 | [HU-03.03](historias/EP-03-acceso-y-seguridad/HU-03.03-recordar-dispositivo-confiable.md) | Historia | Recordar un dispositivo de confianza durante 30 días | EP-03 | Must | 3 | Borrador |
 
-### SPRINT-03 · Cuenta segura (H3)
+### SPRINT-04 · Cuenta segura (H3)
 Objetivo: el titular gestiona su cuenta (tema persistido, contraseña, sesiones, recuperación y cierre de sesión), con el flujo probado en Playwright.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -79,7 +89,7 @@ Objetivo: el titular gestiona su cuenta (tema persistido, contraseña, sesiones,
 | [HU-04.02](historias/EP-04-configuracion/HU-04.02-cambiar-contrasena.md) | Historia | Cambiar la contraseña con verificación por Gmail | EP-04 | Must | 5 | Borrador |
 | [HU-04.03](historias/EP-04-configuracion/HU-04.03-gestionar-sesiones-activas.md) | Historia | Gestionar las sesiones activas y la verificación en dos pasos | EP-04 | Must | 3 | Borrador |
 
-### SPRINT-04 · El Olimpo cobra vida (H4, parte 1)
+### SPRINT-05 · El Olimpo cobra vida (H4, parte 1)
 Objetivo: la oficina muestra a los 10 dioses en sus salas, siempre en movimiento y dirigidos por eventos simulados en Realtime.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -91,7 +101,7 @@ Objetivo: la oficina muestra a los 10 dioses en sus salas, siempre en movimiento
 | [HU-05.03](historias/EP-05-oficina-del-olimpo/HU-05.03-consultar-detalle-de-un-dios.md) | Historia | Consultar el detalle de un dios seleccionado | EP-05 | Must | 5 | Borrador |
 | [HU-05.04](historias/EP-05-oficina-del-olimpo/HU-05.04-consultar-oficina-sin-escena.md) | Historia | Consultar la oficina sin la escena desde la lista accesible y el móvil | EP-05 | Must | 3 | Borrador |
 
-### SPRINT-05 · Encargar y seguir (H4, parte 2)
+### SPRINT-06 · Encargar y seguir (H4, parte 2)
 Objetivo: un trabajo simulado se encarga desde la web, pide aprobación del esquema, recorre los 9 pasos en vivo y aparece en Documentos.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -104,7 +114,7 @@ Objetivo: un trabajo simulado se encarga desde la web, pide aprobación del esqu
 | [HU-06.06](historias/EP-06-encargos-al-olimpo/HU-06.06-pausar-trabajo.md) | Historia | Pausar y reanudar un trabajo en curso | EP-06 | Should | 2 | Borrador |
 | [HU-05.05](historias/EP-05-oficina-del-olimpo/HU-05.05-pausar-agente.md) | Historia | Pausar y reanudar a un dios | EP-05 | Should | 3 | Borrador |
 
-### SPRINT-06 · El Olimpo trabaja de verdad (H5)
+### SPRINT-07 · El Olimpo trabaja de verdad (H5)
 Objetivo: el trabajo 13 se regenera desde la web con el worker real, con las mismas verificaciones.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -115,7 +125,7 @@ Objetivo: el trabajo 13 se regenera desde la web con el worker real, con las mis
 | [HU-07.03](historias/EP-07-motor-de-agentes/HU-07.03-entregar-pdf.md) | Historia | Entregar el PDF en Storage y en Google Drive | EP-07 | Must | 5 | Borrador |
 | [HU-07.04](historias/EP-07-motor-de-agentes/HU-07.04-registrar-uso-de-modelos.md) | Historia | Registrar el uso de modelos en cada llamada | EP-07 | Must | 3 | Borrador |
 
-### SPRINT-07 · Consumo bajo control (H6)
+### SPRINT-08 · Consumo bajo control (H6)
 Objetivo: la pestaña Consumo muestra datos reales de cupo, gasto y VM; los dioses se pueden configurar.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -129,7 +139,7 @@ Objetivo: la pestaña Consumo muestra datos reales de cupo, gasto y VM; los dios
 | [HU-05.08](historias/EP-05-oficina-del-olimpo/HU-05.08-gestionar-dioses-y-roles.md) | Historia | Gestionar los dioses del Olimpo y asignarles roles | EP-05 | Should | 5 | Borrador |
 | T-09 | Spike | Elegir el motor de imágenes del Ilustrador (Iris) | EP-05 | Could | 3 | Borrador |
 
-### SPRINT-08 · Mis materias (H7, parte 1)
+### SPRINT-09 · Mis materias (H7, parte 1)
 Objetivo: una materia creada guarda horario, docente y Drive, y muestra su detalle con la nota necesaria para aprobar.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -140,7 +150,7 @@ Objetivo: una materia creada guarda horario, docente y Drive, y muestra su detal
 | [HU-09.04](historias/EP-09-materias/HU-09.04-editar-materia.md) | Historia | Editar los datos de una materia | EP-09 | Must | 3 | Borrador |
 | [HU-09.05](historias/EP-09-materias/HU-09.05-eliminar-materia.md) | Historia | Eliminar una materia confirmando su nombre | EP-09 | Should | 2 | Borrador |
 
-### SPRINT-09 · Malla y agenda (H7, parte 2)
+### SPRINT-10 · Malla y agenda (H7, parte 2)
 Objetivo: la materia creada aparece en el horario, el calendario y la malla.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -153,7 +163,7 @@ Objetivo: la materia creada aparece en el horario, el calendario y la malla.
 | [HU-11.03](historias/EP-11-agenda/HU-11.03-consultar-horario-semanal.md) | Historia | Consultar el horario semanal de clases | EP-11 | Must | 5 | Borrador |
 | [HU-11.04](historias/EP-11-agenda/HU-11.04-exportar-a-google-calendar.md) | Historia | Exportar el horario y los eventos a Google Calendar | EP-11 | Should | 5 | Borrador |
 
-### SPRINT-10 · Tareas (H8, parte 1)
+### SPRINT-11 · Tareas (H8, parte 1)
 Objetivo: tareas al estilo Google Tasks, sincronizadas, con la opción de pedir apoyo al Olimpo.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -166,7 +176,7 @@ Objetivo: tareas al estilo Google Tasks, sincronizadas, con la opción de pedir 
 | [HU-12.05](historias/EP-12-tareas/HU-12.05-sincronizar-google-tasks.md) | Historia | Sincronizar las tareas con Google Tasks | EP-12 | Should | 5 | Borrador |
 | [HU-04.04](historias/EP-04-configuracion/HU-04.04-configurar-integraciones-google.md) | Historia | Configurar la carpeta de Drive y la sincronización con Google | EP-04 | Should | 3 | Borrador |
 
-### SPRINT-11 · Avisos y estudio (H8, parte 2)
+### SPRINT-12 · Avisos y estudio (H8, parte 2)
 Objetivo: la bandeja recibe avisos filtrados y el estudiante repasa con FSRS y estudia con pomodoro.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -179,7 +189,7 @@ Objetivo: la bandeja recibe avisos filtrados y el estudiante repasa con FSRS y e
 | [HU-14.03](historias/EP-14-estudiar/HU-14.03-estudiar-con-pomodoro.md) | Historia | Estudiar con el temporizador pomodoro | EP-14 | Must | 5 | Borrador |
 | [HU-14.04](historias/EP-14-estudiar/HU-14.04-consultar-estadisticas-de-estudio.md) | Historia | Consultar mis estadísticas de estudio | EP-14 | Should | 3 | Borrador |
 
-### SPRINT-12 · Inicio e instalación (H8 + H9)
+### SPRINT-13 · Inicio e instalación (H8 + H9)
 Objetivo: el dashboard muestra datos reales y la plataforma se instala como app.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -189,7 +199,7 @@ Objetivo: el dashboard muestra datos reales y la plataforma se instala como app.
 | [HU-16.01](historias/EP-16-pwa-y-notificaciones/HU-16.01-instalar-como-aplicacion.md) | Historia | Instalar la plataforma como aplicación | EP-16 | Must | 3 | Borrador |
 | [HU-16.02](historias/EP-16-pwa-y-notificaciones/HU-16.02-usar-sin-conexion.md) | Historia | Abrir pantallas y documentos sin conexión | EP-16 | Should | 5 | Borrador |
 
-### SPRINT-13 · Notificaciones y calidad final (H9)
+### SPRINT-14 · Notificaciones y calidad final (H9)
 Objetivo: Lighthouse PWA aprobado, sin errores de axe y con notificaciones push.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
@@ -201,9 +211,9 @@ Objetivo: Lighthouse PWA aprobado, sin errores de axe y con notificaciones push.
 
 | PBI | Qué incluye | Criterio de cierre |
 |---|---|---|
-| T-01 | `create-next-app` en `apps/web` (App Router, `src/`, TypeScript `strict`); Tailwind v4 con tokens en `globals.css` según `design.md`, sección 2; `next/font`; `shadcn init`; ESLint con `eslint-plugin-boundaries`; Prettier; Vitest + Testing Library; Playwright; Husky + commitlint; pnpm workspace; `GET /api/v1/salud` | Existen y pasan los scripts que usa el CI: `lint`, `typecheck`, `test:unit`, `test:e2e`, `build` y `openapi:check`, además de `apps/web/lighthouserc.json`; `GET /api/v1/salud` responde 200 |
+| T-01 | `create-next-app` en `apps/web` (App Router, `src/`, TypeScript `strict`); Tailwind v4 con tokens en `globals.css` según `design.md`, sección 2; `next/font`; `shadcn init`; ESLint con `eslint-plugin-boundaries`; Prettier; Vitest + Testing Library; Playwright; commitlint llamado desde `.githooks/commit-msg` (sin Husky, que cambiaría `core.hooksPath`); pnpm workspace; `GET /api/v1/salud` | Existen y pasan los scripts que usa el CI: `lint`, `typecheck`, `test:unit`, `test:e2e`, `build` y `openapi:check`, además de `apps/web/lighthouserc.json`; `GET /api/v1/salud` responde 200; `git config core.hooksPath` sigue siendo `.githooks` |
 | T-02 | Workflow `ci.yml` (lint, typecheck, unit, e2e, migraciones); proyecto en Vercel con previews; protección de `main` | Un PR de prueba muestra todos los checks y una URL de preview |
-| T-03 | Revisar `supabase/migrations/0001_init.sql` (defaults `auth.uid()` en `perfil` y `avisos`, Realtime; reemplazar `agentes` por `dioses`, `roles`, `asignaciones_rol` y `pipeline_pasos` según ADR-005; `eventos_agente` con `dios_id` y `rol_id`); aplicar; generar tipos; pruebas pgTAP de RLS | `supabase db reset` limpio y advisors sin errores |
+| T-03 | Revisar `supabase/migrations/0001_init.sql` (defaults `auth.uid()` en `perfil` y `avisos`, Realtime; reemplazar `agentes` por `dioses`, `roles`, `asignaciones_rol` y `pipeline_pasos` según ADR-005; `eventos_agente` con `dios_id` y `rol_id`); `GRANT` explícitos por tabla, porque `agora-dev` no expone tablas nuevas automáticamente; quitar a `public`, `anon` y `authenticated` el permiso de ejecutar `public.rls_auto_enable()` solo si existe (la crea la opción «Enable automatic RLS» en la nube y no existe en local); aplicar; generar tipos; pruebas pgTAP de RLS | `supabase db reset` limpio; advisors sin errores en local y sin errores ni avisos en `agora-dev` |
 | T-04 | `seed.sql` con las 4 materias de ejemplo, agentes, salas del Olimpo, trabajos #13 a #16 y avisos, siempre con datos marcados como de ejemplo | QA puede ejecutar los TC sin preparar datos a mano |
 | T-05 | Sprites de los 10 dioses (24 cuadros cada uno), mapa de la planta 1, paleta final; validación a 36×54 px | La hoja se genera en menos de 100 ms y se lee la silueta de cada dios |
 | T-06 | Script `apps/web/scripts/simular-trabajo.ts` que inserta `trabajos`, `trabajo_pasos` y `eventos_agente` como lo haría el worker | Un trabajo simulado anima la oficina de punta a punta |
@@ -211,7 +221,11 @@ Objetivo: Lighthouse PWA aprobado, sin errores de axe y con notificaciones push.
 | T-08 | n8n en Docker en la VM, flujos exportados a `n8n/` sin credenciales | Los flujos se restauran desde el repo |
 | T-09 | Comparar motores de imagen para el Ilustrador (costo, calidad de diagramas, licencias) | ADR con la decisión |
 | T-10 | Probar Gmail API (OAuth de la cuenta propia) frente a SMTP o un proveedor transaccional para el código 2FA | ADR con la decisión y entrega del correo en menos de 30 s |
+| T-11 | `mise.toml` con las versiones de la matriz de la guía 0 (Node, pnpm, Python, uv, CLI de Supabase); `.env.example` por pieza; `.vscode/` con extensiones y ajustes del proyecto; `scripts/verificar-entorno.sh` (versiones, Docker, puertos del bloque de Ágora, secretos presentes); hooks de `.githooks/` activos | Desde un clon limpio, `mise install` y `scripts/verificar-entorno.sh` terminan sin errores, y fuera de la carpeta del proyecto las versiones del sistema no cambian |
+| T-12 | `supabase init` con `project_id = "agora"`, Postgres 17 y los puertos 55320 a 55329; sección `[auth]` con el registro público cerrado (la configuración de Auth de la nube se sube con `supabase config push`, no a mano en el panel); `infra/local/compose.yaml` (proyecto `agora`) con n8n en versión fija y volúmenes propios; `worker/Dockerfile` multiarquitectura (amd64 y arm64) con Python, uv, TeX Live y Chromium; comando único para levantar y bajar todo | Un comando levanta Supabase, n8n y el worker; `supabase db reset` aplica las migraciones; la imagen del worker compila un `.tex` de prueba; bajar todo no deja contenedores ni puertos ocupados |
+| T-13 | Trabajo manual del titular según la guía 2: proyecto Supabase `agora-dev`, Vercel conectado al repositorio, secretos de GitHub Actions, proyecto de Google Cloud con la API de Drive y credenciales OAuth, clave de Gemini, token de Claude Code para el worker, cuenta de Oracle Cloud y VM ARM creada | Cada secreto está guardado en el gestor de contraseñas y en el `.env.local` que le corresponde; la lista de comprobación de la guía 2 está completa |
+| T-14 | Guías 0 a 5 en `docs/guias/entorno/` (mapa y orden, sistema base y aislamiento, cuentas y secretos, frontend, backend y datos, solución de problemas) con la matriz de versiones verificada; script que genera los PDF | Los PDF se generan con un comando y el titular puede seguirlos sin ayuda |
 
 ## 4. Fuera del backlog (pendientes de decisión, CONTEXTO sección 13)
 
-Plan oficial de la malla (fuente) · correo como canal de entrega · Obsidian · Grok frente a Groq · límites de Oracle Always Free · proyecto Supabase libre.
+Plan oficial de la malla (fuente) · correo como canal de entrega · Obsidian · Grok frente a Groq · límites de Oracle Always Free · proyecto Supabase de producción: el titular ya usa sus 2 proyectos gratuitos (`agora-dev` y uno personal ajeno a Ágora); opciones: pausar el otro proyecto, pasar la organización `agora` a Pro u operar solo con `agora-dev`.

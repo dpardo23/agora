@@ -1,10 +1,10 @@
 ---
 id: EP-16
 titulo: PWA y notificaciones
-sprints: [SPRINT-12, SPRINT-13]
+sprints: [SPRINT-13, SPRINT-14]
 puntos_hu: 18
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 version: "1.0"
 estado: Abierta
 ---
@@ -18,10 +18,10 @@ Instalar la plataforma, usarla sin conexión donde tiene sentido, recibir notifi
 
 | PBI | Tipo | Título | Sprint | MoSCoW | Pts |
 |---|---|---|---|---|---|
-| [HU-16.01](../historias/EP-16-pwa-y-notificaciones/HU-16.01-instalar-como-aplicacion.md) | Historia | Instalar la plataforma como aplicación | SPRINT-12 | Must | 3 |
-| [HU-16.02](../historias/EP-16-pwa-y-notificaciones/HU-16.02-usar-sin-conexion.md) | Historia | Abrir pantallas y documentos sin conexión | SPRINT-12 | Should | 5 |
-| [HU-16.03](../historias/EP-16-pwa-y-notificaciones/HU-16.03-recibir-notificaciones-push.md) | Historia | Recibir notificaciones push | SPRINT-13 | Should | 5 |
-| [HU-16.04](../historias/EP-16-pwa-y-notificaciones/HU-16.04-cumplir-accesibilidad-y-rendimiento.md) | Historia no funcional | Cumplir los umbrales de accesibilidad y rendimiento en toda la plataforma | SPRINT-13 | Must | 5 |
+| [HU-16.01](../historias/EP-16-pwa-y-notificaciones/HU-16.01-instalar-como-aplicacion.md) | Historia | Instalar la plataforma como aplicación | SPRINT-13 | Must | 3 |
+| [HU-16.02](../historias/EP-16-pwa-y-notificaciones/HU-16.02-usar-sin-conexion.md) | Historia | Abrir pantallas y documentos sin conexión | SPRINT-13 | Should | 5 |
+| [HU-16.03](../historias/EP-16-pwa-y-notificaciones/HU-16.03-recibir-notificaciones-push.md) | Historia | Recibir notificaciones push | SPRINT-14 | Should | 5 |
+| [HU-16.04](../historias/EP-16-pwa-y-notificaciones/HU-16.04-cumplir-accesibilidad-y-rendimiento.md) | Historia no funcional | Cumplir los umbrales de accesibilidad y rendimiento en toda la plataforma | SPRINT-14 | Must | 5 |
 
 ## Criterio de cierre
 Lighthouse PWA aprobado, sin errores de axe y push entregados.

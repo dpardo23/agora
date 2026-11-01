@@ -1,29 +1,30 @@
 ---
 id: SPRINT-03
-nombre: "Cuenta segura (H3)"
-hito: H3
+nombre: "Datos y acceso (H2 + H3)"
+hito: H2 + H3
 estado: Por iniciar
-puntos_comprometidos: 18
+puntos_comprometidos: 29
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-03 · Cuenta segura (H3)
+# SPRINT-03 · Datos y acceso (H2 + H3)
 
 ## Objetivo del sprint
-El titular gestiona su cuenta (tema persistido, contraseña, sesiones, recuperación y cierre de sesión), con el flujo probado en Playwright.
+La base está aplicada con RLS y el usuario entra con usuario, contraseña y código de Gmail en un dispositivo nuevo.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| [HU-03.04](../historias/EP-03-acceso-y-seguridad/HU-03.04-recuperar-acceso.md) | Historia | Recuperar el acceso con un código enviado a Gmail | EP-03 | Must | 5 | Borrador |
-| [HU-03.05](../historias/EP-03-acceso-y-seguridad/HU-03.05-cerrar-sesion.md) | Historia | Cerrar sesión en este dispositivo o en todos | EP-03 | Must | 3 | Borrador |
-| [HU-04.01](../historias/EP-04-configuracion/HU-04.01-guardar-preferencia-de-tema.md) | Historia | Guardar la preferencia de tema en mi perfil | EP-04 | Must | 2 | Borrador |
-| [HU-04.02](../historias/EP-04-configuracion/HU-04.02-cambiar-contrasena.md) | Historia | Cambiar la contraseña con verificación por Gmail | EP-04 | Must | 5 | Borrador |
-| [HU-04.03](../historias/EP-04-configuracion/HU-04.03-gestionar-sesiones-activas.md) | Historia | Gestionar las sesiones activas y la verificación en dos pasos | EP-04 | Must | 3 | Borrador |
+| T-03 | Historia técnica | Corregir y aplicar la migración 0001 con RLS, Realtime y tipos generados | EP-03 | Must | 8 | Borrador |
+| T-04 | Chore | Crear la semilla de datos de ejemplo para desarrollo y QA | EP-03 | Must | 3 | Borrador |
+| T-10 | Spike | Elegir el canal de envío de correo transaccional (Gmail API o proveedor SMTP) | EP-03 | Must | 2 | Borrador |
+| [HU-03.01](../historias/EP-03-acceso-y-seguridad/HU-03.01-iniciar-sesion-con-usuario.md) | Historia | Iniciar sesión con usuario y contraseña | EP-03 | Must | 5 | Borrador |
+| [HU-03.02](../historias/EP-03-acceso-y-seguridad/HU-03.02-verificar-dispositivo-nuevo.md) | Historia | Verificar un dispositivo nuevo con un código enviado a Gmail | EP-03 | Must | 8 | Borrador |
+| [HU-03.03](../historias/EP-03-acceso-y-seguridad/HU-03.03-recordar-dispositivo-confiable.md) | Historia | Recordar un dispositivo de confianza durante 30 días | EP-03 | Must | 3 | Borrador |
 
-**Total comprometido:** 18 puntos.
+**Total comprometido:** 29 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -41,11 +42,9 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-03.04 | `docs/qa/test-cases/TC-HU-03.04.md` (por redactar) | | | | |
-| HU-03.05 | `docs/qa/test-cases/TC-HU-03.05.md` (por redactar) | | | | |
-| HU-04.01 | `docs/qa/test-cases/TC-HU-04.01.md` (por redactar) | | | | |
-| HU-04.02 | `docs/qa/test-cases/TC-HU-04.02.md` (por redactar) | | | | |
-| HU-04.03 | `docs/qa/test-cases/TC-HU-04.03.md` (por redactar) | | | | |
+| HU-03.01 | `docs/qa/test-cases/TC-HU-03.01.md` (por redactar) | | | | |
+| HU-03.02 | `docs/qa/test-cases/TC-HU-03.02.md` (por redactar) | | | | |
+| HU-03.03 | `docs/qa/test-cases/TC-HU-03.03.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

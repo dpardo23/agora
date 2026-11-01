@@ -1,31 +1,27 @@
 ---
 id: SPRINT-01
-nombre: "Kit de interfaz (H1)"
-hito: H1
-estado: Por iniciar
-puntos_comprometidos: 34
+nombre: "Cimientos navegables (H0, parte 2)"
+hito: H0
+estado: Siguiente
+puntos_comprometidos: 11
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-01 · Kit de interfaz (H1)
+# SPRINT-01 · Cimientos navegables (H0, parte 2)
 
 ## Objetivo del sprint
-Todos los estados de `Controles` y `ControlesMovil` reproducidos y documentados en una página de muestras (`/dev/kit`, solo en desarrollo).
+Abrir la web, navegar por las 17 rutas vacías en ambos temas y en tres anchos.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| [HU-02.01](../historias/EP-02-kit-de-interfaz/HU-02.01-accionar-botones-con-estados.md) | Historia | Accionar botones con estados consistentes | EP-02 | Must | 3 | Borrador |
-| [HU-02.02](../historias/EP-02-kit-de-interfaz/HU-02.02-ingresar-datos-con-validacion.md) | Historia | Ingresar datos en campos con validación visible | EP-02 | Must | 5 | Borrador |
-| [HU-02.03](../historias/EP-02-kit-de-interfaz/HU-02.03-elegir-opciones-en-desplegables.md) | Historia | Elegir opciones en select, combobox, multiselección y menú contextual | EP-02 | Must | 8 | Borrador |
-| [HU-02.04](../historias/EP-02-kit-de-interfaz/HU-02.04-elegir-fecha-y-hora.md) | Historia | Elegir fecha y hora con el selector | EP-02 | Must | 5 | Borrador |
-| [HU-02.05](../historias/EP-02-kit-de-interfaz/HU-02.05-recibir-retroalimentacion.md) | Historia | Recibir retroalimentación con toasts, progreso, esqueletos y estados vacíos | EP-02 | Must | 5 | Borrador |
-| [HU-02.06](../historias/EP-02-kit-de-interfaz/HU-02.06-abrir-dialogos-adaptables.md) | Historia | Abrir diálogos como modal o como hoja inferior según el dispositivo | EP-02 | Must | 5 | Borrador |
-| [HU-02.07](../historias/EP-02-kit-de-interfaz/HU-02.07-adjuntar-archivos-arrastrando.md) | Historia | Adjuntar archivos arrastrándolos o pegando un enlace o DOI | EP-02 | Should | 3 | Borrador |
+| [HU-01.01](../historias/EP-01-base-y-navegacion/HU-01.01-navegar-entre-secciones.md) | Historia | Navegar entre las secciones de la plataforma | EP-01 | Must | 5 | Borrador |
+| [HU-01.02](../historias/EP-01-base-y-navegacion/HU-01.02-alternar-tema-claro-oscuro.md) | Historia | Alternar entre el tema claro y el oscuro sin parpadeo | EP-01 | Must | 3 | Borrador |
+| [HU-01.03](../historias/EP-01-base-y-navegacion/HU-01.03-adaptar-interfaz-al-dispositivo.md) | Historia | Usar la plataforma en móvil, tablet y escritorio | EP-01 | Must | 3 | Borrador |
 
-**Total comprometido:** 34 puntos.
+**Total comprometido:** 11 puntos. El proyecto web, el CI y el entorno se preparan antes, en SPRINT-00.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -43,13 +39,9 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-02.01 | `docs/qa/test-cases/TC-HU-02.01.md` (por redactar) | | | | |
-| HU-02.02 | `docs/qa/test-cases/TC-HU-02.02.md` (por redactar) | | | | |
-| HU-02.03 | `docs/qa/test-cases/TC-HU-02.03.md` (por redactar) | | | | |
-| HU-02.04 | `docs/qa/test-cases/TC-HU-02.04.md` (por redactar) | | | | |
-| HU-02.05 | `docs/qa/test-cases/TC-HU-02.05.md` (por redactar) | | | | |
-| HU-02.06 | `docs/qa/test-cases/TC-HU-02.06.md` (por redactar) | | | | |
-| HU-02.07 | `docs/qa/test-cases/TC-HU-02.07.md` (por redactar) | | | | |
+| HU-01.01 | `docs/qa/test-cases/TC-HU-01.01.md` (por redactar) | | | | |
+| HU-01.02 | `docs/qa/test-cases/TC-HU-01.02.md` (por redactar) | | | | |
+| HU-01.03 | `docs/qa/test-cases/TC-HU-01.03.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

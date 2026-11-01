@@ -76,8 +76,8 @@ Reglas:
 4. El pie cita la HU, el bug o el ítem técnico (`Refs: HU-03.01`).
 5. Un cambio incompatible lleva `!` después del ámbito y `BREAKING CHANGE:` en el pie.
 6. Los commits no mencionan herramientas de generación de código ni coautores automáticos. La autoría es siempre de Juan Diego Pardo Pozo. Lo garantizan tres capas:
-   - el entorno de desarrollo no agrega atribución (`attribution` vacío en `.claude/settings.json`);
-   - el hook local `.githooks/commit-msg` rechaza líneas `Co-authored-by` y similares (se activa una vez por clon con `git config core.hooksPath .githooks`);
+   - el entorno de desarrollo local está configurado para no agregar atribución;
+   - el hook local `.githooks/commit-msg` rechaza líneas `Co-authored-by` y similares (los hooks de `.githooks/` se activan una vez por clon con `git config core.hooksPath .githooks`);
    - el CI rechaza cualquier PR con commits de ese tipo.
    GitHub muestra como *contributor* solo a quien figura como autor o coautor de un commit; con estas capas, ese es únicamente `dpardo23`.
 
@@ -105,7 +105,7 @@ Reglas:
 
 ## 4. Versiones y releases
 
-- **SemVer:** `MAJOR.MINOR.PATCH`. Hasta la primera versión estable se usa `0.y.z`. Cada sprint cerrado sube MINOR (SPRINT-00 da `v0.1.0`, SPRINT-01 da `v0.2.0`…).
+- **SemVer:** `MAJOR.MINOR.PATCH`. Hasta la primera versión estable se usa `0.y.z`. Cada sprint cerrado sube MINOR (SPRINT-01 da `v0.1.0`, SPRINT-02 da `v0.2.0`…). SPRINT-00 prepara el entorno y no publica versión.
 - Cierre de sprint:
   1. `release/sprint-NN` desde `develop`;
   2. actualizar `CHANGELOG.md` (generado desde los commits);
@@ -131,3 +131,20 @@ La guía completa, paso a paso, está en [`docs/configuracion-github.md`](docs/c
 - Ningún documento, commit, PR ni comentario menciona herramientas de IA, asistentes ni generadores de código como autores o colaboradores. El CI lo verifica (`scripts/verificar-docs.py`).
 - Esta regla no afecta los nombres de los **modelos que usa el producto** (por ejemplo, el motor Claude o Gemini de un rol del Olimpo): son datos del sistema, no autoría.
 - Las rutas a archivos dentro de la documentación deben existir; el CI rechaza enlaces rotos.
+
+## 8. Archivos privados
+
+El repositorio es público. Solo se versiona la obra del proyecto: código, migraciones, documentación de producto y QA, CI y guías. **Nunca** se suben:
+
+- secretos y credenciales (`.env*` salvo `.env.example`, llaves, tokens, cuentas de servicio);
+- la configuración local de herramientas de desarrollo y de asistencia;
+- material de terceros o privado: las guías de la materia y la especificación original (`docs/referencia/`) y el diseño fuente con sus mockups (`design/`);
+- datos de servicios locales (volúmenes de Docker, n8n, Supabase) y los PDF generados de las guías.
+
+La lista completa y comentada está en `.gitignore`, que es la única fuente de verdad. Tres capas la hacen cumplir:
+
+1. `.gitignore` evita que esos archivos aparezcan como cambios.
+2. El hook local `.githooks/pre-commit` rechaza un commit que incluya cualquiera de ellos, aunque se haya forzado con `git add -f`.
+3. El CI (paso «Rutas privadas» del job de seguridad) falla si algún archivo versionado coincide con `.gitignore`, y gitleaks busca secretos en todo el historial.
+
+Los documentos pueden citar rutas privadas (por ejemplo, un mockup): el verificador de documentos las acepta porque existen en el equipo del titular aunque no en el clon público.

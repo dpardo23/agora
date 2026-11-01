@@ -19,11 +19,11 @@ import sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-EXCLUIR = ("node_modules", ".git", "docs/referencia", ".claude/skills/")
-SKILLS_PROPIAS = ("escribir-hu", "escribir-tc", "reportar-bug", "portar-pantalla")
-PREFIJOS_VERIFICABLES = ("docs/", "design/", "scripts/", ".github/", ".claude/rules/", ".claude/agents/")
+EXCLUIR = ("node_modules", ".git/")
+PREFIJOS_VERIFICABLES = ("docs/", "design/", "scripts/", ".github/")
 MARCADORES = ("XX", "NN", "<", "{", "*", "…", "AAAA")
-PENDIENTES = ("docs/qa/test-cases/TC-", "docs/qa/bugs/BUG-", "docs/qa/bugs/evidencias/")
+# Rutas que se crean más adelante en su sprint (scripts/verificar-entorno.sh: T-11, SPRINT-00).
+PENDIENTES = ("docs/qa/test-cases/TC-", "docs/qa/bugs/BUG-", "docs/qa/bugs/evidencias/", "scripts/verificar-entorno.sh")
 AUTORIA_PROHIBIDA = [
     re.compile(r"(elaborado_por|responsable|autor)\s*:.*\b(claude|ia|asistente|chatgpt|copilot|gpt)\b", re.I),
     re.compile(r"\b(con|por|usando)\s+(claude code|un asistente|asistente de ia|inteligencia artificial)\b", re.I),
@@ -33,10 +33,11 @@ AUTORIA_PROHIBIDA = [
 
 
 def archivos_md() -> list[Path]:
+    """Solo los documentos que se versionan: lo privado (.gitignore) existe solo en local."""
     salida = []
     for ruta in RAIZ.rglob("*.md"):
         rel = ruta.relative_to(RAIZ).as_posix()
-        if any(x in rel for x in EXCLUIR) and not any(f"/{s}/" in f"/{rel}" for s in SKILLS_PROPIAS):
+        if any(x in rel for x in EXCLUIR) or ignorada_por_git(rel):
             continue
         salida.append(ruta)
     return salida
@@ -66,7 +67,7 @@ def main() -> int:
                 if destino.startswith(("http://", "https://", "mailto:", "#")):
                     continue
                 objetivo = (archivo.parent / destino.split("#")[0]).resolve()
-                if not objetivo.exists():
+                if not objetivo.exists() and not ignorada_por_git(str(objetivo)):
                     problemas.append(f"{rel}:{n}: enlace roto → {destino}")
             # 2. Rutas citadas
             candidatas = re.findall(r"`([^`\s]+)`", linea)

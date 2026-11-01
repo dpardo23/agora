@@ -1,30 +1,29 @@
 ---
 id: SPRINT-04
-nombre: "El Olimpo cobra vida (H4, parte 1)"
-hito: H4
+nombre: "Cuenta segura (H3)"
+hito: H3
 estado: Por iniciar
-puntos_comprometidos: 37
+puntos_comprometidos: 18
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-04 · El Olimpo cobra vida (H4, parte 1)
+# SPRINT-04 · Cuenta segura (H3)
 
 ## Objetivo del sprint
-La oficina muestra a los 10 dioses en sus salas, siempre en movimiento y dirigidos por eventos simulados en Realtime.
+El titular gestiona su cuenta (tema persistido, contraseña, sesiones, recuperación y cierre de sesión), con el flujo probado en Playwright.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| T-05 | Spike | Diseñar la hoja de sprites de los dioses y la escena del Olimpo | EP-05 | Must | 5 | Borrador |
-| T-06 | Historia técnica | Crear un simulador de eventos de agentes para desarrollo y demos | EP-05 | Must | 3 | Borrador |
-| [HU-05.01](../historias/EP-05-oficina-del-olimpo/HU-05.01-ver-oficina-del-olimpo.md) | Historia | Ver la Oficina del Olimpo con cada dios en su sala | EP-05 | Must | 8 | Borrador |
-| [HU-05.02](../historias/EP-05-oficina-del-olimpo/HU-05.02-ver-dioses-en-movimiento.md) | Historia | Ver a los dioses moverse según su estado en tiempo real | EP-05 | Must | 13 | Borrador |
-| [HU-05.03](../historias/EP-05-oficina-del-olimpo/HU-05.03-consultar-detalle-de-un-dios.md) | Historia | Consultar el detalle de un dios seleccionado | EP-05 | Must | 5 | Borrador |
-| [HU-05.04](../historias/EP-05-oficina-del-olimpo/HU-05.04-consultar-oficina-sin-escena.md) | Historia | Consultar la oficina sin la escena desde la lista accesible y el móvil | EP-05 | Must | 3 | Borrador |
+| [HU-03.04](../historias/EP-03-acceso-y-seguridad/HU-03.04-recuperar-acceso.md) | Historia | Recuperar el acceso con un código enviado a Gmail | EP-03 | Must | 5 | Borrador |
+| [HU-03.05](../historias/EP-03-acceso-y-seguridad/HU-03.05-cerrar-sesion.md) | Historia | Cerrar sesión en este dispositivo o en todos | EP-03 | Must | 3 | Borrador |
+| [HU-04.01](../historias/EP-04-configuracion/HU-04.01-guardar-preferencia-de-tema.md) | Historia | Guardar la preferencia de tema en mi perfil | EP-04 | Must | 2 | Borrador |
+| [HU-04.02](../historias/EP-04-configuracion/HU-04.02-cambiar-contrasena.md) | Historia | Cambiar la contraseña con verificación por Gmail | EP-04 | Must | 5 | Borrador |
+| [HU-04.03](../historias/EP-04-configuracion/HU-04.03-gestionar-sesiones-activas.md) | Historia | Gestionar las sesiones activas y la verificación en dos pasos | EP-04 | Must | 3 | Borrador |
 
-**Total comprometido:** 37 puntos.
+**Total comprometido:** 18 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -42,10 +41,11 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-05.01 | `docs/qa/test-cases/TC-HU-05.01.md` (por redactar) | | | | |
-| HU-05.02 | `docs/qa/test-cases/TC-HU-05.02.md` (por redactar) | | | | |
-| HU-05.03 | `docs/qa/test-cases/TC-HU-05.03.md` (por redactar) | | | | |
-| HU-05.04 | `docs/qa/test-cases/TC-HU-05.04.md` (por redactar) | | | | |
+| HU-03.04 | `docs/qa/test-cases/TC-HU-03.04.md` (por redactar) | | | | |
+| HU-03.05 | `docs/qa/test-cases/TC-HU-03.05.md` (por redactar) | | | | |
+| HU-04.01 | `docs/qa/test-cases/TC-HU-04.01.md` (por redactar) | | | | |
+| HU-04.02 | `docs/qa/test-cases/TC-HU-04.02.md` (por redactar) | | | | |
+| HU-04.03 | `docs/qa/test-cases/TC-HU-04.03.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

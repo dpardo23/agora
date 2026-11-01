@@ -1,29 +1,32 @@
 ---
 id: SPRINT-08
-nombre: "Mis materias (H7, parte 1)"
-hito: H7
+nombre: "Consumo bajo control (H6)"
+hito: H6
 estado: Por iniciar
-puntos_comprometidos: 21
+puntos_comprometidos: 36
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-08 · Mis materias (H7, parte 1)
+# SPRINT-08 · Consumo bajo control (H6)
 
 ## Objetivo del sprint
-Una materia creada guarda horario, docente y Drive, y muestra su detalle con la nota necesaria para aprobar.
+La pestaña Consumo muestra datos reales de cupo, gasto y VM; los dioses se pueden configurar.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| [HU-09.01](../historias/EP-09-materias/HU-09.01-agregar-materia.md) | Historia | Agregar una materia con horario, docente y carpeta de Drive | EP-09 | Must | 8 | Borrador |
-| [HU-09.02](../historias/EP-09-materias/HU-09.02-consultar-mis-materias.md) | Historia | Consultar mis materias de la gestión y su detalle | EP-09 | Must | 5 | Borrador |
-| [HU-09.03](../historias/EP-09-materias/HU-09.03-calcular-nota-necesaria.md) | Historia | Calcular la nota necesaria para aprobar una materia | EP-09 | Must | 3 | Borrador |
-| [HU-09.04](../historias/EP-09-materias/HU-09.04-editar-materia.md) | Historia | Editar los datos de una materia | EP-09 | Must | 3 | Borrador |
-| [HU-09.05](../historias/EP-09-materias/HU-09.05-eliminar-materia.md) | Historia | Eliminar una materia confirmando su nombre | EP-09 | Should | 2 | Borrador |
+| [HU-08.01](../historias/EP-08-consumo-e-infraestructura/HU-08.01-consultar-cupo-y-gasto.md) | Historia | Consultar el cupo de Claude y el gasto del Olimpo | EP-08 | Must | 5 | Borrador |
+| [HU-08.02](../historias/EP-08-consumo-e-infraestructura/HU-08.02-vigilar-la-vm.md) | Historia | Vigilar el estado de la VM y el riesgo de reclamo | EP-08 | Must | 5 | Borrador |
+| [HU-08.03](../historias/EP-08-consumo-e-infraestructura/HU-08.03-consultar-gasto-por-paso-y-documento.md) | Historia | Consultar el gasto por paso y por documento | EP-08 | Should | 3 | Borrador |
+| [HU-08.04](../historias/EP-08-consumo-e-infraestructura/HU-08.04-limpiar-cache-de-fuentes.md) | Historia | Limpiar la caché de fuentes de la VM | EP-08 | Should | 2 | Borrador |
+| [HU-05.06](../historias/EP-05-oficina-del-olimpo/HU-05.06-configurar-un-dios.md) | Historia | Configurar el motor, los límites y las instrucciones de un rol | EP-05 | Should | 5 | Borrador |
+| [HU-05.07](../historias/EP-05-oficina-del-olimpo/HU-05.07-recorrer-dos-plantas.md) | Historia | Recorrer las dos plantas del Olimpo cuando hay más agentes | EP-05 | Could | 8 | Borrador |
+| [HU-05.08](../historias/EP-05-oficina-del-olimpo/HU-05.08-gestionar-dioses-y-roles.md) | Historia | Gestionar los dioses del Olimpo y asignarles roles | EP-05 | Should | 5 | Borrador |
+| T-09 | Spike | Elegir el motor de imágenes del Ilustrador (Iris) | EP-05 | Could | 3 | Borrador |
 
-**Total comprometido:** 21 puntos.
+**Total comprometido:** 36 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -41,11 +44,13 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-09.01 | `docs/qa/test-cases/TC-HU-09.01.md` (por redactar) | | | | |
-| HU-09.02 | `docs/qa/test-cases/TC-HU-09.02.md` (por redactar) | | | | |
-| HU-09.03 | `docs/qa/test-cases/TC-HU-09.03.md` (por redactar) | | | | |
-| HU-09.04 | `docs/qa/test-cases/TC-HU-09.04.md` (por redactar) | | | | |
-| HU-09.05 | `docs/qa/test-cases/TC-HU-09.05.md` (por redactar) | | | | |
+| HU-08.01 | `docs/qa/test-cases/TC-HU-08.01.md` (por redactar) | | | | |
+| HU-08.02 | `docs/qa/test-cases/TC-HU-08.02.md` (por redactar) | | | | |
+| HU-08.03 | `docs/qa/test-cases/TC-HU-08.03.md` (por redactar) | | | | |
+| HU-08.04 | `docs/qa/test-cases/TC-HU-08.04.md` (por redactar) | | | | |
+| HU-05.06 | `docs/qa/test-cases/TC-HU-05.06.md` (por redactar) | | | | |
+| HU-05.07 | `docs/qa/test-cases/TC-HU-05.07.md` (por redactar) | | | | |
+| HU-05.08 | `docs/qa/test-cases/TC-HU-05.08.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 
