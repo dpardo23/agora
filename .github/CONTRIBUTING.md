@@ -116,7 +116,7 @@ Reglas:
 
 ## 5. Configuración del repositorio en GitHub
 
-La guía completa, paso a paso, está en [`docs/guias/repositorio/configuracion-github.md`](docs/guias/repositorio/configuracion-github.md): cuenta, General, rulesets de `main` y `develop` con `ci-ok` obligatorio, Actions, environments `staging` y `produccion`, seguridad, integraciones, issues, milestones, Projects y releases.
+La guía completa, paso a paso, está en [`docs/guias/repositorio/configuracion-github.md`](../docs/guias/repositorio/configuracion-github.md): cuenta, General, rulesets de `main` y `develop` con `ci-ok` obligatorio, Actions, environments `staging` y `produccion`, seguridad, integraciones, issues, milestones, Projects y releases.
 
 ## 6. Licencia y contribuciones externas
 

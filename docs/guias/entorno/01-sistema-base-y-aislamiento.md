@@ -1,6 +1,6 @@
 # Guía 1 · Sistema base y aislamiento
 
-Versión 1.3 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.4 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué instalar en CachyOS, cómo activarlo y cómo dejar el proyecto aislado del resto del equipo. Todo lo de esta guía lo hace el titular a mano, una sola vez. Los comandos se escriben en la terminal (zsh); los que empiezan con `sudo` piden tu contraseña.
 
@@ -133,7 +133,7 @@ supabase = "2.122.0"
 _.file = ".env.local"
 ```
 
-Las tareas del proyecto son scripts de la carpeta `mise-tasks/` (T-12). `mise tasks` las lista:
+Las tareas del proyecto son scripts de la carpeta `.mise/tasks/` (T-12). `mise tasks` las lista:
 
 | Tarea | Qué hace |
 |---|---|

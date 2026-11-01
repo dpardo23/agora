@@ -1,6 +1,6 @@
 # Configuración de GitHub · Ágora
 
-Versión 1.4 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.5 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Guía paso a paso para dejar el repositorio `dpardo23/agora` configurado de forma profesional. Cada sección dice **dónde** está la opción, **qué** elegir y, en una línea, **para qué** sirve. Los nombres de los menús son los de la interfaz de GitHub en inglés.
 
@@ -71,7 +71,7 @@ git config --global tag.gpgsign true
 | Allow rebase merging | Desactivado | Evita una tercera forma de fusionar |
 | Always suggest updating pull request branches | Activado | Muestra el botón para traer los últimos cambios de la base |
 | Allow auto-merge | Activado | El PR se fusiona solo cuando el CI termina en verde |
-| Automatically delete head branches | Activado | Borra la rama después del merge (CONTRIBUTING.md, sección 1) |
+| Automatically delete head branches | Activado | Borra la rama después del merge (.github/CONTRIBUTING.md, sección 1) |
 
 Qué método se permite en cada rama lo fijan los rulesets de la sección 3.
 
@@ -165,7 +165,7 @@ Regla: ningún secreto en el código ni en `docs/`. El CI lo verifica con gitlea
 
 | Opción | Valor | Para qué |
 |---|---|---|
-| Private vulnerability reporting | Activado | Quien encuentre una falla te la reporta en privado (`SECURITY.md`) |
+| Private vulnerability reporting | Activado | Quien encuentre una falla te la reporta en privado (`.github/SECURITY.md`) |
 | Dependency graph | Activado | Inventario de dependencias |
 | Dependabot alerts | Activado | Avisos de dependencias con vulnerabilidades conocidas |
 | Dependabot security updates | Activado | PR automáticos que corrigen esas vulnerabilidades |
@@ -189,7 +189,7 @@ Regla: ningún secreto en el código ni en `docs/`. El CI lo verifica con gitlea
 | Settings → Webhooks | Nada | Vercel se conecta por su app |
 | Settings → Deploy keys | Nada | No hay servidores que clonen el repo por SSH. Si la VM lo necesita (T-07), se agrega una llave **de solo lectura** |
 | Settings → Pages | Desactivado | La app vive en Vercel |
-| Settings → Collaborators | Nadie | Proyecto personal; los aportes externos requieren un acuerdo (CONTRIBUTING.md, sección 6) |
+| Settings → Collaborators | Nadie | Proyecto personal; los aportes externos requieren un acuerdo (.github/CONTRIBUTING.md, sección 6) |
 | Settings → Email notifications | Opcional: tu correo | Recibir un resumen de cada push |
 
 ---
@@ -204,7 +204,7 @@ Los documentos en `docs/` son la fuente de verdad. Los issues son el **tablero d
 | `historia.yml` | Una HU del backlog: ID, enlace al archivo, épica, sprint, MoSCoW y puntos |
 | `tecnico.yml` | Un ítem técnico (T-NN): historia técnica, spike o chore |
 | `bug.yml` | Un bug: ID, HU, CA violado, TC de origen, severidad y prioridad |
-| `config.yml` | Desactiva los issues en blanco y enlaza a `SECURITY.md` para reportes de seguridad |
+| `config.yml` | Desactiva los issues en blanco y enlaza a `.github/SECURITY.md` para reportes de seguridad |
 
 ### Etiquetas (Issues → Labels)
 Borra las etiquetas por defecto y crea estas. Con la CLI de GitHub:
@@ -279,8 +279,8 @@ Se crea desde tu perfil → **Projects → New project → Table**, con el nombr
 |---|---|
 | `README.md` | Portada del repo |
 | `LICENSE` | Licencia propietaria; GitHub la muestra como «View license» |
-| `CONTRIBUTING.md` | Aparece como enlace al abrir un issue o un PR |
-| `SECURITY.md` | Política de seguridad; GitHub la enlaza en la pestaña Security |
+| `.github/CONTRIBUTING.md` | Aparece como enlace al abrir un issue o un PR |
+| `.github/SECURITY.md` | Política de seguridad; GitHub la enlaza en la pestaña Security |
 | `.github/CODEOWNERS` | Te asigna como revisor de todo PR automáticamente |
 | `.github/pull_request_template.md` | Plantilla que se carga al abrir un PR |
 | `.github/ISSUE_TEMPLATE/` | Formularios de issues |

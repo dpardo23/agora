@@ -2,4 +2,4 @@ blank_issues_enabled: false
 contact_links:
   - name: Reportar una vulnerabilidad
     url: https://github.com/dpardo23/agora/security/advisories/new
-    about: Las fallas de seguridad se reportan en privado (SECURITY.md).
+    about: Las fallas de seguridad se reportan en privado (.github/SECURITY.md).

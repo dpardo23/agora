@@ -1,6 +1,6 @@
 # Documentación · Ágora
 
-Versión 1.0 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.1 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Índice de la documentación del proyecto. Cada carpeta agrupa una disciplina; la tabla de la sección 2 indica qué carpeta sirve a cada materia de la carrera.
 
@@ -16,7 +16,7 @@ Versión 1.0 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Die
 | [`plantillas/`](plantillas/HU.md) | Plantillas de épica, historia de usuario, test case, bug report y ADR | — |
 | `referencia/` | Material privado de consulta: guías de redacción de la materia y especificación original. No se versiona | — |
 
-Fuera de `docs/` están el flujo de trabajo con Git ([`CONTRIBUTING.md`](../CONTRIBUTING.md)) y la política de seguridad ([`SECURITY.md`](../SECURITY.md)).
+Fuera de `docs/` están el flujo de trabajo con Git ([`.github/CONTRIBUTING.md`](../.github/CONTRIBUTING.md)) y la política de seguridad ([`.github/SECURITY.md`](../.github/SECURITY.md)).
 
 ## 2. Materias y carpetas
 
