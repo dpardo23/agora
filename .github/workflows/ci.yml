@@ -378,10 +378,43 @@ jobs:
       - run: uv run mypy umss
       - run: uv run pytest --cov=umss
 
+  # La imagen del worker se construye para las dos arquitecturas en runners nativos: amd64 (tu PC) y
+  # arm64 (la Oracle VM). Solo corre cuando cambia worker/, porque instalar TeX Live tarda varios minutos.
+  imagen-worker:
+    name: Imagen del worker (${{ matrix.arquitectura }})
+    needs: cambios
+    if: needs.cambios.outputs.hay_worker == 'true' && needs.cambios.outputs.worker == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arquitectura: amd64
+            runner: ubuntu-24.04
+          - arquitectura: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Construir la imagen
+        run: docker build -t agora/worker:prueba worker
+      - name: Comprobar usuario, arquitectura, Chromium y compilación del .tex de prueba
+        run: |
+          docker run --rm -v "$PWD/worker/tests/fixtures:/tex:ro" agora/worker:prueba sh -c '
+            set -e
+            test "$(id -u)" = 10001
+            uname -m
+            chromium --version
+            latexmk -xelatex -interaction=nonstopmode -output-directory=/tmp /tex/prueba.tex >/dev/null
+            test -s /tmp/prueba.pdf
+            .venv/bin/python -c "import umss"
+          '
+
   ci-ok:
     name: ci-ok
     if: always()
-    needs: [versiones, cambios, convenciones, seguridad, flujos, documentacion, web, e2e, lighthouse, base-de-datos, worker]
+    needs: [versiones, cambios, convenciones, seguridad, flujos, documentacion, web, e2e, lighthouse, base-de-datos, worker, imagen-worker]
     runs-on: ubuntu-latest
     steps:
       - name: Resumen

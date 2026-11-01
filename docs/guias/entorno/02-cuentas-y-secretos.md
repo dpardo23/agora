@@ -829,15 +829,16 @@ Hace falta que exista `apps/web` en `develop` (T-01, ya fusionado).
    Las dos son públicas por diseño, pero se copian desde la entrada «Supabase · agora-dev» del gestor, no desde el chat. *Production* queda vacío hasta que exista el proyecto de producción: mientras tanto, `/api/v1/salud` responde `"supabase": "sin_configurar"`. `SUPABASE_SECRET_KEY` **no** se agrega hasta que algún código de `src/server/` la use.
 6. **Settings → Git → Production Branch:** `main`. Así `develop` y cada PR generan previews, y solo `main` despliega a producción. Mientras `main` no tenga `apps/web` (llega con la primera release), sus despliegues fallan; es esperado.
 7. **Settings → Build and Deployment:**
-   - **Node.js Version:** 24.x.
+   - **Node.js Version → Project Settings:** 24.x. Vercel propone 26.x por defecto; hay que cambiarlo.
    - **Include files outside the Root Directory in the Build Step:** activado (el `pnpm-lock.yaml` y `pnpm-workspace.yaml` están en la raíz).
-8. **Settings → Deployment Protection:** deja **Vercel Authentication** activado en las previews. Las URL de preview solo se abren con tu sesión de Vercel; no lo desactives para probar.
-9. **No** conectes la integración de Supabase en Vercel (*Integrations*): copiaría la `service_role` a todos los entornos. Las variables se ponen a mano (paso 5).
+8. **Settings → Functions → Function Region:** São Paulo (`gru1`), la región de agora-dev. Por defecto es Washington (`iad1`) y cada consulta a la base cruzaría el continente. El cambio se aplica en el siguiente despliegue.
+9. **Settings → Deployment Protection:** deja **Vercel Authentication** activado en las previews. Las URL de preview solo se abren con tu sesión de Vercel; no lo desactives para probar.
+10. **No** conectes la integración de Supabase en Vercel (*Integrations*, ni el botón «Add» que aparece al crear el proyecto): copiaría la `service_role` a todos los entornos. Las variables se ponen a mano (paso 5).
 
 `ENABLE_EXPERIMENTAL_COREPACK=1` hace que Vercel use la versión exacta del campo `packageManager` del `package.json` raíz (pnpm 12.17.0). Sin ella usa otra versión de pnpm, que puede ignorar `allowBuilds` y `overrides` de `pnpm-workspace.yaml` (entre ellos, el parche de seguridad de zod). Si un día Corepack falla, la alternativa es el Install Command `npx pnpm@12.17.0 install --frozen-lockfile`.
 
 **Comprobar:**
-- En el registro del primer build aparece pnpm 12.17.0 y `next build` termina sin errores.
+- En el registro del build (Deployments → el despliegue → **Build Logs**) aparecen `Detected ENABLE_EXPERIMENTAL_COREPACK=1 and "pnpm@12.17.0"` y `Done in … using pnpm v12.17.0`, y `next build` termina sin errores.
 - Al abrir un PR aparece el check de Vercel con una URL de preview.
 - Con la sesión de Vercel abierta en el navegador, `<URL de preview>/api/v1/salud` responde 200 con `"supabase": "ok"`.
 - El check de Vercel es informativo: el único check obligatorio de los rulesets sigue siendo `ci-ok`.
