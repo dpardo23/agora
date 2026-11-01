@@ -167,7 +167,7 @@ else
     fi
   done
   if [ -n "$expuestos" ]; then
-    aviso "puertos visibles desde la red:$expuestos. Limita Docker a 127.0.0.1 (guía 1, sección 3.4)"
+    aviso "puertos visibles desde la red:$expuestos. levanta Supabase con «mise run arriba» (guía 1, sección 3.4)"
   fi
 fi
 

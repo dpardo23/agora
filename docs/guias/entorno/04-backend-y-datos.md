@@ -1,6 +1,6 @@
 # Guía 4 · Backend y datos
 
-Versión 1.3 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.4 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Cómo se levantan en local Supabase, n8n y el worker, y cómo se trabaja con la base de datos. Corresponde al ítem T-12 del SPRINT-00. La API `/api/v1` no es un servicio aparte: vive dentro de Next.js (guía 3).
 
@@ -49,7 +49,7 @@ Estos valores son **solo de desarrollo**. La nube (`agora-dev`) ya tiene el regi
 
 | Comando | Qué hace |
 |---|---|
-| `supabase start` | Descarga las imágenes la primera vez y levanta todo (`mise run arriba` lo incluye) |
+| `mise run arriba` | Levanta Supabase con `supabase start --network-id agora_supabase`, para que sus puertos solo escuchen en `127.0.0.1` (guía 1, sección 3.4). Usa siempre esta tarea en lugar de `supabase start` a secas |
 | `supabase status` | URL, claves locales y puertos. `mise run estado` muestra solo las direcciones |
 | `supabase stop` | Baja los contenedores y **conserva** los datos |
 | `supabase db reset` | Borra la base local y aplica todas las migraciones |
