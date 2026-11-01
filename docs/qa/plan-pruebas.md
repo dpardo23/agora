@@ -1,6 +1,6 @@
 # Plan de pruebas · Ágora
 
-Versión 1.0 · creado el 2026-10-20 · editado el 2026-10-20
+Versión 1.1 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 ## 1. Objetivo
 Verificar en cada sprint que el incremento cumple los criterios de aceptación de sus HU (CA-FE y CA-NF), con evidencia reproducible y trazable.
@@ -9,14 +9,16 @@ Verificar en cada sprint que el incremento cumple los criterios de aceptación d
 
 | Nivel | Qué se prueba | Herramienta | Quién / cuándo |
 |---|---|---|---|
-| Unitario | Lógica pura: cálculo de notas, parser de tareas, zona horaria, máquina de estados de los dioses, FSRS | Vitest | Desarrollo, en cada commit |
+| Unitario | Lógica pura: cálculo de notas, parser de tareas, zona horaria, máquina de estados de los dioses, FSRS | Vitest, con cobertura mínima de 80 % en `src/server/` y `src/features/` | Desarrollo; hook `pre-push` y CI en cada PR |
 | Componente | Kit `components/ui` y componentes de cada feature | Vitest + Testing Library | Desarrollo |
 | Integración de datos | RLS, funciones SQL (`tomar_trabajo`, `riesgo_reclamo`), triggers | pgTAP o pruebas SQL con Supabase local | Al cambiar migraciones |
 | E2E | Flujos de usuario de cada HU | Playwright (Chromium, WebKit, Firefox; 390, 834 y 1440 px) | CI en cada PR |
+| API y contrato | Estado, cuerpo, cabeceras y errores `problem+json` de cada ruta de `/api/v1`; respuestas validadas contra `openapi.json` | Bruno (`apps/web/tests/api/`) y `contrato.spec.ts` de Playwright | CI en cada PR que toca la web |
 | Worker | Pipeline, adaptadores y contrato de eventos | pytest (`uv run pytest`) | CI en cambios de `worker/` |
-| Accesibilidad | axe por ruta, teclado, lector de pantalla | `@axe-core/playwright` + revisión manual | CI y cierre de sprint |
-| Rendimiento | Lighthouse, Core Web Vitals, fps de la oficina | `@lhci/cli`, traza de DevTools | Cierre de sprint |
-| Seguridad | Auth, 2FA, RLS, XSS, secretos | Skill `security-and-hardening`, `/security-review` | HU de EP-03, EP-04 y EP-13 |
+| Accesibilidad | axe en todas las rutas de `tests/e2e/rutas.ts`, en tema claro y oscuro y en escritorio y móvil; teclado; lector de pantalla | `@axe-core/playwright` + revisión manual | CI en cada PR y cierre de sprint |
+| Rendimiento | Lighthouse, Core Web Vitals, fps de la oficina | `@lhci/cli`, traza de DevTools | CI en los PR que tocan la web y cierre de sprint |
+| Calidad estática | Formato, lint, tipos, arquitectura (boundaries), código sin usar, seguridad de los workflows | Prettier, ESLint, TypeScript, Knip, actionlint, zizmor | Hook `pre-push` y CI |
+| Seguridad | Auth, 2FA, RLS, XSS, secretos; dependencias vulnerables; análisis estático | Skill `security-and-hardening`, `/security-review`, CodeQL, `pnpm audit`, gitleaks, Dependabot | HU de EP-03, EP-04 y EP-13; CodeQL y auditorías en cada PR |
 | Manual (TC) | Ejecución de los TC redactados | Este repositorio (`docs/qa/test-cases/`) | Fin de cada sprint |
 
 ## 3. Proceso por sprint
@@ -38,9 +40,10 @@ Verificar en cada sprint que el incremento cumple los criterios de aceptación d
 
 ## 5. Ambientes y datos
 
-- **Local:** `pnpm dev` + Supabase CLI (buzón de correo Inbucket para los códigos de 2FA).
+- **Local:** `pnpm dev` + Supabase local con `mise run arriba` (buzón de correo Mailpit en http://localhost:55324 para los códigos de 2FA).
+- **Barreras automáticas:** las de commit, push y PR están en `docs/guias/entorno/06-calidad-y-pruebas.md`.
 - **Preview:** Vercel por PR + proyecto Supabase de desarrollo.
-- **Datos:** `supabase/seed.sql` (T-04). Usuario de QA `dpardo`. Los datos de ejemplo se identifican como tales y nunca se muestran en producción.
+- **Datos:** semilla en `supabase/borradores/seed.sql` hasta T-03; después, `supabase/seed.sql` (T-04). Usuario de QA `dpardo`. Los datos de ejemplo se identifican como tales y nunca se muestran en producción.
 
 ## 6. Severidad y prioridad de bugs
 

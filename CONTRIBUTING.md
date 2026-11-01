@@ -72,7 +72,7 @@ Reglas:
 
 1. Descripción en español, en **modo imperativo** y en minúscula: «agrega», «corrige», «elimina». Nunca «agregado», «cambios» ni «arreglos».
 2. Como máximo 72 caracteres en la primera línea y sin punto final.
-3. Un commit = un cambio lógico que compila y pasa las pruebas.
+3. Un commit = un cambio lógico que compila y pasa las pruebas. Antes de cada `git push`, el hook `.githooks/pre-push` corre las revisiones rápidas del CI en las partes que cambiaron; las barreras completas están en `docs/guias/entorno/06-calidad-y-pruebas.md`.
 4. El pie cita la HU, el bug o el ítem técnico (`Refs: HU-03.01`).
 5. Un cambio incompatible lleva `!` después del ámbito y `BREAKING CHANGE:` en el pie.
 6. Los commits no mencionan herramientas de generación de código ni coautores automáticos. La autoría es siempre de Juan Diego Pardo Pozo. Lo garantizan tres capas:

@@ -1,0 +1,21 @@
+meta {
+  name: Ruta inexistente
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/no-existe
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.headers["content-type"]: contains application/problem+json
+  res.body.codigo: eq RUTA_NO_ENCONTRADA
+}
+
+docs {
+  Los errores siguen RFC 9457 (docs/api.md, sección 1).
+}

@@ -180,7 +180,7 @@ Una vez por clon, dentro del repositorio:
 git config core.hooksPath .githooks
 ```
 
-Activa los dos hooks del proyecto: `commit-msg` (rechaza coautorías automáticas) y `pre-commit` (rechaza archivos privados aunque se fuercen con `git add -f`).
+Activa los tres hooks del proyecto: `pre-commit` (rechaza archivos privados aunque se fuercen con `git add -f`), `commit-msg` (commitlint y rechazo de coautorías automáticas) y `pre-push` (las revisiones rápidas del CI antes de subir; guía 6, sección 2).
 
 ### 5.3. Firma de commits con SSH
 

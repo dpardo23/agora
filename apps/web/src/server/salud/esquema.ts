@@ -7,5 +7,3 @@ export const esquemaSalud = z.object({
   version: z.string(),
   supabase: z.enum(["ok", "sin_configurar", "error"]),
 });
-
-export type Salud = z.infer<typeof esquemaSalud>;

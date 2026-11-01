@@ -8,5 +8,9 @@ packages:
 allowBuilds:
   '@swc/core': false
   esbuild: false
+  protobufjs: false
   sharp: false
   unrs-resolver: false
+
+minimumReleaseAgeExclude:
+  - knip@6.44.1

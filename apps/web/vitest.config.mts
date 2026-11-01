@@ -23,6 +23,12 @@ export default defineConfig({
       include: ["src/**/*.{ts,tsx}"],
       exclude: ["src/**/*.test.{ts,tsx}", "src/app/**/layout.tsx"],
       reporter: ["text", "html", "lcov"],
+      // Umbral mínimo en la lógica: servidor y dominios (docs/qa/plan-pruebas.md). Las rutas de
+      // src/app son handlers delgados y se cubren con las pruebas E2E y de contrato.
+      thresholds: {
+        "src/server/**": { lines: 80, functions: 80, branches: 80, statements: 80 },
+        "src/features/**": { lines: 80, functions: 80, branches: 80, statements: 80 },
+      },
     },
   },
 });

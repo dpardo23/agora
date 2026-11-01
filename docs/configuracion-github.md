@@ -1,6 +1,6 @@
 # Configuración de GitHub · Ágora
 
-Versión 1.1 · creado el 2026-10-20 · editado el 2026-10-21 · autor: Juan Diego Pardo Pozo
+Versión 1.2 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Guía paso a paso para dejar el repositorio `dpardo23/agora` configurado de forma profesional. Cada sección dice **dónde** está la opción, **qué** elegir y, en una línea, **para qué** sirve. Los nombres de los menús son los de la interfaz de GitHub en inglés.
 
@@ -121,7 +121,8 @@ Igual que «main», con dos diferencias:
 | Actions permissions | «Allow dpardo23, and select non-dpardo23, actions and reusable workflows» | Solo corren acciones de confianza |
 | ↳ Allow actions created by GitHub | Activado | `actions/checkout`, `setup-node`, etc. |
 | ↳ Allow actions by Marketplace verified creators | Activado | Proveedores verificados |
-| ↳ Allow specified actions | `dorny/paths-filter@*, amannn/action-semantic-pull-request@*, wagoid/commitlint-github-action@*, gitleaks/gitleaks-action@*, pnpm/action-setup@*, supabase/setup-cli@*, astral-sh/setup-uv@*, treosh/lighthouse-ci-action@*` | Las que usan `ci.yml` y `cd.yml` |
+| ↳ Allow specified actions | `dorny/paths-filter@*, amannn/action-semantic-pull-request@*, wagoid/commitlint-github-action@*, gitleaks/gitleaks-action@*, pnpm/action-setup@*, supabase/setup-cli@*, astral-sh/setup-uv@*` | Las que usan `ci.yml` y `cd.yml`. Lighthouse corre con `@lhci/cli` del proyecto, sin acción de terceros |
+| ↳ Require actions to be pinned to a full-length commit SHA | Activado | Los workflows ya fijan cada acción por hash (zizmor lo exige en el CI) |
 | Artifact and log retention | 14 días | Suficiente para revisar fallos sin acumular espacio |
 | Fork pull request workflows from outside collaborators | «Require approval for all outside collaborators» | **Importante en un repo público:** un PR de un desconocido no ejecuta código en tu CI sin tu aprobación |
 | Workflow permissions | «Read repository contents and packages permissions» | Mínimo privilegio; `cd.yml` pide `contents: write` solo donde lo necesita |
@@ -168,7 +169,7 @@ Regla: ningún secreto en el código ni en `docs/`. El CI lo verifica con gitlea
 | Dependabot security updates | Activado | PR automáticos que corrigen esas vulnerabilidades |
 | Grouped security updates | Activado | Un PR por grupo en lugar de muchos |
 | Dependabot version updates | Ya configurado en `.github/dependabot.yml` | Actualizaciones semanales hacia `develop` de acciones (en un solo PR), npm, uv, Docker y Compose. Las versiones de Node, pnpm, Python, uv y la CLI de Supabase no las sube Dependabot: se cambian en `mise.toml`, que leen el entorno local y el CI |
-| Code scanning → CodeQL analysis | **Default setup**, lenguajes JavaScript/TypeScript, Python y Actions | Análisis estático de seguridad en cada PR |
+| Code scanning → CodeQL analysis | **Default setup**, lenguajes JavaScript/TypeScript, Python y Actions | Análisis estático de seguridad en cada PR. Activado el 2026-11-01 desde la API (`gh api -X PATCH repos/dpardo23/agora/code-scanning/default-setup -f state=configured`) |
 | Copilot Autofix | Desactivado | Evita commits sugeridos por terceros en tus PR |
 | Secret Protection → Secret scanning | Activado | Detecta claves subidas por error |
 | ↳ Push protection | Activado | Bloquea el push si contiene una clave |

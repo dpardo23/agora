@@ -1,0 +1,31 @@
+meta {
+  name: Salud de la API
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/salud
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.estado: eq ok
+  res.headers["cache-control"]: contains no-store
+}
+
+tests {
+  test("informa el estado de Supabase con un valor conocido", function () {
+    expect(["ok", "sin_configurar", "error"]).to.include(res.getBody().supabase);
+  });
+
+  test("informa la versión de la aplicación", function () {
+    expect(res.getBody().version).to.match(/^\d+\.\d+\.\d+$/);
+  });
+}
+
+docs {
+  GET /api/v1/salud (docs/api.md, sección 3). No requiere sesión.
+}

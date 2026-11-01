@@ -4,7 +4,7 @@ import { z } from "@/server/openapi/zod";
 
 export const TIPO_CONTENIDO_PROBLEMA = "application/problem+json";
 
-export const esquemaErrorCampo = z.object({
+const esquemaErrorCampo = z.object({
   campo: z.string(),
   mensaje: z.string(),
 });

@@ -9,8 +9,9 @@ on:
     branches: [develop]
     tags: ['v*.*.*']
 
+# Por defecto solo lectura; el job que publica la release pide escritura para sí mismo.
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   detectar:
@@ -20,7 +21,9 @@ jobs:
       hay_db: ${{ steps.existe.outputs.db }}
       supabase: ${{ steps.existe.outputs.supabase }}
     steps:
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - id: existe
         run: |
           echo "db=$([ -f supabase/config.toml ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
@@ -34,8 +37,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - uses: actions/checkout@v7.0.1
-      - uses: supabase/setup-cli@v3.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: supabase/setup-cli@45a513f8c64c0bc8e0e3dfe572b5c95be85f6359 # v3.0.1
         with:
           version: ${{ needs.detectar.outputs.supabase }}
       - run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
@@ -56,8 +61,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: produccion
     steps:
-      - uses: actions/checkout@v7.0.1
-      - uses: supabase/setup-cli@v3.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: supabase/setup-cli@45a513f8c64c0bc8e0e3dfe572b5c95be85f6359 # v3.0.1
         with:
           version: ${{ needs.detectar.outputs.supabase }}
       - run: supabase link --project-ref "$SUPABASE_PROJECT_REF"
@@ -74,9 +81,12 @@ jobs:
     name: Publicar release
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - name: Crear la release con notas generadas desde los commits
         env:
