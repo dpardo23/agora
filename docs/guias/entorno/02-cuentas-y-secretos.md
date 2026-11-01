@@ -1,12 +1,12 @@
 # Guía 2 · Cuentas y secretos
 
-Versión 1.7 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.8 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
 Qué cuentas crear, en qué orden, qué opción elegir en cada pantalla y dónde guardar cada clave. Corresponde al ítem T-13 del SPRINT-00 y lo hace el titular a mano.
 
 ## 1. Reglas para los secretos
 
-1. Cada clave se guarda **primero en el gestor de contraseñas** (guía 1, sección 8) y después en el `.env.local` que le corresponde.
+1. Cada clave se guarda **primero en el gestor de contraseñas** (guía 1, sección 8). Solo pasa a un `.env.local` si un programa local la necesita (sección 10); las credenciales de la nube de Supabase nunca van a un `.env.local`.
 2. Ninguna clave se escribe en el código, en un documento, en un issue ni en el chat. El hook `pre-commit`, el CI y gitleaks lo vigilan, pero la primera barrera eres tú.
 3. Las claves de **servidor** (secret key de Supabase, Gemini, token de Claude, OAuth de Google) nunca llevan el prefijo `NEXT_PUBLIC_`: ese prefijo las publica en el navegador.
 4. Si una clave se filtra: se **revoca y se genera otra** en el servicio. Borrarla del repositorio no basta.
@@ -833,12 +833,14 @@ Hace falta que exista `apps/web`. Cuando T-01 esté fusionado:
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase, Publishable key (en local: `supabase status`) | | Sí | | Sí | | |
 | `SUPABASE_URL` | Supabase, Project URL (en local: `http://localhost:55321`) | | | Sí | | | Sí |
 | `SUPABASE_SECRET_KEY` | Supabase, Secret key | | Sí | Sí | Sí (servidor) | | Sí |
-| `SUPABASE_PROJECT_REF`, `SUPABASE_ACCESS_TOKEN`, `SUPABASE_DB_PASSWORD` | Supabase | Sí (para la CLI) | | | | Sí | |
+| `SUPABASE_PROJECT_REF`, `SUPABASE_ACCESS_TOKEN`, `SUPABASE_DB_PASSWORD` | Supabase (entrada `Supabase · agora-dev`) | No | | | | Sí (environment `staging`) | |
 | `SUPABASE_JWKS_URL` | `https://<project_ref>.supabase.co/auth/v1/.well-known/jwks.json`; no es secreto. Se agrega cuando el código verifique sesiones con llaves asimétricas (EP-03) | | Sí | | Sí (servidor) | | |
 | `GEMINI_API_KEY` | AI Studio | | | Sí | | | Sí |
 | `CLAUDE_CODE_OAUTH_TOKEN` | `claude setup-token` | | | Sí | | | Sí |
 | `GOOGLE_OAUTH_CLIENT_FILE` | Ruta al JSON del cliente de Google (`~/.local/share/agora-privado/google/client_secret_agora-worker.json` en tu PC) | | | Sí | | | Sí |
 | `N8N_ENCRYPTION_KEY` | Generada: `openssl rand -hex 32` | Sí | | | | | Sí |
+
+Las tres credenciales de la nube de Supabase quedan solo en el gestor y en GitHub. En tu PC, la CLI no las lee de un archivo: `supabase login` guarda el token en el llavero del sistema (sección 4) y, cuando un comando pide la contraseña de la base, se pasa solo a ese comando desde el gestor (guía 4, sección 2.3). Así, un `.env.local` filtrado no da acceso a la base de la nube.
 
 Los nombres exactos están en los `.env.example` de la raíz, de `apps/web/` y de `worker/` (T-11). Cada `.env.local` se crea copiando su plantilla (`cp .env.example .env.local`) y llenando los valores desde el gestor; `scripts/verificar-entorno.sh` comprueba que no falte ninguno, sin mostrar valores. Si un nombre cambia, se actualizan a la vez la plantilla y esta tabla.
 
@@ -854,4 +856,4 @@ Los nombres exactos están en los `.env.example` de la raíz, de `apps/web/` y d
 - [ ] Token de Claude Code en el gestor (`Claude · token worker`).
 - [ ] Environment `staging` en GitHub con `SUPABASE_PROJECT_REF`, `SUPABASE_ACCESS_TOKEN` y `SUPABASE_DB_PASSWORD`, cargados desde el gestor.
 - [ ] Vercel conectado con `apps/web`, Node 24.x y variables (después de T-01).
-- [ ] Ninguna clave escrita fuera del gestor y de los `.env.local`.
+- [ ] Ninguna clave escrita fuera del gestor, de GitHub, de Vercel y de los `.env.local`; las credenciales de la nube de Supabase, solo en el gestor y en GitHub.

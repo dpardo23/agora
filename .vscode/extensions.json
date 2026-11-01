@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "hverlin.mise-vscode",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "vitest.explorer",
+    "ms-playwright.playwright",
+    "charliermarsh.ruff",
+    "ms-python.python",
+    "docker.docker",
+    "editorconfig.editorconfig"
+  ]
+}
