@@ -1,6 +1,6 @@
 # Guía 3 · Frontend (`apps/web`)
 
-Versión 1.2 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.3 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué se instala en la aplicación web, para qué sirve cada librería y cómo se arranca y se prueba. La creación del proyecto es el ítem T-01 del SPRINT-00; esta guía documenta lo que T-01 deja instalado para que no haya que agregar herramientas sueltas después. Todas las versiones salen de la matriz de la guía 0 y se fijan exactas en `package.json` (sin `^`).
 
@@ -165,8 +165,15 @@ Chromium y Firefox funcionan así. Si WebKit no arranca por librerías del siste
 
 ```sh
 pnpm -C apps/web dev
-docker run --rm --network host --ipc host -v "$PWD":/repo -w /repo/apps/web mcr.microsoft.com/playwright:v1.64.1-noble npx playwright test --project=webkit
+docker run --rm --network host --ipc host --user "$(id -u):$(id -g)" -e HOME=/tmp \
+  -v "$PWD":/repo -w /repo/apps/web mcr.microsoft.com/playwright:v1.64.1-noble \
+  npx playwright test --project=webkit
 ```
+
+- `--user` y `HOME=/tmp` hacen que el contenedor escriba `test-results/` con tu usuario y no como root. Sin ellos, la siguiente ejecución local de Playwright no puede borrar esa carpeta.
+- La imagen pesa unos 2 GB: la primera descarga tarda varios minutos.
+- Resultado esperado: 3 pruebas pasan y 6 se omiten. Las de accesibilidad y contrato solo corren en Chromium, a propósito (guía 6, sección 4.2).
+- Comprobado el 2026-11-01 con la imagen `v1.64.1-noble`.
 
 El CI usa Ubuntu, así que allí corren los tres navegadores sin pasos extra.
 
