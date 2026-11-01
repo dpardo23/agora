@@ -1,6 +1,6 @@
 # Configuración de GitHub · Ágora
 
-Versión 1.2 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.3 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Guía paso a paso para dejar el repositorio `dpardo23/agora` configurado de forma profesional. Cada sección dice **dónde** está la opción, **qué** elegir y, en una línea, **para qué** sirve. Los nombres de los menús son los de la interfaz de GitHub en inglés.
 
@@ -124,7 +124,7 @@ Igual que «main», con dos diferencias:
 | ↳ Allow specified actions | `dorny/paths-filter@*, amannn/action-semantic-pull-request@*, wagoid/commitlint-github-action@*, gitleaks/gitleaks-action@*, pnpm/action-setup@*, supabase/setup-cli@*, astral-sh/setup-uv@*` | Las que usan `ci.yml` y `cd.yml`. Lighthouse corre con `@lhci/cli` del proyecto, sin acción de terceros |
 | ↳ Require actions to be pinned to a full-length commit SHA | Activado | Los workflows ya fijan cada acción por hash (zizmor lo exige en el CI) |
 | Artifact and log retention | 14 días | Suficiente para revisar fallos sin acumular espacio |
-| Fork pull request workflows from outside collaborators | «Require approval for all outside collaborators» | **Importante en un repo público:** un PR de un desconocido no ejecuta código en tu CI sin tu aprobación |
+| Approval for running fork pull request workflows from contributors | «Require approval for all external contributors» | **Importante en un repo público:** un PR de un desconocido no ejecuta código en tu CI sin tu aprobación |
 | Workflow permissions | «Read repository contents and packages permissions» | Mínimo privilegio; `cd.yml` pide `contents: write` solo donde lo necesita |
 | Allow GitHub Actions to create and approve pull requests | Desactivado | Ningún bot aprueba ni abre PR por su cuenta |
 
@@ -143,6 +143,8 @@ Los environments agrupan secretos por entorno y permiten exigir una aprobación 
 | `produccion` | Solo etiquetas `v*` | **Required reviewers: tú.** Desactiva «Prevent self-review»: eres el único revisor | Los mismos tres, del proyecto de producción |
 
 Con esto, `cd.yml` aplica migraciones en staging en cada merge a `develop`. Las de producción se pausan hasta que apruebes el despliegue.
+
+> Hoy `produccion` no tiene secretos: el proyecto de Supabase de producción todavía no existe. Hasta crearlo y cargar sus tres secretos, la primera etiqueta `v*` que incluya migraciones hará fallar el job de producción del CD. Se crean antes de la primera release.
 
 ---
 
@@ -181,7 +183,7 @@ Regla: ningún secreto en el código ni en `docs/`. El CI lo verifica con gitlea
 | Dónde | Qué hacer | Para qué |
 |---|---|---|
 | Settings → GitHub Apps (o «Integrations») | Instalar **Vercel**, con acceso **solo** a `agora` | Previews por PR, staging desde `develop` y producción desde `main` |
-| Vercel → Project → Settings → Git | Production Branch: `main`; activar previews en todas las ramas | Coincide con `docs/arquitectura.md`, sección 6 |
+| Vercel → Project → Settings → Git | Production Branch: `main`; previews en todas las demás ramas. Paso a paso en la guía 2, sección 9 | Coincide con `docs/arquitectura.md`, sección 6 |
 | Settings → GitHub Apps | **No** instalar apps de asistentes de código ni bots que hagan commits | Así el único contributor sigue siendo `dpardo23` |
 | Settings → Copilot / Agents | Desactivar el agente de código y la revisión automática para este repo | Ningún agente abre PR ni hace commits con otro autor |
 | Settings → Webhooks | Nada | Vercel se conecta por su app |
