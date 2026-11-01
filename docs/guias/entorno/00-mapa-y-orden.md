@@ -1,6 +1,6 @@
 # Guía 0 · Mapa del entorno y orden de pasos
 
-Versión 1.4 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.5 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Explica qué piezas tiene el entorno de Ágora, en qué orden se preparan, qué versiones se usan y qué puertos ocupa cada servicio. Las decisiones de fondo están en el ADR-006.
 
@@ -67,6 +67,7 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 | uv | **0.13.6** | `mise.toml` | |
 | CLI de Supabase | **2.122.0** | `mise.toml` | |
 | PostgreSQL | **17** | `supabase/config.toml` | Debe ser la misma en el proyecto de la nube |
+| actionlint, zizmor | 1.7.12, 1.31.1 | Imagen Docker `rhysd/actionlint` y `uvx zizmor`: revisan los workflows en el hook `pre-push` y en el CI (guía 6) |
 
 ### Frontend (`apps/web`)
 
@@ -94,6 +95,9 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 | @playwright/test, @axe-core/playwright | 1.64.1, 4.14.0 | |
 | @lhci/cli | 0.15.1 | Lighthouse 12 ya no tiene la categoría PWA: la instalabilidad se prueba en HU-16.01 y HU-16.04 |
 | server-only, tsx | 0.0.1, 4.23.15 | `server-only` impide importar `src/server/` desde el cliente; `tsx` ejecuta `apps/web/scripts/openapi.ts` |
+| @usebruno/cli, knip | 4.3.0, 6.44.1 | Pruebas de API y código sin usar (guía 6) |
+| ajv, ajv-formats | 8.20.0, 2.1.1 | Validan las respuestas contra `openapi.json`. `ajv-formats` en 2.x porque `@hookform/resolvers` la pide así |
+| zod (forzada en todo el árbol) | 4.6.7 | `overrides` de `pnpm-workspace.yaml`: Serwist fija 4.6.5, con una vulnerabilidad alta |
 | @commitlint/cli, @commitlint/config-conventional | 21.2.4 | Se ejecutan desde `.githooks/commit-msg`. **Sin Husky**: cambiaría `core.hooksPath` y apagaría los hooks de privacidad |
 
 ### Worker (`worker/`)
