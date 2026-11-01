@@ -96,9 +96,10 @@ La CLI de Supabase publica sus puertos en todas las interfaces (`0.0.0.0`), y Do
 cat /etc/docker/daemon.json
 ```
 
-**Paso 2.** Si no existe, crearla:
+**Paso 2.** Si no existe, crearla. En Arch y CachyOS la carpeta `/etc/docker` no viene creada, y `tee` no crea carpetas:
 
 ```sh
+sudo mkdir -p /etc/docker
 echo '{ "ip": "127.0.0.1" }' | sudo tee /etc/docker/daemon.json
 ```
 

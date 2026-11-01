@@ -56,6 +56,8 @@ docker ps --format '{{.Names}}\t{{.Status}}'
 |---|---|
 | `node --version` muestra la versión del sistema dentro del proyecto | Falta `eval "$(mise activate zsh)"` en `~/.zshrc`, o no ejecutaste `mise trust` y `mise install` |
 | `mise ERROR ... not trusted` | `mise trust` dentro de la carpeta |
+| `mise ERROR no tasks defined in ~` | Estás fuera del proyecto: `cd ~/Documentos/agora` y repite |
+| `tee: /etc/docker/daemon.json: No existe el fichero o el directorio` | Falta la carpeta: `sudo mkdir -p /etc/docker` y repite (guía 1, sección 3.4) |
 | Una herramienta no se descarga | `mise doctor` muestra el problema; reintenta con `mise install --verbose` |
 
 ### Supabase

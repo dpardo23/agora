@@ -120,9 +120,10 @@ services:
 - Si falta `N8N_ENCRYPTION_KEY`, n8n **no arranca**. Es a propósito: sin clave, n8n crearía una propia dentro del volumen y la del gestor dejaría de servir.
 - Dentro del contenedor del worker, `localhost` es el propio contenedor: por eso la URL de Supabase se reemplaza por la del anfitrión.
 
-**Crear la clave (una sola vez, lo hace el titular):**
+**Crear la clave (una sola vez, lo hace el titular).** Las tareas de mise solo existen dentro de la carpeta del proyecto; desde otra carpeta, mise responde «no tasks defined»:
 
 ```sh
+cd ~/Documentos/agora
 export BW_SESSION="$(bw unlock --raw)"
 mise run n8n:clave
 ```
@@ -188,9 +189,10 @@ La construcción para arm64 usa QEMU (guía 1, sección 2) y tarda bastante más
 
 ## 6. Variables de entorno locales
 
-Con Supabase en marcha y la sesión de Bitwarden abierta:
+Con Supabase en marcha y la sesión de Bitwarden abierta, desde la carpeta del proyecto:
 
 ```sh
+cd ~/Documentos/agora
 mise run entorno:env
 ```
 
