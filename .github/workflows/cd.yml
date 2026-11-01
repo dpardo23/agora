@@ -19,7 +19,7 @@ jobs:
     outputs:
       hay_db: ${{ steps.existe.outputs.db }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - id: existe
         run: echo "db=$([ -f supabase/config.toml ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
 
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: supabase/setup-cli@v1
         with:
           version: latest
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: produccion
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: supabase/setup-cli@v1
         with:
           version: latest
@@ -70,7 +70,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Crear la release con notas generadas desde los commits
