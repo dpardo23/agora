@@ -201,7 +201,7 @@ Crea, con permisos 600:
 - `apps/web/.env.local`: URL y claves de Supabase **local** (salen de `supabase status`).
 - `worker/.env.local`: lo mismo para el worker, más `GEMINI_API_KEY` y `CLAUDE_CODE_OAUTH_TOKEN` tomadas del gestor y la ruta del JSON de Google.
 
-Nunca muestra valores ni reemplaza un archivo que ya existe: para regenerarlo, bórralo a mano. El `.env.local` de la raíz solo lleva `N8N_ENCRYPTION_KEY` y lo crea `mise run n8n:clave` (sección 3.1).
+Nunca muestra valores ni reemplaza un archivo que ya existe: para regenerarlo, bórralo a mano. Si una clave todavía no está en el gestor (por ejemplo, el token de Claude de la guía 2, sección 7), la deja vacía y lo avisa; el worker no la necesita hasta SPRINT-07 y `verificar-entorno.sh` la muestra como AVISO hasta que se complete. El `.env.local` de la raíz solo lleva `N8N_ENCRYPTION_KEY` y lo crea `mise run n8n:clave` (sección 3.1).
 
 ## 7. Comprobación
 

@@ -46,19 +46,18 @@ if [ "$(bw status | jq -r .status)" != "unlocked" ]; then
   exit 1
 fi
 bw sync >/dev/null
-# Busca la entrada por nombre exacto (sin depender de mayúsculas ni de otras coincidencias) y
-# devuelve el campo pedido. Si falta, dice cuál, sin mostrar ningún valor.
+# Busca la entrada por nombre exacto y devuelve el campo pedido, sin mostrarlo. Si la entrada o el
+# campo no existen, deja la variable vacía y avisa: scripts/verificar-entorno.sh la marcará como AVISO
+# hasta que se complete (las claves del motor solo hacen falta desde SPRINT-07).
+pendientes=''
 campo() {
-  if ! valor=$(bw list items --search "$1" | jq -er --arg n "$1" --arg c "$2" \
-      'map(select(.name == $n)) | first | .fields[] | select(.name == $c) | .value'); then
-    echo "entorno:env: no se encontró la entrada «$1» con el campo «$2» en Bitwarden." >&2
-    echo "  Revisa los nombres (sin valores) con: bw list items | jq -r '.[].name'" >&2
-    exit 1
-  fi
-  printf '%s' "$valor"
+  bw list items --search "$1" 2>/dev/null | jq -er --arg n "$1" --arg c "$2" \
+    'map(select(.name == $n)) | first | (.fields // [])[] | select(.name == $c) | .value' 2>/dev/null || true
 }
 gemini=$(campo "Google · Gemini API key" "Clave API")
+[ -n "$gemini" ] || pendientes="$pendientes\n  - GEMINI_API_KEY: entrada «Google · Gemini API key», campo «Clave API» (guía 2, sección 6)"
 claude=$(campo "Claude · token worker" "CLAUDE_CODE_OAUTH_TOKEN")
+[ -n "$claude" ] || pendientes="$pendientes\n  - CLAUDE_CODE_OAUTH_TOKEN: entrada «Claude · token worker», campo «CLAUDE_CODE_OAUTH_TOKEN» (guía 2, sección 7)"
 
 {
   echo "# Generado por «mise run entorno:env»: Supabase local y claves del gestor (guía 2, sección 10)."
@@ -69,4 +68,8 @@ claude=$(campo "Claude · token worker" "CLAUDE_CODE_OAUTH_TOKEN")
   echo "GOOGLE_OAUTH_CLIENT_FILE=$HOME/.local/share/agora-privado/google/client_secret_agora-worker.json"
 } > "$worker"
 echo "entorno:env: creado $worker"
+if [ -n "$pendientes" ]; then
+  printf 'entorno:env: quedaron vacías porque no están en Bitwarden:%b\n' "$pendientes"
+  echo "  Cuando las crees, complétalas a mano en $worker o bórralo y repite la tarea."
+fi
 echo "Comprueba con: scripts/verificar-entorno.sh"
