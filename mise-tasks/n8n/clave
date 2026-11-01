@@ -1,0 +1,47 @@
+#!/bin/sh
+#MISE description="Crea N8N_ENCRYPTION_KEY una sola vez, la guarda en Bitwarden y en el .env.local de la raíz"
+# Uso: mise run n8n:clave   (guía 4, sección 3.1)
+# La clave cifra las credenciales guardadas en n8n. Cambiarla deja inservibles las ya guardadas, así
+# que esta tarea nunca reemplaza una existente: si ya está en el gestor, solo la copia al .env.local.
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+umask 077
+entrada="n8n · clave de cifrado"
+carpeta="Ágora"
+archivo=.env.local
+
+for herramienta in bw jq openssl; do
+  command -v "$herramienta" >/dev/null 2>&1 || { echo "n8n:clave: falta $herramienta" >&2; exit 1; }
+done
+if [ -f "$archivo" ] && grep -q '^N8N_ENCRYPTION_KEY=..*' "$archivo"; then
+  echo "n8n:clave: $archivo ya tiene N8N_ENCRYPTION_KEY; no se cambia."
+  exit 0
+fi
+if [ "$(bw status | jq -r .status)" != "unlocked" ]; then
+  echo "n8n:clave: Bitwarden está bloqueado. Ejecuta: export BW_SESSION=\"\$(bw unlock --raw)\" (guía 2, sección 1.1)" >&2
+  exit 1
+fi
+bw sync >/dev/null
+
+if clave=$(bw get password "$entrada" 2>/dev/null) && [ -n "$clave" ]; then
+  echo "n8n:clave: la clave ya existe en el gestor («$entrada»); se copia al $archivo."
+else
+  clave=$(openssl rand -hex 32)
+  id_carpeta=$(bw list folders --search "$carpeta" | jq -er --arg n "$carpeta" '.[] | select(.name == $n) | .id')
+  bw get template item \
+    | jq --arg n "$entrada" --arg p "$clave" --arg f "$id_carpeta" \
+        '.type = 1 | .name = $n | .folderId = $f | .notes = "Cifra las credenciales guardadas en n8n. Debe ser la misma en local y en la VM; no se cambia." | .login = {username: "N8N_ENCRYPTION_KEY", password: $p, uris: []}' \
+    | bw encode | bw create item >/dev/null
+  echo "n8n:clave: clave nueva guardada en el gestor («$entrada», carpeta $carpeta)."
+fi
+
+# Se parte de la plantilla si el archivo no existe; la línea se reemplaza o se agrega.
+[ -f "$archivo" ] || cp .env.example "$archivo"
+if grep -q '^N8N_ENCRYPTION_KEY=' "$archivo"; then
+  temporal=$(mktemp)
+  sed "s|^N8N_ENCRYPTION_KEY=.*|N8N_ENCRYPTION_KEY=$clave|" "$archivo" > "$temporal" && mv "$temporal" "$archivo"
+else
+  echo "N8N_ENCRYPTION_KEY=$clave" >> "$archivo"
+fi
+chmod 600 "$archivo"
+echo "n8n:clave: listo. Abre una terminal nueva o ejecuta «cd .» para que mise cargue la variable."

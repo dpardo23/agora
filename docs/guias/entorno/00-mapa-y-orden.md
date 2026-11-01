@@ -1,6 +1,6 @@
 # Guía 0 · Mapa del entorno y orden de pasos
 
-Versión 1.3 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.4 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
 Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Explica qué piezas tiene el entorno de Ágora, en qué orden se preparan, qué versiones se usan y qué puertos ocupa cada servicio. Las decisiones de fondo están en el ADR-006.
 
@@ -100,10 +100,11 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 
 | Paquete o imagen | Versión | Nota |
 |---|---|---|
-| Imagen base | `python:3.14-slim-trixie` | Publicada para amd64 y arm64 |
+| Imagen base | `python:3.14.10-slim-trixie` | Publicada para amd64 y arm64; Dependabot propone las nuevas |
+| uv en la imagen | `ghcr.io/astral-sh/uv:0.13.6` | La misma versión que `mise.toml` |
 | TeX Live y Chromium | Paquetes de Debian «trixie» | Disponibles para arm64 |
-| pytest, ruff | 9.1.1, 0.17.1 | |
-| supabase (Python) | 2.33.0 | |
+| pytest, pytest-cov, ruff, mypy | 9.2.0, 7.1.0, 0.17.3, 2.4.1 | Herramientas de desarrollo, fijas en `pyproject.toml` |
+| supabase (Python) | 2.33.0 | Las dependencias del motor se agregan con su código (SPRINT-07) |
 | google-genai | 2.32.0 | SDK de Gemini |
 | google-api-python-client, google-auth-oauthlib | 2.201.0, 1.5.0 | Drive |
 | pydantic, httpx | 2.14.1, 0.28.1 | |
@@ -112,7 +113,7 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 
 | Imagen | Versión | Nota |
 |---|---|---|
-| n8n (`docker.n8n.io/n8nio/n8n`) | 2.44.5 | La etiqueta `latest` cambia sola: siempre versión fija. Publicada para amd64 y arm64 |
+| n8n (`docker.n8n.io/n8nio/n8n`) | 2.45.7 | La etiqueta `latest` cambia sola: siempre versión fija. Publicada para amd64 y arm64 |
 | Supabase | La que elige la CLI 2.122.0 | No se fija a mano |
 
 ## 5. Puertos de Ágora
@@ -126,8 +127,11 @@ Elegidos fuera de los valores por defecto para no chocar con otros proyectos.
 | Supabase · API | 55321 | http://localhost:55321 |
 | Supabase · Postgres | 55322 | `postgresql://postgres:postgres@localhost:55322/postgres` |
 | Supabase · Studio | 55323 | http://localhost:55323 |
-| Supabase · correo de prueba (Mailpit) | 55324 | http://localhost:55324 |
+| Supabase · correo de prueba (Mailpit, web) | 55324 | http://localhost:55324 |
+| Supabase · correo de prueba (SMTP) | 55325 | |
+| Supabase · correo de prueba (POP3) | 55326 | |
 | Supabase · analítica | 55327 | |
+| Supabase · inspector de Edge Functions | 55328 | |
 | Supabase · pooler | 55329 | |
 | n8n | 55678 | http://localhost:55678 |
 
@@ -140,7 +144,8 @@ Elegidos fuera de los valores por defecto para no chocar con otros proyectos.
 | `.env.local` (raíz, `apps/web/`, `worker/`) | Valores reales de los secretos | **No** |
 | `.editorconfig`, `.vscode/` | Formato común del editor y extensiones recomendadas | Sí |
 | `scripts/verificar-entorno.sh` | Comprueba que el entorno esté completo (guía 5) | Sí |
-| `supabase/` | Configuración, migraciones y semilla | Sí (salvo `.temp/`, `.branches/`) |
+| `supabase/` | Configuración, migraciones, pruebas pgTAP y borradores (`borradores/`, hasta T-03) | Sí (salvo `.temp/`, `.branches/`) |
+| `mise-tasks/` | Tareas `arriba`, `abajo`, `estado`, `entorno:env` y `n8n:clave` | Sí |
 | `infra/local/compose.yaml` | n8n y worker en local | Sí |
 | `infra/local/datos/` | Volúmenes locales | **No** |
 | `docs/referencia/`, `design/` | Material privado y diseño fuente | **No** |

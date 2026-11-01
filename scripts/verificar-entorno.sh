@@ -114,7 +114,8 @@ for plantilla in .env.example apps/web/.env.example worker/.env.example; do
   local_=$(dirname "$plantilla")/.env.local
   local_=${local_#./}
   if [ ! -f "$local_" ]; then
-    aviso "$local_ no existe: cópialo desde $plantilla y llénalo desde el gestor (guía 2, sección 10)"
+    if [ "$local_" = .env.local ]; then tarea="mise run n8n:clave"; else tarea="mise run entorno:env"; fi
+    aviso "$local_ no existe: créalo con «$tarea» (guía 4) o cópialo desde $plantilla y llénalo desde el gestor"
     continue
   fi
   vacias=''
@@ -158,6 +159,16 @@ else
     fi
   done
   [ -n "$libres" ] && ok "libres:$libres"
+  # Docker se salta ufw: un puerto de Ágora abierto en todas las interfaces queda visible en la red.
+  expuestos=''
+  for puerto in 55320 55321 55322 55323 55324 55325 55326 55327 55328 55329 55678; do
+    if ss -ltnH "sport = :$puerto" 2>/dev/null | awk '{print $4}' | grep -Eq '^(0\.0\.0\.0|\[::\]|\*):'; then
+      expuestos="$expuestos $puerto"
+    fi
+  done
+  if [ -n "$expuestos" ]; then
+    aviso "puertos visibles desde la red:$expuestos. Limita Docker a 127.0.0.1 (guía 1, sección 3.4)"
+  fi
 fi
 
 # --- Resumen ---

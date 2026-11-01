@@ -55,7 +55,7 @@ apps/web/                         Next.js 16
   tests/  unit/  e2e/
 worker/                           motor de agentes (Python 3.14 + uv)
   umss/dominio/  umss/puertos/  umss/adaptadores/  umss/roles/  tests/
-supabase/  migrations/  seed.sql  config.toml  tests/ (pgTAP)
+supabase/  config.toml  migrations/  tests/ (pgTAP)  borradores/ (esquema inicial y semilla hasta T-03)
 n8n/       flujos exportados (JSON, sin credenciales)
 infra/     systemd, scripts de la VM, respaldos
 scripts/   utilidades (diseño, verificación de docs)

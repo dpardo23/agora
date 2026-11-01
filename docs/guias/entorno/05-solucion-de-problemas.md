@@ -1,6 +1,6 @@
 # Guía 5 · Comprobación y solución de problemas
 
-Versión 1.4 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.5 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
 Cómo comprobar que el entorno está completo y qué hacer ante los errores más comunes.
 
@@ -19,8 +19,8 @@ Cada comprobación imprime **OK**, **AVISO** o **FALLA** y el script termina con
 2. Versiones de mise (según `mise ls --current`): `mise.toml` autorizado con `mise trust`, cada herramienta instalada con `mise install` y el shell activado. Node 24.22.2, pnpm 12.17.0, Python 3.14, uv 0.13.6 y CLI de Supabase 2.122.0.
 3. Hooks de Git: `core.hooksPath` apunta a `.githooks`.
 4. Archivos privados: ninguno versionado (`git ls-files -ci --exclude-standard` vacío).
-5. Secretos: cada `.env.local` tiene todas las variables de su `.env.example`. Si el archivo no existe o una variable está vacía, es AVISO; si falta una variable, es FALLA.
-6. Puertos: 3100, 55320 a 55329 y 55678 libres o usados por contenedores de Ágora.
+5. Secretos: cada `.env.local` tiene todas las variables de su `.env.example`. Si el archivo no existe o una variable está vacía, es AVISO (se crean con `mise run n8n:clave` y `mise run entorno:env`, guía 4); si falta una variable, es FALLA.
+6. Puertos: 3100, 55320 a 55329 y 55678 libres o usados por contenedores de Ágora. Si alguno escucha en todas las interfaces (`0.0.0.0`), es AVISO: queda visible desde la red (guía 1, sección 3.4).
 
 La comprobación manual equivalente es:
 
@@ -56,6 +56,8 @@ docker ps --format '{{.Names}}\t{{.Status}}'
 |---|---|
 | `node --version` muestra la versión del sistema dentro del proyecto | Falta `eval "$(mise activate zsh)"` en `~/.zshrc`, o no ejecutaste `mise trust` y `mise install` |
 | `mise ERROR ... not trusted` | `mise trust` dentro de la carpeta |
+| `mise ERROR no tasks defined in ~` | Estás fuera del proyecto: `cd ~/Documentos/agora` y repite |
+| `tee: /etc/docker/daemon.json: No existe el fichero o el directorio` | Falta la carpeta: `sudo mkdir -p /etc/docker` y repite (guía 1, sección 3.4) |
 | Una herramienta no se descarga | `mise doctor` muestra el problema; reintenta con `mise install --verbose` |
 
 ### Supabase
@@ -67,7 +69,11 @@ docker ps --format '{{.Names}}\t{{.Status}}'
 | Security Advisor avisa de `rls_auto_enable()` | Esperado en la nube; se corrige en la primera migración (T-03) |
 | `supabase start` se queda esperando | Primera descarga lenta: espera. Si falla, `supabase stop --no-backup` y vuelve a `supabase start` (borra los datos locales, que se recrean con `db reset`) |
 | Una migración falla en `db reset` | Corrige el SQL en una **migración nueva**; nunca edites una ya aplicada |
-| La web dice «Invalid API key» | Las claves de `apps/web/.env.local` no son las de `supabase status` |
+| La web dice «Invalid API key» | Las claves de `apps/web/.env.local` no son las de `supabase status`: bórralo y ejecuta `mise run entorno:env` |
+| `required variable N8N_ENCRYPTION_KEY is missing` o `mise run arriba` no levanta n8n | Falta la clave: `mise run n8n:clave` (guía 4, sección 3.1). Nunca la cambies si n8n ya guardó credenciales |
+| `mise run entorno:env` dice que el archivo ya existe | No reemplaza nada a propósito: borra a mano el `.env.local` que quieras regenerar |
+| El worker en Docker no llega a Supabase | Dentro del contenedor se usa `http://host.docker.internal:55321`; `compose.yaml` ya lo fija (guía 4, sección 3.1) |
+| `supabase db reset` no carga la semilla | Es esperado hasta T-03: la semilla está en `supabase/borradores/` (guía 4, sección 2.4) |
 | El proyecto de la nube está pausado | Plan Free: se pausa tras 7 días sin uso. Reactívalo desde el panel |
 
 ### Node y pnpm
