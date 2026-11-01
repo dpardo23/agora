@@ -19,8 +19,14 @@ if ! docker info >/dev/null 2>&1; then
 fi
 
 echo "==> Supabase"
+# La CLI publica los puertos en todas las interfaces y Docker se salta ufw. En una red propia con
+# host_binding_ipv4=127.0.0.1, los puertos solo escuchan en este equipo (guía 1, sección 3.4).
+red=agora_supabase
+if ! docker network inspect "$red" >/dev/null 2>&1; then
+  docker network create -o com.docker.network.bridge.host_binding_ipv4=127.0.0.1 "$red" >/dev/null
+fi
 # «supabase start» imprime las claves locales; aquí solo se muestran las direcciones (mise run estado).
-if ! salida=$(supabase start 2>&1); then
+if ! salida=$(supabase start --network-id "$red" 2>&1); then
   printf '%s\n' "$salida" >&2
   exit 1
 fi

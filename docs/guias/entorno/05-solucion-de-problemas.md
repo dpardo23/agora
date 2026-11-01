@@ -58,6 +58,7 @@ docker ps --format '{{.Names}}\t{{.Status}}'
 | `mise ERROR ... not trusted` | `mise trust` dentro de la carpeta |
 | `mise ERROR no tasks defined in ~` | Estás fuera del proyecto: `cd ~/Documentos/agora` y repite |
 | `tee: /etc/docker/daemon.json: No existe el fichero o el directorio` | Falta la carpeta: `sudo mkdir -p /etc/docker` y repite (guía 1, sección 3.4) |
+| `verificar-entorno.sh` avisa «puertos visibles desde la red» | Supabase se levantó con `supabase start` a secas: `mise run abajo` y `mise run arriba` (guía 1, sección 3.4) |
 | Una herramienta no se descarga | `mise doctor` muestra el problema; reintenta con `mise install --verbose` |
 
 ### Supabase

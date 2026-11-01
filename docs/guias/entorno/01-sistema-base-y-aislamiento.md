@@ -1,6 +1,6 @@
 # Guía 1 · Sistema base y aislamiento
 
-Versión 1.2 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.3 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué instalar en CachyOS, cómo activarlo y cómo dejar el proyecto aislado del resto del equipo. Todo lo de esta guía lo hace el titular a mano, una sola vez. Los comandos se escriben en la terminal (zsh); los que empiezan con `sudo` piden tu contraseña.
 
@@ -88,30 +88,23 @@ El primero imprime «Hello from Docker!» y borra el contenedor. El segundo debe
 
 ### 3.4. Puertos solo en tu equipo (`127.0.0.1`)
 
-La CLI de Supabase publica sus puertos en todas las interfaces (`0.0.0.0`), y Docker escribe sus propias reglas de red, que **pasan por encima de ufw**. Sin este ajuste, Studio (55323) y Postgres (55322, con la contraseña `postgres` de fábrica) quedan al alcance de cualquier equipo de la misma red Wi-Fi. La CLI no permite cambiarlo; Docker sí, para todos los contenedores que no indiquen una dirección propia.
+La CLI de Supabase publica sus puertos en todas las interfaces (`0.0.0.0`), y Docker escribe sus propias reglas de red, que **pasan por encima de ufw**. Sin un ajuste, Studio (55323) y Postgres (55322, con la contraseña `postgres` de fábrica) quedan al alcance de cualquier equipo de la misma red Wi-Fi.
 
-**Paso 1.** Revisar si ya existe la configuración del demonio (si existe, agrega la clave `"ip"` a lo que ya tiene en lugar de reemplazarlo):
+**Ágora ya lo resuelve sin tocar el sistema.** `mise run arriba` crea una vez la red de Docker `agora_supabase` con la opción `com.docker.network.bridge.host_binding_ipv4=127.0.0.1` y levanta Supabase dentro de ella (`supabase start --network-id agora_supabase`). Todo puerto que se publique en esa red escucha solo en `127.0.0.1`. n8n declara `127.0.0.1` en su `compose.yaml`.
 
-```sh
-cat /etc/docker/daemon.json
-```
+Por eso Supabase se levanta siempre con `mise run arriba`. Un `supabase start` a secas crea su red propia y vuelve a publicar en `0.0.0.0`; `scripts/verificar-entorno.sh` lo avisa.
 
-**Paso 2.** Si no existe, crearla. En Arch y CachyOS la carpeta `/etc/docker` no viene creada, y `tee` no crea carpetas:
+**Comprobar:** con Supabase en marcha, `ss -ltn 'sport = :55323'` muestra `127.0.0.1:55323` y no `0.0.0.0:55323`.
+
+**Opcional, para contenedores de otros proyectos.** `/etc/docker/daemon.json` con `{ "ip": "127.0.0.1" }` hace lo mismo, pero **solo para la red por defecto de Docker** (`docker run -p` sin red propia). No afecta a Supabase ni a los proyectos de Compose, que crean sus propias redes. Si quieres aplicarlo:
 
 ```sh
 sudo mkdir -p /etc/docker
 echo '{ "ip": "127.0.0.1" }' | sudo tee /etc/docker/daemon.json
-```
-
-**Paso 3.** Reiniciar Docker. Los contenedores en marcha se detienen; después vuelve a levantarlos con `mise run arriba`:
-
-```sh
 sudo systemctl restart docker
 ```
 
-**Comprobar:** con Supabase en marcha, `ss -ltn 'sport = :55323'` muestra `127.0.0.1:55323` y no `0.0.0.0:55323`.
-
-El ajuste afecta a todos los proyectos del equipo: un contenedor que necesite ser visible en la red debe pedirlo con la dirección explícita (`0.0.0.0:puerto:puerto`). En Ágora ninguno lo necesita.
+Si el archivo ya existía, agrega la clave `"ip"` a lo que tiene en lugar de reemplazarlo. En Arch y CachyOS la carpeta `/etc/docker` no viene creada, y `tee` no crea carpetas.
 
 ## 4. mise
 
@@ -289,7 +282,7 @@ Para tus respaldos generales, incluye `~/.local/share/agora-privado/` y los `.en
 - [ ] Sistema actualizado con `pacman -Syu`.
 - [ ] Git, Docker, Compose, Buildx, mise y gh instalados; QEMU para arm64.
 - [ ] `docker run --rm hello-world` funciona; `docker buildx ls` muestra `linux/arm64`.
-- [ ] `/etc/docker/daemon.json` con `"ip": "127.0.0.1"`: los puertos de Supabase solo escuchan en tu equipo (sección 3.4).
+- [ ] Con Supabase levantado por `mise run arriba`, sus puertos escuchan solo en `127.0.0.1` (sección 3.4).
 - [ ] mise activado en zsh.
 - [ ] Identidad de Git, `core.hooksPath` y firma SSH configuradas; llave de firma registrada en GitHub.
 - [ ] `~/.config/git/ignore` creado.
