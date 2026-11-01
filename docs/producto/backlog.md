@@ -1,6 +1,6 @@
 # Product backlog · Ágora
 
-Versión 1.3 · creado el 2026-10-20 · editado el 2026-10-31
+Versión 1.4 · creado el 2026-10-20 · editado el 2026-11-01
 
 Fuente de verdad del orden de trabajo. Cada fila es un **PBI** (product backlog item): una historia de usuario (HU) o un ítem técnico (T: historia técnica, spike o chore). Los sprints no tienen fechas: un sprint se cierra cuando cumple su objetivo y la DoD.
 
@@ -33,16 +33,16 @@ Fuente de verdad del orden de trabajo. Cada fila es un **PBI** (product backlog 
 ## 2. Backlog ordenado por sprint
 
 ### SPRINT-00 · Organización y entorno (H0, parte 1)
-Objetivo: desde un clon limpio, un solo comando levanta la web, Supabase, n8n y el worker en local, aislados del resto del equipo; el CI pasa en verde, existe una preview en Vercel y las cuentas y secretos de los servicios externos están creados.
+Objetivo: desde un clon limpio, un solo comando levanta la web, Supabase, n8n y el worker en local, aislados del resto del equipo; el CI pasa en verde, existe una preview en Vercel y las cuentas y secretos de los servicios externos están creados. **Cerrado** el 2026-11-01 con 18 de 21 puntos; T-13 pasa a SPRINT-01.
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| T-14 | Chore | Redactar las guías de configuración del entorno y generarlas en PDF | EP-01 | Must | 2 | En curso |
-| T-13 | Chore | Crear las cuentas y los secretos de los servicios externos | EP-01 | Must | 3 | Borrador |
-| T-11 | Historia técnica | Preparar el entorno local aislado con mise y el script de verificación | EP-01 | Must | 3 | Borrador |
-| T-01 | Historia técnica | Crear el proyecto Next.js 16 con TypeScript estricto, Tailwind v4, tokens y fuentes | EP-01 | Must | 5 | Borrador |
-| T-12 | Historia técnica | Levantar los servicios locales en Docker: Supabase, n8n y la imagen del worker | EP-01 | Must | 5 | Borrador |
-| T-02 | Chore | Configurar CI en GitHub Actions y previews en Vercel | EP-01 | Must | 3 | Borrador |
+| T-14 | Chore | Redactar las guías de configuración del entorno y generarlas en PDF | EP-01 | Must | 2 | Hecha |
+| T-13 | Chore | Crear las cuentas y los secretos de los servicios externos | EP-01 | Must | 3 | En curso (pasa a SPRINT-01) |
+| T-11 | Historia técnica | Preparar el entorno local aislado con mise y el script de verificación | EP-01 | Must | 3 | Hecha |
+| T-01 | Historia técnica | Crear el proyecto Next.js 16 con TypeScript estricto, Tailwind v4, tokens y fuentes | EP-01 | Must | 5 | Hecha |
+| T-12 | Historia técnica | Levantar los servicios locales en Docker: Supabase, n8n y la imagen del worker | EP-01 | Must | 5 | Hecha |
+| T-02 | Chore | Configurar CI en GitHub Actions y previews en Vercel | EP-01 | Must | 3 | Hecha |
 
 ### SPRINT-01 · Cimientos navegables (H0, parte 2)
 Objetivo: abrir la web, navegar por las 17 rutas vacías en ambos temas y en tres anchos.
@@ -52,6 +52,7 @@ Objetivo: abrir la web, navegar por las 17 rutas vacías en ambos temas y en tre
 | [HU-01.01](historias/EP-01-base-y-navegacion/HU-01.01-navegar-entre-secciones.md) | Historia | Navegar entre las secciones de la plataforma | EP-01 | Must | 5 | Borrador |
 | [HU-01.02](historias/EP-01-base-y-navegacion/HU-01.02-alternar-tema-claro-oscuro.md) | Historia | Alternar entre el tema claro y el oscuro sin parpadeo | EP-01 | Must | 3 | Borrador |
 | [HU-01.03](historias/EP-01-base-y-navegacion/HU-01.03-adaptar-interfaz-al-dispositivo.md) | Historia | Usar la plataforma en móvil, tablet y escritorio | EP-01 | Must | 3 | Borrador |
+| T-13 | Chore | Crear las cuentas y los secretos de los servicios externos (arrastre de SPRINT-00: VM de Oracle y token de Claude) | EP-01 | Must | 3 | En curso |
 
 ### SPRINT-02 · Kit de interfaz (H1)
 Objetivo: todos los estados de `Controles` y `ControlesMovil` reproducidos y documentados en una página de muestras (`/dev/kit`, solo en desarrollo).

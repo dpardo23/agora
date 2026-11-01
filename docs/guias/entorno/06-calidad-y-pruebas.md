@@ -1,6 +1,6 @@
 # Guía 6 · Calidad y pruebas
 
-Versión 1.0 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.1 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué revisa cada barrera de calidad, en qué momento y cómo correr cada revisión a mano. El objetivo es que los errores aparezcan en tu equipo, antes de llegar a GitHub, y que nada llegue a `develop` o a `main` sin pasar por las mismas pruebas. Complementa el plan de pruebas (`docs/qa/plan-pruebas.md`), que define qué se prueba en cada nivel.
 
@@ -45,6 +45,7 @@ En una emergencia se puede saltar con `git push --no-verify`. El CI revisa lo mi
 | Lighthouse | Rendimiento, accesibilidad y buenas prácticas en móvil | En los PR que cambian la web |
 | Base de datos | `supabase db reset`, pgTAP y lint | Si cambia `supabase/` |
 | Worker | ruff, mypy y pytest con cobertura | Si cambia `worker/` |
+| Imagen del worker | Construye la imagen en runners nativos amd64 y arm64 (la arquitectura de la Oracle VM) y comprueba usuario, Chromium, LaTeX y el paquete `umss` | En los PR y push que cambian `worker/` |
 | `ci-ok` | Resume todos los anteriores; es el único check obligatorio de los rulesets | Siempre |
 
 Si un job falla, en la pestaña *Checks* del PR está el registro. Los reportes de Playwright (con trazas) y de Lighthouse se descargan como artefactos del run.

@@ -6,3 +6,4 @@ Estado: esqueleto de T-12 (SPRINT-00), con las herramientas de desarrollo (pytes
 
 - Uso diario, imagen y comandos: `docs/guias/entorno/04-backend-y-datos.md`, sección 4.
 - Variables de entorno: `worker/.env.example` (guía 2, sección 10).
+- Arquitecturas: la imagen se construye para amd64 (el PC) y arm64 (la Oracle VM). El CI valida las dos en runners nativos cada vez que cambia `worker/` (job «Imagen del worker»).

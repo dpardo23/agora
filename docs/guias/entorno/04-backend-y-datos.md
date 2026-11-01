@@ -1,6 +1,6 @@
 # Guía 4 · Backend y datos
 
-Versión 1.4 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.5 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Cómo se levantan en local Supabase, n8n y el worker, y cómo se trabaja con la base de datos. Corresponde al ítem T-12 del SPRINT-00. La API `/api/v1` no es un servicio aparte: vive dentro de Next.js (guía 3).
 
@@ -176,7 +176,7 @@ docker run --rm -v "$PWD/worker/tests/fixtures:/tex:ro" -w /tmp agora/worker:loc
 docker buildx build --platform linux/arm64 -t agora/worker:arm64 worker             # para la VM (emulado, lento)
 ```
 
-La construcción para arm64 usa QEMU (guía 1, sección 2) y tarda bastante más que la de tu PC.
+La construcción para arm64 en tu PC usa QEMU (guía 1, sección 2) y tarda bastante más. No hace falta para validar la imagen: en cada PR que cambia `worker/`, el job «Imagen del worker» del CI la construye en runners nativos amd64 y arm64, y comprueba el usuario, Chromium, la compilación del `.tex` de prueba y la importación de `umss` (guía 6, sección 3).
 
 ## 5. Un solo comando
 
@@ -210,5 +210,5 @@ Nunca muestra valores ni reemplaza un archivo que ya existe: para regenerarlo, b
 - [ ] Studio abre en http://localhost:55323 y Mailpit en http://localhost:55324.
 - [ ] `mise run n8n:clave` creó la clave y n8n abre en http://localhost:55678.
 - [ ] `mise run entorno:env` creó los dos `.env.local` y `scripts/verificar-entorno.sh` no muestra avisos.
-- [ ] La imagen del worker se construye y compila el `.tex` de prueba (también para arm64).
+- [ ] La imagen del worker se construye y compila el `.tex` de prueba en tu PC; para arm64, el job «Imagen del worker (arm64)» del CI está en verde.
 - [ ] `mise run abajo` deja `docker ps --filter name=agora` vacío.

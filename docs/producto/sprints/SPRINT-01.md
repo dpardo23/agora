@@ -3,9 +3,9 @@ id: SPRINT-01
 nombre: "Cimientos navegables (H0, parte 2)"
 hito: H0
 estado: Siguiente
-puntos_comprometidos: 11
+puntos_comprometidos: 14
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
+fecha_edicion: 2026-11-01
 ---
 
 # SPRINT-01 · Cimientos navegables (H0, parte 2)
@@ -20,8 +20,9 @@ Abrir la web, navegar por las 17 rutas vacías en ambos temas y en tres anchos.
 | [HU-01.01](../historias/EP-01-base-y-navegacion/HU-01.01-navegar-entre-secciones.md) | Historia | Navegar entre las secciones de la plataforma | EP-01 | Must | 5 | Borrador |
 | [HU-01.02](../historias/EP-01-base-y-navegacion/HU-01.02-alternar-tema-claro-oscuro.md) | Historia | Alternar entre el tema claro y el oscuro sin parpadeo | EP-01 | Must | 3 | Borrador |
 | [HU-01.03](../historias/EP-01-base-y-navegacion/HU-01.03-adaptar-interfaz-al-dispositivo.md) | Historia | Usar la plataforma en móvil, tablet y escritorio | EP-01 | Must | 3 | Borrador |
+| T-13 | Chore | Crear las cuentas y los secretos de los servicios externos (arrastre de SPRINT-00) | EP-01 | Must | 3 | En curso |
 
-**Total comprometido:** 11 puntos. El proyecto web, el CI y el entorno se preparan antes, en SPRINT-00.
+**Total comprometido:** 14 puntos: 11 de las HU y 3 de T-13, que llega de SPRINT-00 y solo conserva dos pendientes del titular: la VM ARM de Oracle (reintentos dentro del Free Tier) y el token de Claude para el worker (guía 2, secciones 3 y 7). El proyecto web, el CI y el entorno quedaron listos en SPRINT-00.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
