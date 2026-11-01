@@ -2,6 +2,8 @@
 # Los títulos siguen Conventional Commits: «ci(deps): …» para acciones y «build(deps): …» para el resto.
 # Las versiones de las herramientas (Node, pnpm, Python, uv, CLI de Supabase) no las sube Dependabot:
 # se cambian a mano en mise.toml, que leen el entorno local y el CI (ADR-006).
+# Cooldown: no se proponen versiones con menos de 14 días de publicadas, igual que la regla de pnpm, para
+# no adoptar un paquete comprometido antes de que se detecte.
 version: 2
 updates:
   # Acciones de .github/workflows: un solo PR semanal con todas las subidas.
@@ -11,6 +13,8 @@ updates:
     labels: [dependencias]
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 14
     commit-message:
       prefix: ci
       include: scope
@@ -25,6 +29,8 @@ updates:
     labels: [dependencias]
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 14
     open-pull-requests-limit: 5
     commit-message:
       prefix: build
@@ -33,6 +39,14 @@ updates:
       # Las subidas menores y de parche van juntas; las mayores, cada una en su PR.
       menores:
         update-types: [minor, patch]
+    ignore:
+      # Los tipos de Node siguen a la versión de Node de mise.toml (24); suben a mano junto con ella.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      # eslint-config-next trae eslint-plugin-react, eslint-plugin-import y eslint-plugin-jsx-a11y, que
+      # todavía no declaran compatibilidad con ESLint 10. Se quita cuando la declaren.
+      - dependency-name: eslint
+        update-types: ['version-update:semver-major']
 
   # Motor de agentes (apps/worker/pyproject.toml y uv.lock).
   - package-ecosystem: uv
@@ -41,6 +55,8 @@ updates:
     labels: [dependencias]
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 14
     commit-message:
       prefix: build
       include: scope
@@ -55,6 +71,12 @@ updates:
     labels: [dependencias]
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 14
+    ignore:
+      # La versión de Python la fija mise.toml y el CI exige que la imagen coincida: se cambian juntas, a mano.
+      - dependency-name: python
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
     commit-message:
       prefix: build
       include: scope
@@ -66,6 +88,8 @@ updates:
     labels: [dependencias]
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 14
     commit-message:
       prefix: build
       include: scope
