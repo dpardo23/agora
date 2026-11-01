@@ -1,6 +1,6 @@
 # Documentación · Ágora
 
-Versión 1.1 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.2 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Índice de la documentación del proyecto. Cada carpeta agrupa una disciplina; la tabla de la sección 2 indica qué carpeta sirve a cada materia de la carrera.
 
@@ -10,7 +10,7 @@ Versión 1.1 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Die
 |---|---|---|
 | [`producto/`](producto/vision.md) | Gestión del producto con Scrum: visión, backlog, épicas, historias de usuario y sprints | [`backlog.md`](producto/backlog.md) |
 | [`qa/`](qa/plan-pruebas.md) | Aseguramiento de la calidad: plan de pruebas, matriz de trazabilidad, test cases y bug reports | [`plan-pruebas.md`](qa/plan-pruebas.md) |
-| [`arquitectura/`](arquitectura/README.md) | Vista general con diagramas C4, contrato de la API REST y decisiones de arquitectura (ADR) | [`README.md`](arquitectura/README.md) |
+| [`arquitectura/`](arquitectura/README.md) | Descripción de la arquitectura según ISO/IEC/IEEE 42010: vistas de contexto, contenedores, componentes, datos (ER), comportamiento (secuencias y estados) y despliegue, contrato de la API y ADR | [`README.md`](arquitectura/README.md) |
 | [`diseno/`](diseno/sistema-de-diseno.md) | Sistema de diseño (tokens, componentes, Oficina del Olimpo) y criterios de accesibilidad WCAG 2.2 AA | [`sistema-de-diseno.md`](diseno/sistema-de-diseno.md) |
 | [`guias/`](guias/entorno/README.md) | Guías prácticas: preparación del entorno de desarrollo y configuración del repositorio en GitHub | [`entorno/README.md`](guias/entorno/README.md) |
 | [`plantillas/`](plantillas/HU.md) | Plantillas de épica, historia de usuario, test case, bug report y ADR | — |
