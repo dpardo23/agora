@@ -2,7 +2,7 @@
 
 Versión 2.2 · creado el 2026-10-20 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
-Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado). Rutas y API: `docs/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
+Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado), ADR-007 (licencia LGPL de sharp-libvips). Rutas y API: `docs/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
 
 ## 1. Vista general
 
