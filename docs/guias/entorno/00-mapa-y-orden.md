@@ -1,6 +1,6 @@
 # Guía 0 · Mapa del entorno y orden de pasos
 
-Versión 1.10 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.11 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Explica qué piezas tiene el entorno de Ágora, en qué orden se preparan, qué versiones se usan y qué puertos ocupa cada servicio. Las decisiones de fondo están en el ADR-006.
 
@@ -104,7 +104,7 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 
 | Paquete o imagen | Versión | Nota |
 |---|---|---|
-| Imagen base | `python:3.14.10-slim-trixie` | Publicada para amd64 y arm64; Dependabot propone las nuevas |
+| Imagen base | `python:3.14.10-slim-trixie` | Publicada para amd64 y arm64; Dependabot propone solo parches de 3.14: la versión menor cambia a mano, junto con `mise.toml` |
 | uv en la imagen | `ghcr.io/astral-sh/uv:0.13.6` | La misma versión que `mise.toml` |
 | TeX Live y Chromium | Paquetes de Debian «trixie» | Disponibles para arm64 |
 | pytest, pytest-cov, ruff, mypy | 9.2.0, 7.1.0, 0.17.3, 2.4.1 | Herramientas de desarrollo, fijas en `pyproject.toml` |

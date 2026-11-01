@@ -1,6 +1,6 @@
 # Guía 6 · Calidad y pruebas
 
-Versión 1.2 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.3 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué revisa cada barrera de calidad, en qué momento y cómo correr cada revisión a mano. El objetivo es que los errores aparezcan en tu equipo, antes de llegar a GitHub, y que nada llegue a `develop` o a `main` sin pasar por las mismas pruebas. Complementa el plan de pruebas (`docs/qa/plan-pruebas.md`), que define qué se prueba en cada nivel.
 
@@ -101,7 +101,7 @@ Las dependencias que se instalaron con el stack y todavía no usa ninguna pantal
 ## 5. Seguridad continua en GitHub
 
 - **CodeQL** (configuración por defecto, activada en SPRINT-00): analiza JavaScript/TypeScript, Python y los workflows en cada PR y cada semana. Sus alertas están en *Security → Code scanning*.
-- **Dependabot:** alertas de vulnerabilidades y PR semanales de actualización hacia `develop` (`.github/dependabot.yml`).
+- **Dependabot:** alertas de vulnerabilidades y PR semanales de actualización hacia `develop` (`.github/dependabot.yml`). No propone versiones con menos de 14 días de publicadas (`cooldown`), ni las versiones mayores de `@types/node` y `eslint`, ni versiones nuevas de Python en la imagen del worker: esas se cambian a mano junto con `mise.toml`. Para cerrar un PR de Dependabot sin que vuelva a abrirse, se comenta `@dependabot ignore this major version` (o `minor`); el motivo se registra además en `dependabot.yml`.
 - **Secret scanning y push protection:** GitHub rechaza un push con un secreto reconocible.
 - **Acciones fijadas por hash:** cada `uses:` de los workflows apunta al commit exacto de la acción, con la versión en un comentario. Dependabot actualiza el hash y el comentario a la vez. zizmor rechaza cualquier acción sin fijar.
 
