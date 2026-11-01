@@ -1,6 +1,6 @@
 # Guía 3 · Frontend (`apps/web`)
 
-Versión 1.4 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.5 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué se instala en la aplicación web, para qué sirve cada librería y cómo se arranca y se prueba. La creación del proyecto es el ítem T-01 del SPRINT-00; esta guía documenta lo que T-01 deja instalado para que no haya que agregar herramientas sueltas después. Todas las versiones salen de la matriz de la guía 0 y se fijan exactas en `package.json` (sin `^`).
 
@@ -194,7 +194,7 @@ El CI usa Ubuntu, así que allí corren los tres navegadores sin pasos extra.
 
 Los mismos scripts existen dentro de `apps/web/`; el CI los corre desde esa carpeta.
 
-Para agregar una librería: `pnpm -C apps/web add --save-exact <paquete>@<versión>`. Antes, comprueba su licencia (CONTRIBUTING.md, sección 6), su compatibilidad con la matriz de la guía 0 y agrégala a esa matriz.
+Para agregar una librería: `pnpm -C apps/web add --save-exact <paquete>@<versión>`. Antes, comprueba su licencia (.github/CONTRIBUTING.md, sección 6), su compatibilidad con la matriz de la guía 0 y agrégala a esa matriz.
 
 ## 10. Comprobación
 

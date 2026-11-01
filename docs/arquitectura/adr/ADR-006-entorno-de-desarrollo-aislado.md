@@ -56,7 +56,7 @@ Para no chocar con otros proyectos, Ágora usa un bloque fijo:
 Los hooks del proyecto viven en `.githooks/` (`core.hooksPath`). No se usa Husky: su instalación cambia `core.hooksPath` y desactivaría en silencio los hooks de privacidad y autoría. commitlint se ejecuta desde `.githooks/commit-msg`.
 
 ### 6. Lo privado no se versiona
-`.gitignore` es la única lista de lo que nunca se sube: secretos, configuración local de herramientas de desarrollo y de asistencia, material de terceros (`docs/referencia/`), diseño fuente (`design/`) y datos de servicios locales. La hacen cumplir el hook `.githooks/pre-commit` y el paso «Rutas privadas» del CI (`CONTRIBUTING.md`, sección 8).
+`.gitignore` es la única lista de lo que nunca se sube: secretos, configuración local de herramientas de desarrollo y de asistencia, material de terceros (`docs/referencia/`), diseño fuente (`design/`) y datos de servicios locales. La hacen cumplir el hook `.githooks/pre-commit` y el paso «Rutas privadas» del CI (`.github/CONTRIBUTING.md`, sección 8).
 
 ## Alternativas consideradas
 | Opción | A favor | En contra |

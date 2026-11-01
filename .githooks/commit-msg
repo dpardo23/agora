@@ -1,12 +1,12 @@
 #!/bin/sh
-# Rechaza commits que atribuyan autoría a herramientas de IA (CONTRIBUTING.md, sección 2, regla 6).
+# Rechaza commits que atribuyan autoría a herramientas de IA (.github/CONTRIBUTING.md, sección 2, regla 6).
 # Se activa una vez por clon con: git config core.hooksPath .githooks
 if grep -Eiq '^(co-authored-by|claude-session|generated-by):|noreply@anthropic\.com|claude\.ai/code' "$1"; then
   echo "commit-msg: el mensaje atribuye coautoría a una herramienta de IA. Quita esa línea." >&2
   exit 1
 fi
 
-# Formato Conventional Commits con las reglas de commitlint.config.mjs (CONTRIBUTING.md, sección 2).
+# Formato Conventional Commits con las reglas de commitlint.config.mjs (.github/CONTRIBUTING.md, sección 2).
 # En un clon sin «pnpm install» todavía no existe commitlint: avisa y deja pasar el commit; el CI lo
 # revisa igual en el PR.
 raiz=$(git rev-parse --show-toplevel)

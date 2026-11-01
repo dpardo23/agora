@@ -9,7 +9,7 @@ autor: Juan Diego Pardo Pozo
 # ADR-007 · Licencia LGPL de sharp-libvips
 
 ## Contexto
-Ágora es software propietario (`LICENSE`) y `CONTRIBUTING.md` (sección 6) solo admite dependencias con licencias permisivas. Cualquier licencia copyleft requiere una revisión y un ADR antes de incorporarse.
+Ágora es software propietario (`LICENSE`) y `.github/CONTRIBUTING.md` (sección 6) solo admite dependencias con licencias permisivas. Cualquier licencia copyleft requiere una revisión y un ADR antes de incorporarse.
 
 Al crear la web (T-01), la revisión con `pnpm licenses list` encontró una dependencia fuera de esa lista: `@img/sharp-libvips-<plataforma>` (versión 1.3.4), con licencia **LGPL-3.0-or-later**. No la pide Ágora directamente: llega como dependencia **opcional** de `next` a través de `sharp` (Apache-2.0), que Next.js usa para optimizar las imágenes de `next/image`. El paquete solo contiene la biblioteca compilada libvips, que `sharp` carga como biblioteca compartida.
 
@@ -30,7 +30,7 @@ Además, se agrega `MIT-0` a las licencias permitidas del CI: es una variante de
 |---|---|---|
 | **Aceptarla sin modificarla y documentarla** | La optimización de imágenes funciona igual en local, en el CI y en Vercel; la LGPL permite usar la biblioteca sin modificarla en software propietario | Exige mantener el aviso de terceros y revisar la decisión si cambia el uso |
 | Excluir `sharp` con `ignoredOptionalDependencies` de pnpm | Ninguna dependencia LGPL en el árbol | `next start` en local no podría optimizar imágenes de `next/image`; el entorno local y Vercel se comportarían distinto |
-| Dejar la decisión para más adelante | Sin trabajo ahora | La dependencia ya está instalada sin revisar, lo que contradice `CONTRIBUTING.md` |
+| Dejar la decisión para más adelante | Sin trabajo ahora | La dependencia ya está instalada sin revisar, lo que contradice `.github/CONTRIBUTING.md` |
 
 ## Consecuencias
 - Positivas: la política de licencias se cumple de forma explícita y el CI documenta la única excepción.

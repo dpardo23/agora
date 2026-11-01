@@ -1,4 +1,4 @@
-# Actualizaciones semanales de dependencias, siempre hacia develop (CONTRIBUTING.md, sección 6).
+# Actualizaciones semanales de dependencias, siempre hacia develop (.github/CONTRIBUTING.md, sección 6).
 # Los títulos siguen Conventional Commits: «ci(deps): …» para acciones y «build(deps): …» para el resto.
 # Las versiones de las herramientas (Node, pnpm, Python, uv, CLI de Supabase) no las sube Dependabot:
 # se cambian a mano en mise.toml, que leen el entorno local y el CI (ADR-006).

@@ -1,6 +1,6 @@
 # Arquitectura · Ágora
 
-Versión 2.3 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 2.4 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado), ADR-007 (licencia LGPL de sharp-libvips). Rutas y API: `docs/arquitectura/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
 
@@ -111,7 +111,8 @@ infra/     systemd, scripts de la VM, respaldos
 scripts/   utilidades (diseño, verificación de docs)
 docs/      índice en docs/README.md: producto, qa, arquitectura (api, adr), diseno, guias, plantillas, referencia
 design/    pantallas (.dc.html), mockups (PNG), referencias, fuente (export local, no versionado)
-.github/   workflows de CI/CD, plantillas de PR
+.github/   workflows de CI/CD, plantillas de PR e issues, CONTRIBUTING.md y SECURITY.md
+.mise/tasks/  tareas del entorno local (mise run arriba, abajo, estado, entorno:env, n8n:clave)
 ```
 
 ## 4. Flujo de un encargo
@@ -142,4 +143,4 @@ design/    pantallas (.dc.html), mockups (PNG), referencias, fuente (export loca
 
 El entorno local está aislado del resto del equipo (ADR-006): mise fija las versiones de Node, pnpm, Python, uv y la CLI de Supabase solo dentro de la carpeta del proyecto, y los servicios corren en contenedores descartables con un bloque de puertos propio. La preparación paso a paso está en `docs/guias/entorno/`.
 
-El flujo de ramas, los commits y el pipeline están en `CONTRIBUTING.md` y `.github/workflows/`.
+El flujo de ramas, los commits y el pipeline están en `.github/CONTRIBUTING.md` y `.github/workflows/`.

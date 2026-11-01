@@ -1,6 +1,6 @@
 # Guía 0 · Mapa del entorno y orden de pasos
 
-Versión 1.8 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.9 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Explica qué piezas tiene el entorno de Ágora, en qué orden se preparan, qué versiones se usan y qué puertos ocupa cada servicio. Las decisiones de fondo están en el ADR-006.
 
@@ -149,7 +149,7 @@ Elegidos fuera de los valores por defecto para no chocar con otros proyectos.
 | `.editorconfig`, `.vscode/` | Formato común del editor y extensiones recomendadas | Sí |
 | `scripts/verificar-entorno.sh` | Comprueba que el entorno esté completo (guía 5) | Sí |
 | `supabase/` | Configuración, migraciones, pruebas pgTAP y borradores (`borradores/`, hasta T-03) | Sí (salvo `.temp/`, `.branches/`) |
-| `mise-tasks/` | Tareas `arriba`, `abajo`, `estado`, `entorno:env` y `n8n:clave` | Sí |
+| `.mise/tasks/` | Tareas `arriba`, `abajo`, `estado`, `entorno:env` y `n8n:clave` | Sí |
 | `infra/local/compose.yaml` | n8n y worker en local | Sí |
 | `infra/local/datos/` | Volúmenes locales | **No** |
 | `docs/referencia/`, `design/` | Material privado y diseño fuente | **No** |
