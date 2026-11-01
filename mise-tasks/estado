@@ -1,0 +1,14 @@
+#!/bin/sh
+#MISE description="Muestra las direcciones de Supabase local y los contenedores de Ágora, sin claves"
+# Uso: mise run estado   (guía 4, sección 5)
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+echo "==> Supabase local"
+if estado=$(supabase status -o json 2>/dev/null); then
+  # Solo direcciones: las claves se consultan con «supabase status» cuando hacen falta.
+  printf '%s\n' "$estado" | jq -r 'to_entries[] | select(.key | test("URL$")) | "  \(.key): \(.value)"'
+else
+  echo "  detenido (mise run arriba)"
+fi
+echo "==> Contenedores de Ágora"
+docker ps --filter "name=agora" --format '  {{.Names}}\t{{.Status}}\t{{.Ports}}'

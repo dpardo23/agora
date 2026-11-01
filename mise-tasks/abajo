@@ -1,0 +1,10 @@
+#!/bin/sh
+#MISE description="Detiene n8n, el worker y Supabase local; conserva los datos"
+# Uso: mise run abajo   (guía 4, sección 5)
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+# Compose exige la clave al leer el archivo aunque solo se detenga: si falta, se usa un valor de relleno.
+N8N_ENCRYPTION_KEY="${N8N_ENCRYPTION_KEY:-sin-uso-al-detener}" \
+  docker compose -f infra/local/compose.yaml --profile worker down
+supabase stop
+echo "Listo: no queda ningún contenedor de Ágora en marcha (los volúmenes se conservan)."

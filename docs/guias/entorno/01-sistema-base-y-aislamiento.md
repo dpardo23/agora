@@ -1,6 +1,6 @@
 # Guía 1 · Sistema base y aislamiento
 
-Versión 1.1 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.2 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
 Qué instalar en CachyOS, cómo activarlo y cómo dejar el proyecto aislado del resto del equipo. Todo lo de esta guía lo hace el titular a mano, una sola vez. Los comandos se escriben en la terminal (zsh); los que empiezan con `sudo` piden tu contraseña.
 
@@ -86,6 +86,32 @@ El primero imprime «Hello from Docker!» y borra el contenedor. El segundo debe
 - No uses `docker system prune` ni `docker volume prune` sin mirar qué borran: los volúmenes guardan los datos locales de Supabase y n8n.
 - Para ver lo que está encendido: `docker ps` y `supabase status`.
 
+### 3.4. Puertos solo en tu equipo (`127.0.0.1`)
+
+La CLI de Supabase publica sus puertos en todas las interfaces (`0.0.0.0`), y Docker escribe sus propias reglas de red, que **pasan por encima de ufw**. Sin este ajuste, Studio (55323) y Postgres (55322, con la contraseña `postgres` de fábrica) quedan al alcance de cualquier equipo de la misma red Wi-Fi. La CLI no permite cambiarlo; Docker sí, para todos los contenedores que no indiquen una dirección propia.
+
+**Paso 1.** Revisar si ya existe la configuración del demonio (si existe, agrega la clave `"ip"` a lo que ya tiene en lugar de reemplazarlo):
+
+```sh
+cat /etc/docker/daemon.json
+```
+
+**Paso 2.** Si no existe, crearla:
+
+```sh
+echo '{ "ip": "127.0.0.1" }' | sudo tee /etc/docker/daemon.json
+```
+
+**Paso 3.** Reiniciar Docker. Los contenedores en marcha se detienen; después vuelve a levantarlos con `mise run arriba`:
+
+```sh
+sudo systemctl restart docker
+```
+
+**Comprobar:** con Supabase en marcha, `ss -ltn 'sport = :55323'` muestra `127.0.0.1:55323` y no `0.0.0.0:55323`.
+
+El ajuste afecta a todos los proyectos del equipo: un contenedor que necesite ser visible en la red debe pedirlo con la dirección explícita (`0.0.0.0:puerto:puerto`). En Ágora ninguno lo necesita.
+
 ## 4. mise
 
 ### 4.1. Activarlo en zsh
@@ -113,7 +139,15 @@ supabase = "2.122.0"
 _.file = ".env.local"
 ```
 
-Las tareas `mise run arriba` y `mise run abajo`, que levantan y bajan Supabase, n8n y el worker, se agregan en T-12, cuando existan esos servicios.
+Las tareas del proyecto son scripts de la carpeta `mise-tasks/` (T-12). `mise tasks` las lista:
+
+| Tarea | Qué hace |
+|---|---|
+| `mise run arriba` | Levanta Supabase local y n8n; `mise run arriba --worker` también construye y levanta el worker |
+| `mise run abajo` | Detiene todo y conserva los datos |
+| `mise run estado` | Direcciones de Supabase local y contenedores de Ágora, sin mostrar claves |
+| `mise run entorno:env` | Crea `apps/web/.env.local` y `worker/.env.local` (guía 4, sección 6) |
+| `mise run n8n:clave` | Crea la clave de cifrado de n8n una sola vez (guía 4, sección 3.1) |
 
 Dentro de la carpeta del proyecto:
 
@@ -254,6 +288,7 @@ Para tus respaldos generales, incluye `~/.local/share/agora-privado/` y los `.en
 - [ ] Sistema actualizado con `pacman -Syu`.
 - [ ] Git, Docker, Compose, Buildx, mise y gh instalados; QEMU para arm64.
 - [ ] `docker run --rm hello-world` funciona; `docker buildx ls` muestra `linux/arm64`.
+- [ ] `/etc/docker/daemon.json` con `"ip": "127.0.0.1"`: los puertos de Supabase solo escuchan en tu equipo (sección 3.4).
 - [ ] mise activado en zsh.
 - [ ] Identidad de Git, `core.hooksPath` y firma SSH configuradas; llave de firma registrada en GitHub.
 - [ ] `~/.config/git/ignore` creado.

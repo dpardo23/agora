@@ -1,0 +1,43 @@
+# Servicios locales de Ágora que no son Supabase (T-12; guía 4, sección 3).
+# Supabase lo levanta su propia CLI (supabase start). Se usa con las tareas de mise:
+#   mise run arriba | abajo | estado
+# Reglas: versiones fijas (nunca «latest»), puertos solo en 127.0.0.1 y sin política «restart»,
+# para que nada arranque solo con el equipo.
+name: agora
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:2.45.7
+    ports:
+      - "127.0.0.1:55678:5678"
+    environment:
+      GENERIC_TIMEZONE: America/La_Paz
+      TZ: America/La_Paz
+      # Sin clave, n8n generaría una propia dentro del volumen y la del gestor dejaría de servir:
+      # mejor fallar al arrancar. Se crea una sola vez con «mise run n8n:clave».
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:?Falta N8N_ENCRYPTION_KEY en el .env.local de la raíz (mise run n8n:clave)}
+      N8N_DIAGNOSTICS_ENABLED: "false"
+      N8N_VERSION_NOTIFICATIONS_ENABLED: "false"
+      N8N_PERSONALIZATION_ENABLED: "false"
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+      N8N_RUNNERS_ENABLED: "true"
+    volumes:
+      - n8n_datos:/home/node/.n8n
+
+  worker:
+    profiles: ["worker"]
+    build:
+      context: ../../worker
+    image: agora/worker:local
+    env_file:
+      - path: ../../worker/.env.local
+        required: false
+    # Supabase local corre en el anfitrión: dentro del contenedor, «localhost» es el propio
+    # contenedor, así que la URL de worker/.env.local se reemplaza por la del anfitrión.
+    environment:
+      SUPABASE_URL: http://host.docker.internal:55321
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  n8n_datos:

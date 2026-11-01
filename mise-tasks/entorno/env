@@ -1,0 +1,62 @@
+#!/bin/sh
+#MISE description="Crea apps/web/.env.local y worker/.env.local con Supabase local y las claves del gestor"
+# Uso: mise run entorno:env   (guía 4, sección 6)
+# Lo ejecuta el titular: pide la sesión de Bitwarden. Nunca muestra valores ni reemplaza un archivo
+# que ya existe; los archivos se crean con permisos 600.
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+umask 077
+
+for herramienta in supabase jq bw; do
+  command -v "$herramienta" >/dev/null 2>&1 || { echo "entorno:env: falta $herramienta" >&2; exit 1; }
+done
+
+if ! estado=$(supabase status -o json 2>/dev/null); then
+  echo "entorno:env: Supabase local no está en marcha. Ejecuta antes: mise run arriba" >&2
+  exit 1
+fi
+valor_local() { printf '%s' "$estado" | jq -er --arg k "$1" '.[$k]'; }
+url=$(valor_local API_URL)
+publica=$(valor_local PUBLISHABLE_KEY)
+secreta=$(valor_local SECRET_KEY)
+
+# --- apps/web/.env.local ---
+web=apps/web/.env.local
+if [ -e "$web" ]; then
+  echo "entorno:env: $web ya existe; no se toca. Bórralo a mano si quieres regenerarlo."
+else
+  {
+    echo "# Generado por «mise run entorno:env» con los valores de Supabase local."
+    echo "NEXT_PUBLIC_SUPABASE_URL=$url"
+    echo "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=$publica"
+    echo "SUPABASE_SECRET_KEY=$secreta"
+  } > "$web"
+  echo "entorno:env: creado $web"
+fi
+
+# --- worker/.env.local ---
+worker=worker/.env.local
+if [ -e "$worker" ]; then
+  echo "entorno:env: $worker ya existe; no se toca. Bórralo a mano si quieres regenerarlo."
+  exit 0
+fi
+
+if [ "$(bw status | jq -r .status)" != "unlocked" ]; then
+  echo "entorno:env: Bitwarden está bloqueado. Ejecuta: export BW_SESSION=\"\$(bw unlock --raw)\" (guía 2, sección 1.1)" >&2
+  exit 1
+fi
+bw sync >/dev/null
+campo() { bw get item "$1" | jq -er --arg c "$2" '.fields[] | select(.name == $c) | .value'; }
+gemini=$(campo "Google · Gemini API key" "Clave API")
+claude=$(campo "Claude · token worker" "CLAUDE_CODE_OAUTH_TOKEN")
+
+{
+  echo "# Generado por «mise run entorno:env»: Supabase local y claves del gestor (guía 2, sección 10)."
+  echo "SUPABASE_URL=$url"
+  echo "SUPABASE_SECRET_KEY=$secreta"
+  echo "GEMINI_API_KEY=$gemini"
+  echo "CLAUDE_CODE_OAUTH_TOKEN=$claude"
+  echo "GOOGLE_OAUTH_CLIENT_FILE=$HOME/.local/share/agora-privado/google/client_secret_agora-worker.json"
+} > "$worker"
+echo "entorno:env: creado $worker"
+echo "Comprueba con: scripts/verificar-entorno.sh"

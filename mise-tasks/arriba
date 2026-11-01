@@ -1,0 +1,37 @@
+#!/bin/sh
+#MISE description="Levanta Supabase local y n8n; con --worker, también construye y levanta el worker"
+# Uso: mise run arriba [--worker]   (guía 4, sección 5)
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+compose="docker compose -f infra/local/compose.yaml"
+
+con_worker=no
+for argumento in "$@"; do
+  case "$argumento" in
+    --worker) con_worker=si ;;
+    *) echo "arriba: opción desconocida «$argumento». Uso: mise run arriba [--worker]" >&2; exit 2 ;;
+  esac
+done
+
+if ! docker info >/dev/null 2>&1; then
+  echo "arriba: Docker no responde. Ejecuta: sudo systemctl start docker.socket" >&2
+  exit 1
+fi
+
+echo "==> Supabase"
+supabase start
+
+echo "==> n8n (http://localhost:55678)"
+if [ -z "${N8N_ENCRYPTION_KEY:-}" ]; then
+  echo "arriba: falta N8N_ENCRYPTION_KEY en el .env.local de la raíz; n8n no se levanta. Créala una vez con: mise run n8n:clave" >&2
+else
+  $compose up -d n8n
+fi
+
+if [ "$con_worker" = si ]; then
+  echo "==> worker"
+  $compose --profile worker up -d --build worker
+fi
+
+echo
+echo "Listo. Estado: mise run estado · Bajar todo: mise run abajo"
