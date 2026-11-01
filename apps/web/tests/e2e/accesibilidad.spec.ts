@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import { RUTAS } from "./rutas";
 
-// Accesibilidad de todas las rutas de tests/e2e/rutas.ts (docs/accesibilidad.md: WCAG 2.2 AA, sin
+// Accesibilidad de todas las rutas de tests/e2e/rutas.ts (docs/diseno/accesibilidad.md: WCAG 2.2 AA, sin
 // violaciones serious ni critical), en tema claro y oscuro y en escritorio y móvil. axe evalúa el DOM y
 // los estilos calculados, que no cambian entre motores: se corre solo en Chromium.
 

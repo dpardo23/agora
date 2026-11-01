@@ -33,7 +33,7 @@ src/features/<dominio>/
 - La lógica de negocio vive en `domain/` y `application/`, nunca en componentes ni en `route.ts`.
 
 ### API
-- Toda **escritura con reglas de negocio** pasa por `src/app/api/v1/**`. Cada handler valida con Zod, verifica la sesión, llama al caso de uso y responde con el formato de `docs/api.md`.
+- Toda **escritura con reglas de negocio** pasa por `src/app/api/v1/**`. Cada handler valida con Zod, verifica la sesión, llama al caso de uso y responde con el formato de `docs/arquitectura/api.md`.
 - Las **lecturas** pueden ir directo a Supabase con RLS desde Server Components o TanStack Query, y por Realtime en vivo.
 - La API está **versionada** (`/v1`). Un cambio incompatible crea `/v2`; nunca rompe a `/v1`.
 

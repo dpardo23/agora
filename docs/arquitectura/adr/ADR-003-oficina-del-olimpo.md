@@ -13,7 +13,7 @@ El diseño original (`design/pantallas/Main.dc.html`) llama «Bot» a la secció
 
 ## Decisión
 1. **Nombre.** La sección se llama **Olimpo** (ruta `/olimpo`), con las pestañas **Oficina** (`/olimpo`) y **Consumo** (`/olimpo/consumo`). El sistema de agentes que genera los documentos es «el Olimpo». El paquete Python que lo ejecuta es el «motor de agentes» (`worker/`).
-2. **Panteón.** Se aprueba la asignación de dioses, salas y paleta de `docs/design.md`, sección 8, incluidas la Sala del Consejo y el Tribunal de Temis.
+2. **Panteón.** Se aprueba la asignación de dioses, salas y paleta de `docs/diseno/sistema-de-diseno.md`, sección 8, incluidas la Sala del Consejo y el Tribunal de Temis.
 3. **Movimiento.** Los dioses nunca quedan inmóviles. Con `prefers-reduced-motion` se aplica la **opción C**: siguen caminando entre estaciones, pero a la mitad de la velocidad y sin gestos periódicos, destellos ni brillos.
 4. **Escalabilidad.** Dioses y roles son entidades separadas: un dios puede tener varios roles y se pueden sumar dioses o roles nuevos sin tocar el código del render (ADR-005).
 5. **Interfaz.** La estructura de `Main.dc.html` se mantiene (panel del dios, pipeline, registro, documentos, nuevo encargo); cambian la escena, los sprites y los nombres.
@@ -27,5 +27,5 @@ El diseño original (`design/pantallas/Main.dc.html`) llama «Bot» a la secció
 | Movimiento reducido sin caminatas (opción A) | Máxima accesibilidad | Contradice la identidad de la oficina |
 
 ## Consecuencias
-- Los textos del diseño que dicen «Bot» se leen como «Olimpo» (`docs/design.md`, sección 13).
+- Los textos del diseño que dicen «Bot» se leen como «Olimpo» (`docs/diseno/sistema-de-diseno.md`, sección 13).
 - Las HU de la épica EP-05 se diseñan con detalle visual en su sprint (fondo, sprites, animaciones), con el spike T-05 como primer paso.

@@ -16,12 +16,12 @@ Primero se evaluó Nuxt (Vue) porque el usuario tiene preferencia por Vue. Esa p
 | Capa | Tecnología |
 |---|---|
 | Framework | **Next.js 16** (App Router) + **React 19** + **TypeScript** estricto |
-| Estilos | Tailwind CSS v4, con tokens en `src/app/globals.css` (`docs/design.md`, sección 2) |
+| Estilos | Tailwind CSS v4, con tokens en `src/app/globals.css` (`docs/diseno/sistema-de-diseno.md`, sección 2) |
 | Componentes | **shadcn/ui** (código propio sobre Radix), iconos `lucide-react` |
 | Estado del servidor | TanStack Query v5 (caché, reintentos, Realtime → invalidación) |
 | Estado del cliente | Estado local de React; Zustand solo si dos ramas lejanas comparten estado |
 | Formularios y validación | React Hook Form + **Zod** (los mismos esquemas en el cliente y en la API) |
-| API | Route Handlers en `src/app/api/v1/**`, con contrato OpenAPI generado desde Zod (`docs/api.md`) |
+| API | Route Handlers en `src/app/api/v1/**`, con contrato OpenAPI generado desde Zod (`docs/arquitectura/api.md`) |
 | Datos y autenticación | **Supabase** (`@supabase/ssr`): Postgres + RLS, Auth, Realtime, Storage y pgvector |
 | Fuentes | `next/font` (Bricolage Grotesque, Geist, Geist Mono, Pixelify Sans) |
 | PWA | Serwist (`@serwist/next`) |

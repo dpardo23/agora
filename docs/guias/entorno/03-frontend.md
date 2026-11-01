@@ -1,6 +1,6 @@
 # Guía 3 · Frontend (`apps/web`)
 
-Versión 1.3 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.4 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué se instala en la aplicación web, para qué sirve cada librería y cómo se arranca y se prueba. La creación del proyecto es el ítem T-01 del SPRINT-00; esta guía documenta lo que T-01 deja instalado para que no haya que agregar herramientas sueltas después. Todas las versiones salen de la matriz de la guía 0 y se fijan exactas en `package.json` (sin `^`).
 
@@ -20,7 +20,7 @@ apps/web/
       api/v1/salud/     GET /api/v1/salud
       api/v1/openapi.json/  GET /api/v1/openapi.json (contrato generado)
       api/v1/[...ruta]/ 404 en problem+json para rutas que no existen
-      globals.css       tokens de docs/design.md
+      globals.css       tokens de docs/diseno/sistema-de-diseno.md
     features/           un módulo por dominio (ADR-002); se crea con la primera HU
     components/ui/      componentes de shadcn/ui; se crea con HU-02.01
     shared/             utilidades sin dominio (lib/utils.ts, config/version.ts)
@@ -53,7 +53,7 @@ Además, los módulos de `src/server/` que no deben llegar al navegador empiezan
 | Paquete | Para qué |
 |---|---|
 | `next`, `react`, `react-dom` | Framework, servidor y renderizado |
-| `tailwindcss`, `@tailwindcss/turbopack` | Estilos con los tokens de `docs/design.md`. Next 16 compila el CSS con Turbopack, sin PostCSS |
+| `tailwindcss`, `@tailwindcss/turbopack` | Estilos con los tokens de `docs/diseno/sistema-de-diseno.md`. Next 16 compila el CSS con Turbopack, sin PostCSS |
 | `shadcn`, `radix-ui`, `cn`, `class-variance-authority`, `tw-animate-css` | Base del kit de componentes (estilo `radix-nova`). Los componentes se agregan con la CLI cuando una HU los necesita |
 | `lucide-react` | Iconos (la interfaz no usa emoji) |
 | `@tanstack/react-query` | Datos del servidor en el cliente, caché y reintentos |
@@ -105,10 +105,10 @@ Después se borra el `button.tsx` de ejemplo (el kit empieza en HU-02.01), se mu
 
 ## 5. Diseño: tokens, tema y fuentes
 
-- `src/app/globals.css` declara los tokens de `docs/design.md` (sección 2) para el tema claro y el oscuro, y los expone a Tailwind: `bg-bg2`, `text-tx2`, `bg-rosa`, `font-display`, `shadow-popover`, etc. No se escriben colores hexadecimales en los componentes.
+- `src/app/globals.css` declara los tokens de `docs/diseno/sistema-de-diseno.md` (sección 2) para el tema claro y el oscuro, y los expone a Tailwind: `bg-bg2`, `text-tx2`, `bg-rosa`, `font-display`, `shadow-popover`, etc. No se escriben colores hexadecimales en los componentes.
 - El tema sigue al sistema operativo. El atributo `data-tema="claro"` o `data-tema="oscuro"` en `<html>` lo fuerza; lo usarán HU-01.02 y HU-04.01. La variante `dark:` de Tailwind respeta ambos casos.
 - Las cuatro fuentes se cargan con `next/font` en `src/app/layout.tsx`: Geist (texto), Geist Mono (cifras y códigos), Bricolage Grotesque (títulos, como fuente variable con el eje `opsz`) y Pixelify Sans (solo la oficina, sin precarga).
-- El `<html>` lleva `lang="es-BO"`. Las clases `.d`, `.lbl`, `.cap` y `.m` son las de la sección 3 de `design.md`.
+- El `<html>` lleva `lang="es-BO"`. Las clases `.d`, `.lbl`, `.cap` y `.m` son las de la sección 3 de `sistema-de-diseno.md`.
 - `prefers-reduced-motion: reduce` apaga animaciones y transiciones.
 
 `next.config.ts` mantiene `cacheComponents` y `partialPrefetching`, que la plantilla de Next 16 trae activos: las páginas se generan en cada petición salvo lo que se marque con `"use cache"`. Por eso `/api/v1/salud` llama a `connection()` antes de comprobar Supabase.
@@ -133,7 +133,7 @@ En local se usan las claves de Supabase local; las de la nube solo van en Vercel
 | `GET /api/v1/openapi.json` | El contrato OpenAPI 3.1 generado desde los esquemas Zod |
 | Cualquier otra ruta de `/api/v1` | 404 en `application/problem+json` con `codigo: "RUTA_NO_ENCONTRADA"` |
 
-Los errores siguen RFC 9457 (`docs/api.md`, sección 1) con el ayudante `src/server/http/problema.ts`. Cada ruta nueva registra su contrato en `src/server/openapi/documento.ts`. Los esquemas del contrato importan `z` desde `@/server/openapi/zod`, no desde `zod`: en Zod 4, `.openapi()` solo existe en los esquemas creados después de extender Zod.
+Los errores siguen RFC 9457 (`docs/arquitectura/api.md`, sección 1) con el ayudante `src/server/http/problema.ts`. Cada ruta nueva registra su contrato en `src/server/openapi/documento.ts`. Los esquemas del contrato importan `z` desde `@/server/openapi/zod`, no desde `zod`: en Zod 4, `.openapi()` solo existe en los esquemas creados después de extender Zod.
 
 Cuando cambia el contrato:
 

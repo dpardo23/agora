@@ -4,8 +4,8 @@ titulo: Agenda
 sprints: [SPRINT-10]
 puntos_hu: 23
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -27,6 +27,6 @@ Tener en un solo lugar clases, parciales, entregas y trabajos del Olimpo, con re
 Calendario y horario muestran los datos de las materias y eventos, con recordatorios entregados.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

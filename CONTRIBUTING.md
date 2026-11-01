@@ -100,7 +100,7 @@ Reglas:
   - todos los checks del CI en verde;
   - checklist de DoD completo;
   - TC de la HU ejecutados y enlazados;
-  - `docs/api.md` actualizado si cambia la API.
+  - `docs/arquitectura/api.md` actualizado si cambia la API.
 - `release/*` y `hotfix/*` se fusionan en `main` con **merge commit** (sin squash) y una etiqueta.
 
 ## 4. Versiones y releases
@@ -116,7 +116,7 @@ Reglas:
 
 ## 5. Configuración del repositorio en GitHub
 
-La guía completa, paso a paso, está en [`docs/configuracion-github.md`](docs/configuracion-github.md): cuenta, General, rulesets de `main` y `develop` con `ci-ok` obligatorio, Actions, environments `staging` y `produccion`, seguridad, integraciones, issues, milestones, Projects y releases.
+La guía completa, paso a paso, está en [`docs/guias/repositorio/configuracion-github.md`](docs/guias/repositorio/configuracion-github.md): cuenta, General, rulesets de `main` y `develop` con `ci-ok` obligatorio, Actions, environments `staging` y `produccion`, seguridad, integraciones, issues, milestones, Projects y releases.
 
 ## 6. Licencia y contribuciones externas
 

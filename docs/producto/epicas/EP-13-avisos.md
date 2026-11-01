@@ -4,8 +4,8 @@ titulo: Avisos
 sprints: [SPRINT-12]
 puntos_hu: 11
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -26,6 +26,6 @@ Reunir en una bandeja los correos y noticias relevantes de la UMSS y la FCyT, y 
 Los avisos llegan filtrados por las reglas y se pueden convertir en tareas o en cambios de aula.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

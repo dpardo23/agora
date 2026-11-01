@@ -4,8 +4,8 @@ titulo: Oficina del Olimpo
 sprints: [SPRINT-05, SPRINT-06, SPRINT-08]
 puntos_hu: 50
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -34,6 +34,6 @@ Mostrar el sistema de agentes como una oficina en el Olimpo donde cada agente es
 Un trabajo de punta a punta anima a los dioses (resueltos por rol, ADR-005) por todas sus salas y estados, con 60 fps p95 en escritorio y la lista accesible equivalente.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

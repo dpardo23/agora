@@ -4,8 +4,8 @@ titulo: Configuración de la cuenta
 sprints: [SPRINT-04, SPRINT-11]
 puntos_hu: 13
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -27,6 +27,6 @@ Que el titular ajuste su cuenta: tema, contraseña, sesiones y las integraciones
 Cada opción de `Configuracion.dc.html` funciona y persiste en `perfil`.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

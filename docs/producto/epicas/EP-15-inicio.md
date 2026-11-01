@@ -4,8 +4,8 @@ titulo: Inicio
 sprints: [SPRINT-13]
 puntos_hu: 13
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -25,6 +25,6 @@ Ver el estado del día y del semestre de un vistazo y llegar a cualquier acción
 El dashboard muestra los seis indicadores y los paneles con datos reales.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`

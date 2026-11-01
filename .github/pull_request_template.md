@@ -20,7 +20,7 @@ Refs: <!-- HU-XX.YY · BUG-NNN · T-NN -->
 - [ ] Los CA de la HU pasan y los TC están ejecutados y enlazados.
 - [ ] Hay pruebas nuevas o actualizadas (unitarias, componentes, E2E).
 - [ ] axe sin violaciones *serious* ni *critical*; recorrido con teclado revisado.
-- [ ] `docs/api.md` está actualizado si cambia la API; hay un ADR nuevo si cambia una decisión de arquitectura.
+- [ ] `docs/arquitectura/api.md` está actualizado si cambia la API; hay un ADR nuevo si cambia una decisión de arquitectura.
 - [ ] Las migraciones son nuevas (ninguna migración aplicada fue editada) y los tipos están regenerados.
 - [ ] Sin secretos en el código, los logs ni la documentación.
 - [ ] Backlog, matriz de trazabilidad y archivo del sprint actualizados.

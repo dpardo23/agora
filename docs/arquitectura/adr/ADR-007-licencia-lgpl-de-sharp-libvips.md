@@ -35,4 +35,4 @@ Además, se agrega `MIT-0` a las licencias permitidas del CI: es una variante de
 ## Consecuencias
 - Positivas: la política de licencias se cumple de forma explícita y el CI documenta la única excepción.
 - Negativas o costos: cada actualización mayor de `next` o de `sharp` exige comprobar que la licencia y la forma de uso no cambiaron (`pnpm licenses list -r`).
-- Cambios: `THIRD_PARTY_NOTICES.md` (nueva sección de dependencias con licencia distinta de las permisivas), `.github/workflows/ci.yml` (`MIT-0` y `allow-dependencies-licenses`), `docs/arquitectura.md` (lista de ADR).
+- Cambios: `THIRD_PARTY_NOTICES.md` (nueva sección de dependencias con licencia distinta de las permisivas), `.github/workflows/ci.yml` (`MIT-0` y `allow-dependencies-licenses`), `docs/arquitectura/README.md` (lista de ADR).

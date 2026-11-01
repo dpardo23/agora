@@ -1,6 +1,6 @@
 # Configuración de GitHub · Ágora
 
-Versión 1.3 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.4 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Guía paso a paso para dejar el repositorio `dpardo23/agora` configurado de forma profesional. Cada sección dice **dónde** está la opción, **qué** elegir y, en una línea, **para qué** sirve. Los nombres de los menús son los de la interfaz de GitHub en inglés.
 
@@ -183,7 +183,7 @@ Regla: ningún secreto en el código ni en `docs/`. El CI lo verifica con gitlea
 | Dónde | Qué hacer | Para qué |
 |---|---|---|
 | Settings → GitHub Apps (o «Integrations») | Instalar **Vercel**, con acceso **solo** a `agora` | Previews por PR, staging desde `develop` y producción desde `main` |
-| Vercel → Project → Settings → Git | Production Branch: `main`; previews en todas las demás ramas. Paso a paso en la guía 2, sección 9 | Coincide con `docs/arquitectura.md`, sección 6 |
+| Vercel → Project → Settings → Git | Production Branch: `main`; previews en todas las demás ramas. Paso a paso en la guía 2, sección 9 | Coincide con `docs/arquitectura/README.md`, sección 6 |
 | Settings → GitHub Apps | **No** instalar apps de asistentes de código ni bots que hagan commits | Así el único contributor sigue siendo `dpardo23` |
 | Settings → Copilot / Agents | Desactivar el agente de código y la revisión automática para este repo | Ningún agente abre PR ni hace commits con otro autor |
 | Settings → Webhooks | Nada | Vercel se conecta por su app |

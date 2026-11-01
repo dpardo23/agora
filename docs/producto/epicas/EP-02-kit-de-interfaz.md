@@ -4,8 +4,8 @@ titulo: Kit de interfaz
 sprints: [SPRINT-02]
 puntos_hu: 34
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-21
-version: "1.0"
+fecha_edicion: 2026-11-01
+version: "1.1"
 estado: Abierta
 ---
 
@@ -30,6 +30,6 @@ Construir una sola vez, con todos sus estados y su accesibilidad, los componente
 Todos los estados de `Controles` y `ControlesMovil` están reproducidos en `/dev/kit` y pasan axe sin errores.
 
 ## Referencias
-- Diseño: `docs/design.md`
+- Diseño: `docs/diseno/sistema-de-diseno.md`
 - Especificación: `docs/referencia/handoff/CONTEXTO.md`
 - Backlog: `docs/producto/backlog.md`
