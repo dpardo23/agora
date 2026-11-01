@@ -1,10 +1,10 @@
 ---
 id: EP-09
 titulo: Materias
-sprints: [SPRINT-08]
+sprints: [SPRINT-09]
 puntos_hu: 21
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 version: "1.0"
 estado: Abierta
 ---
@@ -18,11 +18,11 @@ Registrar las materias de la gestión con todo su contexto (horario, docente, ev
 
 | PBI | Tipo | Título | Sprint | MoSCoW | Pts |
 |---|---|---|---|---|---|
-| [HU-09.01](../historias/EP-09-materias/HU-09.01-agregar-materia.md) | Historia | Agregar una materia con horario, docente y carpeta de Drive | SPRINT-08 | Must | 8 |
-| [HU-09.02](../historias/EP-09-materias/HU-09.02-consultar-mis-materias.md) | Historia | Consultar mis materias de la gestión y su detalle | SPRINT-08 | Must | 5 |
-| [HU-09.03](../historias/EP-09-materias/HU-09.03-calcular-nota-necesaria.md) | Historia | Calcular la nota necesaria para aprobar una materia | SPRINT-08 | Must | 3 |
-| [HU-09.04](../historias/EP-09-materias/HU-09.04-editar-materia.md) | Historia | Editar los datos de una materia | SPRINT-08 | Must | 3 |
-| [HU-09.05](../historias/EP-09-materias/HU-09.05-eliminar-materia.md) | Historia | Eliminar una materia confirmando su nombre | SPRINT-08 | Should | 2 |
+| [HU-09.01](../historias/EP-09-materias/HU-09.01-agregar-materia.md) | Historia | Agregar una materia con horario, docente y carpeta de Drive | SPRINT-09 | Must | 8 |
+| [HU-09.02](../historias/EP-09-materias/HU-09.02-consultar-mis-materias.md) | Historia | Consultar mis materias de la gestión y su detalle | SPRINT-09 | Must | 5 |
+| [HU-09.03](../historias/EP-09-materias/HU-09.03-calcular-nota-necesaria.md) | Historia | Calcular la nota necesaria para aprobar una materia | SPRINT-09 | Must | 3 |
+| [HU-09.04](../historias/EP-09-materias/HU-09.04-editar-materia.md) | Historia | Editar los datos de una materia | SPRINT-09 | Must | 3 |
+| [HU-09.05](../historias/EP-09-materias/HU-09.05-eliminar-materia.md) | Historia | Eliminar una materia confirmando su nombre | SPRINT-09 | Should | 2 |
 
 ## Criterio de cierre
 Una materia creada aparece en Mis materias, en el horario, en el calendario, en la malla y en Drive.

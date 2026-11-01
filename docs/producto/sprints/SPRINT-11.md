@@ -1,31 +1,31 @@
 ---
 id: SPRINT-11
-nombre: "Avisos y estudio (H8, parte 2)"
+nombre: "Tareas (H8, parte 1)"
 hito: H8
 estado: Por iniciar
-puntos_comprometidos: 32
+puntos_comprometidos: 27
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 ---
 
-# SPRINT-11 · Avisos y estudio (H8, parte 2)
+# SPRINT-11 · Tareas (H8, parte 1)
 
 ## Objetivo del sprint
-La bandeja recibe avisos filtrados y el estudiante repasa con FSRS y estudia con pomodoro.
+Tareas al estilo Google Tasks, sincronizadas, con la opción de pedir apoyo al Olimpo.
 
 ## Sprint backlog
 
 | PBI | Tipo | Título | Épica | MoSCoW | Pts | Estado |
 |---|---|---|---|---|---|---|
-| [HU-13.01](../historias/EP-13-avisos/HU-13.01-consultar-bandeja-de-avisos.md) | Historia | Consultar la bandeja de avisos con filtros | EP-13 | Must | 5 | Borrador |
-| [HU-13.02](../historias/EP-13-avisos/HU-13.02-convertir-aviso-en-accion.md) | Historia | Convertir un aviso en tarea o aplicar el dato detectado | EP-13 | Must | 3 | Borrador |
-| [HU-13.03](../historias/EP-13-avisos/HU-13.03-editar-reglas-de-bandeja.md) | Historia | Editar las reglas de la bandeja | EP-13 | Should | 3 | Borrador |
-| [HU-14.01](../historias/EP-14-estudiar/HU-14.01-repasar-tarjetas.md) | Historia | Repasar tarjetas con repetición espaciada | EP-14 | Must | 8 | Borrador |
-| [HU-14.02](../historias/EP-14-estudiar/HU-14.02-generar-tarjetas-de-documento.md) | Historia | Generar tarjetas de repaso a partir de un documento | EP-14 | Must | 5 | Borrador |
-| [HU-14.03](../historias/EP-14-estudiar/HU-14.03-estudiar-con-pomodoro.md) | Historia | Estudiar con el temporizador pomodoro | EP-14 | Must | 5 | Borrador |
-| [HU-14.04](../historias/EP-14-estudiar/HU-14.04-consultar-estadisticas-de-estudio.md) | Historia | Consultar mis estadísticas de estudio | EP-14 | Should | 3 | Borrador |
+| T-08 | Chore | Instalar n8n en la VM y versionar sus flujos | EP-12 | Must | 3 | Borrador |
+| [HU-12.01](../historias/EP-12-tareas/HU-12.01-crear-tarea-rapida.md) | Historia | Crear una tarea rápida con Enter | EP-12 | Must | 3 | Borrador |
+| [HU-12.02](../historias/EP-12-tareas/HU-12.02-organizar-tareas-en-listas.md) | Historia | Organizar las tareas en listas y filtros | EP-12 | Must | 5 | Borrador |
+| [HU-12.03](../historias/EP-12-tareas/HU-12.03-detallar-tarea.md) | Historia | Detallar una tarea con vencimiento, recordatorio, repetición y subtareas | EP-12 | Must | 5 | Borrador |
+| [HU-12.04](../historias/EP-12-tareas/HU-12.04-pedir-documento-de-apoyo.md) | Historia | Pedir al Olimpo un documento de apoyo desde una tarea | EP-12 | Should | 3 | Borrador |
+| [HU-12.05](../historias/EP-12-tareas/HU-12.05-sincronizar-google-tasks.md) | Historia | Sincronizar las tareas con Google Tasks | EP-12 | Should | 5 | Borrador |
+| [HU-04.04](../historias/EP-04-configuracion/HU-04.04-configurar-integraciones-google.md) | Historia | Configurar la carpeta de Drive y la sincronización con Google | EP-04 | Should | 3 | Borrador |
 
-**Total comprometido:** 32 puntos.
+**Total comprometido:** 27 puntos.
 
 ## Incremento esperado
 Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de Vercel (o en local, si el sprint es de infraestructura), en ambos temas y a 390, 834 y 1440 px.
@@ -43,13 +43,12 @@ Al cerrar el sprint, el objetivo de arriba se puede demostrar en la preview de V
 
 | HU | Archivo de TC | Casos | Pasan | Fallan | Bloqueados |
 |---|---|---|---|---|---|
-| HU-13.01 | `docs/qa/test-cases/TC-HU-13.01.md` (por redactar) | | | | |
-| HU-13.02 | `docs/qa/test-cases/TC-HU-13.02.md` (por redactar) | | | | |
-| HU-13.03 | `docs/qa/test-cases/TC-HU-13.03.md` (por redactar) | | | | |
-| HU-14.01 | `docs/qa/test-cases/TC-HU-14.01.md` (por redactar) | | | | |
-| HU-14.02 | `docs/qa/test-cases/TC-HU-14.02.md` (por redactar) | | | | |
-| HU-14.03 | `docs/qa/test-cases/TC-HU-14.03.md` (por redactar) | | | | |
-| HU-14.04 | `docs/qa/test-cases/TC-HU-14.04.md` (por redactar) | | | | |
+| HU-12.01 | `docs/qa/test-cases/TC-HU-12.01.md` (por redactar) | | | | |
+| HU-12.02 | `docs/qa/test-cases/TC-HU-12.02.md` (por redactar) | | | | |
+| HU-12.03 | `docs/qa/test-cases/TC-HU-12.03.md` (por redactar) | | | | |
+| HU-12.04 | `docs/qa/test-cases/TC-HU-12.04.md` (por redactar) | | | | |
+| HU-12.05 | `docs/qa/test-cases/TC-HU-12.05.md` (por redactar) | | | | |
+| HU-04.04 | `docs/qa/test-cases/TC-HU-04.04.md` (por redactar) | | | | |
 
 ## Bugs del sprint
 

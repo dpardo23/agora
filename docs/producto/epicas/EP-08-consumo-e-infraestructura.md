@@ -1,10 +1,10 @@
 ---
 id: EP-08
 titulo: Consumo e infraestructura
-sprints: [SPRINT-07]
+sprints: [SPRINT-08]
 puntos_hu: 15
 fecha_creacion: 2026-10-20
-fecha_edicion: 2026-10-20
+fecha_edicion: 2026-10-21
 version: "1.0"
 estado: Abierta
 ---
@@ -18,10 +18,10 @@ Que el dueño del Olimpo vea cuánto cupo y dinero equivalente consume el Olimpo
 
 | PBI | Tipo | Título | Sprint | MoSCoW | Pts |
 |---|---|---|---|---|---|
-| [HU-08.01](../historias/EP-08-consumo-e-infraestructura/HU-08.01-consultar-cupo-y-gasto.md) | Historia | Consultar el cupo de Claude y el gasto del Olimpo | SPRINT-07 | Must | 5 |
-| [HU-08.02](../historias/EP-08-consumo-e-infraestructura/HU-08.02-vigilar-la-vm.md) | Historia | Vigilar el estado de la VM y el riesgo de reclamo | SPRINT-07 | Must | 5 |
-| [HU-08.03](../historias/EP-08-consumo-e-infraestructura/HU-08.03-consultar-gasto-por-paso-y-documento.md) | Historia | Consultar el gasto por paso y por documento | SPRINT-07 | Should | 3 |
-| [HU-08.04](../historias/EP-08-consumo-e-infraestructura/HU-08.04-limpiar-cache-de-fuentes.md) | Historia | Limpiar la caché de fuentes de la VM | SPRINT-07 | Should | 2 |
+| [HU-08.01](../historias/EP-08-consumo-e-infraestructura/HU-08.01-consultar-cupo-y-gasto.md) | Historia | Consultar el cupo de Claude y el gasto del Olimpo | SPRINT-08 | Must | 5 |
+| [HU-08.02](../historias/EP-08-consumo-e-infraestructura/HU-08.02-vigilar-la-vm.md) | Historia | Vigilar el estado de la VM y el riesgo de reclamo | SPRINT-08 | Must | 5 |
+| [HU-08.03](../historias/EP-08-consumo-e-infraestructura/HU-08.03-consultar-gasto-por-paso-y-documento.md) | Historia | Consultar el gasto por paso y por documento | SPRINT-08 | Should | 3 |
+| [HU-08.04](../historias/EP-08-consumo-e-infraestructura/HU-08.04-limpiar-cache-de-fuentes.md) | Historia | Limpiar la caché de fuentes de la VM | SPRINT-08 | Should | 2 |
 
 ## Criterio de cierre
 La pestaña Consumo muestra datos reales de `uso_modelo`, `metricas_vm` y `servicios_estado`.

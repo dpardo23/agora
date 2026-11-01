@@ -1,0 +1,11 @@
+#!/bin/sh
+# Rechaza commits que incluyan rutas privadas o secretos, aunque se hayan agregado con «git add -f».
+# La lista de rutas prohibidas es .gitignore: un archivo que coincide con él no se versiona nunca.
+# Se activa una vez por clon con: git config core.hooksPath .githooks
+prohibidos=$(git diff --cached --name-only --diff-filter=ACMR -z | xargs -0 -r git check-ignore --no-index)
+if [ -n "$prohibidos" ]; then
+  echo "pre-commit: estos archivos coinciden con .gitignore y no pueden subirse a GitHub:" >&2
+  echo "$prohibidos" | sed 's/^/  - /' >&2
+  echo "Quítalos con: git restore --staged <ruta>" >&2
+  exit 1
+fi
