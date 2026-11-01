@@ -29,3 +29,14 @@ describe("comprobarSupabase", () => {
     expect(await comprobarSupabase(configurado, pedir)).toBe("error");
   });
 });
+
+describe("leerConfiguracionSupabase", () => {
+  afterEach(() => vi.unstubAllEnvs());
+
+  it("lee la URL y la clave pública de las variables de entorno", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_URL", "http://localhost:55321");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY", "clave-de-prueba");
+    const { leerConfiguracionSupabase } = await import("./supabase");
+    expect(leerConfiguracionSupabase()).toEqual(configurado);
+  });
+});

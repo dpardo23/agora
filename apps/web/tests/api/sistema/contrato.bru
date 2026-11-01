@@ -1,0 +1,22 @@
+meta {
+  name: Contrato OpenAPI
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/openapi.json
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.openapi: eq 3.1.0
+}
+
+tests {
+  test("declara la ruta /salud", function () {
+    expect(res.getBody().paths).to.have.property("/salud");
+  });
+}

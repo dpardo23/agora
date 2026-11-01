@@ -1,6 +1,6 @@
 # Guías del entorno de desarrollo · Ágora
 
-Versión 1.0 · creado el 2026-10-21 · editado el 2026-10-21 · autor: Juan Diego Pardo Pozo
+Versión 1.1 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Guías del SPRINT-00 «Organización y entorno» (ítem T-14). Se leen en orden. La decisión que las sustenta es el ADR-006 (`docs/adr/ADR-006-entorno-de-desarrollo-aislado.md`).
 
@@ -12,6 +12,7 @@ Guías del SPRINT-00 «Organización y entorno» (ítem T-14). Se leen en orden.
 | [3 · Frontend](03-frontend.md) | `apps/web`: librerías, variables, comandos |
 | [4 · Backend y datos](04-backend-y-datos.md) | Supabase local, n8n y el worker en Docker |
 | [5 · Comprobación y problemas](05-solucion-de-problemas.md) | Verificación del entorno y errores comunes |
+| [6 · Calidad y pruebas](06-calidad-y-pruebas.md) | Barreras de commit, push y PR; Vitest, Playwright, axe, Bruno, Lighthouse, Knip, CodeQL |
 
 ## PDF
 

@@ -27,4 +27,18 @@ describe("problema (RFC 9457)", () => {
     expect(respuesta.headers.get("content-type")).toBe(TIPO_CONTENIDO_PROBLEMA);
     expect(await respuesta.json()).toMatchObject({ errores: [{ campo: "nombre", mensaje: "Obligatorio" }] });
   });
+
+  it("conserva las cabeceras propias y fija el tipo de contenido del problema", () => {
+    const respuesta = responderProblema(
+      {
+        status: 429,
+        title: "Demasiadas solicitudes",
+        codigo: "LIMITE_DE_FRECUENCIA",
+        detail: "Espera un minuto.",
+      },
+      { headers: { "retry-after": "60", "content-type": "text/plain" } },
+    );
+    expect(respuesta.headers.get("retry-after")).toBe("60");
+    expect(respuesta.headers.get("content-type")).toBe(TIPO_CONTENIDO_PROBLEMA);
+  });
 });

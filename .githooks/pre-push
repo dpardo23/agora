@@ -1,0 +1,102 @@
+#!/bin/sh
+# Barrera local antes de subir a GitHub (docs/guias/entorno/06-calidad-y-pruebas.md, sección 2).
+# Corre las mismas revisiones rápidas que el CI, solo para las partes que cambiaron en lo que se va a
+# subir: web, worker, base de datos y workflows. Las pruebas E2E, Lighthouse y Bruno quedan para el CI.
+# Se activa una vez por clon con: git config core.hooksPath .githooks
+# En una emergencia se puede saltar con «git push --no-verify»; el CI lo revisará igual.
+set -u
+
+raiz=$(git rev-parse --show-toplevel)
+cd "$raiz" || exit 1
+cero=0000000000000000000000000000000000000000
+
+# Git entrega una línea por referencia: <ref local> <sha local> <ref remota> <sha remota>.
+cambiados=''
+while read -r _ref_local sha_local _ref_remota sha_remota; do
+  [ "$sha_local" = "$cero" ] && continue # se está borrando una rama remota
+  if [ "$sha_remota" = "$cero" ]; then
+    # Rama nueva: se compara con develop, la base de todo PR.
+    base=$(git merge-base "$sha_local" origin/develop 2>/dev/null || true)
+  else
+    base=$sha_remota
+  fi
+  if [ -n "$base" ]; then
+    cambiados="$cambiados
+$(git diff --name-only "$base" "$sha_local")"
+  else
+    cambiados="$cambiados
+$(git ls-tree -r --name-only "$sha_local")"
+  fi
+done
+
+toca() { printf '%s\n' "$cambiados" | grep -Eq "$1"; }
+fallas=0
+paso() {
+  nombre=$1
+  shift
+  printf 'pre-push: %s... ' "$nombre"
+  if salida=$("$@" 2>&1); then
+    echo "ok"
+  else
+    echo "FALLA"
+    printf '%s\n' "$salida" | tail -n 30 | sed 's/^/    /'
+    fallas=$((fallas + 1))
+  fi
+}
+
+# --- Web ---
+if toca '^(apps/web/|package\.json$|pnpm-lock\.yaml$|pnpm-workspace\.yaml$)'; then
+  if [ -d node_modules ] && [ -d apps/web/node_modules ]; then
+    paso "formato (Prettier)" pnpm -s -C apps/web format:check
+    paso "lint (ESLint)" pnpm -s -C apps/web lint
+    paso "tipos (TypeScript)" pnpm -s -C apps/web typecheck
+    paso "código sin usar (Knip)" pnpm -s -C apps/web knip
+    paso "pruebas unitarias con cobertura" pnpm -s -C apps/web test:unit --coverage
+    paso "contrato OpenAPI" pnpm -s -C apps/web openapi:check
+  else
+    echo "pre-push: falta «pnpm install»; no se revisó la web (el CI la revisará)." >&2
+  fi
+fi
+
+# --- Worker ---
+if toca '^worker/'; then
+  if command -v uv >/dev/null 2>&1; then
+    paso "worker: lint (ruff)" sh -c 'cd worker && uv run --frozen ruff check .'
+    paso "worker: formato (ruff)" sh -c 'cd worker && uv run --frozen ruff format --check .'
+    paso "worker: tipos (mypy)" sh -c 'cd worker && uv run --frozen mypy umss'
+    paso "worker: pruebas (pytest)" sh -c 'cd worker && uv run --frozen pytest -q'
+  else
+    echo "pre-push: falta uv (mise install); no se revisó el worker." >&2
+  fi
+fi
+
+# --- Base de datos: solo si Supabase local está en marcha ---
+if toca '^supabase/'; then
+  if supabase status >/dev/null 2>&1; then
+    paso "base de datos: pruebas pgTAP" supabase test db
+    paso "base de datos: lint" supabase db lint --level warning --fail-on error
+  else
+    echo "pre-push: Supabase local está detenido; no se revisó la base (mise run arriba). El CI la revisará." >&2
+  fi
+fi
+
+# --- Workflows de GitHub Actions ---
+if toca '^\.github/'; then
+  if docker info >/dev/null 2>&1; then
+    paso "workflows: actionlint" docker run --rm -v "$raiz:/repo" -w /repo rhysd/actionlint:1.7.12
+  fi
+  if command -v uvx >/dev/null 2>&1; then
+    paso "workflows: zizmor" uvx zizmor@1.31.1 --offline --quiet .github/workflows
+  fi
+fi
+
+# --- Documentación ---
+if toca '\.md$'; then
+  paso "documentación" python3 scripts/verificar-docs.py
+fi
+
+if [ "$fallas" -gt 0 ]; then
+  echo "pre-push: $fallas revisión(es) fallaron; no se subió nada. Corrige y vuelve a hacer push." >&2
+  exit 1
+fi
+exit 0

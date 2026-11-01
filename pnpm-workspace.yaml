@@ -8,5 +8,16 @@ packages:
 allowBuilds:
   '@swc/core': false
   esbuild: false
+  protobufjs: false
   sharp: false
   unrs-resolver: false
+
+minimumReleaseAgeExclude:
+  - knip@6.44.1
+
+# Versiones forzadas en todo el árbol de dependencias. Cada una lleva su motivo y se quita cuando el
+# paquete que trae la versión vieja la actualice (pnpm why <paquete> -r).
+overrides:
+  # GHSA-mrhx-c7xc-m3w5 (alta): @serwist/turbopack y @serwist/build fijan zod 4.6.5. Parche 4.6.6 o
+  # superior, en la misma línea que usa la aplicación.
+  zod: 4.6.7

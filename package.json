@@ -16,7 +16,10 @@
     "test:e2e": "pnpm -C apps/web test:e2e",
     "build": "pnpm -C apps/web build",
     "openapi:check": "pnpm -C apps/web openapi:check",
-    "format": "pnpm -C apps/web format"
+    "format": "pnpm -C apps/web format",
+    "test:api": "pnpm -C apps/web test:api",
+    "knip": "pnpm -C apps/web knip",
+    "format:check": "pnpm -C apps/web format:check"
   },
   "devDependencies": {
     "@commitlint/cli": "21.2.4",
