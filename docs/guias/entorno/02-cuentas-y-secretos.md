@@ -1,6 +1,6 @@
 # Guía 2 · Cuentas y secretos
 
-Versión 1.10 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.11 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué cuentas crear, en qué orden, qué opción elegir en cada pantalla y dónde guardar cada clave. Corresponde al ítem T-13 del SPRINT-00 y lo hace el titular a mano.
 
@@ -845,7 +845,7 @@ Hace falta que exista `apps/web` en `develop` (T-01, ya fusionado).
 
 ## 10. Mapa de secretos
 
-| Variable | De dónde sale | `.env.local` raíz | `apps/web/.env.local` | `worker/.env.local` | Vercel | GitHub | VM |
+| Variable | De dónde sale | `.env.local` raíz | `apps/web/.env.local` | `apps/worker/.env.local` | Vercel | GitHub | VM |
 |---|---|---|---|---|---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase, Project URL (en local: `http://localhost:55321`) | | Sí | | Sí | | |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase, Publishable key (en local: `supabase status`) | | Sí | | Sí | | |
@@ -860,7 +860,7 @@ Hace falta que exista `apps/web` en `develop` (T-01, ya fusionado).
 
 Las tres credenciales de la nube de Supabase quedan solo en el gestor y en GitHub. En tu PC, la CLI no las lee de un archivo: `supabase login` guarda el token en el llavero del sistema (sección 4) y, cuando un comando pide la contraseña de la base, se pasa solo a ese comando desde el gestor (guía 4, sección 2.3). Así, un `.env.local` filtrado no da acceso a la base de la nube.
 
-Los nombres exactos están en los `.env.example` de la raíz, de `apps/web/` y de `worker/` (T-11). Cada `.env.local` se crea copiando su plantilla (`cp .env.example .env.local`) y llenando los valores desde el gestor; `scripts/verificar-entorno.sh` comprueba que no falte ninguno, sin mostrar valores. Si un nombre cambia, se actualizan a la vez la plantilla y esta tabla.
+Los nombres exactos están en los `.env.example` de la raíz, de `apps/web/` y de `apps/worker/` (T-11). Cada `.env.local` se crea copiando su plantilla (`cp .env.example .env.local`) y llenando los valores desde el gestor; `scripts/verificar-entorno.sh` comprueba que no falte ninguno, sin mostrar valores. Si un nombre cambia, se actualizan a la vez la plantilla y esta tabla.
 
 ## 11. Lista de comprobación
 

@@ -1,6 +1,6 @@
 # Guía 1 · Sistema base y aislamiento
 
-Versión 1.4 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.5 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué instalar en CachyOS, cómo activarlo y cómo dejar el proyecto aislado del resto del equipo. Todo lo de esta guía lo hace el titular a mano, una sola vez. Los comandos se escriben en la terminal (zsh); los que empiezan con `sudo` piden tu contraseña.
 
@@ -140,7 +140,7 @@ Las tareas del proyecto son scripts de la carpeta `.mise/tasks/` (T-12). `mise t
 | `mise run arriba` | Levanta Supabase local y n8n; `mise run arriba --worker` también construye y levanta el worker |
 | `mise run abajo` | Detiene todo y conserva los datos |
 | `mise run estado` | Direcciones de Supabase local y contenedores de Ágora, sin mostrar claves |
-| `mise run entorno:env` | Crea `apps/web/.env.local` y `worker/.env.local` (guía 4, sección 6) |
+| `mise run entorno:env` | Crea `apps/web/.env.local` y `apps/worker/.env.local` (guía 4, sección 6) |
 | `mise run n8n:clave` | Crea la clave de cifrado de n8n una sola vez (guía 4, sección 3.1) |
 
 Dentro de la carpeta del proyecto:

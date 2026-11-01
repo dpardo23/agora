@@ -1,6 +1,6 @@
 # Arquitectura · Ágora
 
-Versión 2.4 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 2.5 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado), ADR-007 (licencia LGPL de sharp-libvips). Rutas y API: `docs/arquitectura/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
 
@@ -103,11 +103,10 @@ apps/web/                         Next.js 16
     proxy.ts                      sesión + dispositivo verificado (en Next 16, «middleware» se llama «proxy»)
   tests/  e2e/ (Playwright y axe)  api/ (Bruno)
                                   las pruebas unitarias van junto al código que prueban (*.test.ts, *.test.tsx)
-worker/                           motor de agentes (Python 3.14 + uv)
+apps/worker/                      motor de agentes (Python 3.14 + uv; fuera del workspace de pnpm)
   umss/dominio/  umss/puertos/  umss/adaptadores/  umss/roles/  tests/
 supabase/  config.toml  migrations/  tests/ (pgTAP)  borradores/ (esquema inicial y semilla hasta T-03)
-n8n/       flujos exportados (JSON, sin credenciales)
-infra/     systemd, scripts de la VM, respaldos
+infra/     local/ (compose de n8n y del worker)  n8n/ (flujos exportados en JSON, sin credenciales)  vm/ (systemd, scripts y respaldos de la Oracle VM, T-07)
 scripts/   utilidades (diseño, verificación de docs)
 docs/      índice en docs/README.md: producto, qa, arquitectura (api, adr), diseno, guias, plantillas, referencia
 design/    pantallas (.dc.html), mockups (PNG), referencias, fuente (export local, no versionado)

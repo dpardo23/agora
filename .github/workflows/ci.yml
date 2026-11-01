@@ -77,14 +77,14 @@ jobs:
             db:
               - 'supabase/**'
             worker:
-              - 'worker/**'
+              - 'apps/worker/**'
       - id: existe
         run: |
           existe() { if [ -f "$1" ]; then echo true; else echo false; fi; }
           {
             echo "web=$(existe apps/web/package.json)"
             echo "db=$(existe supabase/config.toml)"
-            echo "worker=$(existe worker/pyproject.toml)"
+            echo "worker=$(existe apps/worker/pyproject.toml)"
             # E2E necesita la configuración de Playwright y Supabase local (las pruebas usan la base).
             if [ "$(existe apps/web/playwright.config.ts)" = true ] && [ "$(existe supabase/config.toml)" = true ]; then
               echo "e2e=true"
@@ -363,7 +363,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: worker
+        working-directory: apps/worker
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -379,7 +379,7 @@ jobs:
       - run: uv run pytest --cov=umss
 
   # La imagen del worker se construye para las dos arquitecturas en runners nativos: amd64 (tu PC) y
-  # arm64 (la Oracle VM). Solo corre cuando cambia worker/, porque instalar TeX Live tarda varios minutos.
+  # arm64 (la Oracle VM). Solo corre cuando cambia apps/worker/, porque instalar TeX Live tarda varios minutos.
   imagen-worker:
     name: Imagen del worker (${{ matrix.arquitectura }})
     needs: cambios
@@ -398,10 +398,10 @@ jobs:
         with:
           persist-credentials: false
       - name: Construir la imagen
-        run: docker build -t agora/worker:prueba worker
+        run: docker build -t agora/worker:prueba apps/worker
       - name: Comprobar usuario, arquitectura, Chromium y compilación del .tex de prueba
         run: |
-          docker run --rm -v "$PWD/worker/tests/fixtures:/tex:ro" agora/worker:prueba sh -c '
+          docker run --rm -v "$PWD/apps/worker/tests/fixtures:/tex:ro" agora/worker:prueba sh -c '
             set -e
             test "$(id -u)" = 10001
             uname -m

@@ -12,7 +12,7 @@ autor: Juan Diego Pardo Pozo
 El diseño original (`design/pantallas/Main.dc.html`) llama «Bot» a la sección y dibuja una oficina genérica. El titular definió el 2026-10-20 una dirección nueva (`design/referencias/oficina-olimpo.png`): un templo-oficina en las nubes con salas temáticas, donde cada agente es un dios y **los dioses siempre están en movimiento**. También definió que «Bot» no es el nombre correcto de la sección.
 
 ## Decisión
-1. **Nombre.** La sección se llama **Olimpo** (ruta `/olimpo`), con las pestañas **Oficina** (`/olimpo`) y **Consumo** (`/olimpo/consumo`). El sistema de agentes que genera los documentos es «el Olimpo». El paquete Python que lo ejecuta es el «motor de agentes» (`worker/`).
+1. **Nombre.** La sección se llama **Olimpo** (ruta `/olimpo`), con las pestañas **Oficina** (`/olimpo`) y **Consumo** (`/olimpo/consumo`). El sistema de agentes que genera los documentos es «el Olimpo». El paquete Python que lo ejecuta es el «motor de agentes» (`apps/worker/`).
 2. **Panteón.** Se aprueba la asignación de dioses, salas y paleta de `docs/diseno/sistema-de-diseno.md`, sección 8, incluidas la Sala del Consejo y el Tribunal de Temis.
 3. **Movimiento.** Los dioses nunca quedan inmóviles. Con `prefers-reduced-motion` se aplica la **opción C**: siguen caminando entre estaciones, pero a la mitad de la velocidad y sin gestos periódicos, destellos ni brillos.
 4. **Escalabilidad.** Dioses y roles son entidades separadas: un dios puede tener varios roles y se pueden sumar dioses o roles nuevos sin tocar el código del render (ADR-005).

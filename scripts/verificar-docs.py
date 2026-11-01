@@ -4,7 +4,7 @@
 Comprueba:
 1. Enlaces Markdown relativos rotos: [texto](ruta).
 2. Rutas del repositorio citadas entre comillas invertidas o en el frontmatter (mockups, fuente_diseno)
-   que no existen. Se ignoran las rutas de código que aún no existe (apps/, worker/, supabase/, src/)
+   que no existen. Se ignoran las rutas de código que aún no existe (apps/, apps/worker/, supabase/, src/)
    y los marcadores de plantilla (XX, NNN, <, {, *).
 3. Autoría: ningún documento atribuye su autoría a herramientas de IA o asistentes.
 4. Formato: no se usa el signo «§» (se escribe «sección»).

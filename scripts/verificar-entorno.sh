@@ -109,7 +109,7 @@ fi
 
 # --- 5. Secretos: cada .env.local tiene las variables de su .env.example (sin mostrar valores) ---
 titulo "5. Secretos"
-for plantilla in .env.example apps/web/.env.example worker/.env.example; do
+for plantilla in .env.example apps/web/.env.example apps/worker/.env.example; do
   [ -f "$plantilla" ] || { falla "falta la plantilla $plantilla"; continue; }
   local_=$(dirname "$plantilla")/.env.local
   local_=${local_#./}

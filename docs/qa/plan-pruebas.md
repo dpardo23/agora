@@ -1,6 +1,6 @@
 # Plan de pruebas · Ágora
 
-Versión 1.1 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.2 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 ## 1. Objetivo
 Verificar en cada sprint que el incremento cumple los criterios de aceptación de sus HU (CA-FE y CA-NF), con evidencia reproducible y trazable.
@@ -14,7 +14,7 @@ Verificar en cada sprint que el incremento cumple los criterios de aceptación d
 | Integración de datos | RLS, funciones SQL (`tomar_trabajo`, `riesgo_reclamo`), triggers | pgTAP o pruebas SQL con Supabase local | Al cambiar migraciones |
 | E2E | Flujos de usuario de cada HU | Playwright (Chromium, WebKit, Firefox; 390, 834 y 1440 px) | CI en cada PR |
 | API y contrato | Estado, cuerpo, cabeceras y errores `problem+json` de cada ruta de `/api/v1`; respuestas validadas contra `openapi.json` | Bruno (`apps/web/tests/api/`) y `contrato.spec.ts` de Playwright | CI en cada PR que toca la web |
-| Worker | Pipeline, adaptadores y contrato de eventos | pytest (`uv run pytest`) | CI en cambios de `worker/` |
+| Worker | Pipeline, adaptadores y contrato de eventos | pytest (`uv run pytest`) | CI en cambios de `apps/worker/` |
 | Accesibilidad | axe en todas las rutas de `tests/e2e/rutas.ts`, en tema claro y oscuro y en escritorio y móvil; teclado; lector de pantalla | `@axe-core/playwright` + revisión manual | CI en cada PR y cierre de sprint |
 | Rendimiento | Lighthouse, Core Web Vitals, fps de la oficina | `@lhci/cli`, traza de DevTools | CI en los PR que tocan la web y cierre de sprint |
 | Calidad estática | Formato, lint, tipos, arquitectura (boundaries), código sin usar, seguridad de los workflows | Prettier, ESLint, TypeScript, Knip, actionlint, zizmor | Hook `pre-push` y CI |

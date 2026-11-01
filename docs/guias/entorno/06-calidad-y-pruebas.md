@@ -1,6 +1,6 @@
 # Guía 6 · Calidad y pruebas
 
-Versión 1.1 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.2 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué revisa cada barrera de calidad, en qué momento y cómo correr cada revisión a mano. El objetivo es que los errores aparezcan en tu equipo, antes de llegar a GitHub, y que nada llegue a `develop` o a `main` sin pasar por las mismas pruebas. Complementa el plan de pruebas (`docs/qa/plan-pruebas.md`), que define qué se prueba en cada nivel.
 
@@ -22,7 +22,7 @@ Al ejecutar `git push`, el hook compara lo que vas a subir con lo que ya está e
 | Si cambió | Revisa |
 |---|---|
 | `apps/web/`, `package.json`, `pnpm-lock.yaml` o `pnpm-workspace.yaml` | Prettier, ESLint, TypeScript, Knip, pruebas unitarias con cobertura y contrato OpenAPI |
-| `worker/` | ruff (lint y formato), mypy y pytest |
+| `apps/worker/` | ruff (lint y formato), mypy y pytest |
 | `supabase/` | pgTAP y lint de la base, si Supabase local está en marcha |
 | `.github/` | actionlint y zizmor |
 | Cualquier `.md` | `scripts/verificar-docs.py` |
@@ -44,8 +44,8 @@ En una emergencia se puede saltar con `git push --no-verify`. El CI revisa lo mi
 | E2E | Playwright en Chromium, Firefox y WebKit: humo, accesibilidad por ruta y contrato; después, Bruno contra la web compilada | Si cambia la web o la base |
 | Lighthouse | Rendimiento, accesibilidad y buenas prácticas en móvil | En los PR que cambian la web |
 | Base de datos | `supabase db reset`, pgTAP y lint | Si cambia `supabase/` |
-| Worker | ruff, mypy y pytest con cobertura | Si cambia `worker/` |
-| Imagen del worker | Construye la imagen en runners nativos amd64 y arm64 (la arquitectura de la Oracle VM) y comprueba usuario, Chromium, LaTeX y el paquete `umss` | En los PR y push que cambian `worker/` |
+| Worker | ruff, mypy y pytest con cobertura | Si cambia `apps/worker/` |
+| Imagen del worker | Construye la imagen en runners nativos amd64 y arm64 (la arquitectura de la Oracle VM) y comprueba usuario, Chromium, LaTeX y el paquete `umss` | En los PR y push que cambian `apps/worker/` |
 | `ci-ok` | Resume todos los anteriores; es el único check obligatorio de los rulesets | Siempre |
 
 Si un job falla, en la pestaña *Checks* del PR está el registro. Los reportes de Playwright (con trazas) y de Lighthouse se descargan como artefactos del run.

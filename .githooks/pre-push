@@ -59,12 +59,12 @@ if toca '^(apps/web/|package\.json$|pnpm-lock\.yaml$|pnpm-workspace\.yaml$)'; th
 fi
 
 # --- Worker ---
-if toca '^worker/'; then
+if toca '^apps/worker/'; then
   if command -v uv >/dev/null 2>&1; then
-    paso "worker: lint (ruff)" sh -c 'cd worker && uv run --frozen ruff check .'
-    paso "worker: formato (ruff)" sh -c 'cd worker && uv run --frozen ruff format --check .'
-    paso "worker: tipos (mypy)" sh -c 'cd worker && uv run --frozen mypy umss'
-    paso "worker: pruebas (pytest)" sh -c 'cd worker && uv run --frozen pytest -q'
+    paso "worker: lint (ruff)" sh -c 'cd apps/worker && uv run --frozen ruff check .'
+    paso "worker: formato (ruff)" sh -c 'cd apps/worker && uv run --frozen ruff format --check .'
+    paso "worker: tipos (mypy)" sh -c 'cd apps/worker && uv run --frozen mypy umss'
+    paso "worker: pruebas (pytest)" sh -c 'cd apps/worker && uv run --frozen pytest -q'
   else
     echo "pre-push: falta uv (mise install); no se revisó el worker." >&2
   fi

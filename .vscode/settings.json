@@ -18,7 +18,7 @@
       "source.organizeImports.ruff": "explicit"
     }
   },
-  "python.defaultInterpreterPath": "worker/.venv/bin/python",
+  "python.defaultInterpreterPath": "apps/worker/.venv/bin/python",
   "files.exclude": {
     "**/.next": true,
     "**/node_modules": true,

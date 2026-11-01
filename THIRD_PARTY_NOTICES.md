@@ -6,7 +6,7 @@ La licencia propietaria de `LICENSE` cubre solo la obra original de Ágora. Los 
 
 ## Dependencias de la aplicación
 
-Cuando exista `apps/web/package.json` (SPRINT-00) y `worker/pyproject.toml` (SPRINT-07), sus dependencias se regirán por sus propias licencias. Este archivo se actualizará con un resumen generado por herramienta (por ejemplo, `pnpm licenses list`) antes de cada release.
+Cuando exista `apps/web/package.json` (SPRINT-00) y `apps/worker/pyproject.toml` (SPRINT-07), sus dependencias se regirán por sus propias licencias. Este archivo se actualizará con un resumen generado por herramienta (por ejemplo, `pnpm licenses list`) antes de cada release.
 
 ## Dependencias con licencia distinta de las permisivas
 

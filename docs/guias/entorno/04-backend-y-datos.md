@@ -1,6 +1,6 @@
 # Guía 4 · Backend y datos
 
-Versión 1.5 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.6 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Cómo se levantan en local Supabase, n8n y el worker, y cómo se trabaja con la base de datos. Corresponde al ítem T-12 del SPRINT-00. La API `/api/v1` no es un servicio aparte: vive dentro de Next.js (guía 3).
 
@@ -136,17 +136,17 @@ La tarea genera la clave con `openssl rand -hex 32`, la guarda en Bitwarden como
 mise run arriba
 ```
 
-Abre http://localhost:55678 y crea el usuario propietario (lo hace el titular, una vez). Los flujos se exportan a `n8n/` en JSON, **sin credenciales** (T-08).
+Abre http://localhost:55678 y crea el usuario propietario (lo hace el titular, una vez). Los flujos se exportan a `infra/n8n/` en JSON, **sin credenciales** (T-08).
 
 ## 4. Worker en Docker
 
 ### 4.1. Proyecto Python
 
-El paquete `umss` vive en `worker/` con `uv`. Hoy es un esqueleto: `python -m umss` informa su versión y termina. El motor llega en SPRINT-07.
+El paquete `umss` vive en `apps/worker/` con `uv`. Hoy es un esqueleto: `python -m umss` informa su versión y termina. El motor llega en SPRINT-07.
 
 ```sh
 cd worker
-uv sync                 # crea worker/.venv con lo de uv.lock
+uv sync                 # crea apps/worker/.venv con lo de uv.lock
 uv run pytest --cov     # pruebas con cobertura
 uv run ruff check .     # lint
 uv run ruff format .    # formato
@@ -156,7 +156,7 @@ uv add <paquete>        # agrega una dependencia (actualiza pyproject.toml y uv.
 
 `pyproject.toml` declara `requires-python = ">=3.14,<3.15"` y fija exactas las herramientas de desarrollo (pytest, pytest-cov, ruff y mypy). Las dependencias del motor (`supabase`, `google-genai`, Drive, `pydantic`, `httpx`) se agregan con su código. El CI corre lo mismo: `ruff check`, `ruff format --check`, `mypy umss` y `pytest --cov=umss`.
 
-### 4.2. Imagen (`worker/Dockerfile`)
+### 4.2. Imagen (`apps/worker/Dockerfile`)
 
 Una sola imagen para tu PC (amd64) y la VM (arm64):
 
@@ -164,7 +164,7 @@ Una sola imagen para tu PC (amd64) y la VM (arm64):
 - TeX Live (`texlive-latex-extra`, `texlive-xetex`, `texlive-lang-spanish`, `texlive-fonts-extra`, `latexmk`), Chromium y `fonts-noto-core` de Debian. Los paquetes exactos se ajustarán a las recetas de LaTeX del motor, que no se tocan.
 - Usuario propio `agora` (uid 10001) con carpeta personal: el usuario `nobody` no tiene `HOME` y uv no puede escribir su caché.
 - Se ejecuta con `.venv/bin/python -m umss`, sin uv en tiempo de ejecución.
-- `worker/.dockerignore` deja fuera `.env*`, `.venv/`, las cachés, `salidas/` y las pruebas: ningún secreto entra en la imagen.
+- `apps/worker/.dockerignore` deja fuera `.env*`, `.venv/`, las cachés, `salidas/` y las pruebas: ningún secreto entra en la imagen.
 
 ### 4.3. Construir y probar
 
@@ -176,7 +176,7 @@ docker run --rm -v "$PWD/worker/tests/fixtures:/tex:ro" -w /tmp agora/worker:loc
 docker buildx build --platform linux/arm64 -t agora/worker:arm64 worker             # para la VM (emulado, lento)
 ```
 
-La construcción para arm64 en tu PC usa QEMU (guía 1, sección 2) y tarda bastante más. No hace falta para validar la imagen: en cada PR que cambia `worker/`, el job «Imagen del worker» del CI la construye en runners nativos amd64 y arm64, y comprueba el usuario, Chromium, la compilación del `.tex` de prueba y la importación de `umss` (guía 6, sección 3).
+La construcción para arm64 en tu PC usa QEMU (guía 1, sección 2) y tarda bastante más. No hace falta para validar la imagen: en cada PR que cambia `apps/worker/`, el job «Imagen del worker» del CI la construye en runners nativos amd64 y arm64, y comprueba el usuario, Chromium, la compilación del `.tex` de prueba y la importación de `umss` (guía 6, sección 3).
 
 ## 5. Un solo comando
 
@@ -199,7 +199,7 @@ mise run entorno:env
 Crea, con permisos 600:
 
 - `apps/web/.env.local`: URL y claves de Supabase **local** (salen de `supabase status`).
-- `worker/.env.local`: lo mismo para el worker, más `GEMINI_API_KEY` y `CLAUDE_CODE_OAUTH_TOKEN` tomadas del gestor y la ruta del JSON de Google.
+- `apps/worker/.env.local`: lo mismo para el worker, más `GEMINI_API_KEY` y `CLAUDE_CODE_OAUTH_TOKEN` tomadas del gestor y la ruta del JSON de Google.
 
 Nunca muestra valores ni reemplaza un archivo que ya existe: para regenerarlo, bórralo a mano. Si una clave todavía no está en el gestor (por ejemplo, el token de Claude de la guía 2, sección 7), la deja vacía y lo avisa; el worker no la necesita hasta SPRINT-07 y `verificar-entorno.sh` la muestra como AVISO hasta que se complete. El `.env.local` de la raíz solo lleva `N8N_ENCRYPTION_KEY` y lo crea `mise run n8n:clave` (sección 3.1).
 

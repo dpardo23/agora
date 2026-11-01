@@ -34,9 +34,9 @@ updates:
       menores:
         update-types: [minor, patch]
 
-  # Motor de agentes (worker/pyproject.toml y uv.lock).
+  # Motor de agentes (apps/worker/pyproject.toml y uv.lock).
   - package-ecosystem: uv
-    directory: /worker
+    directory: /apps/worker
     target-branch: develop
     labels: [dependencias]
     schedule:
@@ -48,9 +48,9 @@ updates:
       menores:
         update-types: [minor, patch]
 
-  # Imagen base del worker (worker/Dockerfile).
+  # Imagen base del worker (apps/worker/Dockerfile).
   - package-ecosystem: docker
-    directory: /worker
+    directory: /apps/worker
     target-branch: develop
     labels: [dependencias]
     schedule:
