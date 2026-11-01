@@ -1,6 +1,6 @@
 # Vista de datos · Ágora
 
-Versión 1.0 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.1 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Modelo de datos de Ágora en diagramas entidad-relación, agrupados por dominio. Es la vista de información de la descripción de arquitectura (`docs/arquitectura/README.md`, sección 2).
 
@@ -23,38 +23,30 @@ Las funciones `tomar_trabajo` (toma atómica de la cola con `FOR UPDATE SKIP LOC
 
 ## 3. Mapa general
 
-Todas las entidades y sus relaciones, sin columnas. Las secciones 4 a 10 detallan cada dominio. `auth.users` es la tabla de usuarios de Supabase Auth; casi todas las tablas cuelgan de ella por `user_id`, y esas líneas se omiten aquí para que el mapa se lea.
+Los siete dominios del modelo, con sus tablas, y las claves foráneas que los conectan. Las secciones 4 a 10 detallan cada dominio con su diagrama entidad-relación, sus columnas y sus cardinalidades. `auth.users` es la tabla de usuarios de Supabase Auth.
 
 ```mermaid
-erDiagram
-  auth_users ||--|| perfil : "tiene"
-  auth_users ||--o{ dispositivos_confiables : "registra"
-  auth_users ||--o{ codigos_verificacion : "recibe"
-  materias ||--o{ materia_horarios : "se dicta en"
-  materias ||--o{ materia_unidades : "se divide en"
-  materias ||--o{ evaluaciones : "se califica con"
-  plan_materias ||--o{ plan_prerrequisitos : "exige"
-  oficina_salas ||--o{ dioses : "aloja"
-  dioses ||--o{ asignaciones_rol : "ejerce"
-  roles ||--|| asignaciones_rol : "tiene titular"
-  roles ||--o{ pipeline_pasos : "ejecuta"
-  materias |o--o{ trabajos : "origina"
-  trabajos ||--o{ trabajo_pasos : "avanza por"
-  trabajos ||--o| esquemas : "propone"
-  trabajos ||--o{ eventos_agente : "genera"
-  trabajos |o--o| documentos : "entrega"
-  trabajos ||--o{ fuentes : "consulta"
-  fuentes ||--o{ pasajes : "contiene"
-  trabajos |o--o{ uso_modelo : "consume"
-  listas_tareas ||--o{ tareas : "agrupa"
-  tareas |o--o{ tareas : "tiene subtareas"
-  avisos |o--o{ tareas : "origina"
-  materias |o--o{ eventos : "agenda"
-  materias |o--o{ avisos : "recibe"
-  documentos |o--o{ mazos : "alimenta"
-  mazos ||--o{ tarjetas : "contiene"
-  tarjetas ||--o{ revisiones : "registra"
-  tareas |o--o{ sesiones_estudio : "se trabaja en"
+flowchart TB
+  cuenta["<b>Cuenta y acceso</b><br/>auth.users · perfil<br/>dispositivos_confiables · codigos_verificacion"]
+  academico["<b>Vida académica</b><br/>materias · materia_horarios<br/>materia_unidades · evaluaciones<br/>plan_materias · plan_prerrequisitos"]
+  olimpo["<b>Olimpo</b><br/>oficina_salas · dioses · roles<br/>asignaciones_rol · pipeline_pasos"]
+  encargos["<b>Encargos y documentos</b><br/>trabajos · trabajo_pasos · esquemas<br/>eventos_agente · documentos<br/>fuentes · pasajes"]
+  consumo["<b>Consumo e infraestructura</b><br/>uso_modelo · metricas_vm<br/>servicios_estado"]
+  organizacion["<b>Organización</b><br/>listas_tareas · tareas · eventos<br/>reglas_avisos · avisos"]
+  estudio["<b>Estudio y repaso</b><br/>mazos · tarjetas · revisiones<br/>sesiones_estudio"]
+  cuenta -- "user_id en las tablas del titular" --> academico
+  cuenta -- "user_id" --> encargos
+  cuenta -- "user_id" --> organizacion
+  cuenta -- "user_id" --> estudio
+  academico -- "materia_id" --> encargos
+  academico -- "materia_id" --> organizacion
+  academico -- "materia_id" --> estudio
+  olimpo -- "rol_id y dios_id" --> encargos
+  olimpo -- "rol_id" --> consumo
+  encargos -- "trabajo_id" --> consumo
+  encargos -- "trabajo_id" --> organizacion
+  encargos -- "documento_id" --> estudio
+  organizacion -- "tarea_id" --> estudio
 ```
 
 ## 4. Cuenta y acceso (EP-03, EP-04)

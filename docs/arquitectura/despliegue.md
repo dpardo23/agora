@@ -1,6 +1,6 @@
 # Vista de despliegue y proceso · Ágora
 
-Versión 1.0 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.1 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Dónde corre cada pieza de Ágora y cómo llega un cambio desde una rama hasta producción. Son las vistas de despliegue y de proceso de desarrollo de la descripción de arquitectura (`docs/arquitectura/README.md`, sección 2).
 
@@ -11,35 +11,38 @@ Dónde corre cada pieza de Ágora y cómo llega un cambio desde una rama hasta p
 Todo corre en la región de São Paulo, la más cercana a Cochabamba, y dentro de los niveles gratuitos de cada proveedor.
 
 ```mermaid
-C4Deployment
-  title Ágora · despliegue
-  Deployment_Node(dispositivo, "Dispositivo del titular", "Escritorio o Android") {
-    Deployment_Node(navegador, "Navegador", "Chromium, Firefox o Safari") {
-      Container(pwa, "PWA de Ágora", "Next.js, Serwist", "Interfaz instalable con caché sin conexión")
-    }
-  }
-  Deployment_Node(vercel, "Vercel", "Región gru1, São Paulo") {
-    Container(web, "Web y API", "Next.js 16, Node 24", "Funciones serverless y recursos estáticos")
-  }
-  Deployment_Node(supabase, "Supabase Cloud", "Región sa-east-1, São Paulo") {
-    ContainerDb(db, "Postgres 17", "pgvector, RLS", "Datos, cola de trabajos y eventos")
-    Container(servicios, "Auth, Storage y Realtime", "Supabase", "Sesiones, PDF y cambios en vivo")
-  }
-  Deployment_Node(oracle, "Oracle Cloud Free Tier", "VM ARM Ampere A1, Ubuntu, São Paulo") {
-    Container(worker, "Motor de agentes", "Python 3.14, uv, systemd", "Toma trabajos y compila LaTeX")
-    Container(n8n, "n8n", "Docker", "Automatizaciones con Google y la UMSS")
-  }
-  Deployment_Node(github, "GitHub", "dpardo23/agora") {
-    Container(actions, "GitHub Actions", "CI y CD", "Pruebas, migraciones y releases")
-  }
-  Rel(pwa, web, "HTTPS")
-  Rel(pwa, servicios, "Realtime", "WebSocket")
-  Rel(web, db, "Consultas con RLS", "HTTPS")
-  Rel(worker, db, "Cola y eventos", "service role")
-  Rel(n8n, web, "Webhooks firmados", "HTTPS")
-  Rel(actions, db, "Aplica migraciones", "Supabase CLI")
-  Rel(actions, web, "Vercel despliega cada push")
-  UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="2")
+flowchart TB
+  subgraph dispositivo["Dispositivo del titular · escritorio o Android"]
+    subgraph navegador["Navegador · Chromium, Firefox o Safari"]
+      pwa["<b>PWA de Ágora</b><br/>[Contenedor: Next.js y Serwist]<br/>Interfaz instalable con caché sin conexión"]:::contenedor
+    end
+  end
+  subgraph vercel["Vercel · región gru1, São Paulo"]
+    web["<b>Web y API</b><br/>[Contenedor: Next.js 16 y Node 24]<br/>Funciones serverless y recursos estáticos"]:::contenedor
+  end
+  subgraph supabase["Supabase Cloud · región sa-east-1, São Paulo"]
+    db[("<b>Postgres 17</b><br/>[Contenedor: pgvector y RLS]<br/>Datos, cola de trabajos y eventos")]:::contenedor
+    servicios["<b>Auth, Storage y Realtime</b><br/>[Contenedor: Supabase]<br/>Sesiones, PDF y cambios en vivo"]:::contenedor
+  end
+  subgraph oracle["Oracle Cloud Free Tier · VM ARM Ampere A1, Ubuntu, São Paulo"]
+    worker["<b>Motor de agentes</b><br/>[Contenedor: Python 3.14, uv y systemd]<br/>Toma trabajos y compila LaTeX"]:::contenedor
+    n8n["<b>n8n</b><br/>[Contenedor: Docker]<br/>Automatizaciones con Google y la UMSS"]:::contenedor
+  end
+  subgraph github["GitHub · dpardo23/agora"]
+    actions["<b>GitHub Actions</b><br/>[Contenedor: CI y CD]<br/>Pruebas, migraciones y releases"]:::contenedor
+  end
+  pwa -- "HTTPS" --> web
+  pwa -- "Realtime<br/>[WebSocket]" --> servicios
+  web -- "Consultas con RLS<br/>[HTTPS]" --> db
+  worker -- "Cola y eventos<br/>[service role]" --> db
+  n8n -- "Webhooks firmados<br/>[HTTPS]" --> web
+  actions -- "Aplica migraciones<br/>[Supabase CLI]" --> db
+  github -. "Vercel despliega cada push" .-> vercel
+  classDef persona fill:#08427b,stroke:#052e56,color:#ffffff
+  classDef sistema fill:#1168bd,stroke:#0b4884,color:#ffffff
+  classDef contenedor fill:#438dd5,stroke:#2e6295,color:#ffffff
+  classDef componente fill:#85bbf0,stroke:#5d82a8,color:#0b0b0b
+  classDef externo fill:#8a8a8a,stroke:#6b6b6b,color:#ffffff
 ```
 
 | Nodo | Límite gratuito que importa | Cómo se vigila |

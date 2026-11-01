@@ -1,6 +1,6 @@
 # Vista de componentes · Ágora
 
-Versión 1.0 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.1 · creado el 2026-11-01 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Estructura interna de los dos contenedores con código propio: la web (con su API) y el motor de agentes. Es el nivel 3 del modelo C4 y la vista de módulos de la descripción de arquitectura (`docs/arquitectura/README.md`, sección 2).
 
@@ -11,29 +11,33 @@ Estructura interna de los dos contenedores con código propio: la web (con su AP
 La web es un **monolito modular por dominio**: cada dominio vive en `src/features/<dominio>/` y solo expone su `index.ts`. Las páginas y los handlers de la API son delgados: delegan en los casos de uso del dominio.
 
 ```mermaid
-C4Component
-  title Web y API · componentes
-  Person(titular, "Titular")
-  Container_Boundary(web, "Web y API (Next.js 16 en Vercel)") {
-    Component(proxy, "Proxy", "src/proxy.ts", "Refresca la sesión y bloquea (app) hasta verificar el dispositivo")
-    Component(paginas, "Páginas", "src/app/(app) y (auth)", "Server y Client Components; leen con RLS")
-    Component(api, "API REST", "src/app/api/v1", "Handlers delgados: validar, autorizar, caso de uso, respuesta")
-    Component(features, "Módulos de dominio", "src/features/dominio", "ui, application, domain, infra; API pública en index.ts")
-    Component(ui, "Kit de interfaz", "src/components/ui", "shadcn/ui adaptado al sistema de diseño")
-    Component(server, "Servidor", "src/server", "Service role, correo, firmas HMAC, errores problem+json, OpenAPI")
-    Component(shared, "Compartido", "src/shared", "Navegación, utilidades y tipos generados de la base")
-  }
-  ContainerDb(db, "Supabase", "Postgres, Auth, Storage, Realtime")
-  Rel(titular, proxy, "Usa", "HTTPS")
-  Rel(proxy, paginas, "Deja pasar")
-  Rel(paginas, features, "Usa la API pública")
-  Rel(paginas, ui, "Compone")
-  Rel(api, features, "Llama a casos de uso")
-  Rel(api, server, "Usa")
-  Rel(features, server, "Escrituras privilegiadas")
-  Rel(features, db, "Lee con RLS y escucha", "supabase-js, Realtime")
-  Rel(server, db, "Escribe", "service role")
-  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+flowchart TB
+  titular(["<b>Titular</b><br/>[Persona]"]):::persona
+  subgraph web["Web y API · contenedor Next.js 16 en Vercel"]
+    proxy["<b>Proxy</b><br/>[Componente: src/proxy.ts]<br/>Refresca la sesión y bloquea (app) hasta verificar el dispositivo"]:::componente
+    paginas["<b>Páginas</b><br/>[Componente: src/app/(app) y (auth)]<br/>Server y Client Components; leen con RLS"]:::componente
+    api["<b>API REST</b><br/>[Componente: src/app/api/v1]<br/>Handlers delgados: validar, autorizar, caso de uso, respuesta"]:::componente
+    features["<b>Módulos de dominio</b><br/>[Componente: src/features/dominio]<br/>ui, application, domain e infra; API pública en index.ts"]:::componente
+    ui["<b>Kit de interfaz</b><br/>[Componente: src/components/ui]<br/>shadcn/ui adaptado al sistema de diseño"]:::componente
+    server["<b>Servidor</b><br/>[Componente: src/server]<br/>Service role, correo, firmas HMAC, errores problem+json y OpenAPI"]:::componente
+    shared["<b>Compartido</b><br/>[Componente: src/shared]<br/>Navegación, utilidades y tipos generados de la base"]:::componente
+  end
+  db[("<b>Supabase</b><br/>[Contenedor]<br/>Postgres, Auth, Storage y Realtime")]:::contenedor
+  titular -- "Usa<br/>[HTTPS]" --> proxy
+  proxy -- "Deja pasar" --> paginas
+  paginas -- "Usa la API pública" --> features
+  paginas -- "Compone" --> ui
+  api -- "Llama a casos de uso" --> features
+  api -- "Usa" --> server
+  features -- "Escrituras privilegiadas" --> server
+  features -- "Usa" --> shared
+  features -- "Lee con RLS y escucha<br/>[supabase-js, Realtime]" --> db
+  server -- "Escribe<br/>[service role]" --> db
+  classDef persona fill:#08427b,stroke:#052e56,color:#ffffff
+  classDef sistema fill:#1168bd,stroke:#0b4884,color:#ffffff
+  classDef contenedor fill:#438dd5,stroke:#2e6295,color:#ffffff
+  classDef componente fill:#85bbf0,stroke:#5d82a8,color:#0b0b0b
+  classDef externo fill:#8a8a8a,stroke:#6b6b6b,color:#ffffff
 ```
 
 ### 1.1. Dependencias permitidas
