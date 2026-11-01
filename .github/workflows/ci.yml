@@ -168,9 +168,14 @@ jobs:
           fail-on-severity: high
           # Proyecto propietario: solo licencias permisivas (CONTRIBUTING.md, sección 6).
           allow-licenses: MIT, MIT-0, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD, Unlicense, CC0-1.0, CC-BY-4.0, OFL-1.1, Python-2.0, MPL-2.0, BlueOak-1.0.0
-          # Única excepción aceptada: libvips (LGPL-3.0), dependencia opcional de next a través de sharp,
-          # usada sin modificar (ADR-007).
+          # Excepciones:
+          # - libvips (LGPL-3.0), dependencia opcional de next a través de sharp, usada sin modificar
+          #   (ADR-007).
+          # - typing-extensions: su licencia declarada es PSF-2.0 (License-Expression en su METADATA),
+          #   pero la detección de GitHub le suma por error GPL-1.0-or-later por el historial de Python
+          #   que copia en LICENSE. No es copyleft.
           allow-dependencies-licenses: >-
+            pkg:pypi/typing-extensions,
             pkg:npm/%40img/sharp-libvips-linux-x64,
             pkg:npm/%40img/sharp-libvips-linux-arm64,
             pkg:npm/%40img/sharp-libvips-linuxmusl-x64,
