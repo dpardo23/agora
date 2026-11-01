@@ -1,6 +1,6 @@
 # Guía 0 · Mapa del entorno y orden de pasos
 
-Versión 1.5 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.6 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Explica qué piezas tiene el entorno de Ágora, en qué orden se preparan, qué versiones se usan y qué puertos ocupa cada servicio. Las decisiones de fondo están en el ADR-006.
 
@@ -62,7 +62,7 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 | mise | la del sistema (2026.10.x) | pacman | |
 | gh | la del sistema (2.10x) | pacman | |
 | Node.js | **24.22.2 (LTS «Krypton»)** | `mise.toml`, `engines` y Vercel (24.x) | Vercel solo ofrece 24.x (por defecto) y 22.x. Node 26 aún no es LTS |
-| pnpm | **12.17.0** | `mise.toml` y `packageManager` | Vercel admite pnpm 6 a 12. Se instala con mise y no con Corepack, que Node deja de distribuir desde la versión 25 |
+| pnpm | **12.17.0** | `mise.toml` y `packageManager` | Vercel admite pnpm 6 a 12. En el equipo se instala con mise y no con Corepack, que Node deja de distribuir desde la versión 25. En Vercel (Node 24) se fija con Corepack (guía 2, sección 9) |
 | Python | **3.14** | `mise.toml` y `requires-python` | Se confirma al incorporar el código de `umss` |
 | uv | **0.13.6** | `mise.toml` | |
 | CLI de Supabase | **2.122.0** | `mise.toml` | |

@@ -1,6 +1,6 @@
 # Guía 2 · Cuentas y secretos
 
-Versión 1.8 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.9 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Qué cuentas crear, en qué orden, qué opción elegir en cada pantalla y dónde guardar cada clave. Corresponde al ítem T-13 del SPRINT-00 y lo hace el titular a mano.
 
@@ -803,27 +803,44 @@ bw lock
 gh secret list --env staging
 ```
 
-El environment `produccion` se crea igual, con los valores del proyecto de producción, cuando exista. Al vencer el token `agora-cli` (90 días), se genera otro (sección 4, paso 11) y se repiten los pasos 3, 4, 6 y 8. El resto de la configuración del repositorio está en `docs/configuracion-github.md`.
+El environment `produccion` ya existe, con tu aprobación obligatoria y limitado a las etiquetas `v*` (`docs/configuracion-github.md`, sección 5). Sus tres secretos se suben igual, con `--env produccion` y los valores del proyecto de producción, cuando ese proyecto exista. Al vencer el token `agora-cli` (90 días), se genera otro (sección 4, paso 11) y se repiten los pasos 3, 4, 6 y 8. El resto de la configuración del repositorio está en `docs/configuracion-github.md`.
 
 ## 9. Vercel (después de T-01)
 
-Hace falta que exista `apps/web`. Cuando T-01 esté fusionado:
+Hace falta que exista `apps/web` en `develop` (T-01, ya fusionado).
 
-1. Entra en https://vercel.com con GitHub (plan **Hobby**, de uso personal).
-2. **Add New → Project → Import** `dpardo23/agora`.
+1. Entra en https://vercel.com con **Continue with GitHub** (plan **Hobby**, de uso personal).
+2. Si pide instalar la GitHub App de Vercel, elige **Only select repositories** y marca solo `agora`.
+3. **Add New → Project → Import** `dpardo23/agora` y llena la pantalla de importación así:
 
 | Campo | Valor |
 |---|---|
+| Project Name | `agora` |
 | Framework Preset | Next.js |
-| Root Directory | `apps/web` |
-| Install Command | `pnpm install` (lo detecta por `pnpm-lock.yaml`) |
-| Node.js Version | **24.x** (Settings → Build and Deployment) |
+| Root Directory | `apps/web` (botón **Edit**) |
+| Build and Output Settings | Sin cambios: Vercel usa `pnpm install` y `next build` |
+| Environment Variables | Solo `ENABLE_EXPERIMENTAL_COREPACK` = `1`. Las de Supabase se agregan después, en el paso 5, para no ponerlas en producción |
 
-3. **Settings → Environment Variables:** agrega `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` en *Preview* y *Production*, y `SUPABASE_SECRET_KEY` solo como variable de servidor (sin `NEXT_PUBLIC_`).
-4. Agrega la variable `ENABLE_EXPERIMENTAL_COREPACK=1` para que Vercel respete el campo `packageManager` (pnpm 12.17.0).
-5. **Settings → Git:** rama de producción `main`; las previews se crean por PR.
+4. Pulsa **Deploy**. Como la rama por defecto del repositorio es `develop`, este primer despliegue sale como *Production* desde `develop`; se corrige en el paso 6.
+5. **Settings → Environment Variables**, solo en el entorno **Preview** (desmarca *Production* y *Development*):
+   - `NEXT_PUBLIC_SUPABASE_URL` = la URL de agora-dev (`https://<ref>.supabase.co`).
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` = la clave publicable de agora-dev (`sb_publishable_…`).
 
-**Comprobar:** al abrir un PR, aparece el check de Vercel con una URL de preview.
+   Las dos son públicas por diseño, pero se copian desde la entrada «Supabase · agora-dev» del gestor, no desde el chat. *Production* queda vacío hasta que exista el proyecto de producción: mientras tanto, `/api/v1/salud` responde `"supabase": "sin_configurar"`. `SUPABASE_SECRET_KEY` **no** se agrega hasta que algún código de `src/server/` la use.
+6. **Settings → Git → Production Branch:** `main`. Así `develop` y cada PR generan previews, y solo `main` despliega a producción. Mientras `main` no tenga `apps/web` (llega con la primera release), sus despliegues fallan; es esperado.
+7. **Settings → Build and Deployment:**
+   - **Node.js Version:** 24.x.
+   - **Include files outside the Root Directory in the Build Step:** activado (el `pnpm-lock.yaml` y `pnpm-workspace.yaml` están en la raíz).
+8. **Settings → Deployment Protection:** deja **Vercel Authentication** activado en las previews. Las URL de preview solo se abren con tu sesión de Vercel; no lo desactives para probar.
+9. **No** conectes la integración de Supabase en Vercel (*Integrations*): copiaría la `service_role` a todos los entornos. Las variables se ponen a mano (paso 5).
+
+`ENABLE_EXPERIMENTAL_COREPACK=1` hace que Vercel use la versión exacta del campo `packageManager` del `package.json` raíz (pnpm 12.17.0). Sin ella usa otra versión de pnpm, que puede ignorar `allowBuilds` y `overrides` de `pnpm-workspace.yaml` (entre ellos, el parche de seguridad de zod). Si un día Corepack falla, la alternativa es el Install Command `npx pnpm@12.17.0 install --frozen-lockfile`.
+
+**Comprobar:**
+- En el registro del primer build aparece pnpm 12.17.0 y `next build` termina sin errores.
+- Al abrir un PR aparece el check de Vercel con una URL de preview.
+- Con la sesión de Vercel abierta en el navegador, `<URL de preview>/api/v1/salud` responde 200 con `"supabase": "ok"`.
+- El check de Vercel es informativo: el único check obligatorio de los rulesets sigue siendo `ci-ok`.
 
 ## 10. Mapa de secretos
 
@@ -855,5 +872,5 @@ Los nombres exactos están en los `.env.example` de la raíz, de `apps/web/` y d
 - [ ] Clave de Gemini creada en el proyecto `agora` en nivel gratuito, restringida a Gemini API, guardada en el gestor y probada con respuesta 200.
 - [ ] Token de Claude Code en el gestor (`Claude · token worker`).
 - [ ] Environment `staging` en GitHub con `SUPABASE_PROJECT_REF`, `SUPABASE_ACCESS_TOKEN` y `SUPABASE_DB_PASSWORD`, cargados desde el gestor.
-- [ ] Vercel conectado con `apps/web`, Node 24.x y variables (después de T-01).
+- [ ] Vercel conectado con `apps/web`, Node 24.x, Corepack, producción en `main` y las variables de Supabase solo en *Preview* (después de T-01).
 - [ ] Ninguna clave escrita fuera del gestor, de GitHub, de Vercel y de los `.env.local`; las credenciales de la nube de Supabase, solo en el gestor y en GitHub.
