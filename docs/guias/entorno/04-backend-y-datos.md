@@ -8,7 +8,7 @@ Cómo se levantan en local Supabase, n8n y el worker, y cómo se trabaja con la 
 
 - Guía 1 terminada: Docker activo (`sudo systemctl start docker.socket`) y mise instalado.
 - `mise install` ejecutado en el proyecto: `supabase --version` es 2.122.0 y `uv --version` es 0.13.6.
-- Unos 15 GB libres en disco: las imágenes de Supabase ocupan unos 5 GB y la del worker (con TeX Live) unos 4 GB.
+- Unos 15 GB libres en disco: las imágenes de Supabase ocupan unos 5 GB y la del worker (con TeX Live) unos 5 GB.
 - Para `mise run entorno:env` y `mise run n8n:clave`: la CLI de Bitwarden con la sesión abierta (guía 2, sección 1.1).
 
 ## 2. Supabase local
