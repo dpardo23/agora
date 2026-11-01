@@ -1,6 +1,6 @@
 # Guía 0 · Mapa del entorno y orden de pasos
 
-Versión 1.9 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.10 · creado el 2026-10-21 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Explica qué piezas tiene el entorno de Ágora, en qué orden se preparan, qué versiones se usan y qué puertos ocupa cada servicio. Las decisiones de fondo están en el ADR-006.
 
@@ -20,7 +20,7 @@ Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Exp
 En el sistema se instalan solo **Git, Docker, mise y gh**. Todo lo demás vive dentro de `~/Documentos/agora`:
 
 - **mise** activa Node, pnpm, Python, uv y la CLI de Supabase con las versiones de la sección 4, solo al entrar en la carpeta. Al salir, tu sistema vuelve a sus versiones (por ejemplo, tu Node 26 del sistema sigue intacto).
-- **Las librerías** del frontend van en `node_modules/` y las del worker en `worker/.venv/`. Nada se instala con `sudo npm` ni `sudo pip`.
+- **Las librerías** del frontend van en `node_modules/` y las del worker en `apps/worker/.venv/`. Nada se instala con `sudo npm` ni `sudo pip`.
 - **Los servicios** corren en contenedores con el nombre `agora` y un bloque de puertos propio (sección 5). No arrancan con el equipo ni se reinician solos.
 - **Los secretos** van en archivos `.env.local` que nunca se suben a GitHub; mise los carga solo dentro de la carpeta.
 
@@ -100,7 +100,7 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 | zod (forzada en todo el árbol) | 4.6.7 | `overrides` de `pnpm-workspace.yaml`: Serwist fija 4.6.5, con una vulnerabilidad alta |
 | @commitlint/cli, @commitlint/config-conventional | 21.2.4 | Se ejecutan desde `.githooks/commit-msg`. **Sin Husky**: cambiaría `core.hooksPath` y apagaría los hooks de privacidad |
 
-### Worker (`worker/`)
+### Worker (`apps/worker/`)
 
 | Paquete o imagen | Versión | Nota |
 |---|---|---|
@@ -145,7 +145,7 @@ Elegidos fuera de los valores por defecto para no chocar con otros proyectos.
 |---|---|---|
 | `mise.toml` | Versiones y tareas del proyecto | Sí |
 | `.env.example` | Nombres de las variables, sin valores | Sí |
-| `.env.local` (raíz, `apps/web/`, `worker/`) | Valores reales de los secretos | **No** |
+| `.env.local` (raíz, `apps/web/`, `apps/worker/`) | Valores reales de los secretos | **No** |
 | `.editorconfig`, `.vscode/` | Formato común del editor y extensiones recomendadas | Sí |
 | `scripts/verificar-entorno.sh` | Comprueba que el entorno esté completo (guía 5) | Sí |
 | `supabase/` | Configuración, migraciones, pruebas pgTAP y borradores (`borradores/`, hasta T-03) | Sí (salvo `.temp/`, `.branches/`) |

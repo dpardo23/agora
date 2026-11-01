@@ -163,7 +163,7 @@ wheels/
 *.toc
 *.vrb
 *.xdv
-worker/salidas/
+apps/worker/salidas/
 
 # =============================================================================
 # 9. Servicios locales (Supabase CLI, Docker, n8n)
@@ -175,7 +175,7 @@ supabase/functions/.env
 compose.override.yaml
 docker-compose.override.yml
 infra/local/datos/
-n8n/.n8n/
+infra/n8n/.n8n/
 *.sqlite
 *.sqlite3
 *.db

@@ -27,13 +27,13 @@ services:
   worker:
     profiles: ["worker"]
     build:
-      context: ../../worker
+      context: ../../apps/worker
     image: agora/worker:local
     env_file:
-      - path: ../../worker/.env.local
+      - path: ../../apps/worker/.env.local
         required: false
     # Supabase local corre en el anfitrión: dentro del contenedor, «localhost» es el propio
-    # contenedor, así que la URL de worker/.env.local se reemplaza por la del anfitrión.
+    # contenedor, así que la URL de apps/worker/.env.local se reemplaza por la del anfitrión.
     environment:
       SUPABASE_URL: http://host.docker.internal:55321
     extra_hosts:

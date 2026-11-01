@@ -1,5 +1,5 @@
 #!/bin/sh
-#MISE description="Crea apps/web/.env.local y worker/.env.local con Supabase local y las claves del gestor"
+#MISE description="Crea apps/web/.env.local y apps/worker/.env.local con Supabase local y las claves del gestor"
 # Uso: mise run entorno:env   (guía 4, sección 6)
 # Lo ejecuta el titular: pide la sesión de Bitwarden. Nunca muestra valores ni reemplaza un archivo
 # que ya existe; los archivos se crean con permisos 600.
@@ -34,8 +34,8 @@ else
   echo "entorno:env: creado $web"
 fi
 
-# --- worker/.env.local ---
-worker=worker/.env.local
+# --- apps/worker/.env.local ---
+worker=apps/worker/.env.local
 if [ -e "$worker" ]; then
   echo "entorno:env: $worker ya existe; no se toca. Bórralo a mano si quieres regenerarlo."
   exit 0

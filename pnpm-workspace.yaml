@@ -1,6 +1,7 @@
 # Workspace de pnpm de Ágora (guía 3, sección 2). La configuración de pnpm vive aquí y no en .npmrc.
 packages:
-  - apps/*
+  # Solo la web: apps/worker es Python (uv) y no forma parte del workspace de pnpm.
+  - apps/web
 
 # pnpm 12 no ejecuta scripts de instalación salvo que se autoricen aquí. Los de esta lista se
 # rechazan a propósito: estos paquetes traen binarios precompilados por plataforma como
