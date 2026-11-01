@@ -1,6 +1,6 @@
 # Guía 0 · Mapa del entorno y orden de pasos
 
-Versión 1.2 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
+Versión 1.3 · creado el 2026-10-21 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
 Esta guía es la puerta de entrada al SPRINT-00 «Organización y entorno». Explica qué piezas tiene el entorno de Ágora, en qué orden se preparan, qué versiones se usan y qué puertos ocupa cada servicio. Las decisiones de fondo están en el ADR-006.
 
@@ -72,14 +72,14 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 
 | Paquete | Versión | Compatibilidad comprobada |
 |---|---|---|
-| next, eslint-config-next | 16.4.2 | Requiere Node ≥ 20.9 y React 19 |
+| next, eslint-config-next | 16.4.3 | Requiere Node ≥ 20.9 y React 19 |
 | react, react-dom | 19.3.1 | |
 | typescript | **6.0.3** | No 7.x: `typescript-eslint` (que usa `eslint-config-next`) admite TypeScript < 6.1 |
-| eslint | **9.39.5** | No 10.x: `eslint-plugin-react`, `-import` y `-jsx-a11y` admiten hasta ESLint 9 |
-| eslint-plugin-boundaries | 7.2.1 | |
+| eslint | **9.39.5** | No 10.x: `eslint-plugin-react`, `-import` y `-jsx-a11y` admiten hasta ESLint 9. pnpm avisa que la línea 9 está marcada como obsoleta; se mantiene hasta que `eslint-config-next` admita ESLint 10 |
+| eslint-plugin-boundaries | 7.4.0 | Regla `boundaries/dependencies` (sintaxis de la versión 7) |
 | prettier, prettier-plugin-tailwindcss | 3.9.10, 0.8.1 | |
-| tailwindcss, @tailwindcss/postcss | 4.3.3 | |
-| shadcn (CLI) | 4.22.1 | Componentes Radix |
+| tailwindcss, @tailwindcss/turbopack | 4.3.3 | Next 16 compila el CSS con el cargador de Turbopack, sin PostCSS |
+| shadcn (CLI), radix-ui, cn, class-variance-authority, tw-animate-css | 4.23.0, 1.8.1, 0.5.1, 0.7.1, 1.4.0 | Estilo `radix-nova`; `shadcn` también es dependencia porque `globals.css` importa su CSS |
 | lucide-react | 1.61.0 | |
 | @tanstack/react-query | 5.104.5 | |
 | react-hook-form, @hookform/resolvers | 7.90.0, 6.0.0 | Los resolvers admiten Zod 3.25 o 4 |
@@ -89,10 +89,11 @@ Verificadas el 2026-10-21 en su fuente oficial y actualizadas a sus últimos par
 | date-fns, @date-fns/tz | 4.4.0, 1.5.0 | Con date-fns 4 la zona horaria va en `@date-fns/tz`, no en `date-fns-tz` |
 | ts-fsrs | 5.4.2 | |
 | @supabase/supabase-js, @supabase/ssr | 2.118.0, 0.12.7 | `@supabase/ssr` requiere supabase-js ≥ 2.114 |
-| vitest, @vitejs/plugin-react, vite | 5.0.5, 6.1.2, 8.x | Vitest 5 admite Node 22, 24 y ≥ 26 |
+| vitest, @vitest/coverage-v8, @vitejs/plugin-react, vite | 5.0.5, 5.0.5, 6.1.2, 8.x | Vitest 5 admite Node 22, 24 y ≥ 26. La cobertura debe tener la misma versión que Vitest |
 | @testing-library/react, user-event, jest-dom, jsdom | 16.3.3, 14.6.8, 7.0.1, 30.1.3 | |
 | @playwright/test, @axe-core/playwright | 1.64.1, 4.14.0 | |
-| @lhci/cli | 0.15.1 | |
+| @lhci/cli | 0.15.1 | Lighthouse 12 ya no tiene la categoría PWA: la instalabilidad se prueba en HU-16.01 y HU-16.04 |
+| server-only, tsx | 0.0.1, 4.23.15 | `server-only` impide importar `src/server/` desde el cliente; `tsx` ejecuta `apps/web/scripts/openapi.ts` |
 | @commitlint/cli, @commitlint/config-conventional | 21.2.4 | Se ejecutan desde `.githooks/commit-msg`. **Sin Husky**: cambiaría `core.hooksPath` y apagaría los hooks de privacidad |
 
 ### Worker (`worker/`)

@@ -5,3 +5,14 @@ if grep -Eiq '^(co-authored-by|claude-session|generated-by):|noreply@anthropic\.
   echo "commit-msg: el mensaje atribuye coautoría a una herramienta de IA. Quita esa línea." >&2
   exit 1
 fi
+
+# Formato Conventional Commits con las reglas de commitlint.config.mjs (CONTRIBUTING.md, sección 2).
+# En un clon sin «pnpm install» todavía no existe commitlint: avisa y deja pasar el commit; el CI lo
+# revisa igual en el PR.
+raiz=$(git rev-parse --show-toplevel)
+commitlint="$raiz/node_modules/.bin/commitlint"
+if [ -x "$commitlint" ]; then
+  "$commitlint" --config "$raiz/commitlint.config.mjs" --edit "$1" || exit 1
+else
+  echo "commit-msg: commitlint no está instalado (ejecuta «pnpm install»); el mensaje no se revisó." >&2
+fi

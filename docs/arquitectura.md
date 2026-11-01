@@ -1,8 +1,8 @@
 # Arquitectura · Ágora
 
-Versión 2.1 · creado el 2026-10-20 · editado el 2026-10-21 · autor: Juan Diego Pardo Pozo
+Versión 2.2 · creado el 2026-10-20 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
-Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado). Rutas y API: `docs/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
+Decisiones: ADR-001 (stack web), ADR-002 (arquitectura general), ADR-003 (Olimpo), ADR-004 (render en canvas), ADR-005 (dioses y roles), ADR-006 (entorno de desarrollo aislado), ADR-007 (licencia LGPL de sharp-libvips). Rutas y API: `docs/api.md`. Especificación funcional original: `docs/referencia/handoff/CONTEXTO.md` (si hay diferencias, mandan los ADR).
 
 ## 1. Vista general
 
@@ -51,9 +51,9 @@ apps/web/                         Next.js 16
     components/ui/                kit shadcn/ui adaptado al diseño
     shared/                       config (navegación), lib, tipos generados (database.types.ts)
     server/                       clientes de servidor (service role), correo, firmas, errores HTTP
-    middleware.ts                 sesión + dispositivo verificado
+    proxy.ts                      sesión + dispositivo verificado (en Next 16, «middleware» se llama «proxy»)
   tests/  unit/  e2e/
-worker/                           motor de agentes (Python 3.12 + uv)
+worker/                           motor de agentes (Python 3.14 + uv)
   umss/dominio/  umss/puertos/  umss/adaptadores/  umss/roles/  tests/
 supabase/  migrations/  seed.sql  config.toml  tests/ (pgTAP)
 n8n/       flujos exportados (JSON, sin credenciales)
@@ -76,7 +76,7 @@ design/    pantallas (.dc.html), mockups (PNG), referencias, fuente (export loca
 ## 5. Seguridad
 
 - Supabase Auth (correo + contraseña) por debajo; en la interfaz se entra con **usuario**. `POST /api/v1/auth/sesion` resuelve usuario → correo en el servidor y nunca expone el correo.
-- 2FA por Gmail en dispositivos nuevos: código de 6 dígitos guardado como hash (10 min, 5 intentos), cookie firmada `agora_device` y middleware que bloquea `(app)` hasta verificar.
+- 2FA por Gmail en dispositivos nuevos: código de 6 dígitos guardado como hash (10 min, 5 intentos), cookie firmada `agora_device` y el proxy de Next (`src/proxy.ts`) que bloquea `(app)` hasta verificar.
 - Política de contraseña en cliente, servidor y Supabase Auth.
 - RLS en todas las tablas. Bucket `documentos` privado con URLs firmadas de 5 minutos. Registro público desactivado.
 - Escrituras: verificación de origen (`Origin`), cookies `SameSite=Lax`, límites de frecuencia en autenticación y webhooks firmados con HMAC.
