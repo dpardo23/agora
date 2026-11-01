@@ -1,6 +1,6 @@
 # Plan de pruebas · Ágora
 
-Versión 1.2 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
+Versión 1.3 · creado el 2026-10-20 · editado el 2026-11-01 · autor: Juan Diego Pardo Pozo
 
 ## 1. Objetivo
 Verificar en cada sprint que el incremento cumple los criterios de aceptación de sus HU (CA-FE y CA-NF), con evidencia reproducible y trazable.
@@ -61,6 +61,25 @@ La prioridad (Urgente, Alta, Media, Baja) la asigna el Product Owner (el usuario
 | Riesgo | Mitigación |
 |---|---|
 | Animaciones de la oficina difíciles de verificar | Máquina de estados probada con un reloj falso y capturas visuales de estados fijos |
-| Correo real de 2FA | Inbucket en local; buzón de prueba en preview |
+| Correo real de 2FA | Mailpit en local; buzón de prueba en preview |
 | Dependencia de servicios de Google | Contratos simulados en CI; pruebas reales solo al cerrar el sprint |
 | Zona horaria | Pruebas en CI con `TZ=UTC` y aserciones en hora de La Paz |
+
+## 8. Correspondencia con ISO/IEC/IEEE 29119-3
+
+La norma ISO/IEC/IEEE 29119-3 define los documentos de prueba. Ágora no crea documentos aparte: cada uno corresponde a un artefacto que ya existe en el proceso del sprint.
+
+| Documento de la norma | Artefacto de Ágora |
+|---|---|
+| Política y prácticas de prueba de la organización | Este plan y la guía 6 (`docs/guias/entorno/06-calidad-y-pruebas.md`) |
+| Plan de pruebas | Este documento: alcance por nivel, proceso, criterios de entrada y salida, ambientes y riesgos |
+| Especificación del diseño de pruebas | Derivación de los TC desde los CA de cada HU y matriz de trazabilidad (`docs/qa/matriz-trazabilidad.md`) |
+| Especificación de casos de prueba | `docs/qa/test-cases/TC-HU-XX.YY.md`, uno por HU |
+| Especificación de procedimientos de prueba | Los pasos de cada TC y, en los automatizados, su prueba en `apps/web/tests/e2e/` |
+| Requisitos de datos y de ambiente | Sección 5 de este plan |
+| Preparación de datos y de ambiente | `mise run arriba`, la semilla de la base y `scripts/verificar-entorno.sh` |
+| Registro de ejecución | Resultado de cada TC en su archivo y los registros y artefactos de cada ejecución del CI |
+| Reporte de incidentes | `docs/qa/bugs/BUG-NNN-slug.md`, con la severidad y la prioridad de la sección 6 |
+| Informe de estado de las pruebas | Revisión del sprint en `docs/producto/sprints/SPRINT-NN.md` |
+| Informe de finalización de las pruebas | Cierre del sprint: Definition of Done, revisión y retrospectiva |
+

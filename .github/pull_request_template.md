@@ -21,6 +21,7 @@ Refs: <!-- HU-XX.YY · BUG-NNN · T-NN -->
 - [ ] Hay pruebas nuevas o actualizadas (unitarias, componentes, E2E).
 - [ ] axe sin violaciones *serious* ni *critical*; recorrido con teclado revisado.
 - [ ] `docs/arquitectura/api.md` está actualizado si cambia la API; hay un ADR nuevo si cambia una decisión de arquitectura.
+- [ ] Las vistas de `docs/arquitectura/` (componentes, datos, comportamiento y despliegue) están actualizadas si cambia lo que muestran.
 - [ ] Las migraciones son nuevas (ninguna migración aplicada fue editada) y los tipos están regenerados.
 - [ ] Sin secretos en el código, los logs ni la documentación.
 - [ ] Backlog, matriz de trazabilidad y archivo del sprint actualizados.
