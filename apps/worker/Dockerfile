@@ -1,6 +1,6 @@
 # Imagen del worker de Ágora (T-12; guía 4, sección 4.2). Una sola imagen para el PC (amd64) y la
 # Oracle VM (arm64). Versiones fijas según la matriz de la guía 0.
-FROM python:3.14.10-slim-trixie
+FROM python:3.15.0-slim-trixie
 
 # uv en la misma versión que mise.toml.
 COPY --from=ghcr.io/astral-sh/uv:0.13.6 /uv /uvx /bin/
