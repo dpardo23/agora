@@ -46,7 +46,17 @@ if [ "$(bw status | jq -r .status)" != "unlocked" ]; then
   exit 1
 fi
 bw sync >/dev/null
-campo() { bw get item "$1" | jq -er --arg c "$2" '.fields[] | select(.name == $c) | .value'; }
+# Busca la entrada por nombre exacto (sin depender de mayúsculas ni de otras coincidencias) y
+# devuelve el campo pedido. Si falta, dice cuál, sin mostrar ningún valor.
+campo() {
+  if ! valor=$(bw list items --search "$1" | jq -er --arg n "$1" --arg c "$2" \
+      'map(select(.name == $n)) | first | .fields[] | select(.name == $c) | .value'); then
+    echo "entorno:env: no se encontró la entrada «$1» con el campo «$2» en Bitwarden." >&2
+    echo "  Revisa los nombres (sin valores) con: bw list items | jq -r '.[].name'" >&2
+    exit 1
+  fi
+  printf '%s' "$valor"
+}
 gemini=$(campo "Google · Gemini API key" "Clave API")
 claude=$(campo "Claude · token worker" "CLAUDE_CODE_OAUTH_TOKEN")
 

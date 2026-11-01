@@ -19,7 +19,12 @@ if ! docker info >/dev/null 2>&1; then
 fi
 
 echo "==> Supabase"
-supabase start
+# «supabase start» imprime las claves locales; aquí solo se muestran las direcciones (mise run estado).
+if ! salida=$(supabase start 2>&1); then
+  printf '%s\n' "$salida" >&2
+  exit 1
+fi
+echo "  en marcha: Studio http://localhost:55323 · Mailpit http://localhost:55324 · API http://localhost:55321"
 
 echo "==> n8n (http://localhost:55678)"
 if [ -z "${N8N_ENCRYPTION_KEY:-}" ]; then
