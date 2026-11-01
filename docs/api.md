@@ -1,6 +1,6 @@
 # Rutas y API · Ágora
 
-Versión 1.0 · creado el 2026-10-20 · editado el 2026-10-20 · autor: Juan Diego Pardo Pozo
+Versión 1.1 · creado el 2026-10-20 · editado el 2026-10-31 · autor: Juan Diego Pardo Pozo
 
 Este documento es el contrato de las rutas de la interfaz y de la API REST. El inventario crece con cada HU: **toda HU que agrega o cambia un endpoint actualiza este archivo en el mismo PR**. La especificación ejecutable se genera desde los esquemas Zod y se publica en `GET /api/v1/openapi.json`.
 
@@ -54,7 +54,7 @@ Las pestañas internas son rutas, no estado local. Los diálogos que se pueden e
 | Método y ruta | Uso | Respuesta | HU |
 |---|---|---|---|
 | **Sistema** | | | |
-| `GET /salud` | Estado de la API y de la conexión con Supabase | 200 | T-02 |
+| `GET /salud` | Estado de la API y de la conexión con Supabase: `{ estado, version, supabase }`, con `supabase` en `ok`, `sin_configurar` o `error`. No requiere sesión ni muestra detalles del error | 200 | T-01 |
 | `GET /openapi.json` | Contrato OpenAPI generado | 200 | T-01 |
 | **Autenticación** | | | |
 | `POST /auth/sesion` | Iniciar sesión con usuario y contraseña | 200 · 401 · 429 | HU-03.01 |

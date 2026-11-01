@@ -1,0 +1,146 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API de Ágora",
+    "version": "0.1.0",
+    "description": "API REST versionada de Ágora. Errores en application/problem+json (RFC 9457)."
+  },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
+  "components": {
+    "responses": {
+      "NoEncontrado": {
+        "description": "La ruta no existe",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problema"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Problema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "codigo": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "errores": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "campo": {
+                  "type": "string"
+                },
+                "mensaje": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "campo",
+                "mensaje"
+              ]
+            },
+            "default": []
+          }
+        },
+        "required": [
+          "type",
+          "title",
+          "status",
+          "codigo"
+        ]
+      },
+      "Salud": {
+        "type": "object",
+        "properties": {
+          "estado": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ]
+          },
+          "version": {
+            "type": "string"
+          },
+          "supabase": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "sin_configurar",
+              "error"
+            ]
+          }
+        },
+        "required": [
+          "estado",
+          "version",
+          "supabase"
+        ]
+      }
+    },
+    "parameters": {}
+  },
+  "paths": {
+    "/salud": {
+      "get": {
+        "operationId": "obtenerSalud",
+        "summary": "Estado de la API y de la conexión con Supabase",
+        "tags": [
+          "Sistema"
+        ],
+        "responses": {
+          "200": {
+            "description": "La API responde",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Salud"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "operationId": "obtenerContrato",
+        "summary": "Contrato OpenAPI de la API",
+        "tags": [
+          "Sistema"
+        ],
+        "responses": {
+          "200": {
+            "description": "Documento OpenAPI 3.1",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "webhooks": {}
+}

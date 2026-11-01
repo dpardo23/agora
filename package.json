@@ -1,0 +1,25 @@
+{
+  "name": "agora",
+  "private": true,
+  "description": "Ágora: plataforma universitaria personal (workspace de pnpm).",
+  "author": "Juan Diego Pardo Pozo <jdiegopardo23@gmail.com>",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@12.17.0",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "pnpm -C apps/web dev",
+    "lint": "pnpm -C apps/web lint",
+    "typecheck": "pnpm -C apps/web typecheck",
+    "test:unit": "pnpm -C apps/web test:unit",
+    "test:e2e": "pnpm -C apps/web test:e2e",
+    "build": "pnpm -C apps/web build",
+    "openapi:check": "pnpm -C apps/web openapi:check",
+    "format": "pnpm -C apps/web format"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4"
+  }
+}

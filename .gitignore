@@ -60,6 +60,7 @@ skills-lock.json
 .windsurf/
 .gemini/
 GEMINI.md
+AGENTS.md
 .aider*
 .continue/
 .copilot/
