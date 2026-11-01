@@ -1,0 +1,16 @@
+# Versiones de las herramientas de Ágora (ADR-006).
+# mise las activa solo dentro de esta carpeta; fuera de ella, el sistema conserva las suyas.
+# Salen de la matriz de la guía 0 (docs/guias/entorno/00-mapa-y-orden.md, sección 4) y se replican
+# sin cambios en package.json, el CI y Vercel. Para probar otra versión solo en tu PC, usa mise.local.toml.
+
+[tools]
+node = "24.22.2"
+pnpm = "12.17.0"
+python = "3.14"
+uv = "0.13.6"
+supabase = "2.122.0"
+
+[env]
+# Variables de la CLI de Supabase y de los servicios locales; se cargan solo dentro de la carpeta.
+# El archivo no se versiona: su plantilla es .env.example.
+_.file = ".env.local"

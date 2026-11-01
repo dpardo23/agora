@@ -167,7 +167,7 @@ Regla: ningún secreto en el código ni en `docs/`. El CI lo verifica con gitlea
 | Dependabot alerts | Activado | Avisos de dependencias con vulnerabilidades conocidas |
 | Dependabot security updates | Activado | PR automáticos que corrigen esas vulnerabilidades |
 | Grouped security updates | Activado | Un PR por grupo en lugar de muchos |
-| Dependabot version updates | Ya configurado en `.github/dependabot.yml` | Actualizaciones semanales hacia `develop` |
+| Dependabot version updates | Ya configurado en `.github/dependabot.yml` | Actualizaciones semanales hacia `develop` de acciones (en un solo PR), npm, uv, Docker y Compose. Las versiones de Node, pnpm, Python, uv y la CLI de Supabase no las sube Dependabot: se cambian en `mise.toml`, que leen el entorno local y el CI |
 | Code scanning → CodeQL analysis | **Default setup**, lenguajes JavaScript/TypeScript, Python y Actions | Análisis estático de seguridad en cada PR |
 | Copilot Autofix | Desactivado | Evita commits sugeridos por terceros en tus PR |
 | Secret Protection → Secret scanning | Activado | Detecta claves subidas por error |
